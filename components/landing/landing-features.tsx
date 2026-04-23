@@ -59,17 +59,19 @@ export default function LandingFeatures() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="landing-eyebrow animate-fade-up">Capabilities</p>
+          <p data-gsap="features-head" className="landing-eyebrow">
+            Capabilities
+          </p>
           <h2
-            className="animate-fade-up font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-            style={{ animationDelay: "80ms" }}
+            data-gsap="features-head"
+            className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
           >
             What already makes Apsara{" "}
             <span className="landing-gradient-text">useful today</span>
           </h2>
           <p
-            className="animate-fade-up mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-            style={{ animationDelay: "160ms" }}
+            data-gsap="features-head"
+            className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
           >
             The value is not speculative. These are the real behaviors that make
             the current CLI and backend feel more trustworthy than a generic AI
@@ -78,14 +80,14 @@ export default function LandingFeatures() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {featureCards.map((feature, index) => {
+          {featureCards.map((feature) => {
             const Icon = feature.icon;
 
             return (
               <article
                 key={feature.title}
-                className="animate-fade-up landing-glass-card group rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1"
-                style={{ animationDelay: `${240 + index * 80}ms` }}
+                data-gsap="feature-card"
+                className="landing-glass-card group rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1"
               >
                 <span className="flex size-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,oklch(0.97_0.028_82),oklch(0.95_0.02_80))] text-[oklch(0.56_0.13_68)] shadow-[inset_0_1px_0_oklch(1_0.003_85_/_0.7)]">
                   <Icon className="size-5" />

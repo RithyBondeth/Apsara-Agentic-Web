@@ -17,17 +17,19 @@ export default function LandingCta() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="landing-eyebrow animate-fade-up">Closing Thought</p>
+        <p data-gsap="cta-head" className="landing-eyebrow">
+          Closing Thought
+        </p>
         <h2
-          className="animate-fade-up font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-          style={{ animationDelay: "80ms" }}
+          data-gsap="cta-head"
+          className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
           Ready to give Apsara a front door that matches the{" "}
           <span className="landing-gradient-text">product truth</span>?
         </h2>
         <p
-          className="animate-fade-up mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-          style={{ animationDelay: "160ms" }}
+          data-gsap="cta-head"
+          className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
         >
           The strongest story is already there: repo-first setup, bounded tools,
           quieter internals, reviewable diffs, and durable context for serious
@@ -35,8 +37,8 @@ export default function LandingCta() {
         </p>
 
         <div
-          className="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          style={{ animationDelay: "240ms" }}
+          data-gsap="cta-actions"
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Button
             asChild

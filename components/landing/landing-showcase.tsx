@@ -5,6 +5,7 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
+import LandingShowcaseTerminal from "@/components/landing/landing-showcase-terminal";
 
 const productNotes = [
   {
@@ -43,16 +44,18 @@ export default function LandingShowcase() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="landing-eyebrow animate-fade-up">Product View</p>
+        <p data-gsap="showcase-head" className="landing-eyebrow">
+          Product View
+        </p>
         <h2
-          className="animate-fade-up font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-          style={{ animationDelay: "80ms" }}
+          data-gsap="showcase-head"
+          className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
           See the agent loop as a product, not just a prompt box.
         </h2>
         <p
-          className="animate-fade-up mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-          style={{ animationDelay: "160ms" }}
+          data-gsap="showcase-head"
+          className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
         >
           This is the part worth showing. Project-local startup, bounded tools,
           hidden internals on demand, and a review step before edits land all
@@ -62,8 +65,8 @@ export default function LandingShowcase() {
 
       <div className="relative mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
         <div
-          className="animate-fade-up landing-terminal-shell relative overflow-hidden rounded-[2rem] p-5 text-white sm:p-7"
-          style={{ animationDelay: "220ms" }}
+          data-gsap="showcase-shell"
+          className="landing-terminal-shell relative overflow-hidden rounded-[2rem] p-5 text-white sm:p-7"
         >
           <div
             aria-hidden
@@ -83,47 +86,13 @@ export default function LandingShowcase() {
             </div>
 
             <div className="grid gap-6 pt-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="rounded-[1.5rem] border border-white/8 bg-black/18 p-5 font-mono text-sm leading-7 text-white/85">
-                <p>
-                  <span className="text-[#7dd3fc]">$</span> apsara init
-                </p>
-                <p>
-                  <span className="text-[#fbbf24]">workspace</span>
-                  <span className="text-white/40">:</span>{" "}
-                  <span className="text-[#fde68a]">./apsara-agentic-api</span>
-                </p>
-                <p>
-                  <span className="text-[#c4b5fd]">request</span>
-                  <span className="text-white/40">:</span>{" "}
-                  <span className="text-white">
-                    &quot;Trace the approval flow and simplify the copy.&quot;
-                  </span>
-                </p>
-                <p>
-                  <span className="text-[#86efac]">activity</span>
-                  <span className="text-white/40">:</span>{" "}
-                  <span className="text-[#bef264]">
-                    6 internal events hidden. Open /details to inspect.
-                  </span>
-                </p>
-                <p>
-                  <span className="text-[#fca5a5]">review</span>
-                  <span className="text-white/40">:</span>{" "}
-                  <span className="text-white">
-                    Diff preview generated before line replacement.
-                  </span>
-                </p>
-                <p>
-                  <span className="text-[#67e8f9]">status</span>
-                  <span className="text-white/40">:</span>{" "}
-                  <span className="text-white">
-                    Awaiting approval to apply the change.
-                  </span>
-                </p>
-              </div>
+              <LandingShowcaseTerminal />
 
               <div className="space-y-3">
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5">
+                <div
+                  data-gsap="showcase-note"
+                  className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5"
+                >
                   <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">
                     Why it feels better
                   </p>
@@ -142,6 +111,7 @@ export default function LandingShowcase() {
                   return (
                     <div
                       key={note.title}
+                      data-gsap="showcase-note"
                       className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5"
                     >
                       <div className="flex items-center gap-3">
@@ -165,7 +135,10 @@ export default function LandingShowcase() {
           </div>
         </div>
 
-        <div className="landing-glass-card animate-float absolute -left-2 top-36 hidden max-w-52 rounded-[1.5rem] p-4 xl:block">
+        <div
+          data-gsap-float="soft"
+          className="landing-glass-card absolute -left-2 top-36 hidden max-w-52 rounded-[1.5rem] p-4 xl:block"
+        >
           <p className="landing-eyebrow !text-[10px]">Human loop</p>
           <p className="mt-3 text-sm leading-6 text-foreground/80">
             Review stays in the critical path instead of getting bolted on after
@@ -173,7 +146,10 @@ export default function LandingShowcase() {
           </p>
         </div>
 
-        <div className="animate-float-delayed absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.7)] bg-[oklch(0.98_0.016_82_/_0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76_/_0.12)] xl:block">
+        <div
+          data-gsap-float="delayed"
+          className="absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.7)] bg-[oklch(0.98_0.016_82_/_0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76_/_0.12)] xl:block"
+        >
           <div className="flex items-center gap-2 text-[oklch(0.52_0.11_68)]">
             <Sparkles className="size-4" />
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em]">
@@ -188,10 +164,16 @@ export default function LandingShowcase() {
       </div>
 
       <div className="relative z-10 mx-auto mt-16 max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <h3 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        <h3
+          data-gsap="showcase-tail"
+          className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+        >
           Trust grows when every step has a boundary.
         </h3>
-        <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">
+        <p
+          data-gsap="showcase-tail"
+          className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg"
+        >
           That means workspace scoping, review gates before writes, and internal
           activity that stays available without taking over the entire
           interface.

@@ -29,7 +29,10 @@ export default function LandingFooter() {
         className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-20"
       />
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <div
+          data-gsap="footer"
+          className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between"
+        >
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <Image
@@ -74,7 +77,10 @@ export default function LandingFooter() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-border/70 pt-6">
+        <div
+          data-gsap="footer"
+          className="mt-10 border-t border-border/70 pt-6"
+        >
           <p className="text-center text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Apsara. Agentic coding with
             boundaries, legibility, and human review.

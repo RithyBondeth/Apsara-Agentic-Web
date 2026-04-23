@@ -4,6 +4,7 @@ import LandingFooter from "@/components/landing/landing-footer";
 import LandingHeader from "@/components/landing/landing-header";
 import LandingHero from "@/components/landing/landing-hero";
 import LandingHowItWorks from "@/components/landing/landing-how-it-works";
+import LandingPageAnimations from "@/components/landing/landing-page-animations";
 import LandingShowcase from "@/components/landing/landing-showcase";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       id="top"
       className="relative min-h-screen overflow-hidden bg-background"
     >
+      <LandingPageAnimations />
       <LandingHeader />
       <LandingHero />
       <LandingShowcase />

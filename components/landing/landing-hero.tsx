@@ -24,10 +24,12 @@ export default function LandingHero() {
     >
       <div
         aria-hidden
-        className="animate-drift pointer-events-none absolute -left-24 top-24 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.11_78_/_0.28),transparent_70%)] blur-[140px]"
+        data-gsap-drift="hero-left"
+        className="pointer-events-none absolute -left-24 top-24 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.11_78_/_0.28),transparent_70%)] blur-[140px]"
       />
       <div
         aria-hidden
+        data-gsap-drift="hero-right"
         className="pointer-events-none absolute right-[-6rem] top-[-5rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.1_72_/_0.18),transparent_70%)] blur-[160px]"
       />
       <div
@@ -37,7 +39,10 @@ export default function LandingHero() {
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
         <div className="flex flex-col items-center gap-6">
-          <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.08_76_/_0.45)] bg-[oklch(0.98_0.016_82_/_0.86)] px-4 py-1.5 backdrop-blur-sm">
+          <div
+            data-gsap="hero-item"
+            className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.08_76_/_0.45)] bg-[oklch(0.98_0.016_82_/_0.86)] px-4 py-1.5 backdrop-blur-sm"
+          >
             <Sparkles className="size-3.5 text-[oklch(0.58_0.15_67)]" />
             <span className="text-xs font-semibold text-[oklch(0.45_0.08_68)]">
               Private alpha for project-first agentic coding
@@ -45,8 +50,8 @@ export default function LandingHero() {
           </div>
 
           <h1
-            className="animate-fade-up font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.06]"
-            style={{ animationDelay: "80ms" }}
+            data-gsap="hero-item"
+            className="font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.06]"
           >
             Build with an agent that stays{" "}
             <span className="landing-gradient-text">inside the repo</span>
@@ -55,8 +60,8 @@ export default function LandingHero() {
           </h1>
 
           <p
-            className="animate-fade-up max-w-[720px] text-balance text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
-            style={{ animationDelay: "160ms" }}
+            data-gsap="hero-item"
+            className="max-w-[720px] text-balance text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
           >
             Apsara turns the current CLI and backend spine into a stronger
             product story: workspace-scoped tools, reviewable diffs, quieter
@@ -65,8 +70,8 @@ export default function LandingHero() {
           </p>
 
           <div
-            className="animate-fade-up flex w-full flex-col items-center justify-center gap-3 pt-2 sm:w-auto sm:flex-row"
-            style={{ animationDelay: "240ms" }}
+            data-gsap="hero-item"
+            className="flex w-full flex-col items-center justify-center gap-3 pt-2 sm:w-auto sm:flex-row"
           >
             <Button
               asChild
@@ -89,12 +94,13 @@ export default function LandingHero() {
           </div>
 
           <div
-            className="animate-fade-up landing-glass-card mt-8 grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] text-left sm:grid-cols-3"
-            style={{ animationDelay: "320ms" }}
+            data-gsap="hero-item"
+            className="landing-glass-card mt-8 grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] text-left sm:grid-cols-3"
           >
             {heroSignals.map((signal, index) => (
               <div
                 key={signal.value}
+                data-gsap="hero-signal"
                 className={`px-6 py-5 sm:px-6 sm:py-6 ${
                   index > 0 ? "border-t border-border/70 sm:border-l sm:border-t-0" : ""
                 }`}
@@ -113,10 +119,11 @@ export default function LandingHero() {
         <a
           href="#showcase"
           aria-label="Scroll to the showcase"
-          className="animate-fade-up mt-12 inline-flex items-center justify-center text-muted-foreground"
-          style={{ animationDelay: "400ms" }}
+          data-gsap="hero-item"
+          data-gsap-loop="hero-scroll"
+          className="mt-12 inline-flex items-center justify-center text-muted-foreground"
         >
-          <ChevronDown className="size-6 animate-bounce" />
+          <ChevronDown className="size-6" />
         </a>
       </div>
     </section>

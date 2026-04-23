@@ -40,16 +40,18 @@ export default function LandingHowItWorks() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="landing-eyebrow animate-fade-up">How It Works</p>
+          <p data-gsap="workflow-head" className="landing-eyebrow">
+            How It Works
+          </p>
           <h2
-            className="animate-fade-up font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-            style={{ animationDelay: "80ms" }}
+            data-gsap="workflow-head"
+            className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
           >
             A workflow that mirrors how developers already work.
           </h2>
           <p
-            className="animate-fade-up mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-            style={{ animationDelay: "160ms" }}
+            data-gsap="workflow-head"
+            className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
           >
             Orient the repo, delegate the legwork, and keep authorship through
             review. The product gets out of the way without becoming vague.
@@ -60,8 +62,8 @@ export default function LandingHowItWorks() {
           {workflowSteps.map((step, index) => (
             <div
               key={step.number}
-              className="animate-fade-up relative text-center md:text-left"
-              style={{ animationDelay: `${240 + index * 90}ms` }}
+              data-gsap="workflow-step"
+              className="relative text-center md:text-left"
             >
               {index < workflowSteps.length - 1 ? (
                 <div className="hidden md:block absolute left-[62%] top-8 h-px w-[calc(100%-22%)] bg-gradient-to-r from-[oklch(0.74_0.1_76_/_0.45)] to-[oklch(0.74_0.1_76_/_0.08)]" />

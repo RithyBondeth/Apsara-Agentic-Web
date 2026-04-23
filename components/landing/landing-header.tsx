@@ -14,7 +14,10 @@ export default function LandingHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <div className="landing-nav-bar flex items-center justify-between gap-4 rounded-full px-3 py-3 sm:px-4">
+        <div
+          data-gsap="header"
+          className="landing-nav-bar flex items-center justify-between gap-4 rounded-full px-3 py-3 sm:px-4"
+        >
           <a href="#top" className="flex shrink-0 items-center gap-3">
             <span className="flex rounded-full border border-white/80 bg-white/80 px-2 py-1 shadow-sm">
               <Image
@@ -48,7 +51,7 @@ export default function LandingHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             <Button
               asChild
               variant="ghost"
