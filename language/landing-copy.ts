@@ -1,4 +1,4 @@
-import { siteRoutes } from "@/lib/site-routes";
+import { siteRoutes } from "@/utils/constants/site-routes";
 
 export type LandingLocale = "en" | "km";
 

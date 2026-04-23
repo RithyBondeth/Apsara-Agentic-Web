@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
-import { siteRoutes } from "@/lib/site-routes";
+import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
 
 const logoSrc = "/assets/logo/logo-without-title.svg";

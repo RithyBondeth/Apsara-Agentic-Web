@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
-import { getInitialLandingLocale } from "@/lib/get-initial-landing-locale";
+import { getInitialLandingLocale } from "@/utils/functions/get-initial-landing-locale";
 import "./globals.css";
 
 const ubuntu = Ubuntu({

@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { resolveLandingLocale } from "@/lib/landing-locale";
+import { resolveLandingLocale } from "@/utils/functions/landing-locale";
 
 export async function getInitialLandingLocale() {
   const cookieStore = await cookies();

@@ -1,8 +1,8 @@
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import Link from "next/link";
-import type { LandingCopy } from "@/components/landing/landing-copy";
+import type { LandingCopy } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
-import { siteRoutes } from "@/lib/site-routes";
+import { siteRoutes } from "@/utils/constants/site-routes";
 
 type LandingHeroProps = {
   copy: LandingCopy["hero"];

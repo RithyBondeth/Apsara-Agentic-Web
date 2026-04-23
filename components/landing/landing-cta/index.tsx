@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
-import { siteRoutes } from "@/lib/site-routes";
+import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
 
 type LandingCtaProps = {

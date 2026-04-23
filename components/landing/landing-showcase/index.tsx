@@ -8,7 +8,7 @@ import {
 import type {
   LandingCopy,
   LandingLocale,
-} from "@/components/landing/landing-copy";
+} from "@/language/landing-copy";
 import LandingShowcaseTerminal from "@/components/landing/landing-showcase-terminal";
 import { cn } from "@/lib/utils";
 

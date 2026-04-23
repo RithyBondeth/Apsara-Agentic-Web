@@ -3,7 +3,7 @@
 import { startTransition, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LandingCta from "@/components/landing/landing-cta";
-import { landingCopy, type LandingLocale } from "@/components/landing/landing-copy";
+import { landingCopy, type LandingLocale } from "@/language/landing-copy";
 import LandingFeatures from "@/components/landing/landing-features";
 import LandingFooter from "@/components/landing/landing-footer";
 import LandingHeader from "@/components/landing/landing-header";
@@ -11,7 +11,7 @@ import LandingHero from "@/components/landing/landing-hero";
 import LandingHowItWorks from "@/components/landing/landing-how-it-works";
 import LandingPageAnimations from "@/components/landing/landing-page-animations";
 import LandingShowcase from "@/components/landing/landing-showcase";
-import { LANDING_LOCALE_COOKIE } from "@/lib/landing-locale";
+import { LANDING_LOCALE_COOKIE } from "@/utils/functions/landing-locale";
 
 type LandingPageShellProps = {
   initialLocale: LandingLocale;

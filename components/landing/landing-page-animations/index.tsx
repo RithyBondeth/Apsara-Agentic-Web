@@ -3,7 +3,7 @@
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { LandingLocale } from "@/components/landing/landing-copy";
+import type { LandingLocale } from "@/language/landing-copy";
 
 const revealClearProps = "opacity,visibility,transform";
 

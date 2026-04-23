@@ -1,4 +1,4 @@
-import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { cn } from "@/lib/utils";
 
 const workflowNumbers = ["01", "02", "03"];

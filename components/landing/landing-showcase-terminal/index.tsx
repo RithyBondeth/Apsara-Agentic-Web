@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { LandingCopy } from "@/components/landing/landing-copy";
+import type { LandingCopy } from "@/language/landing-copy";
 
 const terminalLineStyles = [
   { accentClassName: "text-[#7dd3fc]", valueClassName: "text-white" },

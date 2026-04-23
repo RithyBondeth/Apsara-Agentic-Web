@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
-import { siteRoutes } from "@/lib/site-routes";
+import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
+import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
 
 const logoSrc = "/assets/logo/logo-without-title.svg";
