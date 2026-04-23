@@ -12,17 +12,17 @@ export default function LandingHero({ copy }: LandingHeroProps) {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden"
+      className="relative flex min-h-dvh items-center justify-center overflow-hidden"
     >
       <div
         aria-hidden
         data-gsap-drift="hero-left"
-        className="pointer-events-none absolute -left-24 top-24 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.11_78_/_0.28),transparent_70%)] blur-[140px]"
+        className="pointer-events-none absolute -left-24 top-24 h-104 w-104 rounded-full bg-[radial-gradient(circle,oklch(0.78_0.11_78/0.28),transparent_70%)] blur-[140px]"
       />
       <div
         aria-hidden
         data-gsap-drift="hero-right"
-        className="pointer-events-none absolute right-[-6rem] top-[-5rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.1_72_/_0.18),transparent_70%)] blur-[160px]"
+        className="pointer-events-none absolute -right-24 -top-20 h-104 w-104 rounded-full bg-[radial-gradient(circle,oklch(0.72_0.1_72/0.18),transparent_70%)] blur-[160px]"
       />
       <div
         aria-hidden
@@ -33,7 +33,7 @@ export default function LandingHero({ copy }: LandingHeroProps) {
         <div className="flex flex-col items-center gap-6">
           <div
             data-gsap="hero-item"
-            className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.08_76_/_0.45)] bg-[oklch(0.98_0.016_82_/_0.86)] px-4 py-1.5 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.08_76/0.45)] bg-[oklch(0.98_0.016_82/0.86)] px-4 py-1.5 backdrop-blur-sm"
           >
             <Sparkles className="size-3.5 text-[oklch(0.58_0.15_67)]" />
             <span className="text-xs font-semibold text-[oklch(0.45_0.08_68)]">
@@ -65,7 +65,7 @@ export default function LandingHero({ copy }: LandingHeroProps) {
             <Button
               asChild
               size="lg"
-              className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-8 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+              className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-8 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74/0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               <Link href={siteRoutes.product}>
                 {copy.primaryCta}
@@ -91,7 +91,9 @@ export default function LandingHero({ copy }: LandingHeroProps) {
                 key={signal.value}
                 data-gsap="hero-signal"
                 className={`px-6 py-5 sm:px-6 sm:py-6 ${
-                  index > 0 ? "border-t border-border/70 sm:border-l sm:border-t-0" : ""
+                  index > 0
+                    ? "border-t border-border/70 sm:border-l sm:border-t-0"
+                    : ""
                 }`}
               >
                 <p className="text-lg font-bold tracking-tight text-[oklch(0.48_0.1_68)] sm:text-xl">

@@ -15,7 +15,7 @@ export default function LandingHowItWorks({
   const eyebrowClassName = cn(
     locale === "km"
       ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
-      : "landing-eyebrow"
+      : "landing-eyebrow",
   );
 
   return (
@@ -29,11 +29,11 @@ export default function LandingHowItWorks({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-[-10%] top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.76_0.11_76_/_0.1),transparent_72%)] blur-[180px]"
+        className="pointer-events-none absolute left-[-10%] top-1/2 h-128 w-lg -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.76_0.11_76/0.1),transparent_72%)] blur-[180px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-10%] top-1/3 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,oklch(0.69_0.08_206_/_0.08),transparent_72%)] blur-[140px]"
+        className="pointer-events-none absolute right-[-10%] top-1/3 h-88 w-88 rounded-full bg-[radial-gradient(circle,oklch(0.69_0.08_206/0.08),transparent_72%)] blur-[140px]"
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -63,10 +63,10 @@ export default function LandingHowItWorks({
               className="relative text-center md:text-left"
             >
               {index < copy.steps.length - 1 ? (
-                <div className="hidden md:block absolute left-[62%] top-8 h-px w-[calc(100%-22%)] bg-gradient-to-r from-[oklch(0.74_0.1_76_/_0.45)] to-[oklch(0.74_0.1_76_/_0.08)]" />
+                <div className="hidden md:block absolute left-[62%] top-8 h-px w-[78%] bg-linear-to-r from-[oklch(0.74_0.1_76/0.45)] to-[oklch(0.74_0.1_76/0.08)]" />
               ) : null}
 
-              <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.45)] bg-[linear-gradient(135deg,oklch(0.97_0.028_82_/_0.9),oklch(0.95_0.02_80_/_0.8))]">
+              <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] border border-[oklch(0.84_0.06_78/0.45)] bg-[linear-gradient(135deg,oklch(0.97_0.028_82/0.9),oklch(0.95_0.02_80/0.8))]">
                 <span className="text-2xl font-bold tracking-tight text-[oklch(0.56_0.13_68)]">
                   {workflowNumbers[index] ?? `${index + 1}`}
                 </span>

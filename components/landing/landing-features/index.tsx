@@ -30,7 +30,7 @@ export default function LandingFeatures({
   const eyebrowClassName = cn(
     locale === "km"
       ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
-      : "landing-eyebrow"
+      : "landing-eyebrow",
   );
 
   return (
@@ -78,7 +78,7 @@ export default function LandingFeatures({
                 data-gsap="feature-card"
                 className="landing-glass-card group rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1"
               >
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,oklch(0.97_0.028_82),oklch(0.95_0.02_80))] text-[oklch(0.56_0.13_68)] shadow-[inset_0_1px_0_oklch(1_0.003_85_/_0.7)]">
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,oklch(0.97_0.028_82),oklch(0.95_0.02_80))] text-[oklch(0.56_0.13_68)] shadow-[inset_0_1px_0_oklch(1_0.003_85/0.7)]">
                   <Icon className="size-5" />
                 </span>
                 <h3 className="mt-5 font-heading text-2xl font-semibold tracking-tight text-foreground">

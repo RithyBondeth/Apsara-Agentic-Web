@@ -34,7 +34,10 @@ export default function LandingHeader({
           data-gsap="header"
           className="landing-nav-bar flex items-center justify-between gap-4 rounded-full px-3 py-3 sm:px-4"
         >
-          <Link href={siteRoutes.home} className="flex shrink-0 items-center gap-3">
+          <Link
+            href={siteRoutes.home}
+            className="flex shrink-0 items-center gap-3"
+          >
             <span className="flex rounded-full border border-white/80 bg-white/80 px-2 py-1 shadow-sm">
               <Image
                 src={logoSrc}
@@ -54,7 +57,7 @@ export default function LandingHeader({
                   "mt-1 font-semibold text-muted-foreground",
                   isKhmer
                     ? "text-[11px] tracking-normal"
-                    : "text-[10px] uppercase tracking-[0.28em]"
+                    : "text-[10px] uppercase tracking-[0.28em]",
                 )}
               >
                 {brand.subtitle}
@@ -71,7 +74,7 @@ export default function LandingHeader({
                   "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                   activePath === item.href
                     ? "bg-white text-foreground shadow-sm"
-                    : "text-muted-foreground hover:bg-white/70 hover:text-foreground"
+                    : "text-muted-foreground hover:bg-white/70 hover:text-foreground",
                 )}
               >
                 {item.label}
@@ -83,7 +86,7 @@ export default function LandingHeader({
             <div
               role="group"
               aria-label={copy.languageSwitcherLabel}
-              className="inline-flex rounded-full border border-[oklch(0.86_0.016_84)] bg-white/70 p-1 shadow-[0_10px_24px_oklch(0.34_0.02_248_/_0.08)]"
+              className="inline-flex rounded-full border border-[oklch(0.86_0.016_84)] bg-white/70 p-1 shadow-[0_10px_24px_oklch(0.34_0.02_248/0.08)]"
             >
               {localeOptions.map((option) => (
                 <button
@@ -95,7 +98,7 @@ export default function LandingHeader({
                     "rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
                     locale === option
                       ? "bg-[oklch(0.58_0.15_67)] text-white shadow-sm"
-                      : "text-foreground/70 hover:bg-white hover:text-foreground"
+                      : "text-foreground/70 hover:bg-white hover:text-foreground",
                   )}
                 >
                   {copy.localeLabels[option]}
@@ -111,7 +114,7 @@ export default function LandingHeader({
             </Button>
             <Button
               asChild
-              className="h-10 rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-5 text-sm font-semibold text-white shadow-[0_14px_36px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
+              className="h-10 rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-5 text-sm font-semibold text-white shadow-[0_14px_36px_oklch(0.67_0.14_74/0.24)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
             >
               <Link href={siteRoutes.privateAlpha}>
                 {copy.alphaLabel}

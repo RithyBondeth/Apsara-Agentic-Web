@@ -29,7 +29,7 @@ export default function LandingShowcaseTerminal({
     .map((line) =>
       line.kind === "command"
         ? `${line.prompt} ${line.value}`
-        : `${line.label}: ${line.value}`
+        : `${line.label}: ${line.value}`,
     )
     .join(". ");
 
@@ -43,15 +43,15 @@ export default function LandingShowcaseTerminal({
     }
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     const context = gsap.context(() => {
       const lines = lineRefs.current.filter(
-        (line): line is HTMLParagraphElement => Boolean(line)
+        (line): line is HTMLParagraphElement => Boolean(line),
       );
       const values = valueRefs.current.filter(
-        (value): value is HTMLSpanElement => Boolean(value)
+        (value): value is HTMLSpanElement => Boolean(value),
       );
 
       if (!lines.length || !values.length) {
@@ -114,7 +114,7 @@ export default function LandingShowcaseTerminal({
           },
           onUpdate: () => {
             const characterCount = Math.round(
-              typingState.progress * line.value.length
+              typingState.progress * line.value.length,
             );
             valueElement.textContent = line.value.slice(0, characterCount);
           },
@@ -158,7 +158,11 @@ export default function LandingShowcaseTerminal({
       <div aria-hidden="true" className="space-y-1">
         {terminalLines.map((line, index) => (
           <p
-            key={line.kind === "command" ? `command-${index}` : `${line.label}-${index}`}
+            key={
+              line.kind === "command"
+                ? `command-${index}`
+                : `${line.label}-${index}`
+            }
             ref={(node) => {
               lineRefs.current[index] = node;
             }}
