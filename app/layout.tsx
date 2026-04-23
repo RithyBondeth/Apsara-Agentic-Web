@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
+import { cookies, headers } from "next/headers";
 import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
+import { resolveLandingLocale } from "@/lib/landing-locale";
 import "./globals.css";
 
 const ubuntu = Ubuntu({
@@ -51,14 +53,21 @@ export const viewport: Viewport = {
   themeColor: "#fbf6ec",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const headerStore = await headers();
+  const initialLocale = resolveLandingLocale({
+    acceptLanguage: headerStore.get("accept-language"),
+    cookieLocale: cookieStore.get("apsara-landing-locale")?.value,
+  });
+
   return (
     <html
-      lang="en"
+      lang={initialLocale}
       className={`${ubuntu.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body

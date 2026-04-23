@@ -5,30 +5,39 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
+import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
 import LandingShowcaseTerminal from "@/components/landing/landing-showcase-terminal";
+import { cn } from "@/lib/utils";
 
-const productNotes = [
-  {
-    icon: ShieldCheck,
-    title: "Approval gate",
-    description:
-      "The developer reviews the diff before meaningful writes touch the repo.",
-  },
-  {
-    icon: Eye,
-    title: "Quiet internals",
-    description:
-      "Tool chatter stays hidden until /details is explicitly opened.",
-  },
-  {
-    icon: GitBranch,
-    title: "Legible progress",
-    description:
-      "The workflow surfaces what changed, why it changed, and what still needs a decision.",
-  },
-];
+const productNoteIcons = [ShieldCheck, Eye, GitBranch];
 
-export default function LandingShowcase() {
+type LandingShowcaseProps = {
+  copy: LandingCopy["showcase"];
+  locale: LandingLocale;
+};
+
+export default function LandingShowcase({
+  copy,
+  locale,
+}: LandingShowcaseProps) {
+  const eyebrowClassName = cn(
+    locale === "km"
+      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      : "landing-eyebrow"
+  );
+  const shellLabelClassName = cn(
+    "font-semibold text-white/65",
+    locale === "km"
+      ? "text-xs tracking-normal"
+      : "text-[11px] uppercase tracking-[0.28em]"
+  );
+  const noteEyebrowClassName = cn(
+    "font-semibold text-white/55",
+    locale === "km"
+      ? "text-xs tracking-normal"
+      : "text-[11px] uppercase tracking-[0.28em]"
+  );
+
   return (
     <section
       id="showcase"
@@ -44,22 +53,20 @@ export default function LandingShowcase() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p data-gsap="showcase-head" className="landing-eyebrow">
-          Product View
+        <p data-gsap="showcase-head" className={eyebrowClassName}>
+          {copy.eyebrow}
         </p>
         <h2
           data-gsap="showcase-head"
           className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
-          See the agent loop as a product, not just a prompt box.
+          {copy.title}
         </h2>
         <p
           data-gsap="showcase-head"
           className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
         >
-          This is the part worth showing. Project-local startup, bounded tools,
-          hidden internals on demand, and a review step before edits land all
-          turn the agent loop into something developers can actually trust.
+          {copy.description}
         </p>
       </div>
 
@@ -79,34 +86,42 @@ export default function LandingShowcase() {
                 <span className="size-2.5 rounded-full bg-[#fbbf24]" />
                 <span className="size-2.5 rounded-full bg-[#4ade80]" />
               </div>
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/65">
+              <div
+                className={cn(
+                  "flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-1",
+                  shellLabelClassName
+                )}
+              >
                 <TerminalSquare className="size-3.5" />
-                apsara session
+                {copy.sessionLabel}
               </div>
             </div>
 
             <div className="grid gap-6 pt-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <LandingShowcaseTerminal />
+              <LandingShowcaseTerminal key={locale} copy={copy.terminal} />
 
               <div className="space-y-3">
                 <div
                   data-gsap="showcase-note"
                   className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">
-                    Why it feels better
+                  <p className={noteEyebrowClassName}>
+                    {copy.whyEyebrow}
                   </p>
                   <p className="mt-3 text-lg font-semibold tracking-tight text-white">
-                    More bounded than chat. More legible than autopilot.
+                    {copy.whyTitle}
                   </p>
                   <p className="mt-3 text-sm leading-6 text-white/68">
-                    The system does real work, but it never asks the developer
-                    to stop caring about scope, review, or authorship.
+                    {copy.whyDescription}
                   </p>
                 </div>
 
-                {productNotes.map((note) => {
-                  const Icon = note.icon;
+                {copy.notes.map((note, index) => {
+                  const Icon = productNoteIcons[index];
+
+                  if (!Icon) {
+                    return null;
+                  }
 
                   return (
                     <div
@@ -139,10 +154,16 @@ export default function LandingShowcase() {
           data-gsap-float="soft"
           className="landing-glass-card absolute -left-2 top-36 hidden max-w-52 rounded-[1.5rem] p-4 xl:block"
         >
-          <p className="landing-eyebrow !text-[10px]">Human loop</p>
+          <p
+            className={cn(
+              eyebrowClassName,
+              locale === "km" ? "!text-[0.76rem]" : "!text-[10px]"
+            )}
+          >
+            {copy.humanLoopEyebrow}
+          </p>
           <p className="mt-3 text-sm leading-6 text-foreground/80">
-            Review stays in the critical path instead of getting bolted on after
-            the fact.
+            {copy.humanLoopText}
           </p>
         </div>
 
@@ -152,13 +173,19 @@ export default function LandingShowcase() {
         >
           <div className="flex items-center gap-2 text-[oklch(0.52_0.11_68)]">
             <Sparkles className="size-4" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em]">
-              Product tone
+            <p
+              className={cn(
+                "font-semibold",
+                locale === "km"
+                  ? "text-xs tracking-normal"
+                  : "text-[11px] uppercase tracking-[0.28em]"
+              )}
+            >
+              {copy.toneEyebrow}
             </p>
           </div>
           <p className="mt-2 max-w-48 text-sm leading-6 text-[oklch(0.28_0.03_248)]">
-            Calm enough to trust. Clear enough to inspect. Useful enough to keep
-            using.
+            {copy.toneText}
           </p>
         </div>
       </div>
@@ -168,15 +195,13 @@ export default function LandingShowcase() {
           data-gsap="showcase-tail"
           className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
         >
-          Trust grows when every step has a boundary.
+          {copy.tailTitle}
         </h3>
         <p
           data-gsap="showcase-tail"
           className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg"
         >
-          That means workspace scoping, review gates before writes, and internal
-          activity that stays available without taking over the entire
-          interface.
+          {copy.tailDescription}
         </p>
       </div>
     </section>

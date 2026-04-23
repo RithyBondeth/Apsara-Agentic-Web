@@ -1,22 +1,12 @@
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import type { LandingCopy } from "@/components/landing/landing-copy";
 import { Button } from "@/components/ui/button";
 
-const heroSignals = [
-  {
-    value: "Repo-bound",
-    label: "Project-local init and config stay with the codebase.",
-  },
-  {
-    value: "Diff-first",
-    label: "Meaningful edits pause for human review before they land.",
-  },
-  {
-    value: "Session-aware",
-    label: "The workflow keeps durable context instead of resetting every time.",
-  },
-];
+type LandingHeroProps = {
+  copy: LandingCopy["hero"];
+};
 
-export default function LandingHero() {
+export default function LandingHero({ copy }: LandingHeroProps) {
   return (
     <section
       id="hero"
@@ -45,7 +35,7 @@ export default function LandingHero() {
           >
             <Sparkles className="size-3.5 text-[oklch(0.58_0.15_67)]" />
             <span className="text-xs font-semibold text-[oklch(0.45_0.08_68)]">
-              Private alpha for project-first agentic coding
+              {copy.badge}
             </span>
           </div>
 
@@ -53,20 +43,17 @@ export default function LandingHero() {
             data-gsap="hero-item"
             className="font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.06]"
           >
-            Build with an agent that stays{" "}
-            <span className="landing-gradient-text">inside the repo</span>
+            {copy.titleLead}{" "}
+            <span className="landing-gradient-text">{copy.titleHighlight}</span>
             <br className="hidden sm:block" />
-            and keeps you in control.
+            {copy.titleTail}
           </h1>
 
           <p
             data-gsap="hero-item"
             className="max-w-[720px] text-balance text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
           >
-            Apsara turns the current CLI and backend spine into a stronger
-            product story: workspace-scoped tools, reviewable diffs, quieter
-            internal activity, and persistent context that feels built for real
-            codebases instead of generic AI chat.
+            {copy.description}
           </p>
 
           <div
@@ -79,7 +66,7 @@ export default function LandingHero() {
               className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-8 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               <a href="#showcase">
-                See the product flow
+                {copy.primaryCta}
                 <ArrowRight className="size-4" />
               </a>
             </Button>
@@ -89,7 +76,7 @@ export default function LandingHero() {
               variant="outline"
               className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-8 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
             >
-              <a href="#features">Explore capabilities</a>
+              <a href="#features">{copy.secondaryCta}</a>
             </Button>
           </div>
 
@@ -97,7 +84,7 @@ export default function LandingHero() {
             data-gsap="hero-item"
             className="landing-glass-card mt-8 grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] text-left sm:grid-cols-3"
           >
-            {heroSignals.map((signal, index) => (
+            {copy.signals.map((signal, index) => (
               <div
                 key={signal.value}
                 data-gsap="hero-signal"
@@ -118,7 +105,7 @@ export default function LandingHero() {
 
         <a
           href="#showcase"
-          aria-label="Scroll to the showcase"
+          aria-label={copy.scrollAriaLabel}
           data-gsap="hero-item"
           data-gsap-loop="hero-scroll"
           className="mt-12 inline-flex items-center justify-center text-muted-foreground"

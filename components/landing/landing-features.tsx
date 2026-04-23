@@ -6,47 +6,33 @@ import {
   TerminalSquare,
   Wrench,
 } from "lucide-react";
+import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import { cn } from "@/lib/utils";
 
-const featureCards = [
-  {
-    icon: FolderGit2,
-    title: "Project-local init",
-    description:
-      "Apsara starts inside the repo, keeps config where the work lives, and avoids the disconnected AI chat problem.",
-  },
-  {
-    icon: Wrench,
-    title: "Workspace-scoped tools",
-    description:
-      "Search, reads, writes, and line replacement stay bounded to the allowed root instead of wandering across the machine.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Diff-first approvals",
-    description:
-      "Meaningful changes stop at a review gate so the developer keeps the final say before edits apply.",
-  },
-  {
-    icon: Eye,
-    title: "Hidden internals on demand",
-    description:
-      "Tool activity stays quiet by default, while /details gives power users the exact work trail when they want it.",
-  },
-  {
-    icon: Database,
-    title: "Durable backend spine",
-    description:
-      "FastAPI, Postgres persistence, usage tracking, and SSE streaming give the agent loop a real foundation.",
-  },
-  {
-    icon: TerminalSquare,
-    title: "Persistent sessions",
-    description:
-      "Conversation history and usage events stay durable so the workflow remains accountable across runs.",
-  },
+const featureIcons = [
+  FolderGit2,
+  Wrench,
+  ShieldCheck,
+  Eye,
+  Database,
+  TerminalSquare,
 ];
 
-export default function LandingFeatures() {
+type LandingFeaturesProps = {
+  copy: LandingCopy["features"];
+  locale: LandingLocale;
+};
+
+export default function LandingFeatures({
+  copy,
+  locale,
+}: LandingFeaturesProps) {
+  const eyebrowClassName = cn(
+    locale === "km"
+      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      : "landing-eyebrow"
+  );
+
   return (
     <section
       id="features"
@@ -59,29 +45,32 @@ export default function LandingFeatures() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p data-gsap="features-head" className="landing-eyebrow">
-            Capabilities
+          <p data-gsap="features-head" className={eyebrowClassName}>
+            {copy.eyebrow}
           </p>
           <h2
             data-gsap="features-head"
             className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
           >
-            What already makes Apsara{" "}
-            <span className="landing-gradient-text">useful today</span>
+            {copy.titleLead}{" "}
+            <span className="landing-gradient-text">{copy.titleHighlight}</span>
+            {copy.titleTail ? ` ${copy.titleTail}` : null}
           </h2>
           <p
             data-gsap="features-head"
             className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
           >
-            The value is not speculative. These are the real behaviors that make
-            the current CLI and backend feel more trustworthy than a generic AI
-            tab.
+            {copy.description}
           </p>
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {featureCards.map((feature) => {
-            const Icon = feature.icon;
+          {copy.cards.map((feature, index) => {
+            const Icon = featureIcons[index];
+
+            if (!Icon) {
+              return null;
+            }
 
             return (
               <article

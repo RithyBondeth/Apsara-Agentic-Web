@@ -1,27 +1,22 @@
 import Image from "next/image";
-
-const footerSections = [
-  {
-    title: "Sections",
-    links: [
-      { href: "#showcase", label: "Product View" },
-      { href: "#features", label: "Capabilities" },
-      { href: "#workflow", label: "Workflow" },
-    ],
-  },
-  {
-    title: "What Matters",
-    links: [
-      { href: "#features", label: "Project-local init" },
-      { href: "#showcase", label: "Diff-first review" },
-      { href: "#cta", label: "Private alpha" },
-    ],
-  },
-];
+import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import { cn } from "@/lib/utils";
 
 const logoSrc = "/assets/logo/logo-without-title.svg";
 
-export default function LandingFooter() {
+type LandingFooterProps = {
+  brand: LandingCopy["brand"];
+  copy: LandingCopy["footer"];
+  locale: LandingLocale;
+};
+
+export default function LandingFooter({
+  brand,
+  copy,
+  locale,
+}: LandingFooterProps) {
+  const isKhmer = locale === "km";
+
   return (
     <footer className="relative border-t border-border/70 bg-white/30">
       <div
@@ -37,28 +32,34 @@ export default function LandingFooter() {
             <div className="flex items-center gap-3">
               <Image
                 src={logoSrc}
-                alt="Apsara logo"
+                alt={brand.logoAlt}
                 width={28}
                 height={42}
                 className="h-10 w-auto"
               />
               <div>
                 <p className="font-heading text-lg font-bold tracking-tight text-foreground">
-                  Apsara
+                  {brand.title}
                 </p>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-                  Agentic Coding
+                <p
+                  className={cn(
+                    "font-semibold text-muted-foreground",
+                    isKhmer
+                      ? "text-[11px] tracking-normal"
+                      : "text-[11px] uppercase tracking-[0.28em]"
+                  )}
+                >
+                  {brand.subtitle}
                 </p>
               </div>
             </div>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Project-first agentic coding built around bounded tools,
-              reviewable edits, and durable context for real repositories.
+              {copy.description}
             </p>
           </div>
 
           <div className="flex flex-wrap gap-10 sm:gap-14">
-            {footerSections.map((section) => (
+            {copy.sections.map((section) => (
               <div key={section.title} className="flex flex-col gap-3">
                 <p className="text-sm font-semibold text-foreground">
                   {section.title}
@@ -82,8 +83,7 @@ export default function LandingFooter() {
           className="mt-10 border-t border-border/70 pt-6"
         >
           <p className="text-center text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Apsara. Agentic coding with
-            boundaries, legibility, and human review.
+            &copy; {new Date().getFullYear()} {brand.title}. {copy.copyright}
           </p>
         </div>
       </div>

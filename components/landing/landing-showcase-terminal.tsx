@@ -3,89 +3,35 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { LandingCopy } from "@/components/landing/landing-copy";
 
-type TerminalLine =
-  | {
-      id: string;
-      kind: "command";
-      prompt: string;
-      promptClassName: string;
-      value: string;
-      valueClassName: string;
-    }
-  | {
-      id: string;
-      kind: "field";
-      label: string;
-      labelClassName: string;
-      value: string;
-      valueClassName: string;
-    };
+const terminalLineStyles = [
+  { accentClassName: "text-[#7dd3fc]", valueClassName: "text-white" },
+  { accentClassName: "text-[#fbbf24]", valueClassName: "text-[#fde68a]" },
+  { accentClassName: "text-[#c4b5fd]", valueClassName: "text-white" },
+  { accentClassName: "text-[#86efac]", valueClassName: "text-[#bef264]" },
+  { accentClassName: "text-[#fca5a5]", valueClassName: "text-white" },
+  { accentClassName: "text-[#67e8f9]", valueClassName: "text-white" },
+] as const;
 
-const terminalLines: TerminalLine[] = [
-  {
-    id: "command",
-    kind: "command",
-    prompt: "$",
-    promptClassName: "text-[#7dd3fc]",
-    value:
-      'apsara run "tighten the approval copy and keep the review gate intact"',
-    valueClassName: "text-white",
-  },
-  {
-    id: "workspace",
-    kind: "field",
-    label: "workspace",
-    labelClassName: "text-[#fbbf24]",
-    value: "./apsara-agentic-api",
-    valueClassName: "text-[#fde68a]",
-  },
-  {
-    id: "trace",
-    kind: "field",
-    label: "trace",
-    labelClassName: "text-[#c4b5fd]",
-    value: "reading app/api/approval.py and app/ui/review-panel.tsx",
-    valueClassName: "text-white",
-  },
-  {
-    id: "draft",
-    kind: "field",
-    label: "draft",
-    labelClassName: "text-[#86efac]",
-    value: "preparing smaller copy edits without bypassing human review",
-    valueClassName: "text-[#bef264]",
-  },
-  {
-    id: "diff",
-    kind: "field",
-    label: "diff",
-    labelClassName: "text-[#fca5a5]",
-    value: "2 files changed, preview generated before any write lands",
-    valueClassName: "text-white",
-  },
-  {
-    id: "status",
-    kind: "field",
-    label: "status",
-    labelClassName: "text-[#67e8f9]",
-    value: "Awaiting approval to apply the patch.",
-    valueClassName: "text-white",
-  },
-];
+type LandingShowcaseTerminalProps = {
+  copy: LandingCopy["showcase"]["terminal"];
+};
 
-const screenReaderTranscript = terminalLines
-  .map((line) =>
-    line.kind === "command"
-      ? `${line.prompt} ${line.value}`
-      : `${line.label}: ${line.value}`
-  )
-  .join(". ");
-
-export default function LandingShowcaseTerminal() {
+export default function LandingShowcaseTerminal({
+  copy,
+}: LandingShowcaseTerminalProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const lineRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const valueRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const terminalLines = copy.lines;
+  const screenReaderTranscript = terminalLines
+    .map((line) =>
+      line.kind === "command"
+        ? `${line.prompt} ${line.value}`
+        : `${line.label}: ${line.value}`
+    )
+    .join(". ");
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -180,6 +126,11 @@ export default function LandingShowcaseTerminal() {
         }
       });
 
+      if (root.getBoundingClientRect().top <= window.innerHeight * 0.74) {
+        timeline.play(0);
+        return;
+      }
+
       ScrollTrigger.create({
         trigger: root,
         once: true,
@@ -193,7 +144,7 @@ export default function LandingShowcaseTerminal() {
     return () => {
       context.revert();
     };
-  }, []);
+  }, [copy, terminalLines]);
 
   return (
     <div
@@ -201,24 +152,28 @@ export default function LandingShowcaseTerminal() {
       className="rounded-[1.5rem] border border-white/8 bg-black/18 p-5 font-mono text-sm leading-7 text-white/85"
     >
       <p className="sr-only">
-        Agentic coding example: {screenReaderTranscript}
+        {copy.screenReaderLabel}: {screenReaderTranscript}
       </p>
 
       <div aria-hidden="true" className="space-y-1">
         {terminalLines.map((line, index) => (
           <p
-            key={line.id}
+            key={line.kind === "command" ? `command-${index}` : `${line.label}-${index}`}
             ref={(node) => {
               lineRefs.current[index] = node;
             }}
           >
             {line.kind === "command" ? (
               <>
-                <span className={line.promptClassName}>{line.prompt}</span>{" "}
+                <span className={terminalLineStyles[index]?.accentClassName}>
+                  {line.prompt}
+                </span>{" "}
               </>
             ) : (
               <>
-                <span className={line.labelClassName}>{line.label}</span>
+                <span className={terminalLineStyles[index]?.accentClassName}>
+                  {line.label}
+                </span>
                 <span className="text-white/40">:</span>{" "}
               </>
             )}
@@ -227,10 +182,10 @@ export default function LandingShowcaseTerminal() {
               ref={(node) => {
                 valueRefs.current[index] = node;
               }}
-              className={line.valueClassName}
+              className={terminalLineStyles[index]?.valueClassName}
             />
 
-            {line.id === "status" ? (
+            {index === terminalLines.length - 1 ? (
               <span
                 aria-hidden="true"
                 className="landing-terminal-caret ml-1 text-white/75"

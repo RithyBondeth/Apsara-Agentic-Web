@@ -3,6 +3,7 @@
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { LandingLocale } from "@/components/landing/landing-copy";
 
 const revealClearProps = "opacity,visibility,transform";
 
@@ -16,7 +17,13 @@ type RevealOptions = {
   y?: number;
 };
 
-export default function LandingPageAnimations() {
+type LandingPageAnimationsProps = {
+  locale: LandingLocale;
+};
+
+export default function LandingPageAnimations({
+  locale,
+}: LandingPageAnimationsProps) {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -237,6 +244,16 @@ export default function LandingPageAnimations() {
       context.revert();
     };
   }, []);
+
+  useLayoutEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [locale]);
 
   return null;
 }

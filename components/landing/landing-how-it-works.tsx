@@ -1,25 +1,23 @@
-const workflowSteps = [
-  {
-    number: "01",
-    title: "Start in the workspace",
-    description:
-      "Initialize Apsara inside the repo so the session inherits the right filesystem boundary and project-local context.",
-  },
-  {
-    number: "02",
-    title: "Ask for meaningful work",
-    description:
-      "Trace the code, inspect files, and draft a change while keeping raw tool noise tucked away unless it is needed.",
-  },
-  {
-    number: "03",
-    title: "Review and steer",
-    description:
-      "Approve the diff, reject it, or redirect the next step while the session keeps the thread and reasoning intact.",
-  },
-];
+import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import { cn } from "@/lib/utils";
 
-export default function LandingHowItWorks() {
+const workflowNumbers = ["01", "02", "03"];
+
+type LandingHowItWorksProps = {
+  copy: LandingCopy["workflow"];
+  locale: LandingLocale;
+};
+
+export default function LandingHowItWorks({
+  copy,
+  locale,
+}: LandingHowItWorksProps) {
+  const eyebrowClassName = cn(
+    locale === "km"
+      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      : "landing-eyebrow"
+  );
+
   return (
     <section
       id="workflow"
@@ -40,38 +38,37 @@ export default function LandingHowItWorks() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p data-gsap="workflow-head" className="landing-eyebrow">
-            How It Works
+          <p data-gsap="workflow-head" className={eyebrowClassName}>
+            {copy.eyebrow}
           </p>
           <h2
             data-gsap="workflow-head"
             className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
           >
-            A workflow that mirrors how developers already work.
+            {copy.title}
           </h2>
           <p
             data-gsap="workflow-head"
             className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
           >
-            Orient the repo, delegate the legwork, and keep authorship through
-            review. The product gets out of the way without becoming vague.
+            {copy.description}
           </p>
         </div>
 
         <div className="mt-14 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-10">
-          {workflowSteps.map((step, index) => (
+          {copy.steps.map((step, index) => (
             <div
-              key={step.number}
+              key={workflowNumbers[index] ?? step.title}
               data-gsap="workflow-step"
               className="relative text-center md:text-left"
             >
-              {index < workflowSteps.length - 1 ? (
+              {index < copy.steps.length - 1 ? (
                 <div className="hidden md:block absolute left-[62%] top-8 h-px w-[calc(100%-22%)] bg-gradient-to-r from-[oklch(0.74_0.1_76_/_0.45)] to-[oklch(0.74_0.1_76_/_0.08)]" />
               ) : null}
 
               <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.45)] bg-[linear-gradient(135deg,oklch(0.97_0.028_82_/_0.9),oklch(0.95_0.02_80_/_0.8))]">
                 <span className="text-2xl font-bold tracking-tight text-[oklch(0.56_0.13_68)]">
-                  {step.number}
+                  {workflowNumbers[index] ?? `${index + 1}`}
                 </span>
               </div>
 

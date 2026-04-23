@@ -1,7 +1,20 @@
 import { ArrowRight } from "lucide-react";
+import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export default function LandingCta() {
+type LandingCtaProps = {
+  copy: LandingCopy["cta"];
+  locale: LandingLocale;
+};
+
+export default function LandingCta({ copy, locale }: LandingCtaProps) {
+  const eyebrowClassName = cn(
+    locale === "km"
+      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      : "landing-eyebrow"
+  );
+
   return (
     <section
       id="cta"
@@ -17,23 +30,22 @@ export default function LandingCta() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p data-gsap="cta-head" className="landing-eyebrow">
-          Closing Thought
+        <p data-gsap="cta-head" className={eyebrowClassName}>
+          {copy.eyebrow}
         </p>
         <h2
           data-gsap="cta-head"
           className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
-          Ready to give Apsara a front door that matches the{" "}
-          <span className="landing-gradient-text">product truth</span>?
+          {copy.titleLead}{" "}
+          <span className="landing-gradient-text">{copy.titleHighlight}</span>
+          {copy.titleTail}
         </h2>
         <p
           data-gsap="cta-head"
           className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
         >
-          The strongest story is already there: repo-first setup, bounded tools,
-          quieter internals, reviewable diffs, and durable context for serious
-          engineering work.
+          {copy.description}
         </p>
 
         <div
@@ -43,23 +55,23 @@ export default function LandingCta() {
           <Button
             asChild
             size="lg"
-            className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-10 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
-          >
-            <a href="#showcase">
-              See the showcase
-              <ArrowRight className="size-4" />
-            </a>
-          </Button>
+              className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-10 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+            >
+              <a href="#showcase">
+                {copy.primaryCta}
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
           <Button
             asChild
             size="lg"
-            variant="outline"
-            className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-10 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
-          >
-            <a href="#top">Back to top</a>
-          </Button>
+              variant="outline"
+              className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-10 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
+            >
+              <a href="#top">{copy.secondaryCta}</a>
+            </Button>
+          </div>
         </div>
-      </div>
     </section>
   );
 }
