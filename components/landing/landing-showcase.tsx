@@ -5,7 +5,10 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
-import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import type {
+  LandingCopy,
+  LandingLocale,
+} from "@/components/landing/landing-copy";
 import LandingShowcaseTerminal from "@/components/landing/landing-showcase-terminal";
 import { cn } from "@/lib/utils";
 
@@ -23,19 +26,19 @@ export default function LandingShowcase({
   const eyebrowClassName = cn(
     locale === "km"
       ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
-      : "landing-eyebrow"
+      : "landing-eyebrow",
   );
   const shellLabelClassName = cn(
     "font-semibold text-white/65",
     locale === "km"
       ? "text-xs tracking-normal"
-      : "text-[11px] uppercase tracking-[0.28em]"
+      : "text-[11px] uppercase tracking-[0.28em]",
   );
   const noteEyebrowClassName = cn(
     "font-semibold text-white/55",
     locale === "km"
       ? "text-xs tracking-normal"
-      : "text-[11px] uppercase tracking-[0.28em]"
+      : "text-[11px] uppercase tracking-[0.28em]",
   );
 
   return (
@@ -49,7 +52,7 @@ export default function LandingShowcase({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-[-8rem] top-1/2 h-[26rem] w-[26rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.76_0.11_76_/_0.12),transparent_72%)] blur-[160px]"
+        className="pointer-events-none absolute -left-32 top-1/2 h-104 w-104 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.76_0.11_76/0.12),transparent_72%)] blur-[160px]"
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
@@ -77,7 +80,7 @@ export default function LandingShowcase({
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.74_0.1_76_/_0.12),transparent_30%),radial-gradient(circle_at_bottom_left,oklch(0.61_0.08_206_/_0.15),transparent_36%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.74_0.1_76/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,oklch(0.61_0.08_206/0.15),transparent_36%)]"
           />
           <div className="relative">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
@@ -89,7 +92,7 @@ export default function LandingShowcase({
               <div
                 className={cn(
                   "flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-1",
-                  shellLabelClassName
+                  shellLabelClassName,
                 )}
               >
                 <TerminalSquare className="size-3.5" />
@@ -105,9 +108,7 @@ export default function LandingShowcase({
                   data-gsap="showcase-note"
                   className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5"
                 >
-                  <p className={noteEyebrowClassName}>
-                    {copy.whyEyebrow}
-                  </p>
+                  <p className={noteEyebrowClassName}>{copy.whyEyebrow}</p>
                   <p className="mt-3 text-lg font-semibold tracking-tight text-white">
                     {copy.whyTitle}
                   </p>
@@ -157,7 +158,7 @@ export default function LandingShowcase({
           <p
             className={cn(
               eyebrowClassName,
-              locale === "km" ? "!text-[0.76rem]" : "!text-[10px]"
+              locale === "km" ? "text-[0.76rem]!" : "text-[10px]!",
             )}
           >
             {copy.humanLoopEyebrow}
@@ -169,7 +170,7 @@ export default function LandingShowcase({
 
         <div
           data-gsap-float="delayed"
-          className="absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.7)] bg-[oklch(0.98_0.016_82_/_0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76_/_0.12)] xl:block"
+          className="absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78/0.7)] bg-[oklch(0.98_0.016_82/0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76/0.12)] xl:block"
         >
           <div className="flex items-center gap-2 text-[oklch(0.52_0.11_68)]">
             <Sparkles className="size-4" />
@@ -178,7 +179,7 @@ export default function LandingShowcase({
                 "font-semibold",
                 locale === "km"
                   ? "text-xs tracking-normal"
-                  : "text-[11px] uppercase tracking-[0.28em]"
+                  : "text-[11px] uppercase tracking-[0.28em]",
               )}
             >
               {copy.toneEyebrow}
