@@ -1,14 +1,23 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
 import { Button } from "@/components/ui/button";
+import { siteRoutes } from "@/lib/site-routes";
 import { cn } from "@/lib/utils";
 
 type LandingCtaProps = {
   copy: LandingCopy["cta"];
   locale: LandingLocale;
+  primaryHref?: string;
+  secondaryHref?: string;
 };
 
-export default function LandingCta({ copy, locale }: LandingCtaProps) {
+export default function LandingCta({
+  copy,
+  locale,
+  primaryHref = siteRoutes.product,
+  secondaryHref = "/#top",
+}: LandingCtaProps) {
   const eyebrowClassName = cn(
     locale === "km"
       ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
@@ -55,21 +64,21 @@ export default function LandingCta({ copy, locale }: LandingCtaProps) {
           <Button
             asChild
             size="lg"
-              className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-10 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
-            >
-              <a href="#showcase">
+            className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-10 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+          >
+              <Link href={primaryHref}>
                 {copy.primaryCta}
                 <ArrowRight className="size-4" />
-              </a>
+              </Link>
             </Button>
           <Button
             asChild
             size="lg"
-              variant="outline"
-              className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-10 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
-            >
-              <a href="#top">{copy.secondaryCta}</a>
-            </Button>
+            variant="outline"
+            className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-10 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
+          >
+              <Link href={secondaryHref}>{copy.secondaryCta}</Link>
+          </Button>
           </div>
         </div>
     </section>

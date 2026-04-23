@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { cookies, headers } from "next/headers";
 import localFont from "next/font/local";
 import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
-import { resolveLandingLocale } from "@/lib/landing-locale";
+import { getInitialLandingLocale } from "@/lib/get-initial-landing-locale";
 import "./globals.css";
 
 const ubuntu = Ubuntu({
@@ -86,12 +85,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const headerStore = await headers();
-  const initialLocale = resolveLandingLocale({
-    acceptLanguage: headerStore.get("accept-language"),
-    cookieLocale: cookieStore.get("apsara-landing-locale")?.value,
-  });
+  const initialLocale = await getInitialLandingLocale();
 
   return (
     <html

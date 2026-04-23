@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
 import { Button } from "@/components/ui/button";
+import { siteRoutes } from "@/lib/site-routes";
 import { cn } from "@/lib/utils";
 
 const logoSrc = "/assets/logo/logo-without-title.svg";
@@ -10,6 +12,7 @@ type LandingHeaderProps = {
   brand: LandingCopy["brand"];
   copy: LandingCopy["header"];
   locale: LandingLocale;
+  activePath: string;
   onLocaleChange: (locale: LandingLocale) => void;
 };
 
@@ -19,6 +22,7 @@ export default function LandingHeader({
   brand,
   copy,
   locale,
+  activePath,
   onLocaleChange,
 }: LandingHeaderProps) {
   const isKhmer = locale === "km";
@@ -30,7 +34,7 @@ export default function LandingHeader({
           data-gsap="header"
           className="landing-nav-bar flex items-center justify-between gap-4 rounded-full px-3 py-3 sm:px-4"
         >
-          <a href="#top" className="flex shrink-0 items-center gap-3">
+          <Link href={siteRoutes.home} className="flex shrink-0 items-center gap-3">
             <span className="flex rounded-full border border-white/80 bg-white/80 px-2 py-1 shadow-sm">
               <Image
                 src={logoSrc}
@@ -56,17 +60,22 @@ export default function LandingHeader({
                 {brand.subtitle}
               </p>
             </div>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
             {copy.navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/70 hover:text-foreground"
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  activePath === item.href
+                    ? "bg-white text-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-white/70 hover:text-foreground"
+                )}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -98,16 +107,16 @@ export default function LandingHeader({
               variant="ghost"
               className="hidden rounded-full px-4 text-sm font-medium text-foreground/80 hover:bg-white/70 sm:inline-flex lg:hidden"
             >
-              <a href="#features">{copy.exploreLabel}</a>
+              <Link href={siteRoutes.capabilities}>{copy.exploreLabel}</Link>
             </Button>
             <Button
               asChild
               className="h-10 rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-5 text-sm font-semibold text-white shadow-[0_14px_36px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
             >
-              <a href="#cta">
+              <Link href={siteRoutes.privateAlpha}>
                 {copy.alphaLabel}
                 <ArrowUpRight className="size-4" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import Link from "next/link";
 import type { LandingCopy } from "@/components/landing/landing-copy";
 import { Button } from "@/components/ui/button";
+import { siteRoutes } from "@/lib/site-routes";
 
 type LandingHeroProps = {
   copy: LandingCopy["hero"];
@@ -65,10 +67,10 @@ export default function LandingHero({ copy }: LandingHeroProps) {
               size="lg"
               className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-8 text-sm font-semibold text-white shadow-[0_18px_42px_oklch(0.67_0.14_74_/_0.24)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
-              <a href="#showcase">
+              <Link href={siteRoutes.product}>
                 {copy.primaryCta}
                 <ArrowRight className="size-4" />
-              </a>
+              </Link>
             </Button>
             <Button
               asChild
@@ -76,7 +78,7 @@ export default function LandingHero({ copy }: LandingHeroProps) {
               variant="outline"
               className="h-12 w-full rounded-full border-[oklch(0.86_0.016_84)] bg-white/70 px-8 text-sm font-semibold text-foreground transition-colors hover:bg-white sm:w-auto"
             >
-              <a href="#features">{copy.secondaryCta}</a>
+              <Link href={siteRoutes.capabilities}>{copy.secondaryCta}</Link>
             </Button>
           </div>
 
@@ -103,15 +105,15 @@ export default function LandingHero({ copy }: LandingHeroProps) {
           </div>
         </div>
 
-        <a
-          href="#showcase"
+        <Link
+          href={siteRoutes.product}
           aria-label={copy.scrollAriaLabel}
           data-gsap="hero-item"
           data-gsap-loop="hero-scroll"
           className="mt-12 inline-flex items-center justify-center text-muted-foreground"
         >
           <ChevronDown className="size-6" />
-        </a>
+        </Link>
       </div>
     </section>
   );

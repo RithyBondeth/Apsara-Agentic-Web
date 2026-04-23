@@ -1,6 +1,7 @@
 "use client";
 
 import { startTransition, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import LandingCta from "@/components/landing/landing-cta";
 import { landingCopy, type LandingLocale } from "@/components/landing/landing-copy";
 import LandingFeatures from "@/components/landing/landing-features";
@@ -14,13 +15,16 @@ import { LANDING_LOCALE_COOKIE } from "@/lib/landing-locale";
 
 type LandingPageShellProps = {
   initialLocale: LandingLocale;
+  page?: "home" | "product" | "capabilities" | "workflow" | "private-alpha";
 };
 
 export default function LandingPageShell({
   initialLocale,
+  page = "home",
 }: LandingPageShellProps) {
   const [locale, setLocale] = useState<LandingLocale>(initialLocale);
   const isKhmer = locale === "km";
+  const pathname = usePathname();
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -39,6 +43,34 @@ export default function LandingPageShell({
     });
   };
 
+  const pageContent =
+    page === "home" ? (
+      <>
+        <LandingPageAnimations locale={locale} />
+        <LandingHero copy={copy.hero} />
+        <LandingShowcase copy={copy.showcase} locale={locale} />
+        <LandingFeatures copy={copy.features} locale={locale} />
+        <LandingHowItWorks copy={copy.workflow} locale={locale} />
+        <LandingCta copy={copy.cta} locale={locale} />
+      </>
+    ) : (
+      <>
+        <div className="pt-20 sm:pt-24" />
+        {page === "product" ? (
+          <LandingShowcase copy={copy.showcase} locale={locale} />
+        ) : null}
+        {page === "capabilities" ? (
+          <LandingFeatures copy={copy.features} locale={locale} />
+        ) : null}
+        {page === "workflow" ? (
+          <LandingHowItWorks copy={copy.workflow} locale={locale} />
+        ) : null}
+        {page === "private-alpha" ? (
+          <LandingCta copy={copy.cta} locale={locale} secondaryHref="/" />
+        ) : null}
+      </>
+    );
+
   return (
     <main
       id="top"
@@ -51,18 +83,14 @@ export default function LandingPageShell({
         .filter(Boolean)
         .join(" ")}
     >
-      <LandingPageAnimations locale={locale} />
       <LandingHeader
         brand={copy.brand}
         copy={copy.header}
         locale={locale}
+        activePath={pathname}
         onLocaleChange={handleLocaleChange}
       />
-      <LandingHero copy={copy.hero} />
-      <LandingShowcase copy={copy.showcase} locale={locale} />
-      <LandingFeatures copy={copy.features} locale={locale} />
-      <LandingHowItWorks copy={copy.workflow} locale={locale} />
-      <LandingCta copy={copy.cta} locale={locale} />
+      {pageContent}
       <LandingFooter brand={copy.brand} copy={copy.footer} locale={locale} />
     </main>
   );

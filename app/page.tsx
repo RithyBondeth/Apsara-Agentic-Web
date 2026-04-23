@@ -1,14 +1,8 @@
-import { headers, cookies } from "next/headers";
 import LandingPageShell from "@/components/landing/landing-page-shell";
-import { resolveLandingLocale } from "@/lib/landing-locale";
+import { getInitialLandingLocale } from "@/lib/get-initial-landing-locale";
 
 export default async function Home() {
-  const cookieStore = await cookies();
-  const headerStore = await headers();
-  const initialLocale = resolveLandingLocale({
-    acceptLanguage: headerStore.get("accept-language"),
-    cookieLocale: cookieStore.get("apsara-landing-locale")?.value,
-  });
+  const initialLocale = await getInitialLandingLocale();
 
-  return <LandingPageShell initialLocale={initialLocale} />;
+  return <LandingPageShell initialLocale={initialLocale} page="home" />;
 }

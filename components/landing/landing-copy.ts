@@ -1,3 +1,5 @@
+import { siteRoutes } from "@/lib/site-routes";
+
 export type LandingLocale = "en" | "km";
 
 export type LandingTerminalLine =
@@ -118,9 +120,9 @@ export const landingCopy = {
     },
     header: {
       navItems: [
-        { href: "#showcase", label: "Product" },
-        { href: "#features", label: "Capabilities" },
-        { href: "#workflow", label: "Workflow" },
+        { href: siteRoutes.product, label: "Product" },
+        { href: siteRoutes.capabilities, label: "Capabilities" },
+        { href: siteRoutes.workflow, label: "Workflow" },
       ],
       exploreLabel: "Explore",
       alphaLabel: "Private Alpha",
@@ -139,7 +141,7 @@ export const landingCopy = {
         "Apsara turns the current CLI and backend spine into a stronger product story: workspace-scoped tools, reviewable diffs, quieter internal activity, and persistent context that feels built for real codebases instead of generic AI chat.",
       primaryCta: "See the product flow",
       secondaryCta: "Explore capabilities",
-      scrollAriaLabel: "Scroll to the showcase",
+      scrollAriaLabel: "Open the product page",
       signals: [
         {
           value: "Repo-bound",
@@ -184,7 +186,8 @@ export const landingCopy = {
           {
             kind: "field",
             label: "draft",
-            value: "preparing smaller copy edits without bypassing human review",
+            value:
+              "preparing smaller copy edits without bypassing human review",
           },
           {
             kind: "field",
@@ -300,7 +303,7 @@ export const landingCopy = {
       description:
         "The strongest story is already there: repo-first setup, bounded tools, quieter internals, reviewable diffs, and durable context for serious engineering work.",
       primaryCta: "See the showcase",
-      secondaryCta: "Back to top",
+      secondaryCta: "Back home",
     },
     footer: {
       description:
@@ -309,17 +312,17 @@ export const landingCopy = {
         {
           title: "Sections",
           links: [
-            { href: "#showcase", label: "Product View" },
-            { href: "#features", label: "Capabilities" },
-            { href: "#workflow", label: "Workflow" },
+            { href: siteRoutes.product, label: "Product View" },
+            { href: siteRoutes.capabilities, label: "Capabilities" },
+            { href: siteRoutes.workflow, label: "Workflow" },
           ],
         },
         {
           title: "What Matters",
           links: [
-            { href: "#features", label: "Project-local init" },
-            { href: "#showcase", label: "Diff-first review" },
-            { href: "#cta", label: "Private alpha" },
+            { href: siteRoutes.capabilities, label: "Project-local init" },
+            { href: siteRoutes.product, label: "Diff-first review" },
+            { href: siteRoutes.privateAlpha, label: "Private alpha" },
           ],
         },
       ],
@@ -335,9 +338,9 @@ export const landingCopy = {
     },
     header: {
       navItems: [
-        { href: "#showcase", label: "ផលិតផល" },
-        { href: "#features", label: "សមត្ថភាព" },
-        { href: "#workflow", label: "ដំណើរការ" },
+        { href: siteRoutes.product, label: "ផលិតផល" },
+        { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
+        { href: siteRoutes.workflow, label: "ដំណើរការ" },
       ],
       exploreLabel: "ស្វែងយល់",
       alphaLabel: "Private Alpha",
@@ -356,7 +359,7 @@ export const landingCopy = {
         "Apsara បម្លែង CLI និង backend ដែលមានស្រាប់អោយក្លាយជារឿងរ៉ាវផលិតផលដែលរឹងមាំជាងមុន៖ tools ដែលកំណត់តាម workspace, diff ដែលអាចពិនិត្យបាន, សកម្មភាពខាងក្នុងដែលស្ងប់ជាងមុន និង context បន្តដែលសមស្របសម្រាប់ codebase ពិតៗ មិនមែនជាការជជែក AI ទូទៅទេ។",
       primaryCta: "មើលលំហូរផលិតផល",
       secondaryCta: "ស្វែងយល់សមត្ថភាព",
-      scrollAriaLabel: "រំកិលទៅផ្នែកផលិតផល",
+      scrollAriaLabel: "បើកទំព័រផលិតផល",
       signals: [
         {
           value: "នៅក្នុង repo",
@@ -368,7 +371,8 @@ export const landingCopy = {
         },
         {
           value: "ចងចាំ session",
-          label: "workflow រក្សា context ជាប់ជានិច្ច មិនចាប់ផ្តើមសូន្យរាល់ពេលទេ។",
+          label:
+            "workflow រក្សា context ជាប់ជានិច្ច មិនចាប់ផ្តើមសូន្យរាល់ពេលទេ។",
         },
       ],
     },
@@ -421,8 +425,7 @@ export const landingCopy = {
       notes: [
         {
           title: "ច្រកពិនិត្យអនុម័ត",
-          description:
-            "អ្នកអភិវឌ្ឍពិនិត្យ diff មុនពេលការសរសេរសំខាន់ៗប៉ះ repo។",
+          description: "អ្នកអភិវឌ្ឍពិនិត្យ diff មុនពេលការសរសេរសំខាន់ៗប៉ះ repo។",
         },
         {
           title: "Internals ស្ងប់ស្ងាត់",
@@ -516,7 +519,7 @@ export const landingCopy = {
       description:
         "រឿងរ៉ាវខ្លាំងបំផុតមានរួចហើយ៖ ការចាប់ផ្តើមពី repo, tools ដែលមានព្រំដែន, internals ស្ងប់, diff ដែលអាចពិនិត្យបាន និង context បន្តសម្រាប់ការងារវិស្វកម្មដែលមែនទែន។",
       primaryCta: "មើល showcase",
-      secondaryCta: "ត្រឡប់ទៅលើ",
+      secondaryCta: "ត្រឡប់ទៅទំព័រដើម",
     },
     footer: {
       description:
@@ -525,17 +528,20 @@ export const landingCopy = {
         {
           title: "ផ្នែក",
           links: [
-            { href: "#showcase", label: "ទិដ្ឋភាពផលិតផល" },
-            { href: "#features", label: "សមត្ថភាព" },
-            { href: "#workflow", label: "ដំណើរការ" },
+            { href: siteRoutes.product, label: "ទិដ្ឋភាពផលិតផល" },
+            { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
+            { href: siteRoutes.workflow, label: "ដំណើរការ" },
           ],
         },
         {
           title: "អ្វីសំខាន់",
           links: [
-            { href: "#features", label: "ចាប់ផ្តើមនៅក្នុង project" },
-            { href: "#showcase", label: "ពិនិត្យ diff មុន" },
-            { href: "#cta", label: "Private alpha" },
+            {
+              href: siteRoutes.capabilities,
+              label: "ចាប់ផ្តើមនៅក្នុង project",
+            },
+            { href: siteRoutes.product, label: "ពិនិត្យ diff មុន" },
+            { href: siteRoutes.privateAlpha, label: "Private alpha" },
           ],
         },
       ],

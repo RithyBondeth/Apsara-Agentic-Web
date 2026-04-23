@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { LandingCopy, LandingLocale } from "@/components/landing/landing-copy";
+import { siteRoutes } from "@/lib/site-routes";
 import { cn } from "@/lib/utils";
 
 const logoSrc = "/assets/logo/logo-without-title.svg";
@@ -30,28 +32,30 @@ export default function LandingFooter({
         >
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
-              <Image
-                src={logoSrc}
-                alt={brand.logoAlt}
-                width={28}
-                height={42}
-                className="h-10 w-auto"
-              />
-              <div>
-                <p className="font-heading text-lg font-bold tracking-tight text-foreground">
-                  {brand.title}
-                </p>
-                <p
-                  className={cn(
-                    "font-semibold text-muted-foreground",
-                    isKhmer
-                      ? "text-[11px] tracking-normal"
-                      : "text-[11px] uppercase tracking-[0.28em]"
-                  )}
-                >
-                  {brand.subtitle}
-                </p>
-              </div>
+              <Link href={siteRoutes.home} className="flex items-center gap-3">
+                <Image
+                  src={logoSrc}
+                  alt={brand.logoAlt}
+                  width={28}
+                  height={42}
+                  className="h-10 w-auto"
+                />
+                <div>
+                  <p className="font-heading text-lg font-bold tracking-tight text-foreground">
+                    {brand.title}
+                  </p>
+                  <p
+                    className={cn(
+                      "font-semibold text-muted-foreground",
+                      isKhmer
+                        ? "text-[11px] tracking-normal"
+                        : "text-[11px] uppercase tracking-[0.28em]"
+                    )}
+                  >
+                    {brand.subtitle}
+                  </p>
+                </div>
+              </Link>
             </div>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               {copy.description}
@@ -65,13 +69,13 @@ export default function LandingFooter({
                   {section.title}
                 </p>
                 {section.links.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}
