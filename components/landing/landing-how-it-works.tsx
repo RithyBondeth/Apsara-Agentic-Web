@@ -23,7 +23,7 @@ export default function LandingHowItWorks() {
   return (
     <section
       id="workflow"
-      className="relative overflow-hidden py-20 sm:py-28 md:py-32"
+      className="relative scroll-mt-28 overflow-hidden py-20 sm:scroll-mt-32 sm:py-28 md:py-32"
     >
       <div
         aria-hidden

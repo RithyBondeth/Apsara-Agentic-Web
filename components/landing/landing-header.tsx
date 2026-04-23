@@ -15,7 +15,7 @@ export default function LandingHeader() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
         <div className="landing-nav-bar flex items-center justify-between gap-4 rounded-full px-3 py-3 sm:px-4">
-          <a href="#top" className="flex items-center gap-3 shrink-0">
+          <a href="#top" className="flex shrink-0 items-center gap-3">
             <span className="flex rounded-full border border-white/80 bg-white/80 px-2 py-1 shadow-sm">
               <Image
                 src={logoSrc}
@@ -36,7 +36,7 @@ export default function LandingHeader() {
             </div>
           </a>
 
-          <nav className="hidden items-center gap-1 xl:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -52,7 +52,7 @@ export default function LandingHeader() {
             <Button
               asChild
               variant="ghost"
-              className="hidden rounded-full px-4 text-sm font-medium text-foreground/80 hover:bg-white/70 sm:inline-flex"
+              className="hidden rounded-full px-4 text-sm font-medium text-foreground/80 hover:bg-white/70 sm:inline-flex lg:hidden"
             >
               <a href="#features">Explore</a>
             </Button>

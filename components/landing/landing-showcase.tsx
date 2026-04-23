@@ -31,7 +31,7 @@ export default function LandingShowcase() {
   return (
     <section
       id="showcase"
-      className="relative overflow-hidden py-20 sm:py-28 md:py-32"
+      className="relative scroll-mt-28 overflow-hidden py-20 sm:scroll-mt-32 sm:py-28 md:py-32"
     >
       <div
         aria-hidden
@@ -165,7 +165,7 @@ export default function LandingShowcase() {
           </div>
         </div>
 
-        <div className="landing-glass-card animate-float absolute -left-2 top-24 hidden max-w-52 rounded-[1.5rem] p-4 lg:block">
+        <div className="landing-glass-card animate-float absolute -left-2 top-36 hidden max-w-52 rounded-[1.5rem] p-4 xl:block">
           <p className="landing-eyebrow !text-[10px]">Human loop</p>
           <p className="mt-3 text-sm leading-6 text-foreground/80">
             Review stays in the critical path instead of getting bolted on after
@@ -173,7 +173,7 @@ export default function LandingShowcase() {
           </p>
         </div>
 
-        <div className="animate-float-delayed absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.7)] bg-[oklch(0.98_0.016_82_/_0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76_/_0.12)] lg:block">
+        <div className="animate-float-delayed absolute -right-2 bottom-12 hidden rounded-[1.5rem] border border-[oklch(0.84_0.06_78_/_0.7)] bg-[oklch(0.98_0.016_82_/_0.92)] p-4 shadow-[0_18px_45px_oklch(0.44_0.06_76_/_0.12)] xl:block">
           <div className="flex items-center gap-2 text-[oklch(0.52_0.11_68)]">
             <Sparkles className="size-4" />
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em]">

@@ -20,7 +20,7 @@ export default function LandingHero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-24"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden"
     >
       <div
         aria-hidden
@@ -35,7 +35,7 @@ export default function LandingHero() {
         className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-40"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-24 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
         <div className="flex flex-col items-center gap-6">
           <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.08_76_/_0.45)] bg-[oklch(0.98_0.016_82_/_0.86)] px-4 py-1.5 backdrop-blur-sm">
             <Sparkles className="size-3.5 text-[oklch(0.58_0.15_67)]" />
@@ -45,7 +45,7 @@ export default function LandingHero() {
           </div>
 
           <h1
-            className="animate-fade-up font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+            className="animate-fade-up font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.06]"
             style={{ animationDelay: "80ms" }}
           >
             Build with an agent that stays{" "}
@@ -55,7 +55,7 @@ export default function LandingHero() {
           </h1>
 
           <p
-            className="animate-fade-up max-w-3xl text-balance text-base leading-8 text-muted-foreground sm:text-lg md:text-xl"
+            className="animate-fade-up max-w-[720px] text-balance text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
             style={{ animationDelay: "160ms" }}
           >
             Apsara turns the current CLI and backend spine into a stronger
@@ -89,13 +89,15 @@ export default function LandingHero() {
           </div>
 
           <div
-            className="animate-fade-up landing-glass-card mt-8 inline-flex w-full max-w-4xl flex-col items-stretch gap-4 rounded-[2rem] px-6 py-5 text-left sm:flex-row sm:items-center sm:justify-between sm:gap-0"
+            className="animate-fade-up landing-glass-card mt-8 grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] text-left sm:grid-cols-3"
             style={{ animationDelay: "320ms" }}
           >
             {heroSignals.map((signal, index) => (
               <div
                 key={signal.value}
-                className="flex-1 px-0 sm:px-5"
+                className={`px-6 py-5 sm:px-6 sm:py-6 ${
+                  index > 0 ? "border-t border-border/70 sm:border-l sm:border-t-0" : ""
+                }`}
               >
                 <p className="text-lg font-bold tracking-tight text-[oklch(0.48_0.1_68)] sm:text-xl">
                   {signal.value}
@@ -103,9 +105,6 @@ export default function LandingHero() {
                 <p className="mt-1 text-sm leading-6 text-muted-foreground">
                   {signal.label}
                 </p>
-                {index < heroSignals.length - 1 ? (
-                  <div className="mt-4 h-px bg-border/70 sm:hidden" />
-                ) : null}
               </div>
             ))}
           </div>

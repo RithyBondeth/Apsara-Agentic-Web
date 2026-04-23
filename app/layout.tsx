@@ -5,7 +5,7 @@ import "./globals.css";
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -61,7 +61,10 @@ export default function RootLayout({
       lang="en"
       className={`${ubuntu.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground"
+        style={{ fontFamily: "var(--font-ubuntu), sans-serif" }}
+      >
         {children}
       </body>
     </html>
