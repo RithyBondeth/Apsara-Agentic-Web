@@ -20,6 +20,7 @@ export default function LandingPageShell({
   initialLocale,
 }: LandingPageShellProps) {
   const [locale, setLocale] = useState<LandingLocale>(initialLocale);
+  const isKhmer = locale === "km";
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -42,7 +43,13 @@ export default function LandingPageShell({
     <main
       id="top"
       lang={locale}
-      className="relative min-h-screen overflow-hidden bg-background"
+      data-locale={locale}
+      className={[
+        "relative min-h-screen overflow-hidden bg-background",
+        isKhmer ? "landing-locale-km" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       <LandingPageAnimations locale={locale} />
       <LandingHeader

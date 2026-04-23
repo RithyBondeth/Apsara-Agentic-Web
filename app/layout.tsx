@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { cookies, headers } from "next/headers";
+import localFont from "next/font/local";
 import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
 import { resolveLandingLocale } from "@/lib/landing-locale";
 import "./globals.css";
@@ -16,6 +17,33 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
+});
+
+const notoSansKhmer = localFont({
+  variable: "--font-khmer",
+  display: "swap",
+  src: [
+    {
+      path: "./fonts/NotoSansKhmer-400.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NotoSansKhmer-500.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NotoSansKhmer-600.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NotoSansKhmer-700.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -68,12 +96,9 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLocale}
-      className={`${ubuntu.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${ubuntu.variable} ${ibmPlexMono.variable} ${notoSansKhmer.variable} h-full antialiased`}
     >
-      <body
-        className="min-h-full flex flex-col bg-background text-foreground"
-        style={{ fontFamily: "var(--font-ubuntu), sans-serif" }}
-      >
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
       </body>
     </html>
