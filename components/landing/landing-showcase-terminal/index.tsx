@@ -39,7 +39,7 @@ function ToolCall({ tool, detail }: { tool: string; detail: string }) {
         <span className="text-white/25">↳</span>
         <span className="font-mono text-white/40">{detail}</span>
       </div>
-      </div>
+    </div>
   );
 }
 
@@ -192,8 +192,7 @@ export default function LandingShowcaseTerminal({
         <div className="flex gap-3">
           <span className="w-16 shrink-0 text-white/35">model</span>
           <span className="text-white/60">
-            claude-sonnet-4-6{" "}
-            <span className="text-white/30">200k ctx</span>{" "}
+            claude-sonnet-4-6 <span className="text-white/30">200k ctx</span>{" "}
             <span className="text-[#78D296]">✓</span>
           </span>
         </div>
@@ -279,7 +278,7 @@ export default function LandingShowcaseTerminal({
         data-cli-block
         data-pause="0.2"
         aria-hidden
-        className="rounded border border-white/8 bg-white/[0.03] px-3 py-2 space-y-0.5 text-xs leading-5"
+        className="rounded border border-white/8 bg-white/3 px-3 py-2 space-y-0.5 text-xs leading-5"
       >
         <div className="text-[#FAC87C]">@@ approval.py @@</div>
         <div className="text-[#FF8E8E]">
@@ -304,7 +303,7 @@ export default function LandingShowcaseTerminal({
         data-cli-block
         data-pause="0.18"
         aria-hidden
-        className="rounded border border-white/12 bg-white/[0.02] px-3 py-2 text-xs text-white/50"
+        className="rounded border border-white/12 bg-white/2 px-3 py-2 text-xs text-white/50"
       >
         <span className="text-white/28">APPROVE? </span>
         update approval.py · 2 hunks

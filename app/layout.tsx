@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { IBM_Plex_Mono, Press_Start_2P, Ubuntu } from "next/font/google";
 import { getInitialLandingLocale } from "@/utils/functions/get-initial-landing-locale";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const ubuntu = Ubuntu({
@@ -97,10 +98,18 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLocale}
+      suppressHydrationWarning
       className={`${ubuntu.variable} ${ibmPlexMono.variable} ${notoSansKhmer.variable} ${pressStart2P.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
