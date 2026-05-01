@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
+import { IBM_Plex_Mono, Press_Start_2P, Ubuntu } from "next/font/google";
 import { getInitialLandingLocale } from "@/utils/functions/get-initial-landing-locale";
 import "./globals.css";
 
@@ -15,6 +15,13 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const pressStart2P = Press_Start_2P({
+  variable: "--font-pixel",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -90,7 +97,7 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLocale}
-      className={`${ubuntu.variable} ${ibmPlexMono.variable} ${notoSansKhmer.variable} h-full antialiased`}
+      className={`${ubuntu.variable} ${ibmPlexMono.variable} ${notoSansKhmer.variable} ${pressStart2P.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
