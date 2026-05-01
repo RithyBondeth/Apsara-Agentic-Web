@@ -9,6 +9,10 @@ import LandingFooter from "@/components/landing/landing-footer";
 import LandingHeader from "@/components/landing/landing-header";
 import LandingHero from "@/components/landing/landing-hero";
 import LandingHowItWorks from "@/components/landing/landing-how-it-works";
+// LandingPageAnimations must be a regular (synchronous) import — it controls
+// hero visibility via GSAP autoAlpha and clearProps. A dynamic import would
+// cause the CSS cascade to reveal elements before GSAP takes ownership,
+// producing a flash/disappear cycle.
 import LandingPageAnimations from "@/components/landing/landing-page-animations";
 import LandingShowcase from "@/components/landing/landing-showcase";
 import { LANDING_LOCALE_COOKIE } from "@/utils/functions/landing-locale";

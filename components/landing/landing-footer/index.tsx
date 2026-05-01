@@ -20,7 +20,7 @@ export default function LandingFooter({
   const isKhmer = locale === "km";
 
   return (
-    <footer className="relative border-t border-border/70 bg-white/30">
+    <footer className="relative border-t border-border/70 bg-background/80">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-20"

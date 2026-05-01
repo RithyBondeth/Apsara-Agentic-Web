@@ -167,6 +167,14 @@ html[lang="km"] {
   text-wrap: balance;
 }
 
+/* Hide scrollbar cross-browser without disabling scroll */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @utility landing-dot-pattern {
   background-image:
     radial-gradient(circle, oklch(0.34 0.02 248 / 0.18) 1px, transparent 1px);
@@ -265,6 +273,28 @@ html[lang="km"] {
   animation: terminal-caret 1s steps(1, end) infinite;
 }
 
+/* ── Off-screen rendering skip for below-fold sections ─────────────────────
+   content-visibility:auto tells the browser it can skip painting & layout
+   for sections that are not near the viewport, which dramatically cuts
+   initial render work. contain-intrinsic-size prevents scroll-height jank
+   by giving the browser a stable placeholder size before each section
+   actually renders.
+   ─────────────────────────────────────────────────────────────────────── */
+#features,
+#workflow,
+#cta {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+/* Blur-heavy decorative glows — promote to their own compositor layer so
+   re-paints don't cascade through the rest of the page. */
+[data-gsap-drift],
+[data-gsap-float] {
+  will-change: transform;
+  isolation: isolate;
+}
+
 /* ── Dark mode overrides for landing utilities ── */
 .dark .landing-dot-pattern {
   background-image:
@@ -339,6 +369,9 @@ html[lang="km"] {
       linear-gradient(180deg, oklch(0.99 0.006 82), oklch(0.982 0.01 86));
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
+    /* Prevent rubber-band scroll from leaking into parent frames / triggering
+       back-navigation on horizontal overscroll */
+    overscroll-behavior: none;
   }
   .dark body {
     background-image:

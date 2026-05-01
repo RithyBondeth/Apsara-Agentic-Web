@@ -19,11 +19,14 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+// Decorative pixel font — only used for the APSARA/AGENTIC banner in the
+// showcase terminal. "optional" means the browser never blocks rendering
+// waiting for it; on repeat visits it will be in cache anyway.
 const pressStart2P = Press_Start_2P({
   variable: "--font-pixel",
   subsets: ["latin"],
   weight: "400",
-  display: "swap",
+  display: "optional",
 });
 
 const notoSansKhmer = localFont({

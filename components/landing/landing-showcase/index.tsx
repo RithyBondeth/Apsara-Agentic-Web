@@ -5,12 +5,25 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import type {
   LandingCopy,
   LandingLocale,
 } from "@/language/landing-copy";
-import LandingShowcaseTerminal from "@/components/landing/landing-showcase-terminal";
 import { cn } from "@/lib/utils";
+
+// Dynamically import the terminal component so its GSAP + ScrollTrigger bundle
+// is split into a separate chunk that is only downloaded when the browser is
+// ready — not during the initial page load critical path.
+const LandingShowcaseTerminal = dynamic(
+  () => import("@/components/landing/landing-showcase-terminal"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="max-h-[520px] min-h-[320px] rounded-[1.5rem] border border-white/8 bg-[#111110] animate-pulse" />
+    ),
+  },
+);
 
 const productNoteIcons = [ShieldCheck, Eye, GitBranch];
 
