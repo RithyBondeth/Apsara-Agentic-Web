@@ -66,8 +66,8 @@ export default function LandingHowItWorks({
                 <div className="hidden md:block absolute left-[62%] top-8 h-px w-[78%] bg-linear-to-r from-[oklch(0.74_0.1_76/0.45)] to-[oklch(0.74_0.1_76/0.08)]" />
               ) : null}
 
-              <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] border border-[oklch(0.84_0.06_78/0.45)] bg-[linear-gradient(135deg,oklch(0.97_0.028_82/0.9),oklch(0.95_0.02_80/0.8))]">
-                <span className="text-2xl font-bold tracking-tight text-[oklch(0.56_0.13_68)]">
+              <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] bg-[linear-gradient(145deg,oklch(0.97_0.040_78),oklch(0.93_0.052_71))] shadow-[inset_0_1px_0_oklch(1_0.004_85/0.8),0_8px_22px_oklch(0.62_0.14_71/0.26)]">
+                <span className="text-2xl font-bold tracking-tight text-[oklch(0.48_0.16_64)]">
                   {workflowNumbers[index] ?? `${index + 1}`}
                 </span>
               </div>

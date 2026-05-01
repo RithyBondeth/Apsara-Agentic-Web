@@ -76,12 +76,12 @@ export default function LandingFeatures({
               <article
                 key={feature.title}
                 data-gsap="feature-card"
-                className="landing-glass-card group rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1"
+                className="landing-glass-card group rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_oklch(1_0_0/0.65),0_32px_80px_oklch(0.34_0.02_248/0.10),0_8px_24px_oklch(0.62_0.14_71/0.10)] hover:border-[oklch(0.86_0.020_78/0.88)]"
               >
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,oklch(0.97_0.028_82),oklch(0.95_0.02_80))] text-[oklch(0.56_0.13_68)] shadow-[inset_0_1px_0_oklch(1_0.003_85/0.7)]">
+                <span className="landing-feature-icon flex size-12 items-center justify-center rounded-2xl">
                   <Icon className="size-5" />
                 </span>
-                <h3 className="mt-5 font-heading text-2xl font-semibold tracking-tight text-foreground">
+                <h3 className="mt-5 font-heading text-xl font-semibold tracking-tight text-foreground">
                   {feature.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
