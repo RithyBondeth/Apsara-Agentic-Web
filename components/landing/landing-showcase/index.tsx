@@ -1,5 +1,6 @@
 import {
   Activity,
+  Code2,
   Eye,
   GitBranch,
   ShieldCheck,
@@ -7,6 +8,7 @@ import {
   TerminalSquare,
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import LandingRailVisual from "@/components/landing/landing-rail-visual";
 import type {
   LandingCopy,
   LandingLocale,
@@ -44,7 +46,7 @@ export default function LandingShowcase({
   return (
     <section
       id="showcase"
-      className="relative scroll-mt-24 overflow-clip border-b border-[var(--l-line)] py-16 sm:scroll-mt-28 sm:py-20 lg:py-24"
+      className="relative scroll-mt-24 overflow-clip border-b border-[var(--l-line)] pb-14 pt-16 sm:scroll-mt-28 sm:pb-16 sm:pt-20 lg:pb-16 lg:pt-24"
     >
       <div aria-hidden className="landing-code-grid absolute inset-0 opacity-55" />
       <div
@@ -53,19 +55,26 @@ export default function LandingShowcase({
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-[var(--l-line)] pb-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end lg:pb-10">
-          <div>
-            <p data-gsap="showcase-head" className={eyebrowClassName}>
-              {copy.eyebrow}
-            </p>
-            <p
-              data-gsap="showcase-head"
-              className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground"
-            >
-              Runtime / 01—04
-            </p>
+        <div className="grid gap-8 border-b border-[var(--l-line)] pb-8 lg:grid-cols-[0.42fr_0.58fr] lg:pb-10">
+          <div className="flex h-full flex-col items-start justify-between gap-8">
+            <LandingRailVisual
+              code="agent.loop"
+              icon={Code2}
+              motion="showcase-head"
+            />
+            <div>
+              <p data-gsap="showcase-head" className={eyebrowClassName}>
+                {copy.eyebrow}
+              </p>
+              <p
+                data-gsap="showcase-head"
+                className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground"
+              >
+                Runtime / 01—04
+              </p>
+            </div>
           </div>
-          <div>
+          <div className="self-end">
             <h2
               data-gsap="showcase-head"
               className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl"
@@ -300,13 +309,21 @@ export default function LandingShowcase({
           </div>
         </div>
 
-        <div className="mt-16 grid gap-6 border-t border-[var(--l-line)] pt-10 lg:grid-cols-[0.42fr_0.58fr]">
-          <p
-            data-gsap="showcase-tail"
-            className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]"
-          >
-            {copy.humanLoopEyebrow}
-          </p>
+        <div className="mt-14 grid gap-6 border-t border-[var(--l-line)] pt-10 lg:grid-cols-[0.42fr_0.58fr]">
+          <div className="flex h-full flex-col items-start justify-between gap-5">
+            <p
+              data-gsap="showcase-tail"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]"
+            >
+              {copy.humanLoopEyebrow}
+            </p>
+            <LandingRailVisual
+              code="review.gate"
+              compact
+              icon={ShieldCheck}
+              motion="showcase-tail"
+            />
+          </div>
           <div>
             <h3
               data-gsap="showcase-tail"

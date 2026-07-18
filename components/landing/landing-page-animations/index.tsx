@@ -373,6 +373,22 @@ export default function LandingPageAnimations({
         yoyo: true,
       });
 
+      gsap.to("[data-rail-orbit]", {
+        duration: 18,
+        ease: "none",
+        repeat: -1,
+        rotation: 360,
+        transformOrigin: "center center",
+      });
+
+      gsap.to("[data-rail-core]", {
+        duration: 2.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        scale: 1.06,
+        yoyo: true,
+      });
+
       /* ── Pointer-driven interactions (fine pointers only) ───────────── */
       const pointerMedia = gsap.matchMedia();
 

@@ -1,4 +1,5 @@
 import {
+  Boxes,
   Database,
   Eye,
   FolderGit2,
@@ -6,6 +7,7 @@ import {
   TerminalSquare,
   Wrench,
 } from "lucide-react";
+import LandingRailVisual from "@/components/landing/landing-rail-visual";
 import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { cn } from "@/lib/utils";
 
@@ -47,7 +49,7 @@ export default function LandingFeatures({
   return (
     <section
       id="features"
-      className="relative scroll-mt-24 overflow-hidden border-b border-[var(--l-line)] py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
+      className="relative scroll-mt-24 overflow-hidden border-b border-[var(--l-line)] py-20 sm:scroll-mt-28 sm:py-24 lg:py-28"
     >
       <div
         aria-hidden
@@ -59,20 +61,28 @@ export default function LandingFeatures({
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
-          <div>
-            <p data-gsap="features-head" className={eyebrowClassName}>
-              {copy.eyebrow}
-            </p>
-            <div
-              data-gsap="features-head"
-              className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
-            >
-              <span className="size-1.5 rounded-full bg-[var(--l-spectrum-1)] shadow-[0_0_16px_var(--l-spectrum-1)]" />
-              6 modules online
+        <div className="grid gap-8 lg:grid-cols-[0.38fr_0.62fr]">
+          <div className="flex h-full flex-col items-start justify-between gap-6">
+            <LandingRailVisual
+              code="module.stack"
+              compact
+              icon={Boxes}
+              motion="features-head"
+            />
+            <div>
+              <p data-gsap="features-head" className={eyebrowClassName}>
+                {copy.eyebrow}
+              </p>
+              <div
+                data-gsap="features-head"
+                className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
+              >
+                <span className="size-1.5 rounded-full bg-[var(--l-spectrum-1)] shadow-[0_0_16px_var(--l-spectrum-1)]" />
+                6 modules online
+              </div>
             </div>
           </div>
-          <div>
+          <div className="self-end">
             <h2
               data-gsap="features-head"
               className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl"
