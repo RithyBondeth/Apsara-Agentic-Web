@@ -826,6 +826,16 @@ html[lang="km"] {
   transition: opacity 0.25s ease;
 }
 
+.landing-session-telemetry {
+  display: none;
+}
+
+@media (min-width: 1280px) and (min-height: 860px) {
+  .landing-session-telemetry {
+    display: block;
+  }
+}
+
 .landing-story-node {
   position: absolute;
   left: 0;

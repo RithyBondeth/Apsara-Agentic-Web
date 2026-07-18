@@ -360,6 +360,19 @@ export default function LandingPageAnimations({
         yoyo: true,
       });
 
+      gsap.to("[data-telemetry-bar]", {
+        duration: 1.15,
+        ease: "sine.inOut",
+        repeat: -1,
+        scaleY: 0.58,
+        stagger: {
+          amount: 0.75,
+          from: "random",
+        },
+        transformOrigin: "center bottom",
+        yoyo: true,
+      });
+
       /* ── Pointer-driven interactions (fine pointers only) ───────────── */
       const pointerMedia = gsap.matchMedia();
 

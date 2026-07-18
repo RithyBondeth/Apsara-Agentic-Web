@@ -1,4 +1,5 @@
 import {
+  Activity,
   Eye,
   GitBranch,
   ShieldCheck,
@@ -23,6 +24,7 @@ const LandingShowcaseTerminal = dynamic(
 );
 
 const productNoteIcons = [ShieldCheck, Eye, GitBranch];
+const telemetryBars = [38, 56, 44, 74, 61, 88, 66, 48, 79, 58, 91, 70];
 
 type LandingShowcaseProps = {
   copy: LandingCopy["showcase"];
@@ -123,6 +125,78 @@ export default function LandingShowcase({
               </span>
               <span>04</span>
             </div>
+
+            <aside className="landing-session-telemetry mt-5 overflow-hidden rounded-xl border border-[var(--l-line)] bg-[var(--l-surface)]/78 p-5 shadow-[inset_0_1px_0_var(--l-inset),0_24px_70px_oklch(from_var(--l-shadow)_l_c_h_/_0.1)] backdrop-blur-xl">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="relative flex size-2.5">
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-[var(--l-spectrum-1)] opacity-45" />
+                    <span className="relative inline-flex size-2.5 rounded-full bg-[var(--l-spectrum-1)]" />
+                  </span>
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground">
+                    Session telemetry
+                  </span>
+                </div>
+                <span className="rounded-full border border-[var(--l-line)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--l-accent)]">
+                  Live
+                </span>
+              </div>
+
+              <div
+                aria-hidden
+                className="mt-5 flex h-14 items-end gap-1.5 border-b border-[var(--l-line)] px-1"
+              >
+                {telemetryBars.map((height, index) => (
+                  <span
+                    key={`${height}-${index}`}
+                    data-telemetry-bar
+                    className="min-w-0 flex-1 rounded-t-[2px] bg-[linear-gradient(180deg,var(--l-spectrum-3),var(--l-spectrum-1))] opacity-75"
+                    style={{ height: `${height}%` }}
+                  />
+                ))}
+              </div>
+
+              <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--l-line)] bg-[var(--l-line)] font-mono">
+                <div className="bg-[var(--l-ground)] p-3.5">
+                  <p className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Workspace
+                  </p>
+                  <p className="mt-2 text-xs font-semibold text-foreground">
+                    ./repo
+                  </p>
+                </div>
+                <div className="bg-[var(--l-ground)] p-3.5">
+                  <p className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Tools
+                  </p>
+                  <p className="mt-2 text-xs font-semibold text-foreground">
+                    06 bounded
+                  </p>
+                </div>
+                <div className="bg-[var(--l-ground)] p-3.5">
+                  <p className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Diff
+                  </p>
+                  <p className="mt-2 text-xs font-semibold text-foreground">
+                    2 staged
+                  </p>
+                </div>
+                <div className="bg-[var(--l-ground)] p-3.5">
+                  <p className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Gate
+                  </p>
+                  <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-[var(--l-accent)]">
+                    <Activity className="size-3" />
+                    review
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                <span>context retained</span>
+                <span className="text-foreground">74%</span>
+              </div>
+            </aside>
           </div>
 
           <div className="relative">
