@@ -18,6 +18,24 @@ const featureIcons = [
   TerminalSquare,
 ];
 
+const featureMeta = [
+  { code: "workspace.init", stat: "local" },
+  { code: "tools.scope", stat: "bounded" },
+  { code: "review.diff", stat: "required" },
+  { code: "trace.details", stat: "on demand" },
+  { code: "events.persist", stat: "durable" },
+  { code: "session.resume", stat: "stateful" },
+];
+
+const cardLayout = [
+  "lg:col-span-2",
+  "",
+  "",
+  "lg:col-span-2",
+  "",
+  "",
+];
+
 type LandingFeaturesProps = {
   copy: LandingCopy["features"];
   locale: LandingLocale;
@@ -36,39 +54,54 @@ export default function LandingFeatures({
   return (
     <section
       id="features"
-      className="relative scroll-mt-28 overflow-hidden py-20 sm:scroll-mt-32 sm:py-28 md:py-32"
+      className="relative scroll-mt-24 overflow-hidden border-b border-[var(--l-line)] py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
     >
+      <div aria-hidden className="landing-code-grid absolute inset-0 opacity-45" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-40"
+        className="pointer-events-none absolute -left-48 top-1/3 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_72%)] blur-[180px]"
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p data-gsap="features-head" className={eyebrowClassName}>
-            {copy.eyebrow}
-          </p>
-          <h2
-            data-gsap="features-head"
-            className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-          >
-            {copy.titleLead}{" "}
-            <span className="landing-gradient-text">{copy.titleHighlight}</span>
-            {copy.titleTail ? ` ${copy.titleTail}` : null}
-          </h2>
-          <p
-            data-gsap="features-head"
-            className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-          >
-            {copy.description}
-          </p>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
+          <div>
+            <p data-gsap="features-head" className={eyebrowClassName}>
+              {copy.eyebrow}
+            </p>
+            <div
+              data-gsap="features-head"
+              className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
+            >
+              <span className="size-1.5 rounded-full bg-[var(--l-spectrum-1)] shadow-[0_0_16px_var(--l-spectrum-1)]" />
+              6 modules online
+            </div>
+          </div>
+          <div>
+            <h2
+              data-gsap="features-head"
+              className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl"
+            >
+              {copy.titleLead}{" "}
+              <span className="landing-gradient-text">
+                {copy.titleHighlight}
+              </span>
+              {copy.titleTail ? ` ${copy.titleTail}` : null}
+            </h2>
+            <p
+              data-gsap="features-head"
+              className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg"
+            >
+              {copy.description}
+            </p>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {copy.cards.map((feature, index) => {
             const Icon = featureIcons[index];
+            const meta = featureMeta[index];
 
-            if (!Icon) {
+            if (!Icon || !meta) {
               return null;
             }
 
@@ -77,18 +110,49 @@ export default function LandingFeatures({
                 key={feature.title}
                 data-gsap="feature-card"
                 data-tilt
-                className="landing-glass-card group relative rounded-[1.75rem] p-6 transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_var(--l-inset),0_32px_80px_oklch(from_var(--l-shadow)_l_c_h/0.16),0_8px_24px_oklch(from_var(--l-accent)_l_c_h/0.14)] hover:border-[var(--l-accent)]"
+                className={cn(
+                  "landing-bento-card group relative min-h-[280px] overflow-hidden rounded-xl p-6 sm:p-7",
+                  cardLayout[index],
+                )}
               >
                 <span aria-hidden className="landing-tilt-glare" />
-                <span className="landing-feature-icon flex size-12 items-center justify-center rounded-2xl">
-                  <Icon className="size-5" />
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="landing-feature-icon flex size-11 items-center justify-center rounded-lg">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <div className="mt-auto pt-12">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--l-accent)]">
+                      {meta.code}
+                    </p>
+                    <h3 className="mt-3 font-heading text-xl font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between border-t border-[var(--l-line)] pt-4 font-mono text-[10px] uppercase tracking-[0.14em]">
+                    <span className="text-muted-foreground">status</span>
+                    <span className="flex items-center gap-2 text-[var(--l-spectrum-1)]">
+                      <span className="size-1.5 rounded-full bg-current" />
+                      {meta.stat}
+                    </span>
+                  </div>
+                </div>
+
+                <span
+                  aria-hidden
+                  className="absolute -right-6 -top-10 font-mono text-[9rem] font-bold leading-none text-foreground/[0.025] transition-transform duration-500 group-hover:translate-y-3"
+                >
+                  {index + 1}
                 </span>
-                <h3 className="mt-5 font-heading text-xl font-semibold tracking-tight text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
-                  {feature.description}
-                </p>
               </article>
             );
           })}

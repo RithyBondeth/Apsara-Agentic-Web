@@ -106,7 +106,7 @@ export default function LandingShowcaseTerminal({
   return (
     <div
       ref={rootRef}
-      className="overflow-y-auto overflow-x-hidden rounded-[1.5rem] border border-white/8 bg-[#111110] p-4 font-mono text-sm leading-6 text-white/85 space-y-2.5 max-h-[520px] scrollbar-none"
+      className="max-h-[520px] space-y-2.5 overflow-x-hidden overflow-y-auto rounded-lg border border-white/8 bg-[#090b0f] p-4 font-mono text-sm leading-6 text-white/85 scrollbar-none"
       style={{ scrollbarWidth: "none" }}
     >
       <p className="sr-only">{copy.screenReaderLabel}</p>

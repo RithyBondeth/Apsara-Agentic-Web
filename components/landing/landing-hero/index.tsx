@@ -1,4 +1,12 @@
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ChevronDown,
+  Copy,
+  GitBranch,
+  Sparkles,
+  TerminalSquare,
+} from "lucide-react";
 import Link from "next/link";
 import type { LandingCopy } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
@@ -8,160 +16,335 @@ type LandingHeroProps = {
   copy: LandingCopy["hero"];
 };
 
+const codeLines = [
+  {
+    content: (
+      <>
+        <span className="landing-syntax-violet">const</span>{" "}
+        <span className="landing-syntax-blue">agent</span>{" "}
+        <span className="text-white/45">=</span>{" "}
+        <span className="landing-syntax-blue">await</span>{" "}
+        <span className="text-white/85">apsara</span>
+        <span className="text-white/45">.</span>
+        <span className="landing-syntax-cyan">inside</span>
+        <span className="text-white/45">(</span>
+        <span className="landing-syntax-green">&quot;./repo&quot;</span>
+        <span className="text-white/45">);</span>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <span className="landing-syntax-violet">const</span>{" "}
+        <span className="landing-syntax-blue">plan</span>{" "}
+        <span className="text-white/45">=</span>{" "}
+        <span className="landing-syntax-blue">await</span>{" "}
+        <span className="text-white/85">agent</span>
+        <span className="text-white/45">.</span>
+        <span className="landing-syntax-cyan">trace</span>
+        <span className="text-white/45">({"{"}</span>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <span className="pl-5 landing-syntax-pink">intent</span>
+        <span className="text-white/45">:</span>{" "}
+        <span className="landing-syntax-green">
+          &quot;refactor approval flow&quot;
+        </span>
+        <span className="text-white/45">,</span>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <span className="pl-5 landing-syntax-pink">guardrail</span>
+        <span className="text-white/45">:</span>{" "}
+        <span className="landing-syntax-green">
+          &quot;human-review&quot;
+        </span>
+      </>
+    ),
+  },
+  {
+    content: <span className="text-white/45">{"});"}</span>,
+  },
+  {
+    content: (
+      <>
+        <span className="landing-syntax-violet">return</span>{" "}
+        <span className="text-white/85">plan</span>
+        <span className="text-white/45">.</span>
+        <span className="landing-syntax-cyan">review</span>
+        <span className="text-white/45">();</span>
+      </>
+    ),
+  },
+];
+
+const marqueeItems = [
+  "WORKSPACE SCOPED",
+  "DIFF FIRST",
+  "HUMAN APPROVED",
+  "SESSION AWARE",
+  "PROJECT LOCAL",
+];
+
 export default function LandingHero({ copy }: LandingHeroProps) {
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh items-center justify-center overflow-hidden"
+      className="relative flex min-h-[112svh] items-center overflow-hidden border-b border-[var(--l-line)]"
     >
+      <div aria-hidden data-hero-grid className="landing-code-grid absolute inset-0" />
       <div aria-hidden className="landing-aurora" />
       <div
         aria-hidden
         data-gsap-drift="hero-left"
-        className="pointer-events-none absolute -left-24 top-24 h-104 w-104 rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_70%)] blur-[140px]"
+        className="pointer-events-none absolute -left-40 top-12 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_70%)] blur-[150px]"
       />
       <div
         aria-hidden
         data-gsap-drift="hero-right"
-        className="pointer-events-none absolute -right-24 -top-20 h-104 w-104 rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_70%)] blur-[160px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-35"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-[58%] rounded-full bg-[radial-gradient(circle,var(--l-glow-center),transparent_68%)] blur-[90px]"
+        className="pointer-events-none absolute -right-40 top-20 size-[38rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_70%)] blur-[180px]"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
-        <div className="flex flex-col items-center gap-6">
-          <div
-            data-gsap="hero-item"
-            data-hero="badge"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--l-surface)] px-4 py-1.5 shadow-[0_0_0_1px_var(--l-line),0_6px_20px_oklch(from_var(--l-shadow)_l_c_h/0.1)] backdrop-blur-md"
-          >
-            <Sparkles className="size-3.5 text-[var(--l-accent)]" />
-            <span className="text-xs font-semibold text-[var(--l-accent)]">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-36 pt-32 sm:px-6 sm:pt-40 lg:px-8">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 xl:gap-16">
+          <div data-hero-copy className="relative">
+            <div
+              data-gsap="hero-item"
+              data-hero="badge"
+              className="inline-flex items-center gap-2 border border-[var(--l-line)] bg-[var(--l-surface)]/72 px-3 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--l-accent)] shadow-[0_10px_40px_oklch(from_var(--l-shadow)_l_c_h/0.14)] backdrop-blur-xl sm:text-xs"
+            >
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-[var(--l-spectrum-1)] opacity-70" />
+                <span className="relative inline-flex size-2 rounded-full bg-[var(--l-spectrum-1)]" />
+              </span>
               {copy.badge}
-            </span>
-          </div>
+            </div>
 
-          <h1
-            data-gsap="hero-item"
-            data-hero="title"
-            className="font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.06]"
-          >
-            <span data-hero-seg>{copy.titleLead}</span>{" "}
-            <span className="landing-gradient-text relative inline-block">
-              <span data-hero-seg>{copy.titleHighlight}</span>
-              <svg
-                aria-hidden
-                className="pointer-events-none absolute -bottom-[0.14em] left-0 h-[0.22em] w-full overflow-visible"
-                viewBox="0 0 200 20"
-                preserveAspectRatio="none"
-                fill="none"
+            <h1
+              data-gsap="hero-item"
+              data-hero="title"
+              className="font-heading mt-7 max-w-[14ch] text-[clamp(2.8rem,4.85vw,5.2rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-foreground"
+            >
+              <span data-hero-seg>{copy.titleLead}</span>{" "}
+              <span className="landing-gradient-text relative inline-block">
+                <span data-hero-seg>{copy.titleHighlight}</span>
+              </span>{" "}
+              <span data-hero-seg>{copy.titleTail}</span>
+            </h1>
+
+            <p
+              data-gsap="hero-item"
+              data-hero="copy"
+              className="mt-7 max-w-2xl text-balance text-base leading-8 text-muted-foreground sm:text-lg"
+            >
+              {copy.description}
+            </p>
+
+            <div
+              data-gsap="hero-item"
+              data-hero="ctas"
+              className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-7 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--l-btn-fg)] shadow-[0_18px_42px_var(--l-btn-shadow)] transition-[translate] duration-200 hover:-translate-y-0.5 sm:w-auto"
               >
-                <path
-                  data-hero-swash
-                  d="M3 14 C 42 19, 88 4, 122 9 C 152 13.5, 178 10, 197 6.5"
-                  stroke="url(#landing-hero-swash-grad)"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                />
-                <defs>
-                  <linearGradient
-                    id="landing-hero-swash-grad"
-                    x1="0"
-                    y1="0"
-                    x2="200"
-                    y2="0"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="var(--l-spectrum-1)" />
-                    <stop offset="0.5" stopColor="var(--l-spectrum-2)" />
-                    <stop offset="1" stopColor="var(--l-spectrum-3)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-            <br className="hidden sm:block" />{" "}
-            <span data-hero-seg>{copy.titleTail}</span>
-          </h1>
+                <Link href={siteRoutes.product} data-magnetic>
+                  {copy.primaryCta}
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-12 w-full rounded-lg border-[var(--l-line)] bg-[var(--l-surface)]/80 px-7 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[var(--l-accent)] sm:w-auto"
+              >
+                <Link href={siteRoutes.capabilities} data-magnetic>
+                  {copy.secondaryCta}
+                </Link>
+              </Button>
+            </div>
 
-          <p
-            data-gsap="hero-item"
-            data-hero="copy"
-            className="max-w-[720px] text-balance text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
-          >
-            {copy.description}
-          </p>
-
-          <div
-            data-gsap="hero-item"
-            data-hero="ctas"
-            className="flex w-full flex-col items-center justify-center gap-3 pt-2 sm:w-auto sm:flex-row"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="landing-btn-shimmer h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-8 text-sm font-semibold text-[var(--l-btn-fg)] shadow-[0_18px_42px_var(--l-btn-shadow)] transition-[translate] duration-200 hover:-translate-y-0.5 sm:w-auto"
+            <div
+              data-gsap="hero-item"
+              data-hero="command"
+              className="mt-6 inline-flex max-w-full items-center gap-3 border-l-2 border-[var(--l-spectrum-1)] bg-[var(--l-surface)]/55 px-4 py-3 font-mono text-xs text-muted-foreground backdrop-blur-lg"
             >
-              <Link href={siteRoutes.product} data-magnetic>
-                {copy.primaryCta}
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-12 w-full rounded-full border-[var(--l-line)] bg-[var(--l-surface)] px-8 text-sm font-semibold text-foreground transition-colors hover:border-[var(--l-accent)] sm:w-auto"
-            >
-              <Link href={siteRoutes.capabilities} data-magnetic>
-                {copy.secondaryCta}
-              </Link>
-            </Button>
+              <span className="text-[var(--l-spectrum-1)]">$</span>
+              <code className="truncate text-foreground/80">
+                npm i -g @apsara/cli
+              </code>
+              <Copy aria-hidden className="size-3.5 shrink-0 opacity-50" />
+            </div>
           </div>
 
           <div
-            data-gsap="hero-item"
-            data-hero="signals"
-            className="landing-glass-card mt-8 grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] text-left sm:grid-cols-3"
+            data-gsap="hero-stage"
+            data-hero-stage
+            className="landing-editor-stage relative mx-auto w-full max-w-2xl lg:mx-0"
           >
-            {copy.signals.map((signal, index) => (
-              <div
-                key={signal.value}
-                data-gsap="hero-signal"
-                className={`px-6 py-5 sm:px-6 sm:py-6 ${
-                  index > 0
-                    ? "border-t border-border/70 sm:border-l sm:border-t-0"
-                    : ""
-                }`}
-              >
-                <div className="mb-1 flex items-center gap-2">
-                  <span className="h-0.5 w-5 rounded-full bg-[linear-gradient(90deg,var(--l-spectrum-4),var(--l-spectrum-1))]" />
-                  <p className="text-lg font-bold tracking-tight text-[var(--l-accent)] sm:text-xl">
-                    {signal.value}
-                  </p>
+            <div
+              aria-hidden
+              data-code-orbit="one"
+              className="landing-orbit-chip absolute -left-8 top-[17%] z-20 hidden items-center gap-2 xl:flex"
+            >
+              <GitBranch className="size-3.5" />
+              <span>branch/main</span>
+            </div>
+            <div
+              aria-hidden
+              data-code-orbit="two"
+              className="landing-orbit-chip absolute -right-8 bottom-[17%] z-20 hidden items-center gap-2 xl:flex"
+            >
+              <Check className="size-3.5" />
+              <span>review/ready</span>
+            </div>
+
+            <div className="landing-editor-shell relative overflow-hidden rounded-xl">
+              <div aria-hidden data-code-scan className="landing-code-scan" />
+
+              <div className="flex items-center justify-between border-b border-white/9 bg-[#12151b] px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <span className="size-2.5 rounded-full bg-[#ff6b6b]" />
+                  <span className="size-2.5 rounded-full bg-[#ffd166]" />
+                  <span className="size-2.5 rounded-full bg-[#70e000]" />
                 </div>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  {signal.label}
-                </p>
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/38">
+                  <TerminalSquare className="size-3.5" />
+                  apsara runtime
+                </div>
               </div>
-            ))}
+
+              <div className="grid min-h-[440px] grid-cols-[56px_1fr] sm:grid-cols-[132px_1fr]">
+                <aside
+                  aria-hidden
+                  className="border-r border-white/8 bg-[#0c0f13] px-3 py-4 font-mono text-[10px] text-white/38"
+                >
+                  <p className="mb-3 hidden uppercase tracking-[0.18em] text-white/25 sm:block">
+                    Explorer
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-white/58">▾ src</p>
+                    <p className="pl-2 text-[#8b9cff] sm:pl-3">TS agent.ts</p>
+                    <p className="pl-2 sm:pl-3">TS tools.ts</p>
+                    <p className="pl-2 sm:pl-3">TS review.ts</p>
+                    <p>▸ tests</p>
+                    <p className="hidden sm:block">◇ package.json</p>
+                  </div>
+                </aside>
+
+                <div className="min-w-0 bg-[#0a0d11]">
+                  <div className="flex border-b border-white/8 bg-[#0f1217] font-mono text-[10px] text-white/48">
+                    <span className="border-r border-white/8 bg-[#0a0d11] px-4 py-2.5 text-[#a9b4ff]">
+                      agent.ts
+                    </span>
+                    <span className="hidden px-4 py-2.5 sm:block">review.ts</span>
+                  </div>
+
+                  <div
+                    role="img"
+                    aria-label="Apsara agent orchestration code example"
+                    className="relative px-3 py-5 font-mono text-[11px] leading-7 sm:px-5 sm:text-xs"
+                  >
+                    {codeLines.map((line, index) => (
+                      <div
+                        key={index}
+                        data-code-line
+                        className="grid grid-cols-[24px_1fr] gap-2 whitespace-nowrap"
+                      >
+                        <span className="select-none text-right text-white/18">
+                          {index + 1}
+                        </span>
+                        <code>{line.content}</code>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="absolute bottom-0 left-[56px] right-0 border-t border-white/9 bg-[#0c0f13] p-3 sm:left-[132px] sm:p-4">
+                    <div
+                      data-runtime-pulse
+                      className="flex items-start gap-3 font-mono text-[10px] leading-5 sm:text-[11px]"
+                    >
+                      <span className="mt-1 flex size-5 shrink-0 items-center justify-center rounded bg-[#70e000]/12 text-[#9ef01a]">
+                        ✓
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-white/72">
+                          Patch prepared · 2 files changed
+                        </p>
+                        <p className="truncate text-white/30">
+                          Waiting for human approval before write
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="landing-editor-shadow" aria-hidden />
           </div>
         </div>
 
+        <div
+          data-gsap="hero-item"
+          data-hero="signals"
+          className="mt-16 grid border-y border-[var(--l-line)] sm:grid-cols-3"
+        >
+          {copy.signals.map((signal, index) => (
+            <div
+              key={signal.value}
+              data-gsap="hero-signal"
+              className={`relative px-5 py-5 sm:px-6 ${
+                index > 0
+                  ? "border-t border-[var(--l-line)] sm:border-l sm:border-t-0"
+                  : ""
+              }`}
+            >
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--l-accent)]">
+                <span className="mr-2 text-[var(--l-spectrum-1)]">
+                  0{index + 1}
+                </span>
+                {signal.value}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {signal.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <Link
-          href={siteRoutes.product}
+          href="#showcase"
           aria-label={copy.scrollAriaLabel}
           data-gsap="hero-item"
           data-hero="chevron"
-          className="mt-12 inline-flex items-center justify-center text-muted-foreground"
+          className="mx-auto mt-10 flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
         >
-          <ChevronDown data-gsap-loop="hero-scroll" className="size-6" />
+          scroll to inspect
+          <ChevronDown data-gsap-loop="hero-scroll" className="size-4" />
         </Link>
+      </div>
+
+      <div aria-hidden className="landing-code-marquee absolute inset-x-0 bottom-0">
+        <div className="landing-code-marquee-track">
+          {[...marqueeItems, ...marqueeItems].map((item, index) => (
+            <span key={`${item}-${index}`}>
+              <Sparkles className="size-3" />
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

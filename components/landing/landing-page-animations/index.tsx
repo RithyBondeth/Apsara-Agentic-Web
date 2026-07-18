@@ -4,11 +4,9 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import type { LandingLocale } from "@/language/landing-copy";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const revealClearProps = "opacity,visibility,transform,filter";
 
@@ -63,8 +61,16 @@ export default function LandingPageAnimations({
         filter: "blur(8px)",
         y: 20,
       });
+      gsap.set('[data-gsap="hero-stage"]', {
+        autoAlpha: 0,
+        rotationY: -12,
+        scale: 0.92,
+        transformPerspective: 1400,
+        x: 52,
+      });
+      gsap.set("[data-code-line]", { autoAlpha: 0, x: 14 });
+      gsap.set("[data-code-orbit]", { autoAlpha: 0, scale: 0.8 });
       gsap.set(headsSelector, { autoAlpha: 0, y: 20 });
-      gsap.set("[data-hero-swash]", { drawSVG: "0%" });
 
       /* ── Header + scroll progress hairline ──────────────────────────── */
       gsap.to('[data-gsap="header"]', {
@@ -84,6 +90,43 @@ export default function LandingPageAnimations({
           scrollTrigger: { end: "max", scrub: 0.4, start: 0 },
         }
       );
+
+      /* ── Hero scroll choreography ────────────────────────────────────── */
+      gsap.to("[data-hero-copy]", {
+        autoAlpha: 0.28,
+        ease: "none",
+        yPercent: -18,
+        scrollTrigger: {
+          end: "bottom top",
+          scrub: 0.8,
+          start: "top top",
+          trigger: "#hero",
+        },
+      });
+
+      gsap.to("[data-hero-stage]", {
+        ease: "none",
+        rotationZ: -1.5,
+        scale: 0.94,
+        yPercent: -10,
+        scrollTrigger: {
+          end: "bottom top",
+          scrub: 0.9,
+          start: "top top",
+          trigger: "#hero",
+        },
+      });
+
+      gsap.to("[data-hero-grid]", {
+        ease: "none",
+        y: 110,
+        scrollTrigger: {
+          end: "bottom top",
+          scrub: 1,
+          start: "top top",
+          trigger: "#hero",
+        },
+      });
 
       /* ── Generic scroll reveals ─────────────────────────────────────── */
       const revealOnScroll = (
@@ -128,13 +171,6 @@ export default function LandingPageAnimations({
         });
       };
 
-      revealOnScroll('[data-gsap="showcase-note"]', {
-        blur: 6,
-        delay: 0.1,
-        stagger: 0.1,
-        start: "top 70%",
-        trigger: "#showcase",
-      });
       revealOnScroll('[data-gsap="showcase-tail"]', {
         stagger: 0.08,
         start: "top 80%",
@@ -204,47 +240,55 @@ export default function LandingPageAnimations({
         );
       }
 
-      /* ── The golden thread through the workflow steps ───────────────── */
-      const threadPath = root.querySelector<SVGPathElement>("[data-thread]");
-
-      if (threadPath) {
-        gsap.set(["[data-thread]", "[data-thread-glow]"], { drawSVG: "0%" });
-
-        const threadTimeline = gsap.timeline({
+      /* ── Sticky product story ────────────────────────────────────────── */
+      gsap.fromTo(
+        "[data-showcase-progress]",
+        { scaleX: 0 },
+        {
+          ease: "none",
+          scaleX: 1,
           scrollTrigger: {
-            end: "bottom 80%",
-            // Re-init on refresh so the bead's path alignment is computed
-            // from real geometry if the md+ thread was hidden at load.
-            invalidateOnRefresh: true,
-            scrub: 1,
-            start: "top 60%",
+            end: "bottom 70%",
+            scrub: 0.7,
+            start: "top 30%",
+            trigger: "#showcase",
+          },
+        }
+      );
+
+      gsap.utils.toArray<HTMLElement>("[data-story-step]").forEach((step) => {
+        gsap.fromTo(
+          step,
+          { autoAlpha: 0.3, y: 42 },
+          {
+            autoAlpha: 1,
+            ease: "none",
+            y: -16,
+            scrollTrigger: {
+              end: "bottom 38%",
+              scrub: 0.7,
+              start: "top 78%",
+              trigger: step,
+            },
+          }
+        );
+      });
+
+      /* ── Workflow trace fills as the user moves through the steps ───── */
+      gsap.fromTo(
+        "[data-workflow-line]",
+        { scaleY: 0 },
+        {
+          ease: "none",
+          scaleY: 1,
+          scrollTrigger: {
+            end: "bottom 62%",
+            scrub: 0.8,
+            start: "top 58%",
             trigger: "#workflow",
           },
-        });
-
-        threadTimeline
-          .fromTo(
-            ["[data-thread]", "[data-thread-glow]"],
-            { drawSVG: "0%" },
-            { drawSVG: "100%", duration: 1, ease: "none" },
-            0
-          )
-          .set("[data-thread-bead]", { autoAlpha: 1 }, 0.02)
-          .to(
-            "[data-thread-bead]",
-            {
-              duration: 1,
-              ease: "none",
-              motionPath: {
-                align: threadPath,
-                alignOrigin: [0.5, 0.5],
-                path: threadPath,
-              },
-            },
-            0
-          )
-          .to("[data-thread-bead]", { autoAlpha: 0, duration: 0.04 }, 0.96);
-      }
+        }
+      );
 
       gsap.fromTo(
         "[data-workflow-badge]",
@@ -289,45 +333,31 @@ export default function LandingPageAnimations({
         yoyo: true,
       });
 
-      gsap.to('[data-gsap-float="soft"]', {
-        duration: 6,
+      gsap.to('[data-code-orbit="one"]', {
+        duration: 5.8,
         ease: "sine.inOut",
         repeat: -1,
-        y: -12,
+        x: 8,
+        y: -8,
         yoyo: true,
       });
 
-      gsap.to('[data-gsap-float="delayed"]', {
-        delay: 0.6,
-        duration: 7.4,
+      gsap.to('[data-code-orbit="two"]', {
+        delay: 0.4,
+        duration: 6.6,
         ease: "sine.inOut",
         repeat: -1,
-        y: -10,
+        x: -7,
+        y: 9,
         yoyo: true,
       });
 
-      /* Parallax drift on the floating cards (yPercent composes with the
-         float loop's y, so the two never fight). */
-      gsap.to('[data-gsap-float="soft"]', {
-        ease: "none",
-        yPercent: -16,
-        scrollTrigger: {
-          end: "bottom top",
-          scrub: 0.6,
-          start: "top bottom",
-          trigger: "#showcase",
-        },
-      });
-
-      gsap.to('[data-gsap-float="delayed"]', {
-        ease: "none",
-        yPercent: 14,
-        scrollTrigger: {
-          end: "bottom top",
-          scrub: 0.6,
-          start: "top bottom",
-          trigger: "#showcase",
-        },
+      gsap.to("[data-runtime-pulse]", {
+        duration: 1.2,
+        ease: "sine.inOut",
+        opacity: 0.62,
+        repeat: -1,
+        yoyo: true,
       });
 
       /* ── Pointer-driven interactions (fine pointers only) ───────────── */
@@ -500,14 +530,43 @@ export default function LandingPageAnimations({
         }
 
         heroTimeline
-          .fromTo(
-            "[data-hero-swash]",
-            { drawSVG: "0%" },
-            { drawSVG: "100%", duration: 0.7, ease: "power2.inOut" },
-            "-=0.35"
-          )
           .to('[data-hero="copy"]', { autoAlpha: 1, y: 0 }, "-=0.5")
           .to('[data-hero="ctas"]', { autoAlpha: 1, duration: 0.65, y: 0 }, "-=0.5")
+          .to('[data-hero="command"]', { autoAlpha: 1, duration: 0.55, y: 0 }, "-=0.45")
+          .to(
+            '[data-gsap="hero-stage"]',
+            {
+              autoAlpha: 1,
+              duration: 1,
+              ease: "power4.out",
+              rotationY: 0,
+              scale: 1,
+              x: 0,
+            },
+            "-=0.8"
+          )
+          .to(
+            "[data-code-line]",
+            {
+              autoAlpha: 1,
+              duration: 0.4,
+              ease: "power2.out",
+              stagger: 0.06,
+              x: 0,
+            },
+            "-=0.65"
+          )
+          .to(
+            "[data-code-orbit]",
+            {
+              autoAlpha: 1,
+              duration: 0.55,
+              ease: "back.out(1.8)",
+              scale: 1,
+              stagger: 0.1,
+            },
+            "-=0.4"
+          )
           .to('[data-hero="signals"]', { autoAlpha: 1, y: 0 }, "-=0.45")
           .to(
             '[data-gsap="hero-signal"]',

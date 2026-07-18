@@ -27,15 +27,15 @@ export default function LandingCta({
   return (
     <section
       id="cta"
-      className="relative scroll-mt-28 overflow-hidden py-20 sm:scroll-mt-32 sm:py-28 md:py-32"
+      className="relative scroll-mt-24 overflow-hidden py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-25"
       />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="landing-cta-surface relative overflow-hidden rounded-[2.5rem] px-8 py-16 text-center sm:px-14 sm:py-20">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="landing-cta-surface relative overflow-hidden rounded-xl px-7 py-16 text-center sm:px-14 sm:py-24">
           <span aria-hidden className="landing-cta-ring" />
           <div
             aria-hidden
@@ -47,7 +47,7 @@ export default function LandingCta({
             </p>
             <h2
               data-gsap="cta-head"
-              className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
+              className="font-heading mx-auto mt-5 max-w-4xl text-3xl font-bold tracking-[-0.045em] text-foreground sm:text-5xl md:text-6xl"
             >
               {copy.titleLead}{" "}
               <span className="landing-gradient-text">{copy.titleHighlight}</span>
@@ -55,7 +55,7 @@ export default function LandingCta({
             </h2>
             <p
               data-gsap="cta-head"
-              className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
+              className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
             >
               {copy.description}
             </p>
@@ -67,7 +67,7 @@ export default function LandingCta({
               <Button
                 asChild
                 size="lg"
-                className="landing-btn-shimmer h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 text-sm font-semibold text-[var(--l-btn-fg)] shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
+                className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-[var(--l-btn-fg)] shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
               >
                 <Link href={primaryHref}>
                   {copy.primaryCta}
@@ -78,7 +78,7 @@ export default function LandingCta({
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-12 w-full rounded-full border-[var(--l-line)] bg-[var(--l-surface)] px-10 text-sm font-semibold text-foreground transition-all hover:border-[var(--l-accent)] sm:w-auto"
+                className="h-12 w-full rounded-lg border-[var(--l-line)] bg-[var(--l-surface)] px-10 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-foreground transition-all hover:border-[var(--l-accent)] sm:w-auto"
               >
                 <Link href={secondaryHref}>{copy.secondaryCta}</Link>
               </Button>

@@ -134,9 +134,9 @@ export const landingCopy = {
     },
     hero: {
       badge: "Private alpha for project-first agentic coding",
-      titleLead: "Build with an agent that stays",
-      titleHighlight: "inside the repo",
-      titleTail: "and keeps you in control.",
+      titleLead: "Build with an agent",
+      titleHighlight: "inside the repo.",
+      titleTail: "Stay in control.",
       description:
         "Apsara turns the current CLI and backend spine into a stronger product story: workspace-scoped tools, reviewable diffs, quieter internal activity, and persistent context that feels built for real codebases instead of generic AI chat.",
       primaryCta: "See the product flow",
@@ -352,9 +352,9 @@ export const landingCopy = {
     },
     hero: {
       badge: "Private alpha · ការសរសេរកូដបែប project-first",
-      titleLead: "សរសេរកូដជាមួយ agent ដែលស្ថិតនៅ",
+      titleLead: "សរសេរកូដជាមួយ agent",
       titleHighlight: "ក្នុង repo",
-      titleTail: "ហើយអ្នកនៅតែជាម្ចាស់ការ។",
+      titleTail: "ដោយអ្នកនៅតែជាម្ចាស់ការ។",
       description:
         "Apsara ប្រែ CLI និង backend ដែលមានស្រាប់ ទៅជារឿងរ៉ាវផលិតផលដែលរឹងមាំជាងមុន៖ tools ព្រំដែនតាម workspace, diff ដែលអាចពិនិត្យបាន, internals ស្ងប់ជាងមុន និង context បន្ត ដែលសាកសមសម្រាប់ codebase ពិតៗ — មិនមែន AI chat ធម្មតាទេ។",
       primaryCta: "មើលលំហូរផលិតផល",

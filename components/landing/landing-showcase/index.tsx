@@ -12,15 +12,12 @@ import type {
 } from "@/language/landing-copy";
 import { cn } from "@/lib/utils";
 
-// Dynamically import the terminal component so its GSAP + ScrollTrigger bundle
-// is split into a separate chunk that is only downloaded when the browser is
-// ready — not during the initial page load critical path.
 const LandingShowcaseTerminal = dynamic(
   () => import("@/components/landing/landing-showcase-terminal"),
   {
     ssr: false,
     loading: () => (
-      <div className="max-h-[520px] min-h-[320px] rounded-[1.5rem] border border-white/8 bg-[#111110] animate-pulse" />
+      <div className="min-h-[520px] rounded-lg border border-white/8 bg-[#090b0f] animate-pulse" />
     ),
   },
 );
@@ -41,182 +38,222 @@ export default function LandingShowcase({
       ? "text-[0.82rem] font-semibold text-[var(--l-accent)]"
       : "landing-eyebrow",
   );
-  const shellLabelClassName = cn(
-    "font-semibold text-white/65",
-    locale === "km"
-      ? "text-xs tracking-normal"
-      : "text-[11px] uppercase tracking-[0.28em]",
-  );
-  const noteEyebrowClassName = cn(
-    "font-semibold text-white/55",
-    locale === "km"
-      ? "text-xs tracking-normal"
-      : "text-[11px] uppercase tracking-[0.28em]",
-  );
 
   return (
     <section
       id="showcase"
-      className="relative scroll-mt-28 overflow-hidden py-20 sm:scroll-mt-32 sm:py-28 md:py-32"
+      className="relative scroll-mt-24 overflow-clip border-b border-[var(--l-line)] py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
     >
+      <div aria-hidden className="landing-code-grid absolute inset-0 opacity-55" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-45"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-32 top-1/2 h-104 w-104 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_72%)] blur-[160px]"
+        className="pointer-events-none absolute -right-48 top-[28%] size-[34rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_70%)] blur-[170px]"
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p data-gsap="showcase-head" className={eyebrowClassName}>
-          {copy.eyebrow}
-        </p>
-        <h2
-          data-gsap="showcase-head"
-          className="font-heading mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-        >
-          {copy.title}
-        </h2>
-        <p
-          data-gsap="showcase-head"
-          className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg"
-        >
-          {copy.description}
-        </p>
-      </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 border-b border-[var(--l-line)] pb-12 lg:grid-cols-[0.42fr_0.58fr] lg:items-end lg:pb-16">
+          <div>
+            <p data-gsap="showcase-head" className={eyebrowClassName}>
+              {copy.eyebrow}
+            </p>
+            <p
+              data-gsap="showcase-head"
+              className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground"
+            >
+              Runtime / 01—04
+            </p>
+          </div>
+          <div>
+            <h2
+              data-gsap="showcase-head"
+              className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl"
+            >
+              {copy.title}
+            </h2>
+            <p
+              data-gsap="showcase-head"
+              className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg"
+            >
+              {copy.description}
+            </p>
+          </div>
+        </div>
 
-      <div className="relative mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div
-          data-gsap="showcase-shell"
-          className="landing-terminal-shell relative overflow-hidden rounded-[2rem] p-5 text-white sm:p-7"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--l-term-glow-b),transparent_30%),radial-gradient(circle_at_bottom_left,var(--l-term-glow-a),transparent_36%)]"
-          />
-          <div className="relative">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
-              <div className="flex items-center gap-2">
-                <span className="size-2.5 rounded-full bg-[#f87171]" />
-                <span className="size-2.5 rounded-full bg-[#fbbf24]" />
-                <span className="size-2.5 rounded-full bg-[#4ade80]" />
+        <div className="relative mt-14 grid gap-12 lg:grid-cols-[1.16fr_0.84fr] lg:gap-16">
+          <div className="lg:sticky lg:top-28 lg:h-fit">
+            <div
+              data-gsap="showcase-shell"
+              data-showcase-sticky
+              className="landing-terminal-shell relative overflow-hidden rounded-xl p-2 text-white sm:p-3"
+            >
+              <div className="flex items-center justify-between border-b border-white/9 px-3 py-3">
+                <div className="flex items-center gap-2">
+                  <span className="size-2.5 rounded-full bg-[#ff6b6b]" />
+                  <span className="size-2.5 rounded-full bg-[#ffd166]" />
+                  <span className="size-2.5 rounded-full bg-[#70e000]" />
+                </div>
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  <TerminalSquare className="size-3.5" />
+                  {copy.sessionLabel}
+                </div>
               </div>
-              <div
-                className={cn(
-                  "flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-1",
-                  shellLabelClassName,
-                )}
-              >
-                <TerminalSquare className="size-3.5" />
-                {copy.sessionLabel}
+
+              <LandingShowcaseTerminal key={locale} copy={copy.terminal} />
+
+              <div className="grid grid-cols-3 border-t border-white/8 font-mono text-[9px] uppercase tracking-[0.12em] text-white/36 sm:text-[10px]">
+                <span className="border-r border-white/8 px-3 py-3">
+                  scope / repo
+                </span>
+                <span className="border-r border-white/8 px-3 py-3">
+                  diff / ready
+                </span>
+                <span className="px-3 py-3 text-[#9ef01a]">
+                  state / safe
+                </span>
               </div>
             </div>
 
-            <div className="grid gap-6 pt-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <LandingShowcaseTerminal key={locale} copy={copy.terminal} />
+            <div className="mt-4 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+              <span>scroll trace</span>
+              <span className="h-px flex-1 bg-[var(--l-line)]">
+                <span
+                  data-showcase-progress
+                  className="block h-full origin-left bg-[linear-gradient(90deg,var(--l-spectrum-1),var(--l-spectrum-3))]"
+                />
+              </span>
+              <span>04</span>
+            </div>
+          </div>
 
-              <div className="space-y-3">
-                <div
-                  data-gsap="showcase-note"
-                  className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5"
-                >
-                  <p className={noteEyebrowClassName}>{copy.whyEyebrow}</p>
-                  <p className="mt-3 text-lg font-semibold tracking-tight text-white">
-                    {copy.whyTitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-white/68">
-                    {copy.whyDescription}
-                  </p>
-                </div>
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute bottom-0 left-[7px] top-0 w-px bg-[var(--l-line)]"
+            />
 
-                {copy.notes.map((note, index) => {
-                  const Icon = productNoteIcons[index];
-
-                  if (!Icon) {
-                    return null;
-                  }
-
-                  return (
-                    <div
-                      key={note.title}
-                      data-gsap="showcase-note"
-                      className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="flex size-10 items-center justify-center rounded-2xl bg-white/10 text-[var(--l-accent-soft)]">
-                          <Icon className="size-4" />
-                        </span>
-                        <div>
-                          <p className="text-sm font-semibold text-white">
-                            {note.title}
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-white/65">
-                            {note.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+            <article
+              data-story-step
+              className="landing-story-card relative min-h-[42vh] pb-16 pl-10 pt-2 lg:min-h-[52vh]"
+            >
+              <span className="landing-story-node" />
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]">
+                01 / {copy.whyEyebrow}
+              </p>
+              <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+                {copy.whyTitle}
+              </h3>
+              <p className="mt-5 max-w-lg text-base leading-8 text-muted-foreground">
+                {copy.whyDescription}
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--l-line)] bg-[var(--l-line)] font-mono text-[10px] uppercase tracking-[0.12em]">
+                <span className="bg-[var(--l-surface)] p-4 text-muted-foreground">
+                  raw chat
+                  <strong className="mt-2 block text-base text-foreground">
+                    unbounded
+                  </strong>
+                </span>
+                <span className="bg-[var(--l-surface)] p-4 text-muted-foreground">
+                  apsara
+                  <strong className="mt-2 block text-base text-[var(--l-accent)]">
+                    repo-bound
+                  </strong>
+                </span>
               </div>
+            </article>
+
+            {copy.notes.map((note, index) => {
+              const Icon = productNoteIcons[index];
+
+              if (!Icon) {
+                return null;
+              }
+
+              return (
+                <article
+                  key={note.title}
+                  data-story-step
+                  className="landing-story-card relative min-h-[42vh] pb-16 pl-10 pt-2 lg:min-h-[52vh]"
+                >
+                  <span className="landing-story-node" />
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]">
+                    0{index + 2} / checkpoint
+                  </p>
+                  <div className="mt-5 flex items-center gap-4">
+                    <span className="landing-feature-icon flex size-11 items-center justify-center rounded-lg">
+                      <Icon className="size-5" />
+                    </span>
+                    <h3 className="font-heading text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+                      {note.title}
+                    </h3>
+                  </div>
+                  <p className="mt-5 max-w-lg text-base leading-8 text-muted-foreground">
+                    {note.description}
+                  </p>
+
+                  <div className="mt-8 rounded-lg border border-[var(--l-line)] bg-[var(--l-surface)]/70 p-5 font-mono text-xs shadow-[inset_0_1px_0_var(--l-inset)]">
+                    <p className="text-muted-foreground">
+                      <span className="text-[var(--l-spectrum-1)]">●</span>{" "}
+                      agent.event
+                    </p>
+                    <p className="mt-3 text-foreground/80">
+                      <span className="text-[var(--l-accent)]">status</span>
+                      <span className="text-muted-foreground">:</span>{" "}
+                      {index === 0
+                        ? '"awaiting_review"'
+                        : index === 1
+                          ? '"details_available"'
+                          : '"context_persisted"'}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+
+            <div
+              data-gsap="showcase-tail"
+              className="relative ml-10 border-l-2 border-[var(--l-spectrum-1)] bg-[var(--l-surface)]/70 p-6 backdrop-blur-lg"
+            >
+              <div className="flex items-center gap-2 text-[var(--l-accent)]">
+                <Sparkles className="size-4" />
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em]">
+                  {copy.toneEyebrow}
+                </p>
+              </div>
+              <p className="mt-3 text-base leading-7 text-foreground/80">
+                {copy.toneText}
+              </p>
             </div>
           </div>
         </div>
 
-        <div
-          data-gsap-float="soft"
-          className="landing-glass-card absolute -left-2 top-36 hidden max-w-52 rounded-[1.5rem] p-4 xl:block"
-        >
+        <div className="mt-24 grid gap-6 border-t border-[var(--l-line)] pt-10 lg:grid-cols-[0.42fr_0.58fr]">
           <p
-            className={cn(
-              eyebrowClassName,
-              locale === "km" ? "text-[0.76rem]!" : "text-[10px]!",
-            )}
+            data-gsap="showcase-tail"
+            className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]"
           >
             {copy.humanLoopEyebrow}
           </p>
-          <p className="mt-3 text-sm leading-6 text-foreground/80">
-            {copy.humanLoopText}
-          </p>
-        </div>
-
-        <div
-          data-gsap-float="delayed"
-          className="landing-glass-card absolute -right-2 bottom-12 hidden rounded-[1.5rem] p-4 xl:block"
-        >
-          <div className="flex items-center gap-2 text-[var(--l-accent)]">
-            <Sparkles className="size-4" />
-            <p
-              className={cn(
-                "font-semibold",
-                locale === "km"
-                  ? "text-xs tracking-normal"
-                  : "text-[11px] uppercase tracking-[0.28em]",
-              )}
+          <div>
+            <h3
+              data-gsap="showcase-tail"
+              className="font-heading text-2xl font-bold tracking-[-0.03em] text-foreground sm:text-4xl"
             >
-              {copy.toneEyebrow}
+              {copy.tailTitle}
+            </h3>
+            <p
+              data-gsap="showcase-tail"
+              className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
+            >
+              {copy.tailDescription}
+            </p>
+            <p
+              data-gsap="showcase-tail"
+              className="mt-5 max-w-2xl font-mono text-xs leading-6 text-[var(--l-accent)]"
+            >
+              // {copy.humanLoopText}
             </p>
           </div>
-          <p className="mt-2 max-w-48 text-sm leading-6 text-foreground/80">
-            {copy.toneText}
-          </p>
         </div>
-      </div>
-
-      <div className="relative z-10 mx-auto mt-16 max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <h3
-          data-gsap="showcase-tail"
-          className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
-        >
-          {copy.tailTitle}
-        </h3>
-        <p
-          data-gsap="showcase-tail"
-          className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg"
-        >
-          {copy.tailDescription}
-        </p>
       </div>
     </section>
   );
