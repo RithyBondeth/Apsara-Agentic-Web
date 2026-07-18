@@ -29,7 +29,7 @@ export default function LandingFeatures({
 }: LandingFeaturesProps) {
   const eyebrowClassName = cn(
     locale === "km"
-      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      ? "text-[0.82rem] font-semibold text-[var(--l-accent)]"
       : "landing-eyebrow",
   );
 
@@ -76,8 +76,10 @@ export default function LandingFeatures({
               <article
                 key={feature.title}
                 data-gsap="feature-card"
-                className="landing-glass-card group rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_oklch(1_0_0/0.65),0_32px_80px_oklch(0.34_0.02_248/0.10),0_8px_24px_oklch(0.62_0.14_71/0.10)] hover:border-[oklch(0.86_0.020_78/0.88)]"
+                data-tilt
+                className="landing-glass-card group relative rounded-[1.75rem] p-6 transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_var(--l-inset),0_32px_80px_oklch(from_var(--l-shadow)_l_c_h/0.16),0_8px_24px_oklch(from_var(--l-accent)_l_c_h/0.14)] hover:border-[var(--l-accent)]"
               >
+                <span aria-hidden className="landing-tilt-glare" />
                 <span className="landing-feature-icon flex size-12 items-center justify-center rounded-2xl">
                   <Icon className="size-5" />
                 </span>

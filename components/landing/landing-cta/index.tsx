@@ -20,7 +20,7 @@ export default function LandingCta({
 }: LandingCtaProps) {
   const eyebrowClassName = cn(
     locale === "km"
-      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      ? "text-[0.82rem] font-semibold text-[var(--l-accent)]"
       : "landing-eyebrow",
   );
 
@@ -36,9 +36,10 @@ export default function LandingCta({
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="landing-cta-surface relative overflow-hidden rounded-[2.5rem] px-8 py-16 text-center sm:px-14 sm:py-20">
+          <span aria-hidden className="landing-cta-ring" />
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,oklch(0.80_0.13_76/0.28),transparent_70%)] blur-[60px]"
+            className="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,var(--l-glow-a),transparent_70%)] blur-[60px]"
           />
           <div className="relative">
             <p data-gsap="cta-head" className={eyebrowClassName}>
@@ -66,7 +67,7 @@ export default function LandingCta({
               <Button
                 asChild
                 size="lg"
-                className="h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.56_0.17_65),oklch(0.66_0.16_73))] px-10 text-sm font-semibold text-white shadow-[0_20px_48px_oklch(0.62_0.16_70/0.32)] transition-all hover:-translate-y-0.5 hover:shadow-[0_24px_56px_oklch(0.62_0.16_70/0.40)] sm:w-auto"
+                className="landing-btn-shimmer h-12 w-full rounded-full border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 text-sm font-semibold text-[var(--l-btn-fg)] shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
               >
                 <Link href={primaryHref}>
                   {copy.primaryCta}
@@ -77,7 +78,7 @@ export default function LandingCta({
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-12 w-full rounded-full border-[oklch(0.84_0.018_80)] bg-white/80 px-10 text-sm font-semibold text-foreground transition-all hover:bg-white hover:shadow-[0_8px_24px_oklch(0.34_0.02_248/0.06)] sm:w-auto"
+                className="h-12 w-full rounded-full border-[var(--l-line)] bg-[var(--l-surface)] px-10 text-sm font-semibold text-foreground transition-all hover:border-[var(--l-accent)] sm:w-auto"
               >
                 <Link href={secondaryHref}>{copy.secondaryCta}</Link>
               </Button>

@@ -95,6 +95,7 @@ export default function LandingPageShell({
         onLocaleChange={handleLocaleChange}
       />
       {pageContent}
+      <div aria-hidden className="landing-grain" />
       <LandingFooter brand={copy.brand} copy={copy.footer} locale={locale} />
     </main>
   );

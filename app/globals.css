@@ -48,78 +48,174 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ── Landing theme tokens ──────────────────────────────────────────────
+   Every landing color resolves from this block. A complete retheme is an
+   edit to these two blocks (:root and .dark) — components and utilities
+   reference the tokens and never hardcode a color.
+
+   Current direction — "CLI-native". The palette is taken from the actual
+   Apsara CLI rather than invented alongside it: the warm near-black of
+   the terminal, its cream type, and the iridescent spectrum of its pixel
+   wordmark. The spectrum is the signature and appears exactly once per
+   view (headline highlight, hero swash, workflow thread); the solid
+   periwinkle pulled from its end handles every interactive element.
+   ─────────────────────────────────────────────────────────────────── */
 :root {
   color-scheme: light;
-  --background: oklch(0.986 0.01 82);
-  --foreground: oklch(0.25 0.024 248);
-  --card: oklch(0.994 0.006 82 / 0.9);
-  --card-foreground: oklch(0.25 0.024 248);
-  --popover: oklch(0.994 0.006 82);
-  --popover-foreground: oklch(0.25 0.024 248);
-  --primary: oklch(0.58 0.15 67);
-  --primary-foreground: oklch(0.99 0.006 84);
-  --secondary: oklch(0.965 0.012 83);
-  --secondary-foreground: oklch(0.25 0.024 248);
-  --muted: oklch(0.962 0.01 83);
-  --muted-foreground: oklch(0.5 0.025 248);
-  --accent: oklch(0.95 0.026 79);
-  --accent-foreground: oklch(0.27 0.028 248);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.89 0.014 84 / 0.82);
-  --input: oklch(0.946 0.012 84);
-  --ring: oklch(0.58 0.15 67);
-  --chart-1: oklch(0.58 0.15 67);
-  --chart-2: oklch(0.71 0.11 76);
-  --chart-3: oklch(0.67 0.08 206);
-  --chart-4: oklch(0.58 0.08 152);
-  --chart-5: oklch(0.4 0.04 248);
+
+  /* Surfaces — warm paper, panels brighter than the ground. */
+  --l-ground: oklch(0.977 0.007 81);
+  --l-surface: oklch(1 0 0);
+  --l-surface-high: oklch(1 0 0);
+  --l-ink: oklch(0.203 0.008 297);
+  --l-ink-muted: oklch(0.518 0.01 85);
+  --l-line: oklch(0.902 0.013 82);
+
+  /* Interactive */
+  --l-accent: oklch(0.511 0.23 277);
+  --l-accent-strong: oklch(0.457 0.215 277);
+  --l-accent-soft: oklch(0.68 0.158 277);
+  --l-on-accent: oklch(1 0 0);
+
+  /* Signature spectrum — darkened so it stays legible on paper. */
+  --l-spectrum-1: oklch(0.555 0.146 49);
+  --l-spectrum-2: oklch(0.592 0.218 1);
+  --l-spectrum-3: oklch(0.541 0.247 293);
+  --l-spectrum-4: oklch(0.511 0.23 277);
+
+  /* Derived effects */
+  --l-btn-from: var(--l-accent-strong);
+  --l-btn-to: var(--l-accent);
+  --l-btn-fg: var(--l-on-accent);
+  --l-btn-shadow: oklch(0.511 0.23 277 / 0.3);
+  --l-glow-a: oklch(0.541 0.247 293 / 0.12);
+  --l-glow-b: oklch(0.555 0.146 49 / 0.1);
+  --l-glow-center: oklch(0.511 0.23 277 / 0.07);
+  --l-tile-from: oklch(0.958 0.019 280);
+  --l-tile-to: oklch(0.927 0.031 280);
+  --l-tile-fg: var(--l-accent);
+  --l-term-top: oklch(0.214 0.002 68);
+  --l-term-bottom: oklch(0.155 0.002 90);
+  --l-term-glow-a: oklch(0.74 0.162 309 / 0.14);
+  --l-term-glow-b: oklch(0.891 0.147 91 / 0.1);
+  --l-term-line: oklch(0.319 0.008 75);
+  --l-dot: oklch(0.203 0.008 297 / 0.14);
+  --l-shadow: oklch(0.203 0.008 297);
+  --l-glass-from: oklch(1 0 0 / 0.9);
+  --l-glass-to: oklch(1 0 0 / 0.96);
+  --l-inset: oklch(1 0 0 / 0.75);
+
+  --background: var(--l-ground);
+  --foreground: var(--l-ink);
+  --card: var(--l-surface);
+  --card-foreground: var(--l-ink);
+  --popover: var(--l-surface);
+  --popover-foreground: var(--l-ink);
+  --primary: var(--l-accent);
+  --primary-foreground: var(--l-on-accent);
+  --secondary: oklch(0.962 0.006 82);
+  --secondary-foreground: var(--l-ink);
+  --muted: oklch(0.962 0.006 82);
+  --muted-foreground: var(--l-ink-muted);
+  --accent: oklch(0.958 0.019 280);
+  --accent-foreground: var(--l-ink);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.902 0.013 82 / 0.9);
+  --input: oklch(0.95 0.008 82);
+  --ring: var(--l-accent);
+  --chart-1: var(--l-spectrum-4);
+  --chart-2: var(--l-spectrum-3);
+  --chart-3: var(--l-spectrum-2);
+  --chart-4: var(--l-spectrum-1);
+  --chart-5: var(--l-ink-muted);
   --radius: 1rem;
   --font-sans: var(--font-ubuntu);
   --font-mono: var(--font-ibm-plex-mono);
   --font-heading: var(--font-ubuntu);
-  --sidebar: oklch(0.986 0.01 82);
-  --sidebar-foreground: oklch(0.25 0.024 248);
-  --sidebar-primary: oklch(0.58 0.15 67);
-  --sidebar-primary-foreground: oklch(0.99 0.006 84);
-  --sidebar-accent: oklch(0.965 0.012 83);
-  --sidebar-accent-foreground: oklch(0.25 0.024 248);
-  --sidebar-border: oklch(0.89 0.014 84 / 0.82);
-  --sidebar-ring: oklch(0.58 0.15 67);
+  --sidebar: var(--l-surface);
+  --sidebar-foreground: var(--l-ink);
+  --sidebar-primary: var(--l-accent);
+  --sidebar-primary-foreground: var(--l-on-accent);
+  --sidebar-accent: oklch(0.958 0.019 280);
+  --sidebar-accent-foreground: var(--l-ink);
+  --sidebar-border: oklch(0.902 0.013 82 / 0.9);
+  --sidebar-ring: var(--l-accent);
 }
 
 .dark {
   color-scheme: dark;
-  --background: oklch(0.13 0.014 248);
-  --foreground: oklch(0.93 0.008 82);
-  --card: oklch(0.17 0.016 248 / 0.92);
-  --card-foreground: oklch(0.93 0.008 82);
-  --popover: oklch(0.17 0.016 248);
-  --popover-foreground: oklch(0.93 0.008 82);
-  --primary: oklch(0.65 0.15 67);
-  --primary-foreground: oklch(0.13 0.014 248);
-  --secondary: oklch(0.20 0.016 248);
-  --secondary-foreground: oklch(0.93 0.008 82);
-  --muted: oklch(0.20 0.016 248);
-  --muted-foreground: oklch(0.60 0.016 248);
-  --accent: oklch(0.22 0.024 72);
-  --accent-foreground: oklch(0.93 0.008 82);
+
+  /* The CLI's own canvas: warm near-black with cream type. */
+  --l-ground: oklch(0.177 0.002 107);
+  --l-surface: oklch(0.214 0.002 68);
+  --l-surface-high: oklch(0.252 0.004 85);
+  --l-ink: oklch(0.955 0.014 74);
+  --l-ink-muted: oklch(0.715 0.019 81);
+  --l-line: oklch(0.319 0.008 75);
+
+  --l-accent: oklch(0.739 0.135 276);
+  --l-accent-strong: oklch(0.628 0.172 275);
+  --l-accent-soft: oklch(0.822 0.089 277);
+  --l-on-accent: oklch(0.177 0.002 107);
+
+  /* Full-brightness spectrum, straight off the pixel wordmark. */
+  --l-spectrum-1: oklch(0.891 0.147 91);
+  --l-spectrum-2: oklch(0.795 0.116 40);
+  --l-spectrum-3: oklch(0.764 0.141 344);
+  --l-spectrum-4: oklch(0.739 0.135 276);
+
+  --l-btn-from: var(--l-accent-strong);
+  --l-btn-to: var(--l-accent);
+  --l-btn-fg: var(--l-on-accent);
+  --l-btn-shadow: oklch(0.628 0.172 275 / 0.45);
+  --l-glow-a: oklch(0.74 0.162 309 / 0.2);
+  --l-glow-b: oklch(0.891 0.147 91 / 0.12);
+  --l-glow-center: oklch(0.739 0.135 276 / 0.14);
+  --l-tile-from: oklch(0.269 0.028 291);
+  --l-tile-to: oklch(0.246 0.023 288);
+  --l-tile-fg: var(--l-accent-soft);
+  --l-term-top: oklch(0.214 0.002 68);
+  --l-term-bottom: oklch(0.155 0.002 90);
+  --l-term-glow-a: oklch(0.74 0.162 309 / 0.16);
+  --l-term-glow-b: oklch(0.891 0.147 91 / 0.1);
+  --l-term-line: oklch(0.319 0.008 75);
+  --l-dot: oklch(0.9 0.01 85 / 0.09);
+  --l-shadow: oklch(0.05 0.002 90);
+  --l-glass-from: oklch(0.252 0.004 85 / 0.85);
+  --l-glass-to: oklch(0.214 0.002 68 / 0.95);
+  --l-inset: oklch(1 0 0 / 0.06);
+
+  --background: var(--l-ground);
+  --foreground: var(--l-ink);
+  --card: var(--l-surface);
+  --card-foreground: var(--l-ink);
+  --popover: var(--l-surface);
+  --popover-foreground: var(--l-ink);
+  --primary: var(--l-accent);
+  --primary-foreground: var(--l-on-accent);
+  --secondary: var(--l-surface-high);
+  --secondary-foreground: var(--l-ink);
+  --muted: var(--l-surface-high);
+  --muted-foreground: var(--l-ink-muted);
+  --accent: oklch(0.269 0.028 291);
+  --accent-foreground: var(--l-ink);
   --destructive: oklch(0.65 0.22 25);
-  --border: oklch(0.28 0.018 248 / 0.7);
-  --input: oklch(0.22 0.018 248);
-  --ring: oklch(0.65 0.15 67);
-  --chart-1: oklch(0.65 0.15 67);
-  --chart-2: oklch(0.74 0.11 76);
-  --chart-3: oklch(0.67 0.08 206);
-  --chart-4: oklch(0.62 0.09 152);
-  --chart-5: oklch(0.55 0.05 248);
-  --sidebar: oklch(0.15 0.015 248);
-  --sidebar-foreground: oklch(0.93 0.008 82);
-  --sidebar-primary: oklch(0.65 0.15 67);
-  --sidebar-primary-foreground: oklch(0.13 0.014 248);
-  --sidebar-accent: oklch(0.20 0.016 248);
-  --sidebar-accent-foreground: oklch(0.93 0.008 82);
-  --sidebar-border: oklch(0.28 0.018 248 / 0.7);
-  --sidebar-ring: oklch(0.65 0.15 67);
+  --border: oklch(0.319 0.008 75 / 0.8);
+  --input: oklch(0.28 0.006 80);
+  --ring: var(--l-accent);
+  --chart-1: var(--l-spectrum-4);
+  --chart-2: var(--l-spectrum-3);
+  --chart-3: var(--l-spectrum-2);
+  --chart-4: var(--l-spectrum-1);
+  --chart-5: var(--l-ink-muted);
+  --sidebar: var(--l-surface);
+  --sidebar-foreground: var(--l-ink);
+  --sidebar-primary: var(--l-accent);
+  --sidebar-primary-foreground: var(--l-on-accent);
+  --sidebar-accent: var(--l-surface-high);
+  --sidebar-accent-foreground: var(--l-ink);
+  --sidebar-border: oklch(0.319 0.008 75 / 0.8);
+  --sidebar-ring: var(--l-accent);
 }
 
 html[lang="km"] {
@@ -176,69 +272,71 @@ html[lang="km"] {
 }
 
 @utility landing-dot-pattern {
-  background-image:
-    radial-gradient(circle, oklch(0.34 0.02 248 / 0.18) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--l-dot) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 @utility landing-nav-bar {
-  background:
-    linear-gradient(180deg, oklch(1 0.004 82 / 0.88), oklch(0.986 0.01 82 / 0.95));
-  border: 1px solid oklch(0.91 0.012 84 / 0.9);
+  background: linear-gradient(180deg, var(--l-glass-from), var(--l-glass-to));
+  border: 1px solid var(--l-line);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.6),
-    0 8px 32px oklch(0.34 0.02 248 / 0.08),
-    0 1px 4px oklch(0.34 0.02 248 / 0.04);
+    inset 0 1px 0 var(--l-inset),
+    0 8px 32px oklch(from var(--l-shadow) l c h / 0.14),
+    0 1px 4px oklch(from var(--l-shadow) l c h / 0.07);
   backdrop-filter: blur(24px);
 }
 
 @utility landing-glass-card {
-  background:
-    linear-gradient(160deg, oklch(1 0.003 82 / 0.88), oklch(0.990 0.007 84 / 0.96));
-  border: 1px solid oklch(0.91 0.013 84 / 0.85);
+  background: linear-gradient(160deg, var(--l-glass-from), var(--l-glass-to));
+  border: 1px solid var(--l-line);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.65),
-    0 24px 60px oklch(0.34 0.02 248 / 0.08),
-    0 4px 16px oklch(0.34 0.02 248 / 0.04);
+    inset 0 1px 0 var(--l-inset),
+    0 24px 60px oklch(from var(--l-shadow) l c h / 0.12),
+    0 4px 16px oklch(from var(--l-shadow) l c h / 0.06);
   backdrop-filter: blur(20px);
 }
 
 @utility landing-feature-icon {
-  background: linear-gradient(145deg, oklch(0.97 0.034 78), oklch(0.93 0.048 71));
+  background: linear-gradient(145deg, var(--l-tile-from), var(--l-tile-to));
   box-shadow:
-    inset 0 1px 0 oklch(1 0.004 85 / 0.75),
-    0 6px 18px oklch(0.62 0.14 71 / 0.24);
-  color: oklch(0.50 0.17 64);
+    inset 0 1px 0 var(--l-inset),
+    0 6px 18px oklch(from var(--l-accent) l c h / 0.24);
+  color: var(--l-tile-fg);
+}
+
+@utility landing-step-badge {
+  background: linear-gradient(145deg, var(--l-tile-from), var(--l-tile-to));
+  box-shadow:
+    inset 0 1px 0 var(--l-inset),
+    0 8px 22px oklch(from var(--l-accent) l c h / 0.26);
+  color: var(--l-tile-fg);
 }
 
 @utility landing-cta-surface {
-  background: linear-gradient(
-    148deg,
-    oklch(0.975 0.030 80 / 0.94),
-    oklch(0.970 0.022 74 / 0.97)
-  );
-  border: 1px solid oklch(0.87 0.022 78 / 0.72);
+  background: linear-gradient(148deg, var(--l-glass-from), var(--l-glass-to));
+  border: 1px solid var(--l-line);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.78),
-    0 40px 100px oklch(0.62 0.14 71 / 0.16),
-    0 8px 32px oklch(0.34 0.02 248 / 0.06);
+    inset 0 1px 0 var(--l-inset),
+    0 40px 100px oklch(from var(--l-accent) l c h / 0.16),
+    0 8px 32px oklch(from var(--l-shadow) l c h / 0.08);
 }
 
 @utility landing-terminal-shell {
   background:
-    radial-gradient(circle at top right, oklch(0.78 0.11 76 / 0.14), transparent 30%),
-    radial-gradient(circle at bottom left, oklch(0.65 0.08 206 / 0.15), transparent 34%),
-    linear-gradient(180deg, oklch(0.27 0.03 252), oklch(0.19 0.02 250));
-  border: 1px solid oklch(0.41 0.05 246 / 0.68);
-  box-shadow: 0 28px 90px oklch(0.19 0.03 249 / 0.28);
+    radial-gradient(circle at top right, var(--l-term-glow-b), transparent 32%),
+    radial-gradient(circle at bottom left, var(--l-term-glow-a), transparent 36%),
+    linear-gradient(180deg, var(--l-term-top), var(--l-term-bottom));
+  border: 1px solid var(--l-term-line);
+  box-shadow: 0 28px 90px oklch(from var(--l-shadow) l c h / 0.4);
 }
 
 @utility landing-gradient-text {
   background-image: linear-gradient(
     125deg,
-    oklch(0.50 0.19 61),
-    oklch(0.63 0.18 70) 50%,
-    oklch(0.70 0.14 78)
+    var(--l-spectrum-1),
+    var(--l-spectrum-2) 38%,
+    var(--l-spectrum-3) 70%,
+    var(--l-spectrum-4)
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -246,7 +344,7 @@ html[lang="km"] {
 }
 
 @utility landing-eyebrow {
-  color: oklch(0.54 0.11 68);
+  color: var(--l-accent);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.28em;
@@ -273,18 +371,197 @@ html[lang="km"] {
   animation: terminal-caret 1s steps(1, end) infinite;
 }
 
-/* ── Off-screen rendering skip for below-fold sections ─────────────────────
-   content-visibility:auto tells the browser it can skip painting & layout
-   for sections that are not near the viewport, which dramatically cuts
-   initial render work. contain-intrinsic-size prevents scroll-height jank
-   by giving the browser a stable placeholder size before each section
-   actually renders.
+/* ── Landing signature motion & texture ─────────────────────────────────
+   Scroll-scrubbed animations (thread draw, terminal straighten) need real
+   layout below the fold, so sections stay fully rendered — no
+   content-visibility skipping here.
    ─────────────────────────────────────────────────────────────────────── */
-#features,
-#workflow,
-#cta {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 700px;
+
+/* Golden aurora — slow-turning silk sheen behind the hero */
+.landing-aurora {
+  pointer-events: none;
+  position: absolute;
+  inset: -35%;
+  background: conic-gradient(
+    from 0deg at 50% 42%,
+    var(--l-glow-a),
+    transparent 80deg,
+    var(--l-glow-b) 150deg,
+    var(--l-glow-center) 230deg,
+    var(--l-glow-a) 300deg,
+    var(--l-glow-a)
+  );
+  filter: blur(80px);
+  opacity: 0.45;
+  will-change: transform;
+  animation: landing-aurora-turn 48s linear infinite;
+}
+
+@keyframes landing-aurora-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dark .landing-aurora {
+  opacity: 0.5;
+}
+
+/* Film grain over the whole page — adds material texture to the cream */
+.landing-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.dark .landing-grain {
+  opacity: 0.06;
+}
+
+/* SplitText fragments must carry the gradient themselves — background-clip
+   does not survive being split into child spans. */
+.landing-gradient-text :is(.landing-split-char, .landing-split-word) {
+  background-image: linear-gradient(
+    125deg,
+    var(--l-spectrum-1),
+    var(--l-spectrum-2) 38%,
+    var(--l-spectrum-3) 70%,
+    var(--l-spectrum-4)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 3D tilt cards — GSAP owns `transform`; the CSS hover lift uses the
+   separate `translate` property so the two never fight. */
+[data-tilt] {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.landing-tilt-glare {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(
+    480px circle at var(--glare-x, 50%) var(--glare-y, 40%),
+    oklch(1 0 0 / 0.5),
+    transparent 55%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 0.35s ease;
+}
+
+[data-tilt]:hover .landing-tilt-glare {
+  opacity: 1;
+}
+
+.dark .landing-tilt-glare {
+  background: radial-gradient(
+    480px circle at var(--glare-x, 50%) var(--glare-y, 40%),
+    oklch(1 0 0 / 0.22),
+    transparent 55%
+  );
+}
+
+/* Scroll progress hairline inside the nav pill */
+.landing-nav-progress {
+  pointer-events: none;
+  position: absolute;
+  bottom: 4px;
+  left: 26px;
+  right: 26px;
+  height: 2px;
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  opacity: 0.9;
+  background: linear-gradient(
+    90deg,
+    var(--l-spectrum-4),
+    var(--l-spectrum-3) 55%,
+    var(--l-spectrum-1)
+  );
+}
+
+/* Rotating conic border around the CTA surface */
+@property --landing-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.landing-cta-ring {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--landing-ring-angle),
+    transparent 0deg,
+    var(--l-spectrum-4) 40deg,
+    var(--l-spectrum-3) 88deg,
+    transparent 150deg,
+    transparent 205deg,
+    var(--l-spectrum-1) 265deg,
+    transparent 330deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: landing-ring-turn 9s linear infinite;
+}
+
+@keyframes landing-ring-turn {
+  to {
+    --landing-ring-angle: 360deg;
+  }
+}
+
+/* Shimmer sweep across primary CTAs */
+.landing-btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-btn-shimmer::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    oklch(1 0 0 / 0.32) 50%,
+    transparent 68%
+  );
+  transform: translateX(-160%);
+  animation: landing-shimmer-sweep 3.6s ease-in-out infinite;
+}
+
+@keyframes landing-shimmer-sweep {
+  0%,
+  58% {
+    transform: translateX(-160%);
+  }
+  92%,
+  100% {
+    transform: translateX(160%);
+  }
 }
 
 /* Blur-heavy decorative glows — promote to their own compositor layer so
@@ -296,59 +573,10 @@ html[lang="km"] {
 }
 
 /* ── Dark mode overrides for landing utilities ── */
-.dark .landing-dot-pattern {
-  background-image:
-    radial-gradient(circle, oklch(0.75 0.015 248 / 0.12) 1px, transparent 1px);
-}
-
-.dark .landing-nav-bar {
-  background:
-    linear-gradient(180deg, oklch(0.18 0.018 248 / 0.88), oklch(0.15 0.016 248 / 0.95));
-  border-color: oklch(0.32 0.022 248 / 0.7);
-  box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.06),
-    0 8px 32px oklch(0.08 0.01 248 / 0.4),
-    0 1px 4px oklch(0.08 0.01 248 / 0.2);
-}
-
-.dark .landing-glass-card {
-  background:
-    linear-gradient(160deg, oklch(0.20 0.018 248 / 0.88), oklch(0.17 0.016 248 / 0.96));
-  border-color: oklch(0.30 0.020 248 / 0.7);
-  box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.05),
-    0 24px 60px oklch(0.08 0.01 248 / 0.4),
-    0 4px 16px oklch(0.08 0.01 248 / 0.2);
-}
-
-.dark .landing-feature-icon {
-  background: linear-gradient(145deg, oklch(0.25 0.06 70), oklch(0.22 0.07 65));
-  box-shadow:
-    inset 0 1px 0 oklch(1 0.004 85 / 0.1),
-    0 6px 18px oklch(0.55 0.14 67 / 0.3);
-  color: oklch(0.75 0.15 67);
-}
-
-.dark .landing-cta-surface {
-  background: linear-gradient(
-    148deg,
-    oklch(0.19 0.024 72 / 0.94),
-    oklch(0.17 0.020 248 / 0.97)
-  );
-  border-color: oklch(0.34 0.04 70 / 0.6);
-  box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.06),
-    0 40px 100px oklch(0.55 0.14 67 / 0.14),
-    0 8px 32px oklch(0.08 0.01 248 / 0.3);
-}
-
-.dark .landing-eyebrow {
-  color: oklch(0.68 0.12 70);
-}
 
 .dark ::selection {
-  background: oklch(0.55 0.14 67 / 0.35);
-  color: oklch(0.95 0.006 82);
+  background: oklch(from var(--l-accent) l c h / 0.4);
+  color: var(--l-ink);
 }
 
 @layer base {
@@ -362,11 +590,25 @@ html[lang="km"] {
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans), sans-serif;
+    /* Keep the washes light — the sandstone ground must stay warm rather
+       than drifting to a cool lavender-grey under the indigo. */
     background-image:
-      radial-gradient(ellipse at 14% 0%, oklch(0.84 0.13 76 / 0.32), transparent 28%),
-      radial-gradient(ellipse at 86% 4%, oklch(0.78 0.11 70 / 0.22), transparent 26%),
-      radial-gradient(circle at 50% 55%, oklch(0.85 0.07 80 / 0.09), transparent 42%),
-      linear-gradient(180deg, oklch(0.99 0.006 82), oklch(0.982 0.01 86));
+      radial-gradient(
+        ellipse at 14% 0%,
+        var(--l-glow-a),
+        transparent 30%
+      ),
+      radial-gradient(
+        ellipse at 86% 4%,
+        var(--l-glow-b),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 50% 55%,
+        var(--l-glow-center),
+        transparent 46%
+      ),
+      var(--l-ground);
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     /* Prevent rubber-band scroll from leaking into parent frames / triggering
@@ -375,10 +617,22 @@ html[lang="km"] {
   }
   .dark body {
     background-image:
-      radial-gradient(ellipse at 14% 0%, oklch(0.55 0.14 67 / 0.10), transparent 28%),
-      radial-gradient(ellipse at 86% 4%, oklch(0.48 0.12 65 / 0.08), transparent 26%),
-      radial-gradient(circle at 50% 55%, oklch(0.42 0.06 200 / 0.06), transparent 42%),
-      linear-gradient(180deg, oklch(0.14 0.016 248), oklch(0.12 0.014 248));
+      radial-gradient(
+        ellipse at 14% 0%,
+        var(--l-glow-a),
+        transparent 30%
+      ),
+      radial-gradient(
+        ellipse at 86% 4%,
+        var(--l-glow-b),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 50% 55%,
+        var(--l-glow-center),
+        transparent 44%
+      ),
+      var(--l-ground);
   }
   h1,
   h2,
@@ -387,8 +641,8 @@ html[lang="km"] {
     text-wrap: balance;
   }
   ::selection {
-    background: oklch(0.76 0.11 76 / 0.28);
-    color: oklch(0.25 0.024 248);
+    background: oklch(from var(--l-accent) l c h / 0.24);
+    color: var(--l-ink);
   }
   a {
     text-decoration: none;

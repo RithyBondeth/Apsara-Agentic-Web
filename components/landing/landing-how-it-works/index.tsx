@@ -14,7 +14,7 @@ export default function LandingHowItWorks({
 }: LandingHowItWorksProps) {
   const eyebrowClassName = cn(
     locale === "km"
-      ? "text-[0.82rem] font-semibold text-[oklch(0.54_0.11_68)]"
+      ? "text-[0.82rem] font-semibold text-[var(--l-accent)]"
       : "landing-eyebrow",
   );
 
@@ -29,11 +29,11 @@ export default function LandingHowItWorks({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-[-10%] top-1/2 h-128 w-lg -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.76_0.11_76/0.1),transparent_72%)] blur-[180px]"
+        className="pointer-events-none absolute left-[-10%] top-1/2 h-128 w-lg -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_72%)] blur-[180px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-10%] top-1/3 h-88 w-88 rounded-full bg-[radial-gradient(circle,oklch(0.69_0.08_206/0.08),transparent_72%)] blur-[140px]"
+        className="pointer-events-none absolute right-[-10%] top-1/3 h-88 w-88 rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_72%)] blur-[140px]"
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -55,19 +55,81 @@ export default function LandingHowItWorks({
           </p>
         </div>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-10">
+        <div className="relative mt-14 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-10">
+          {/* The golden thread — the session that keeps its thread through
+              workspace, work, and review. Drawn by scroll; a bead of light
+              travels it. Fully drawn by default so pages without the
+              animation orchestrator still look complete. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 hidden h-16 md:block"
+          >
+            <svg
+              className="h-full w-full overflow-visible"
+              viewBox="0 0 1000 64"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <defs>
+                <linearGradient
+                  id="landing-thread-grad"
+                  x1="0"
+                  y1="0"
+                  x2="1000"
+                  y2="0"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="var(--l-spectrum-1)" />
+                  <stop offset="0.38" stopColor="var(--l-spectrum-2)" />
+                  <stop offset="0.7" stopColor="var(--l-spectrum-3)" />
+                  <stop offset="1" stopColor="var(--l-spectrum-4)" />
+                </linearGradient>
+                <filter
+                  id="landing-thread-blur"
+                  x="-20%"
+                  y="-300%"
+                  width="140%"
+                  height="700%"
+                >
+                  <feGaussianBlur stdDeviation="4" />
+                </filter>
+              </defs>
+              <path
+                data-thread-glow
+                d="M 20 32 C 120 -4, 240 66, 360 32 C 470 2, 560 60, 690 32 C 800 8, 900 44, 985 24"
+                stroke="url(#landing-thread-grad)"
+                strokeWidth="7"
+                strokeLinecap="round"
+                opacity="0.3"
+                filter="url(#landing-thread-blur)"
+              />
+              <path
+                data-thread
+                d="M 20 32 C 120 -4, 240 66, 360 32 C 470 2, 560 60, 690 32 C 800 8, 900 44, 985 24"
+                stroke="url(#landing-thread-grad)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <circle
+                data-thread-bead
+                r="5"
+                fill="var(--l-spectrum-2)"
+                className="opacity-0"
+                filter="url(#landing-thread-blur)"
+              />
+            </svg>
+          </div>
+
           {copy.steps.map((step, index) => (
             <div
               key={workflowNumbers[index] ?? step.title}
               data-gsap="workflow-step"
               className="relative text-center md:text-left"
             >
-              {index < copy.steps.length - 1 ? (
-                <div className="hidden md:block absolute left-[62%] top-8 h-px w-[78%] bg-linear-to-r from-[oklch(0.74_0.1_76/0.45)] to-[oklch(0.74_0.1_76/0.08)]" />
-              ) : null}
-
-              <div className="inline-flex size-16 items-center justify-center rounded-[1.5rem] bg-[linear-gradient(145deg,oklch(0.97_0.040_78),oklch(0.93_0.052_71))] shadow-[inset_0_1px_0_oklch(1_0.004_85/0.8),0_8px_22px_oklch(0.62_0.14_71/0.26)]">
-                <span className="text-2xl font-bold tracking-tight text-[oklch(0.48_0.16_64)]">
+              <div
+                data-workflow-badge
+                className="landing-step-badge inline-flex size-16 items-center justify-center rounded-[1.5rem]">
+                <span className="text-2xl font-bold tracking-tight text-[var(--l-tile-fg)]">
                   {workflowNumbers[index] ?? `${index + 1}`}
                 </span>
               </div>

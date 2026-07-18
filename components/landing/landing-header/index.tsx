@@ -39,15 +39,16 @@ export default function LandingHeader({
         {/* Main navbar pill */}
         <div
           data-gsap="header"
-          className="landing-nav-bar flex items-center justify-between gap-3 rounded-full px-3 py-2.5 sm:px-4 sm:py-3"
+          className="landing-nav-bar relative flex items-center justify-between gap-3 rounded-full px-3 py-2.5 sm:px-4 sm:py-3"
         >
+          <span aria-hidden data-gsap-progress className="landing-nav-progress" />
           {/* Logo */}
           <Link
             href={siteRoutes.home}
             className="flex shrink-0 items-center gap-2.5"
             onClick={() => setMobileOpen(false)}
           >
-            <span className="flex rounded-full border border-white/80 bg-white/80 px-2 py-1 shadow-sm dark:border-white/10 dark:bg-white/10">
+            <span className="flex rounded-full border border-[var(--l-line)]/60 bg-[var(--l-surface-high)]/80 px-2 py-1 shadow-sm">
               <Image
                 src={logoSrc}
                 alt={brand.logoAlt}
@@ -83,8 +84,8 @@ export default function LandingHeader({
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                   activePath === item.href
-                    ? "bg-white text-foreground shadow-sm dark:bg-white/10"
-                    : "text-muted-foreground hover:bg-white/70 hover:text-foreground dark:hover:bg-white/8",
+                    ? "bg-[var(--l-surface-high)] text-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-[var(--l-surface-high)]/70 hover:text-foreground",
                 )}
               >
                 {item.label}
@@ -98,7 +99,7 @@ export default function LandingHeader({
             <div
               role="group"
               aria-label={copy.languageSwitcherLabel}
-              className="inline-flex rounded-full border border-[oklch(0.86_0.016_84)] bg-white/70 p-1 shadow-[0_10px_24px_oklch(0.34_0.02_248/0.08)] dark:border-[oklch(0.32_0.022_248/0.7)] dark:bg-[oklch(0.20_0.016_248/0.8)] dark:shadow-none"
+              className="inline-flex rounded-full border border-[var(--l-line)] bg-[var(--l-surface-high)]/70 p-1 shadow-[0_10px_24px_oklch(from_var(--l-shadow)_l_c_h/0.1)] dark:shadow-none"
             >
               {localeOptions.map((option) => (
                 <button
@@ -109,8 +110,8 @@ export default function LandingHeader({
                   className={cn(
                     "rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
                     locale === option
-                      ? "bg-[oklch(0.58_0.15_67)] text-white shadow-sm"
-                      : "text-foreground/70 hover:bg-white hover:text-foreground dark:hover:bg-white/10",
+                      ? "bg-[var(--l-accent)] text-[var(--l-btn-fg)] shadow-sm"
+                      : "text-foreground/70 hover:bg-[var(--l-surface-high)] hover:text-foreground",
                   )}
                 >
                   {copy.localeLabels[option]}
@@ -124,7 +125,7 @@ export default function LandingHeader({
             {/* Private Alpha CTA */}
             <Button
               asChild
-              className="h-10 rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] px-5 text-sm font-semibold text-white shadow-[0_14px_36px_oklch(0.67_0.14_74/0.24)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
+              className="h-10 rounded-full border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-5 text-sm font-semibold text-[var(--l-btn-fg)] shadow-[0_14px_36px_var(--l-btn-shadow)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
             >
               <Link href={siteRoutes.privateAlpha}>
                 {copy.alphaLabel}
@@ -138,7 +139,7 @@ export default function LandingHeader({
             <div
               role="group"
               aria-label={copy.languageSwitcherLabel}
-              className="inline-flex rounded-full border border-[oklch(0.86_0.016_84)] bg-white/70 p-0.5 dark:border-[oklch(0.32_0.022_248/0.7)] dark:bg-[oklch(0.20_0.016_248/0.8)]"
+              className="inline-flex rounded-full border border-[var(--l-line)] bg-[var(--l-surface-high)]/70 p-0.5"
             >
               {localeOptions.map((option) => (
                 <button
@@ -149,8 +150,8 @@ export default function LandingHeader({
                   className={cn(
                     "rounded-full px-2.5 py-1 text-xs font-semibold transition-colors",
                     locale === option
-                      ? "bg-[oklch(0.58_0.15_67)] text-white shadow-sm"
-                      : "text-foreground/70 hover:bg-white hover:text-foreground dark:hover:bg-white/10",
+                      ? "bg-[var(--l-accent)] text-[var(--l-btn-fg)] shadow-sm"
+                      : "text-foreground/70 hover:bg-[var(--l-surface-high)] hover:text-foreground",
                   )}
                 >
                   {copy.localeLabels[option]}
@@ -163,7 +164,7 @@ export default function LandingHeader({
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              className="flex size-9 items-center justify-center rounded-full border border-[oklch(0.88_0.014_84/0.7)] bg-white/70 text-foreground/80 transition-colors hover:bg-white dark:border-[oklch(0.32_0.022_248/0.7)] dark:bg-[oklch(0.20_0.016_248/0.8)] dark:hover:bg-[oklch(0.24_0.018_248)]"
+              className="flex size-9 items-center justify-center rounded-full border border-[var(--l-line)]/70 bg-[var(--l-surface-high)]/70 text-foreground/80 transition-colors hover:bg-[var(--l-surface-high)]"
             >
               {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
             </button>
@@ -207,7 +208,7 @@ export default function LandingHeader({
             {/* Private Alpha CTA */}
             <Button
               asChild
-              className="h-11 w-full rounded-full border-0 bg-[linear-gradient(135deg,oklch(0.58_0.15_67),oklch(0.67_0.14_74))] text-sm font-semibold text-white shadow-[0_14px_36px_oklch(0.67_0.14_74/0.22)]"
+              className="h-11 w-full rounded-full border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] text-sm font-semibold text-[var(--l-btn-fg)] shadow-[0_14px_36px_var(--l-btn-shadow)]"
             >
               <Link
                 href={siteRoutes.privateAlpha}
