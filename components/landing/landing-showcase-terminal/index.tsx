@@ -9,45 +9,67 @@ type LandingShowcaseTerminalProps = {
   copy: LandingCopy["showcase"]["terminal"];
 };
 
-function Badge({
-  label,
-  variant,
-}: {
-  label: string;
-  variant: "you" | "apsara" | "ok";
-}) {
-  const styles = {
-    you: "bg-[#3168C2] text-white",
-    apsara: "bg-[#8560DB] text-white",
-    ok: "bg-[#3D9975] text-white",
-  };
-  return (
-    <span
-      className={`inline-flex shrink-0 items-center rounded px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase leading-none tracking-wide ${styles[variant]}`}
-    >
-      {label}
-    </span>
-  );
+const pixelGlyphs: Record<string, readonly string[]> = {
+  A: [".XX.", "X..X", "XXXX", "X..X", "X..X"],
+  P: ["XXX.", "X..X", "XXX.", "X...", "X..."],
+  R: ["XXX.", "X..X", "XXX.", "X.X.", "X..X"],
+  S: [".XXX", "X...", ".XX.", "...X", "XXX."],
+};
+
+const logoLeftColors = ["#78afff", "#6ec6fc", "#78d6e6", "#8adcc3", "#a2dca0"];
+const logoRightColors = ["#ffd75a", "#fcb078", "#f596aa", "#dc91eb", "#a0a0ff"];
+
+function renderPixelLetters(letters: string, row: number) {
+  return letters
+    .split("")
+    .map((letter) =>
+      (pixelGlyphs[letter]?.[row] ?? "....")
+        .split("")
+        .map((pixel) => (pixel === "X" ? "██" : "  "))
+        .join(""),
+    )
+    .join("  ");
 }
 
-function ToolCall({ tool, detail }: { tool: string; detail: string }) {
+function PixelLogo() {
   return (
-    <div className="space-y-0.5 pl-1">
-      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs">
-        <span className="text-[#7CB4FF]">◆</span>
-        <span className="font-mono text-white/65">{tool}</span>
-        <span className="text-white/25">↳</span>
-        <span className="font-mono text-white/40">{detail}</span>
-      </div>
+    <div
+      data-cli-block
+      data-pause="0"
+      className="select-none text-center font-mono text-[6px] font-black leading-[1.05] sm:text-[7px]"
+    >
+      {Array.from({ length: 5 }, (_, row) => (
+        <div key={row} className="whitespace-pre">
+          <span style={{ color: logoLeftColors[row] }}>
+            {renderPixelLetters("APS", row)}
+            {"  "}
+          </span>
+          <span style={{ color: logoRightColors[row] }}>
+            {renderPixelLetters("ARA", row)}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
 
-function ToolResult({ message }: { message: string }) {
+function SidebarHeading({
+  color,
+  icon,
+  title,
+}: {
+  color: string;
+  icon: string;
+  title: string;
+}) {
   return (
-    <div className="flex items-center gap-1.5 pl-5 text-xs">
-      <span className="text-[#78D296]">✓</span>
-      <span className="font-mono text-white/38">{message}</span>
+    <div className="flex items-center gap-1.5 font-bold" style={{ color }}>
+      <span>
+        {icon} {title}
+      </span>
+      <span className="min-w-0 flex-1 overflow-hidden whitespace-nowrap opacity-35">
+        ─────────────────
+      </span>
     </div>
   );
 }
@@ -60,7 +82,10 @@ export default function LandingShowcaseTerminal({
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const root = rootRef.current;
-    if (!root) return;
+
+    if (!root) {
+      return;
+    }
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -70,33 +95,37 @@ export default function LandingShowcaseTerminal({
       const blocks = root.querySelectorAll<HTMLElement>("[data-cli-block]");
 
       if (prefersReducedMotion) {
-        gsap.set(blocks, { autoAlpha: 1, y: 0, clearProps: "all" });
+        gsap.set(blocks, { autoAlpha: 1, clearProps: "all", y: 0 });
         return;
       }
 
-      gsap.set(blocks, { autoAlpha: 0, y: 6 });
+      gsap.set(blocks, { autoAlpha: 0, y: 5 });
 
-      const tl = gsap.timeline({ delay: 0.2, paused: true });
+      const timeline = gsap.timeline({ delay: 0.15, paused: true });
 
       blocks.forEach((block) => {
-        const pause = parseFloat(block.dataset.pause ?? "0.12");
-        tl.to(
+        timeline.to(
           block,
-          { autoAlpha: 1, y: 0, duration: 0.18, ease: "power2.out" },
-          `+=${pause}`,
+          {
+            autoAlpha: 1,
+            duration: 0.16,
+            ease: "power2.out",
+            y: 0,
+          },
+          `+=${Number(block.dataset.pause ?? "0.08")}`,
         );
       });
 
-      if (root.getBoundingClientRect().top <= window.innerHeight * 0.74) {
-        tl.play(0);
+      if (root.getBoundingClientRect().top <= window.innerHeight * 0.76) {
+        timeline.play(0);
         return;
       }
 
       ScrollTrigger.create({
         trigger: root,
         once: true,
-        onEnter: () => tl.play(0),
-        start: "top 74%",
+        onEnter: () => timeline.play(0),
+        start: "top 76%",
       });
     }, root);
 
@@ -106,239 +135,220 @@ export default function LandingShowcaseTerminal({
   return (
     <div
       ref={rootRef}
-      className="max-h-[520px] space-y-2.5 overflow-x-hidden overflow-y-auto rounded-lg border border-white/8 bg-[#090b0f] p-4 font-mono text-sm leading-6 text-white/85 scrollbar-none"
-      style={{ scrollbarWidth: "none" }}
+      className="flex h-[520px] overflow-hidden rounded-lg border border-[#242938] bg-[#090b0f] font-mono text-[#f0ece7]"
     >
       <p className="sr-only">{copy.screenReaderLabel}</p>
 
-      {/* ── Welcome banner box ── */}
-      <div
-        data-cli-block
-        data-pause="0"
-        aria-hidden
-        className="rounded border border-[#695c4e]/70 px-4 py-3 text-center space-y-2"
-      >
-        {/* Edition tag — rgb(104,170,255) */}
-        <p className="text-[10px] tracking-widest text-[#68AAFF]">
-          BONDETH EDITION · ALPHA
-        </p>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <div className="flex min-h-0 flex-1">
+          <section className="min-w-0 flex-1 overflow-hidden px-3 py-4 sm:px-4">
+            <PixelLogo />
 
-        {/* APSARA — pixel font, top-to-bottom: blue→cyan→teal→green→yellow-green */}
-        <p
-          className="text-2xl sm:text-3xl leading-tight"
-          style={{
-            fontFamily: "var(--font-pixel), monospace",
-            background:
-              "linear-gradient(180deg, #78AFFF 0%, #6EC6FC 20%, #78D6E6 40%, #8ADCC3 60%, #A2DCA0 80%, #C8D88C 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            color: "transparent",
-          }}
-        >
-          APSARA
-        </p>
+            <div
+              data-cli-block
+              data-pause="0.12"
+              className="mt-3 text-center text-[8px] leading-4 sm:text-[9px]"
+            >
+              <p className="text-[#a8accd]">
+                Elegant local coding assistance for your workspace
+              </p>
+              <p className="text-[#c8a66e]">Powered by Bondeth · v0.1.0</p>
+            </div>
 
-        {/* AGENTIC — pixel font, top-to-bottom: gold→amber→salmon→pink→purple→periwinkle */}
-        <p
-          className="text-2xl sm:text-3xl leading-tight"
-          style={{
-            fontFamily: "var(--font-pixel), monospace",
-            background:
-              "linear-gradient(180deg, #FFD75A 0%, #FFBE64 20%, #FCA282 40%, #F08CC8 60%, #C88CF8 80%, #94A2FF 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            color: "transparent",
-          }}
-        >
-          AGENTIC
-        </p>
+            <div className="mt-5 space-y-3 text-[9px] leading-[1.45] sm:text-[10px]">
+              <div
+                data-cli-block
+                data-pause="0.2"
+                className="border-l-2 border-[#6096fa] pl-2 font-bold text-[#e1e6f2]"
+              >
+                tighten the approval copy and keep the review gate intact
+              </div>
 
-        {/* Tagline — rgb(190,196,214) muted blue-gray */}
-        <p className="text-[11px] tracking-wide text-[#BEC4D6]">
-          project-first · workspace-aware · human-approved
-        </p>
+              <div data-cli-block data-pause="0.18" className="space-y-1 pl-2">
+                <p>
+                  <span className="text-[#78c896]">✓</span>{" "}
+                  <span className="text-[#b4d2ff]">read_file</span>{" "}
+                  <span className="text-[#8c8276]">142 lines read</span>
+                </p>
+                <p>
+                  <span className="text-[#78c896]">✓</span>{" "}
+                  <span className="text-[#b4d2ff]">search_codebase</span>{" "}
+                  <span className="text-[#8c8276]">6 results</span>
+                </p>
+              </div>
 
-        {/* Welcome copy */}
-        <div className="pt-1 space-y-0.5">
-          {/* Title — rgb(246,239,230) cream */}
-          <p className="text-xs font-bold text-[#F6EFE6]">
-            Welcome to Apsara Agentic
-          </p>
-          {/* Subtitle — rgb(200,192,182) taupe */}
-          <p className="text-[11px] text-[#C8C0B6]">
-            Elegant local coding assistance for your workspace
-          </p>
+              <div data-cli-block data-pause="0.18">
+                <p className="text-[#f0aa5a]">+ Thought: 3.2s</p>
+                <p className="mt-2 max-w-[42rem] text-[#f0ece7]">
+                  I found the duplicated approval copy and prepared a smaller,
+                  review-safe change.
+                </p>
+              </div>
+
+              <div
+                data-cli-block
+                data-pause="0.18"
+                className="border-l-2 border-[#f0aa5a] pl-2"
+              >
+                <p>
+                  <span className="font-bold text-[#f7c864]">Approve?</span>{" "}
+                  <span className="font-bold text-[#f7e6be]">
+                    Update file src/approval.py
+                  </span>
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  <span className="bg-[#50aa8c] px-1.5 py-0.5 font-bold text-[#11151a]">
+                    ↵ approve
+                  </span>
+                  <span className="bg-[#c86450] px-1.5 py-0.5 font-bold text-white">
+                    n reject
+                  </span>
+                  <span className="bg-[#5078c8] px-1.5 py-0.5 font-bold text-white">
+                    a always
+                  </span>
+                  <span className="bg-[#505f7d] px-1.5 py-0.5 font-bold text-white">
+                    v full diff
+                  </span>
+                </div>
+              </div>
+
+              <div
+                data-cli-block
+                data-pause="0.2"
+                className="flex items-center gap-2 text-[#7f9eff]"
+              >
+                <span className="landing-terminal-caret">⠸</span>
+                <span>Apsara is working</span>
+                <span className="text-[#8c8276]">3s</span>
+              </div>
+            </div>
+          </section>
+
+          <aside className="hidden w-[13.5rem] shrink-0 overflow-hidden border-l border-[#3d4668] bg-[#0e1015] px-3 py-3 text-[8px] leading-[1.45] text-[#8c93a6] md:block lg:w-[14rem]">
+            <div data-cli-block data-pause="0.04">
+              <p className="font-bold text-[#e1e6f2]">
+                <span className="text-[#6096fa]">◆</span> default
+              </p>
+              <p className="mt-0.5 pl-3 text-[#747b8c]">
+                resumed · 2026-07-18 22:54
+              </p>
+            </div>
+
+            <div data-cli-block data-pause="0.08" className="mt-3">
+              <SidebarHeading color="#6ec8eb" icon="◍" title="Context" />
+              <p className="mt-1.5 pl-3">
+                <span className="text-[#78c896]">▰▰</span>
+                <span className="text-[#3e4456]">▱▱▱▱▱▱▱▱</span>{" "}
+                <span className="text-[#78c896]">18%</span>
+              </p>
+              <p className="mt-1 pl-3">
+                <span className="text-[#e1e6f2]">23,040</span> tokens
+              </p>
+              <p className="pl-3">
+                <span className="text-[#82d2a0]">$0.23</span> spent
+              </p>
+            </div>
+
+            <div data-cli-block data-pause="0.08" className="mt-3">
+              <SidebarHeading color="#be96fa" icon="✦" title="Model" />
+              <p className="mt-1.5 pl-3 font-bold text-[#e1e6f2]">
+                Llama 3.2 (local)
+              </p>
+              <p className="pl-3">
+                <span className="text-[#bec8dc]">Ollama</span> ·{" "}
+                <span className="text-[#8fd2aa]">local</span>
+              </p>
+              <p className="pl-3">128k ctx</p>
+              <p className="pl-3 text-[#78c896]">✓ key set</p>
+            </div>
+
+            <div data-cli-block data-pause="0.08" className="mt-3">
+              <SidebarHeading color="#82d2a0" icon="❯" title="Session" />
+              <p className="mt-1.5 pl-3">
+                <span className="text-[#e1e6f2]">3</span> turns ·{" "}
+                <span className="text-[#e1e6f2]">6</span> messages
+              </p>
+              <p className="pl-3">
+                mode <span className="font-bold text-[#6096fa]">Build</span>
+              </p>
+              <p className="pl-3">bash off</p>
+              <p className="pl-3">last turn 5 steps · /details</p>
+            </div>
+
+            <div data-cli-block data-pause="0.08" className="mt-3">
+              <SidebarHeading color="#f0be6e" icon="⌂" title="Workspace" />
+              <p className="mt-1.5 pl-3">
+                …/Apsara Agentic/
+                <br />
+                <span className="pl-3">apsara-agentic-cli</span>
+              </p>
+            </div>
+
+            <div
+              data-cli-block
+              data-pause="0.08"
+              className="mt-3 space-y-0.5 pl-3"
+            >
+              <p>
+                <span className="font-bold text-[#8cb4ff]">/models</span>{" "}
+                switch models
+              </p>
+              <p>
+                <span className="font-bold text-[#8cb4ff]">/status</span>{" "}
+                session status
+              </p>
+              <p>
+                <span className="font-bold text-[#8cb4ff]">/help</span> all
+                commands
+              </p>
+            </div>
+
+            <div data-cli-block data-pause="0.08" className="mt-3">
+              <p>
+                <span className="text-[#78c896]">●</span>{" "}
+                <span className="font-bold text-[#e1e6f2]">Apsara</span>{" "}
+                <span className="text-[#be96fa]">v0.1.0</span>
+              </p>
+              <p className="pl-3 text-[#f0be6e]">by Bondeth</p>
+            </div>
+          </aside>
         </div>
 
-        {/* Powered by — rgb(200,166,110) amber */}
-        <p className="text-[11px] text-[#C8A66E]">Powered by Bondeth</p>
-      </div>
+        <div
+          data-cli-block
+          data-pause="0.12"
+          className="mx-2 mb-1 shrink-0 overflow-hidden rounded-lg border border-[#5a6cb4] text-[8px] sm:text-[9px]"
+        >
+          <div className="flex min-h-9">
+            <span className="w-1 shrink-0 bg-[#6096fa]" />
+            <span className="px-2 py-2 text-[#5a616e]">
+              Ask anything... &quot;What is the tech stack of this
+              project?&quot;
+            </span>
+          </div>
+          <div className="flex border-t border-[#202638]">
+            <span className="w-1 shrink-0 bg-[#6096fa]" />
+            <p className="px-2 py-1.5">
+              <span className="font-bold text-[#6096fa]">Build</span>{" "}
+              <span className="text-[#747b8c]">·</span>{" "}
+              <span className="font-bold text-[#e1e6f2]">
+                Llama 3.2 (local)
+              </span>{" "}
+              <span className="text-[#747b8c]">Ollama</span>
+            </p>
+          </div>
+        </div>
 
-      {/* ── Session info ── */}
-      <div
-        data-cli-block
-        data-pause="0.5"
-        aria-hidden
-        className="space-y-0.5 text-xs"
-      >
-        <div className="flex gap-3">
-          <span className="w-16 shrink-0 text-white/35">workspace</span>
-          <span className="text-white/60 truncate">
-            ~/Projects/apsara-agentic-cli
+        <div className="flex h-6 shrink-0 items-center justify-between gap-3 bg-[#12141a] px-2 text-[7px] text-[#747b8c] sm:text-[8px]">
+          <span className="min-w-0 truncate">
+            <span className="text-[#f0be6e]">⌂</span>{" "}
+            ~/Projects/Apsara Agentic/apsara-agentic-cli
+          </span>
+          <span className="shrink-0">
+            23.0K (18%) ·{" "}
+            <span className="font-bold text-[#d2d8e4]">ctrl+p</span> commands
           </span>
         </div>
-        <div className="flex gap-3">
-          <span className="w-16 shrink-0 text-white/35">model</span>
-          <span className="text-white/60">
-            claude-sonnet-4-6 <span className="text-white/30">200k ctx</span>{" "}
-            <span className="text-[#78D296]">✓</span>
-          </span>
-        </div>
-        <div className="flex gap-3">
-          <span className="w-16 shrink-0 text-white/35">session</span>
-          <span className="text-white/60">default</span>
-        </div>
-        <div className="flex gap-3">
-          <span className="w-16 shrink-0 text-white/35">resumed</span>
-          <span className="text-white/60">3 prior turns</span>
-        </div>
-        <p className="pt-1 text-[10px] text-white/22">
-          /help for commands · /exit to quit · Esc+Enter for newline
-        </p>
-      </div>
-
-      {/* ── Turn separator ── */}
-      <div
-        data-cli-block
-        data-pause="0.3"
-        aria-hidden
-        className="flex items-center gap-2 text-[10px] text-white/22"
-      >
-        <span className="flex-1 border-t border-white/10" />
-        <span className="shrink-0">turn 1 · 14:32:08</span>
-        <span className="flex-1 border-t border-white/10" />
-      </div>
-
-      {/* ── [YOU] message ── */}
-      <div
-        data-cli-block
-        data-pause="0.22"
-        aria-hidden
-        className="flex flex-wrap items-baseline gap-x-2 gap-y-1"
-      >
-        <Badge label="you" variant="you" />
-        <span className="text-white/78 text-xs leading-5">
-          refactor the approval handler to reduce duplication
-        </span>
-      </div>
-
-      {/* ── Spinner ── */}
-      <div
-        data-cli-block
-        data-pause="0.18"
-        aria-hidden
-        className="flex items-center gap-2 text-xs text-[#6B9AFF]"
-      >
-        <span className="landing-terminal-caret">⠸</span>
-        <span>reading your workspace</span>
-        <span className="text-white/22 ml-1">3s</span>
-      </div>
-
-      {/* ── Tool calls ── */}
-      <div data-cli-block data-pause="0.3" aria-hidden className="space-y-1">
-        <ToolCall tool="read_file" detail='"src/approval.py"' />
-        <ToolResult message="read 142 lines" />
-      </div>
-      <div data-cli-block data-pause="0.15" aria-hidden className="space-y-1">
-        <ToolCall tool="search_codebase" detail='"approval handler"' />
-        <ToolResult message="6 results" />
-      </div>
-      <div data-cli-block data-pause="0.15" aria-hidden className="space-y-1">
-        <ToolCall tool="edit_file" detail='"src/approval.py"' />
-        <ToolResult message="2 changes staged, awaiting approval" />
-      </div>
-
-      {/* ── [APSARA] response ── */}
-      <div
-        data-cli-block
-        data-pause="0.28"
-        aria-hidden
-        className="flex flex-wrap items-baseline gap-x-2 gap-y-1"
-      >
-        <Badge label="apsara" variant="apsara" />
-        <span className="text-white/72 text-xs leading-5">
-          Consolidated both handlers. Here&apos;s the diff:
-        </span>
-      </div>
-
-      {/* ── Diff preview ── */}
-      <div
-        data-cli-block
-        data-pause="0.2"
-        aria-hidden
-        className="rounded border border-white/8 bg-white/3 px-3 py-2 space-y-0.5 text-xs leading-5"
-      >
-        <div className="text-[#FAC87C]">@@ approval.py @@</div>
-        <div className="text-[#FF8E8E]">
-          <span className="select-none text-[#FF8E8E]/60">- </span>
-          def handle_approval(self, request):
-        </div>
-        <div className="text-[#FF8E8E]">
-          <span className="select-none text-[#FF8E8E]/60">- </span>
-          def handle_rejection(self, request):
-        </div>
-        <div className="text-[#78D296]">
-          <span className="select-none text-[#78D296]/60">+ </span>
-          def handle_decision(self, req, action):
-        </div>
-        <div className="text-white/25 pt-0.5">
-          2 files · 4 insertions · 8 deletions
-        </div>
-      </div>
-
-      {/* ── Approval prompt ── */}
-      <div
-        data-cli-block
-        data-pause="0.18"
-        aria-hidden
-        className="rounded border border-white/12 bg-white/2 px-3 py-2 text-xs text-white/50"
-      >
-        <span className="text-white/28">APPROVE? </span>
-        update approval.py · 2 hunks
-      </div>
-
-      {/* ── Choice keys ── */}
-      <div
-        data-cli-block
-        data-pause="0.14"
-        aria-hidden
-        className="flex flex-wrap gap-1.5 text-[10px]"
-      >
-        <span className="inline-flex items-center rounded border border-[#78D296]/55 px-2 py-0.5 text-[#78D296]">
-          ↵ APPROVE
-        </span>
-        <span className="inline-flex items-center rounded border border-white/15 px-2 py-0.5 text-white/38">
-          N REJECT
-        </span>
-        <span className="inline-flex items-center rounded border border-white/15 px-2 py-0.5 text-white/38">
-          A ALWAYS
-        </span>
-        <span className="inline-flex items-center rounded border border-white/15 px-2 py-0.5 text-white/38">
-          V FULL DIFF
-        </span>
-      </div>
-
-      {/* ── Next [YOU] prompt ── */}
-      <div
-        data-cli-block
-        data-pause="0.28"
-        aria-hidden
-        className="flex items-center gap-2"
-      >
-        <Badge label="you" variant="you" />
-        <span className="landing-terminal-caret text-white/55">|</span>
       </div>
     </div>
   );
