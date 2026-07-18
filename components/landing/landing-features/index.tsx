@@ -27,14 +27,7 @@ const featureMeta = [
   { code: "session.resume", stat: "stateful" },
 ];
 
-const cardLayout = [
-  "lg:col-span-2",
-  "",
-  "",
-  "lg:col-span-2",
-  "",
-  "",
-];
+const cardLayout = ["lg:col-span-2", "", "", "lg:col-span-2", "", ""];
 
 type LandingFeaturesProps = {
   copy: LandingCopy["features"];
@@ -56,7 +49,10 @@ export default function LandingFeatures({
       id="features"
       className="relative scroll-mt-24 overflow-hidden border-b border-[var(--l-line)] py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
     >
-      <div aria-hidden className="landing-code-grid absolute inset-0 opacity-45" />
+      <div
+        aria-hidden
+        className="landing-code-grid absolute inset-0 opacity-45"
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-48 top-1/3 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_72%)] blur-[180px]"
