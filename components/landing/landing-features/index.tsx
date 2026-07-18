@@ -157,7 +157,7 @@ export default function LandingFeatures({
 
                 <span
                   aria-hidden
-                  className="absolute -right-6 -top-10 font-mono text-[9rem] font-bold leading-none text-foreground/[0.025] transition-transform duration-500 group-hover:translate-y-3"
+                  className="landing-card-ghost-number absolute -right-6 -top-10 font-mono text-[9rem] font-bold leading-none transition-[transform,opacity,filter] duration-500 group-hover:translate-y-3"
                 >
                   {index + 1}
                 </span>

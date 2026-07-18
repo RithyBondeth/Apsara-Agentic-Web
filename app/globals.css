@@ -946,6 +946,55 @@ html[lang="km"] {
   opacity: 1;
 }
 
+.landing-card-ghost-number {
+  background-image: linear-gradient(
+    145deg,
+    var(--l-spectrum-4),
+    var(--l-spectrum-3) 42%,
+    var(--l-spectrum-1)
+  );
+  background-position: 0% 50%;
+  background-size: 180% 180%;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.18;
+  filter: drop-shadow(
+    0 0 24px oklch(from var(--l-spectrum-3) l c h / 0.22)
+  );
+  animation: landing-card-number-spectrum 9s ease-in-out infinite alternate;
+}
+
+.landing-bento-card:nth-child(3n + 2) .landing-card-ghost-number {
+  background-image: linear-gradient(
+    145deg,
+    var(--l-spectrum-2),
+    var(--l-spectrum-4) 48%,
+    var(--l-spectrum-3)
+  );
+}
+
+.landing-bento-card:nth-child(3n + 3) .landing-card-ghost-number {
+  background-image: linear-gradient(
+    145deg,
+    var(--l-spectrum-1),
+    var(--l-spectrum-2) 45%,
+    var(--l-spectrum-4)
+  );
+}
+
+.landing-bento-card:hover .landing-card-ghost-number {
+  opacity: 0.34;
+  filter: drop-shadow(
+    0 0 34px oklch(from var(--l-spectrum-3) l c h / 0.36)
+  );
+}
+
+@keyframes landing-card-number-spectrum {
+  to {
+    background-position: 100% 50%;
+  }
+}
+
 .landing-workflow-card {
   box-shadow:
     inset 0 1px 0 var(--l-inset),
