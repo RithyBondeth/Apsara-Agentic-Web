@@ -19,35 +19,48 @@ const pixelGlyphs: Record<string, readonly string[]> = {
 const logoLeftColors = ["#78afff", "#6ec6fc", "#78d6e6", "#8adcc3", "#a2dca0"];
 const logoRightColors = ["#ffd75a", "#fcb078", "#f596aa", "#dc91eb", "#a0a0ff"];
 
-function renderPixelLetters(letters: string, row: number) {
-  return letters
-    .split("")
-    .map((letter) =>
-      (pixelGlyphs[letter]?.[row] ?? "....")
-        .split("")
-        .map((pixel) => (pixel === "X" ? "██" : "  "))
-        .join(""),
-    )
-    .join("  ");
-}
+const pixelLogoCells = Array.from({ length: 5 }, (_, row) =>
+  "APSARA".split("").flatMap((letter, letterIndex) => {
+    const glyphCells = (pixelGlyphs[letter]?.[row] ?? "....")
+      .split("")
+      .map((pixel, columnIndex) => ({
+        active: pixel === "X",
+        color:
+          letterIndex < 3 ? logoLeftColors[row] : logoRightColors[row],
+        key: `${row}-${letterIndex}-${columnIndex}`,
+      }));
+
+    if (letterIndex < 5) {
+      glyphCells.push({
+        active: false,
+        color: "transparent",
+        key: `${row}-${letterIndex}-gap`,
+      });
+    }
+
+    return glyphCells;
+  }),
+).flat();
 
 function PixelLogo() {
   return (
     <div
       data-cli-block
       data-pause="0"
-      className="select-none text-center font-mono text-[6px] font-black leading-[1.05] sm:text-[7px]"
+      aria-label="APSARA"
+      className="landing-cli-pixel-logo select-none"
+      role="img"
     >
-      {Array.from({ length: 5 }, (_, row) => (
-        <div key={row} className="whitespace-pre">
-          <span style={{ color: logoLeftColors[row] }}>
-            {renderPixelLetters("APS", row)}
-            {"  "}
-          </span>
-          <span style={{ color: logoRightColors[row] }}>
-            {renderPixelLetters("ARA", row)}
-          </span>
-        </div>
+      {pixelLogoCells.map((cell) => (
+        <span
+          key={cell.key}
+          aria-hidden
+          className="landing-cli-pixel"
+          style={{
+            backgroundColor: cell.active ? cell.color : "transparent",
+            boxShadow: cell.active ? `0 0 8px ${cell.color}1f` : "none",
+          }}
+        />
       ))}
     </div>
   );

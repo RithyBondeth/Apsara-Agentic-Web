@@ -830,6 +830,23 @@ html[lang="km"] {
   display: none;
 }
 
+.landing-cli-pixel-logo {
+  --landing-cli-pixel-size: clamp(6px, 0.8vw, 10px);
+
+  display: grid;
+  grid-template-columns: repeat(29, var(--landing-cli-pixel-size));
+  grid-template-rows: repeat(5, var(--landing-cli-pixel-size));
+  gap: 1px;
+  width: max-content;
+  margin-inline: auto;
+}
+
+.landing-cli-pixel {
+  width: var(--landing-cli-pixel-size);
+  height: var(--landing-cli-pixel-size);
+  border-radius: 1px;
+}
+
 .landing-rail-core {
   border: 1px solid var(--l-line);
   background:
