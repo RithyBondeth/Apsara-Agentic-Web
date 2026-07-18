@@ -42,7 +42,7 @@ export default function LandingShowcase({
   return (
     <section
       id="showcase"
-      className="relative scroll-mt-24 overflow-clip border-b border-[var(--l-line)] py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
+      className="relative scroll-mt-24 overflow-clip border-b border-[var(--l-line)] py-16 sm:scroll-mt-28 sm:py-20 lg:py-24"
     >
       <div aria-hidden className="landing-code-grid absolute inset-0 opacity-55" />
       <div
@@ -51,7 +51,7 @@ export default function LandingShowcase({
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-[var(--l-line)] pb-12 lg:grid-cols-[0.42fr_0.58fr] lg:items-end lg:pb-16">
+        <div className="grid gap-8 border-b border-[var(--l-line)] pb-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end lg:pb-10">
           <div>
             <p data-gsap="showcase-head" className={eyebrowClassName}>
               {copy.eyebrow}
@@ -79,7 +79,7 @@ export default function LandingShowcase({
           </div>
         </div>
 
-        <div className="relative mt-14 grid gap-12 lg:grid-cols-[1.16fr_0.84fr] lg:gap-16">
+        <div className="relative mt-10 grid gap-12 lg:grid-cols-[1.16fr_0.84fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:h-fit">
             <div
               data-gsap="showcase-shell"
@@ -133,7 +133,7 @@ export default function LandingShowcase({
 
             <article
               data-story-step
-              className="landing-story-card relative min-h-[42vh] pb-16 pl-10 pt-2 lg:min-h-[52vh]"
+              className="landing-story-card relative pb-14 pl-10 pt-2 lg:pb-16"
             >
               <span className="landing-story-node" />
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]">
@@ -172,7 +172,7 @@ export default function LandingShowcase({
                 <article
                   key={note.title}
                   data-story-step
-                  className="landing-story-card relative min-h-[42vh] pb-16 pl-10 pt-2 lg:min-h-[52vh]"
+                  className="landing-story-card relative pb-14 pl-10 pt-2 lg:pb-16"
                 >
                   <span className="landing-story-node" />
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]">
@@ -226,7 +226,7 @@ export default function LandingShowcase({
           </div>
         </div>
 
-        <div className="mt-24 grid gap-6 border-t border-[var(--l-line)] pt-10 lg:grid-cols-[0.42fr_0.58fr]">
+        <div className="mt-16 grid gap-6 border-t border-[var(--l-line)] pt-10 lg:grid-cols-[0.42fr_0.58fr]">
           <p
             data-gsap="showcase-tail"
             className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--l-accent)]"
