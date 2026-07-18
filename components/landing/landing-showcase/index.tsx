@@ -60,6 +60,8 @@ export default function LandingShowcase({
             <LandingRailVisual
               code="agent.loop"
               icon={Code2}
+              labelLead="Apsara"
+              labelTail="Agentic"
               motion="showcase-head"
             />
             <div>
@@ -321,6 +323,8 @@ export default function LandingShowcase({
               code="review.gate"
               compact
               icon={ShieldCheck}
+              labelLead="Human"
+              labelTail="Approved"
               motion="showcase-tail"
             />
           </div>

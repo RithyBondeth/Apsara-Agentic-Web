@@ -841,6 +841,32 @@ html[lang="km"] {
     0 0 34px oklch(from var(--l-accent) l c h / 0.1);
 }
 
+.landing-rail-wordmark {
+  width: max-content;
+  background-image: linear-gradient(
+    90deg,
+    var(--l-spectrum-4),
+    var(--l-spectrum-3),
+    var(--l-spectrum-2),
+    var(--l-spectrum-1),
+    var(--l-spectrum-4)
+  );
+  background-position: 0% 50%;
+  background-size: 220% 100%;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(
+    0 0 18px oklch(from var(--l-spectrum-3) l c h / 0.22)
+  );
+  animation: landing-rail-spectrum 7s linear infinite;
+}
+
+@keyframes landing-rail-spectrum {
+  to {
+    background-position: 220% 50%;
+  }
+}
+
 .landing-rail-visual::after {
   content: "";
   position: absolute;

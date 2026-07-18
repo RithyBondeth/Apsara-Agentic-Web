@@ -67,6 +67,8 @@ export default function LandingFeatures({
               code="module.stack"
               compact
               icon={Boxes}
+              labelLead="Tools"
+              labelTail="Bounded"
               motion="features-head"
             />
             <div>
