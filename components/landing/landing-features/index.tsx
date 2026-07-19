@@ -49,7 +49,7 @@ export default function LandingFeatures({
   return (
     <section
       id="features"
-      className="relative scroll-mt-24 overflow-hidden border-b border-[var(--l-line)] py-20 sm:scroll-mt-28 sm:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden border-b border-(--l-line) py-20 sm:scroll-mt-28 sm:py-24 lg:py-28"
     >
       <div
         aria-hidden
@@ -57,7 +57,7 @@ export default function LandingFeatures({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-48 top-1/3 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_72%)] blur-[180px]"
+        className="pointer-events-none absolute -left-48 top-1/3 size-136 rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_72%)] blur-[180px]"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -79,7 +79,7 @@ export default function LandingFeatures({
                 data-gsap="features-head"
                 className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
               >
-                <span className="size-1.5 rounded-full bg-[var(--l-spectrum-1)] shadow-[0_0_16px_var(--l-spectrum-1)]" />
+                <span className="size-1.5 rounded-full bg-(--l-spectrum-1) shadow-[0_0_16px_var(--l-spectrum-1)]" />
                 6 modules online
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function LandingFeatures({
                   </div>
 
                   <div className="mt-auto pt-12">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--l-accent)]">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-(--l-accent)">
                       {meta.code}
                     </p>
                     <h3 className="mt-3 font-heading text-xl font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
@@ -146,9 +146,9 @@ export default function LandingFeatures({
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-[var(--l-line)] pt-4 font-mono text-[10px] uppercase tracking-[0.14em]">
+                  <div className="mt-6 flex items-center justify-between border-t border-(--l-line) pt-4 font-mono text-[10px] uppercase tracking-[0.14em]">
                     <span className="text-muted-foreground">status</span>
-                    <span className="flex items-center gap-2 text-[var(--l-spectrum-1)]">
+                    <span className="flex items-center gap-2 text-(--l-spectrum-1)">
                       <span className="size-1.5 rounded-full bg-current" />
                       {meta.stat}
                     </span>

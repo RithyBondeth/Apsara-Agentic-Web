@@ -25,8 +25,7 @@ const pixelLogoCells = Array.from({ length: 5 }, (_, row) =>
       .split("")
       .map((pixel, columnIndex) => ({
         active: pixel === "X",
-        color:
-          letterIndex < 3 ? logoLeftColors[row] : logoRightColors[row],
+        color: letterIndex < 3 ? logoLeftColors[row] : logoRightColors[row],
         key: `${row}-${letterIndex}-${columnIndex}`,
       }));
 
@@ -192,7 +191,7 @@ export default function LandingShowcaseTerminal({
 
               <div data-cli-block data-pause="0.18">
                 <p className="text-[#f0aa5a]">+ Thought: 3.2s</p>
-                <p className="mt-2 max-w-[42rem] text-[#f0ece7]">
+                <p className="mt-2 max-w-2xl text-[#f0ece7]">
                   I found the duplicated approval copy and prepared a smaller,
                   review-safe change.
                 </p>
@@ -237,7 +236,7 @@ export default function LandingShowcaseTerminal({
             </div>
           </section>
 
-          <aside className="hidden w-[13.5rem] shrink-0 overflow-hidden border-l border-[#3d4668] bg-[#0e1015] px-3 py-3 text-[8px] leading-[1.45] text-[#8c93a6] md:block lg:w-[14rem]">
+          <aside className="hidden w-54 shrink-0 overflow-hidden border-l border-[#3d4668] bg-[#0e1015] px-3 py-3 text-[8px] leading-[1.45] text-[#8c93a6] md:block lg:w-56">
             <div data-cli-block data-pause="0.04">
               <p className="font-bold text-[#e1e6f2]">
                 <span className="text-[#6096fa]">◆</span> default
@@ -303,8 +302,8 @@ export default function LandingShowcaseTerminal({
               className="mt-3 space-y-0.5 pl-3"
             >
               <p>
-                <span className="font-bold text-[#8cb4ff]">/models</span>{" "}
-                switch models
+                <span className="font-bold text-[#8cb4ff]">/models</span> switch
+                models
               </p>
               <p>
                 <span className="font-bold text-[#8cb4ff]">/status</span>{" "}
@@ -354,8 +353,8 @@ export default function LandingShowcaseTerminal({
 
         <div className="flex h-6 shrink-0 items-center justify-between gap-3 bg-[#12141a] px-2 text-[7px] text-[#747b8c] sm:text-[8px]">
           <span className="min-w-0 truncate">
-            <span className="text-[#f0be6e]">⌂</span>{" "}
-            ~/Projects/Apsara Agentic/apsara-agentic-cli
+            <span className="text-[#f0be6e]">⌂</span> ~/Projects/Apsara
+            Agentic/apsara-agentic-cli
           </span>
           <span className="shrink-0">
             23.0K (18%) ·{" "}

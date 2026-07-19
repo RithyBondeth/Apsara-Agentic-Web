@@ -50,7 +50,9 @@ export default function LandingCta({
               className="font-heading mx-auto mt-5 max-w-4xl text-3xl font-bold tracking-[-0.045em] text-foreground sm:text-5xl md:text-6xl"
             >
               {copy.titleLead}{" "}
-              <span className="landing-gradient-text">{copy.titleHighlight}</span>
+              <span className="landing-gradient-text">
+                {copy.titleHighlight}
+              </span>
               {copy.titleTail}
             </h2>
             <p
@@ -67,7 +69,7 @@ export default function LandingCta({
               <Button
                 asChild
                 size="lg"
-                className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-[var(--l-btn-fg)] shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
+                className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 font-mono text-xs font-semibold uppercase tracking-widest text-(--l-btn-fg) shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
               >
                 <Link href={primaryHref}>
                   {copy.primaryCta}
@@ -78,7 +80,7 @@ export default function LandingCta({
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-12 w-full rounded-lg border-[var(--l-line)] bg-[var(--l-surface)] px-10 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-foreground transition-all hover:border-[var(--l-accent)] sm:w-auto"
+                className="h-12 w-full rounded-lg border-(--l-line) bg-(--l-surface) px-10 font-mono text-xs font-semibold uppercase tracking-widest text-foreground transition-all hover:border-(--l-accent) sm:w-auto"
               >
                 <Link href={secondaryHref}>{copy.secondaryCta}</Link>
               </Button>
