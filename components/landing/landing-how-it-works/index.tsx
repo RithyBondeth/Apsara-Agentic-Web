@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 const workflowNumbers = ["01", "02", "03"];
 const workflowCommands = [
-  "apsara init .",
-  "apsara run <intent>",
-  "approve --review",
+  "apsara login",
+  "apsara init",
+  "apsara chat",
 ];
 
 type LandingHowItWorksProps = {

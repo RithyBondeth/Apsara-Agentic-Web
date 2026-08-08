@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Apsara Agentic Web
 
-## Getting Started
+The public website for Apsara, a local-first coding-agent CLI. The site has one
+primary job: help developers understand the product, install the CLI, connect
+their own model provider, and start working inside a local repository.
 
-First, run the development server:
+Apsara does not require a platform account and this website is not in the path
+between the CLI and the user's model provider.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Product flow
+
+```text
+Visit website
+  → pipx install apsara-agentic
+  → apsara login
+  → cd your-project && apsara init
+  → apsara chat
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The localized `/install` route documents this flow in English and Khmer. It
+also links to the source repository and published releases.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requirements:
 
-## Learn More
+- Node.js 22.13 or newer
+- npm
 
-To learn more about Next.js, take a look at the following resources:
+Run the local site:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000). Validate changes with:
 
-## Deploy on Vercel
+```bash
+npm run lint
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The complete production build currently passes. Repository-wide lint also
+checks older components that may have pre-existing findings; changed files
+should always pass ESLint independently.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Product boundaries
+
+- No Apsara sign-up or user database
+- No cloud workspace or session synchronization
+- No source-code or project-memory upload
+- Provider credentials are configured by the local CLI
+- The website remains public documentation and distribution infrastructure

@@ -255,7 +255,7 @@ function ConfigPanel({ config, onChange }: { config: Config; onChange: (c: Confi
               { key: "apiBase", label: "API Base URL", placeholder: "http://localhost:8000" },
               { key: "userId", label: "User ID (UUID)", placeholder: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" },
               { key: "conversationId", label: "Conversation ID (UUID)", placeholder: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" },
-              { key: "model", label: "Model", placeholder: "gpt-4o" },
+              { key: "model", label: "Model", placeholder: "opencode/big-pickle" },
             ] as const
           ).map(({ key, label, placeholder }) => (
             <label key={key} className="flex flex-col gap-1">
@@ -282,7 +282,7 @@ export function ChatClient() {
     apiBase: "http://localhost:8000",
     userId: "",
     conversationId: "",
-    model: "gpt-4o",
+    model: "opencode/big-pickle",
   });
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");

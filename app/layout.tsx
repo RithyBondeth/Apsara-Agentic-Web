@@ -82,9 +82,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const socialImage = new URL("/og.png", origin).toString();
 
   return {
-    title: "Apsara | Project-First Agentic Coding",
+    title: "Apsara | Local-First Coding Agent",
     description:
-      "Apsara is a project-first coding agent with workspace-scoped tools, diff review, quieter internals, human approval, and persistent context for serious codebases.",
+      "Install Apsara locally, bring your own model API key, and code with workspace-scoped tools without creating an account or uploading your repository.",
     applicationName: "Apsara",
     icons: {
       icon: "/assets/logo/logo-without-title.svg",
@@ -98,15 +98,15 @@ export async function generateMetadata(): Promise<Metadata> {
       "CLI assistant",
     ],
     openGraph: {
-      title: "Apsara | Project-First Agentic Coding",
+      title: "Apsara | Local-First Coding Agent",
       description:
-        "Project-first agentic coding with reviewable edits, visible safety rails, and a workflow designed for real repositories.",
+        "A local coding agent with your model provider, reviewable edits, and no Apsara account required.",
       images: [
         {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Apsara — project-first agentic coding",
+          alt: "Apsara — local-first agentic coding",
         },
       ],
       siteName: "Apsara",
@@ -114,9 +114,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Apsara | Project-First Agentic Coding",
+      title: "Apsara | Local-First Coding Agent",
       description:
-        "A project-first coding agent built for serious repos, with diff review, human approval, and persistent context.",
+        "Install locally, bring your own model API key, and keep your coding workflow on your machine.",
       images: [socialImage],
     },
   };

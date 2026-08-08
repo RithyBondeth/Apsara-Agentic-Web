@@ -15,12 +15,10 @@
 
 # next.js
 /.next/
-/.vinext/
 /out/
 
 # production
 /dist
-/.wrangler
 
 # misc
 .DS_Store
