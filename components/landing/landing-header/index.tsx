@@ -123,13 +123,13 @@ export default function LandingHeader({
             {/* Theme toggle */}
             <ThemeToggle />
 
-            {/* Private Alpha CTA */}
+            {/* Install CTA */}
             <Button
               asChild
               className="h-10 rounded-md border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--l-btn-fg)] shadow-[0_14px_36px_var(--l-btn-shadow)] transition-transform hover:-translate-y-0.5 hover:opacity-95"
             >
-              <Link href={siteRoutes.privateAlpha}>
-                {copy.alphaLabel}
+              <Link href={siteRoutes.install}>
+                {copy.installLabel}
                 <ArrowUpRight className="size-4" />
               </Link>
             </Button>
@@ -206,16 +206,16 @@ export default function LandingHeader({
             {/* Divider */}
             <div className="my-4 border-t border-border/60" />
 
-            {/* Private Alpha CTA */}
+            {/* Install CTA */}
             <Button
               asChild
               className="h-11 w-full rounded-md border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] font-mono text-xs font-semibold uppercase tracking-[0.08em] text-[var(--l-btn-fg)] shadow-[0_14px_36px_var(--l-btn-shadow)]"
             >
               <Link
-                href={siteRoutes.privateAlpha}
+                href={siteRoutes.install}
                 onClick={() => setMobileOpen(false)}
               >
-                {copy.alphaLabel}
+                {copy.installLabel}
                 <ArrowUpRight className="size-4" />
               </Link>
             </Button>

@@ -9,6 +9,7 @@ import LandingFooter from "@/components/landing/landing-footer";
 import LandingHeader from "@/components/landing/landing-header";
 import LandingHero from "@/components/landing/landing-hero";
 import LandingHowItWorks from "@/components/landing/landing-how-it-works";
+import LandingInstall from "@/components/landing/landing-install";
 // LandingPageAnimations must be a regular (synchronous) import — it controls
 // hero visibility via GSAP autoAlpha and clearProps. A dynamic import would
 // cause the CSS cascade to reveal elements before GSAP takes ownership,
@@ -19,7 +20,7 @@ import { LANDING_LOCALE_COOKIE } from "@/utils/functions/landing-locale";
 
 type LandingPageShellProps = {
   initialLocale: LandingLocale;
-  page?: "home" | "product" | "capabilities" | "workflow" | "private-alpha";
+  page?: "home" | "install" | "product" | "capabilities" | "workflow" | "private-alpha";
 };
 
 export default function LandingPageShell({
@@ -69,8 +70,8 @@ export default function LandingPageShell({
         {page === "workflow" ? (
           <LandingHowItWorks copy={copy.workflow} locale={locale} />
         ) : null}
-        {page === "private-alpha" ? (
-          <LandingCta copy={copy.cta} locale={locale} secondaryHref="/" />
+        {page === "install" || page === "private-alpha" ? (
+          <LandingInstall copy={copy.install} locale={locale} />
         ) : null}
       </>
     );

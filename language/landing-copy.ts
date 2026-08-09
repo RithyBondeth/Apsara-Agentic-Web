@@ -43,7 +43,7 @@ export type LandingCopy = {
   header: {
     navItems: LandingLink[];
     exploreLabel: string;
-    alphaLabel: string;
+    installLabel: string;
     languageSwitcherLabel: string;
     localeLabels: Record<LandingLocale, string>;
   };
@@ -92,6 +92,28 @@ export type LandingCopy = {
     description: string;
     steps: LandingStep[];
   };
+  install: {
+    eyebrow: string;
+    titleLead: string;
+    titleHighlight: string;
+    description: string;
+    promise: string;
+    steps: {
+      number: string;
+      title: string;
+      description: string;
+      command: string;
+    }[];
+    copyLabel: string;
+    copiedLabel: string;
+    requirementsTitle: string;
+    requirements: string[];
+    privacyTitle: string;
+    privacyDescription: string;
+    privacyPoints: LandingCard[];
+    githubLabel: string;
+    releasesLabel: string;
+  };
   cta: {
     eyebrow: string;
     titleLead: string;
@@ -120,12 +142,13 @@ export const landingCopy = {
     },
     header: {
       navItems: [
+        { href: siteRoutes.install, label: "Install" },
         { href: siteRoutes.product, label: "Product" },
         { href: siteRoutes.capabilities, label: "Capabilities" },
         { href: siteRoutes.workflow, label: "Workflow" },
       ],
       exploreLabel: "Explore",
-      alphaLabel: "Private Alpha",
+      installLabel: "Install CLI",
       languageSwitcherLabel: "Language",
       localeLabels: {
         en: "EN",
@@ -133,13 +156,13 @@ export const landingCopy = {
       },
     },
     hero: {
-      badge: "Private alpha for project-first agentic coding",
-      titleLead: "Build with an agent",
-      titleHighlight: "inside the repo.",
-      titleTail: "Stay in control.",
+      badge: "Local-first CLI · no Apsara account required",
+      titleLead: "Your coding agent.",
+      titleHighlight: "Inside your repo.",
+      titleTail: "On your machine.",
       description:
-        "Apsara turns the current CLI and backend spine into a stronger product story: workspace-scoped tools, reviewable diffs, quieter internal activity, and persistent context that feels built for real codebases instead of generic AI chat.",
-      primaryCta: "See the product flow",
+        "Install the CLI, bring a model API key, and start coding. Apsara keeps your repositories, sessions, checkpoints, and project memory local while you stay in control of every meaningful change.",
+      primaryCta: "Install Apsara",
       secondaryCta: "Explore capabilities",
       scrollAriaLabel: "Open the product page",
       signals: [
@@ -238,7 +261,7 @@ export const landingCopy = {
       titleHighlight: "useful today",
       titleTail: "",
       description:
-        "The value is not speculative. These are the real behaviors that make the current CLI and backend feel more trustworthy than a generic AI tab.",
+        "The value is not speculative. These are the real local behaviors that make the CLI more trustworthy than a generic AI tab.",
       cards: [
         {
           title: "Project-local init",
@@ -261,14 +284,14 @@ export const landingCopy = {
             "Tool activity stays quiet by default, while /details gives power users the exact work trail when they want it.",
         },
         {
-          title: "Durable backend spine",
+          title: "Durable local runtime",
           description:
-            "FastAPI, Postgres persistence, usage tracking, and SSE streaming give the agent loop a real foundation.",
+            "Typed run state, local journals, checkpoints, and verification keep the agent loop inspectable without a hosted Apsara backend.",
         },
         {
           title: "Persistent sessions",
           description:
-            "Conversation history and usage events stay durable so the workflow remains accountable across runs.",
+            "Conversation history and usage events stay on your machine so work remains durable without cloud synchronization.",
         },
       ],
     },
@@ -276,42 +299,96 @@ export const landingCopy = {
       eyebrow: "How It Works",
       title: "A workflow that mirrors how developers already work.",
       description:
-        "Orient the repo, delegate the legwork, and keep authorship through review. The product gets out of the way without becoming vague.",
+        "Bring your provider, initialize the repo, and start coding. No Apsara account or cloud workspace sits between you and your tools.",
       steps: [
         {
-          title: "Start in the workspace",
+          title: "Connect your model provider",
           description:
-            "Initialize Apsara inside the repo so the session inherits the right filesystem boundary and project-local context.",
+            "Run apsara login and save your OpenCode, OpenAI, Anthropic, Google, Groq, or other provider key locally.",
         },
         {
-          title: "Ask for meaningful work",
+          title: "Initialize your repository",
           description:
-            "Trace the code, inspect files, and draft a change while keeping raw tool noise tucked away unless it is needed.",
+            "Run apsara init inside the project so workspace boundaries, instructions, and local configuration live with the codebase.",
         },
         {
-          title: "Review and steer",
+          title: "Start the local agent",
           description:
-            "Approve the diff, reject it, or redirect the next step while the session keeps the thread and reasoning intact.",
+            "Run apsara chat, ask for meaningful work, and review or reject changes before they land.",
         },
       ],
     },
-    cta: {
-      eyebrow: "Closing Thought",
-      titleLead: "Ready to give Apsara a front door that matches the",
-      titleHighlight: "product truth",
-      titleTail: "?",
+    install: {
+      eyebrow: "Local installation",
+      titleLead: "Install once.",
+      titleHighlight: "Code locally.",
       description:
-        "The strongest story is already there: repo-first setup, bounded tools, quieter internals, reviewable diffs, and durable context for serious engineering work.",
-      primaryCta: "See the showcase",
-      secondaryCta: "Back home",
+        "Apsara is a local CLI, not a hosted coding service. You do not create an Apsara account, and your project does not need a cloud workspace.",
+      promise: "No account · No source upload · Bring your own API key",
+      steps: [
+        {
+          number: "01",
+          title: "Install the CLI",
+          description: "pipx keeps Apsara isolated from your project dependencies and exposes the apsara command globally.",
+          command: "pipx install apsara-agentic",
+        },
+        {
+          number: "02",
+          title: "Add your provider key",
+          description: "Choose a model provider and save its key on your machine. Apsara never receives it.",
+          command: "apsara login",
+        },
+        {
+          number: "03",
+          title: "Initialize a project",
+          description: "Run this from the repository you want Apsara to work inside.",
+          command: "cd your-project && apsara init",
+        },
+        {
+          number: "04",
+          title: "Start coding",
+          description: "Open the local terminal experience and give the agent its first task.",
+          command: "apsara chat",
+        },
+      ],
+      copyLabel: "Copy",
+      copiedLabel: "Copied",
+      requirementsTitle: "Before you install",
+      requirements: [
+        "Python 3.10 or newer",
+        "pipx installed for an isolated global CLI",
+        "Git available in your terminal",
+        "An API key from a supported provider, or local Ollama",
+      ],
+      privacyTitle: "Local means local",
+      privacyDescription:
+        "Apsara calls the model provider you choose. The Apsara website is not in that request path.",
+      privacyPoints: [
+        { title: "Your code stays put", description: "Workspace files, sessions, memory, checkpoints, and run reports remain on your machine." },
+        { title: "Your key stays yours", description: "Provider credentials are stored locally and sent only to the provider required for your selected model." },
+        { title: "You approve changes", description: "Workspace writes and command execution remain bounded by local permissions and review gates." },
+      ],
+      githubLabel: "View source on GitHub",
+      releasesLabel: "Browse releases",
+    },
+    cta: {
+      eyebrow: "Start locally",
+      titleLead: "One CLI.",
+      titleHighlight: "Your provider.",
+      titleTail: "Your code stays yours.",
+      description:
+        "Install Apsara without creating an account, connect the model you already use, and keep the complete coding workflow on your machine.",
+      primaryCta: "Install the CLI",
+      secondaryCta: "View capabilities",
     },
     footer: {
       description:
-        "Project-first agentic coding built around bounded tools, reviewable edits, and durable context for real repositories.",
+        "A local-first coding agent. Bring your own model API key and keep your code, sessions, and project context on your machine.",
       sections: [
         {
           title: "Sections",
           links: [
+            { href: siteRoutes.install, label: "Install CLI" },
             { href: siteRoutes.product, label: "Product View" },
             { href: siteRoutes.capabilities, label: "Capabilities" },
             { href: siteRoutes.workflow, label: "Workflow" },
@@ -322,7 +399,7 @@ export const landingCopy = {
           links: [
             { href: siteRoutes.capabilities, label: "Project-local init" },
             { href: siteRoutes.product, label: "Diff-first review" },
-            { href: siteRoutes.privateAlpha, label: "Private alpha" },
+            { href: siteRoutes.install, label: "No account required" },
           ],
         },
       ],
@@ -338,12 +415,13 @@ export const landingCopy = {
     },
     header: {
       navItems: [
+        { href: siteRoutes.install, label: "ដំឡើង" },
         { href: siteRoutes.product, label: "ផលិតផល" },
         { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
         { href: siteRoutes.workflow, label: "ដំណើរការ" },
       ],
       exploreLabel: "ស្វែងយល់",
-      alphaLabel: "Private Alpha",
+      installLabel: "ដំឡើង CLI",
       languageSwitcherLabel: "ភាសា",
       localeLabels: {
         en: "EN",
@@ -351,13 +429,13 @@ export const landingCopy = {
       },
     },
     hero: {
-      badge: "Private alpha · ការសរសេរកូដបែប project-first",
-      titleLead: "សរសេរកូដជាមួយ agent",
-      titleHighlight: "ក្នុង repo",
-      titleTail: "ដោយអ្នកនៅតែជាម្ចាស់ការ។",
+      badge: "CLI ដំណើរការក្នុងម៉ាស៊ីន · មិនត្រូវការ account Apsara",
+      titleLead: "Coding agent របស់អ្នក។",
+      titleHighlight: "នៅក្នុង repo។",
+      titleTail: "នៅលើម៉ាស៊ីនរបស់អ្នក។",
       description:
-        "Apsara ប្រែ CLI និង backend ដែលមានស្រាប់ ទៅជារឿងរ៉ាវផលិតផលដែលរឹងមាំជាងមុន៖ tools ព្រំដែនតាម workspace, diff ដែលអាចពិនិត្យបាន, internals ស្ងប់ជាងមុន និង context បន្ត ដែលសាកសមសម្រាប់ codebase ពិតៗ — មិនមែន AI chat ធម្មតាទេ។",
-      primaryCta: "មើលលំហូរផលិតផល",
+        "ដំឡើង CLI, ប្រើ API key របស់ model provider ផ្ទាល់ខ្លួន ហើយចាប់ផ្ដើមសរសេរកូដ។ Apsara រក្សា repo, session, checkpoint និង project memory នៅលើម៉ាស៊ីនរបស់អ្នក។",
+      primaryCta: "ដំឡើង Apsara",
       secondaryCta: "ស្វែងយល់សមត្ថភាព",
       scrollAriaLabel: "បើកទំព័រផលិតផល",
       signals: [
@@ -454,7 +532,7 @@ export const landingCopy = {
       titleHighlight: "មានប្រយោជន៍ថ្ងៃនេះ",
       titleTail: "",
       description:
-        "តម្លៃនេះមិនមែនជាការស្មានទេ។ ទាំងនេះជាអាកប្បកិរិយាពិតៗ ដែលធ្វើអោយ CLI និង backend បច្ចុប្បន្ន គួរទុកចិត្តជាងផ្ទាំង AI ធម្មតា។",
+        "តម្លៃនេះមិនមែនជាការស្មានទេ។ ទាំងនេះជាអាកប្បកិរិយាក្នុងម៉ាស៊ីនពិតៗ ដែលធ្វើអោយ CLI គួរទុកចិត្តជាងផ្ទាំង AI ធម្មតា។",
       cards: [
         {
           title: "ចាប់ផ្ដើមក្នុង Project",
@@ -477,14 +555,14 @@ export const landingCopy = {
             "សកម្មភាព tools ស្ងប់ជាលំនាំដើម ខណៈ /details ផ្ដល់ work trail ពិតៗ ដល់អ្នកប្រើជំនាញ នៅពេលពួកគេចង់ដឹង។",
         },
         {
-          title: "Backend រឹងមាំ",
+          title: "Runtime ក្នុងម៉ាស៊ីនដែលរឹងមាំ",
           description:
-            "FastAPI, Postgres persistence, usage tracking និង SSE streaming ផ្ដល់គ្រឹះពិតប្រាកដ សម្រាប់ agent loop។",
+            "Typed run state, local journal, checkpoint និង verification ធ្វើអោយ agent loop អាចពិនិត្យបាន ដោយមិនត្រូវការ Apsara cloud។",
         },
         {
           title: "Sessions បន្ត",
           description:
-            "ប្រវត្តិសន្ទនា និង usage events ត្រូវបានរក្សាទុក ដូច្នេះ workflow នៅតែទទួលខុសត្រូវ ក្នុងការដំណើរការបន្ត។",
+            "ប្រវត្តិសន្ទនា និង usage events ស្ថិតនៅលើម៉ាស៊ីន ដោយមិនមាន cloud synchronization។",
         },
       ],
     },
@@ -492,42 +570,96 @@ export const landingCopy = {
       eyebrow: "របៀបដំណើរការ",
       title: "Workflow ដែលស្របតាមរបៀបធ្វើការរបស់អ្នកអភិវឌ្ឍ។",
       description:
-        "កំណត់ទិស repo, ប្រគល់ការងារលំបាកអោយ agent និងរក្សា authorship តាមរយៈ review។ ផលិតផលមិនរំខាន ប៉ុន្តែក៏មិនស្ងូតស្ងាត់ពេក។",
+        "ភ្ជាប់ model provider, initialize repo ហើយចាប់ផ្ដើមសរសេរកូដ។ មិនមាន Apsara account ឬ cloud workspace នៅកណ្ដាលទេ។",
       steps: [
         {
-          title: "ចាប់ផ្ដើមក្នុង Workspace",
+          title: "ភ្ជាប់ Model Provider",
           description:
-            "ចាប់ផ្ដើម Apsara ក្នុង repo ដើម្បីអោយ session ទទួលបាន filesystem boundary និង context របស់ project ត្រឹមត្រូវ។",
+            "ដំណើរការ apsara login ដើម្បីរក្សាទុក API key របស់ OpenCode, OpenAI, Anthropic, Google, Groq ឬ provider ផ្សេងនៅលើម៉ាស៊ីន។",
         },
         {
-          title: "ស្នើការងារដែលមានន័យ",
+          title: "Initialize Repository",
           description:
-            "តាមដាន code, ពិនិត្យ files និងព្រាងការផ្លាស់ប្ដូរ ខណៈ tool noise ត្រូវបានលាក់ទុករហូតដល់ត្រូវការ។",
+            "ដំណើរការ apsara init ក្នុង project ដើម្បីកំណត់ workspace boundary, instructions និង local config។",
         },
         {
-          title: "ពិនិត្យ និងបង្វែរទិស",
+          title: "ចាប់ផ្ដើម Local Agent",
           description:
-            "អនុម័ត diff, បដិសេធ ឬបង្វែរជំហានបន្ទាប់ ខណៈ session រក្សា thread និង reasoning ដដែល។",
+            "ដំណើរការ apsara chat, ស្នើការងារ ហើយពិនិត្យ ឬបដិសេធការកែប្រែមុនពេលវាចូល repo។",
         },
       ],
     },
-    cta: {
-      eyebrow: "គំនិតបញ្ចប់",
-      titleLead: "រួចរាល់ហើយឬ ដើម្បីអោយ Apsara មានទ្វារចូលដែលផ្គូផ្គងនឹង",
-      titleHighlight: "ភាពពិតនៃផលិតផល",
-      titleTail: "?",
+    install: {
+      eyebrow: "ការដំឡើងក្នុងម៉ាស៊ីន",
+      titleLead: "ដំឡើងម្ដង។",
+      titleHighlight: "សរសេរកូដក្នុងម៉ាស៊ីន។",
       description:
-        "រឿងរ៉ាវខ្លាំងបំផុតមានរួចហើយ៖ ការចាប់ផ្ដើមពី repo, tools ដែលមានព្រំដែន, internals ស្ងប់, diff ដែលអាចពិនិត្យបាន និង context បន្ត សម្រាប់ការងារ engineering ពិតៗ។",
-      primaryCta: "មើល showcase",
-      secondaryCta: "ត្រឡប់ទំព័រដើម",
+        "Apsara គឺជា local CLI មិនមែន hosted coding service ទេ។ អ្នកមិនចាំបាច់បង្កើត Apsara account ឬ cloud workspace ឡើយ។",
+      promise: "គ្មាន account · មិន upload source code · ប្រើ API key ផ្ទាល់ខ្លួន",
+      steps: [
+        {
+          number: "01",
+          title: "ដំឡើង CLI",
+          description: "pipx ញែក Apsara ចេញពី dependencies របស់ project ហើយធ្វើអោយ command apsara ប្រើបានគ្រប់ទីកន្លែង។",
+          command: "pipx install apsara-agentic",
+        },
+        {
+          number: "02",
+          title: "បន្ថែម Provider Key",
+          description: "ជ្រើស model provider ហើយរក្សាទុក key នៅលើម៉ាស៊ីន។ Apsara មិនទទួល key នេះទេ។",
+          command: "apsara login",
+        },
+        {
+          number: "03",
+          title: "Initialize Project",
+          description: "ដំណើរការ command នេះពី repository ដែលអ្នកចង់អោយ Apsara ធ្វើការ។",
+          command: "cd your-project && apsara init",
+        },
+        {
+          number: "04",
+          title: "ចាប់ផ្ដើមសរសេរកូដ",
+          description: "បើក terminal experience ក្នុងម៉ាស៊ីន ហើយផ្ដល់ task ដំបូងទៅ agent។",
+          command: "apsara chat",
+        },
+      ],
+      copyLabel: "ចម្លង",
+      copiedLabel: "បានចម្លង",
+      requirementsTitle: "មុនពេលដំឡើង",
+      requirements: [
+        "Python 3.10 ឬថ្មីជាងនេះ",
+        "pipx សម្រាប់ដំឡើង CLI ដោយឡែកពី project",
+        "Git អាចប្រើបានក្នុង terminal",
+        "API key ពី provider ដែលគាំទ្រ ឬ local Ollama",
+      ],
+      privacyTitle: "Local មានន័យថាស្ថិតក្នុងម៉ាស៊ីន",
+      privacyDescription:
+        "Apsara ហៅ model provider ដែលអ្នកជ្រើសដោយផ្ទាល់។ Website របស់ Apsara មិនស្ថិតក្នុងផ្លូវ request នោះទេ។",
+      privacyPoints: [
+        { title: "Code របស់អ្នកនៅដដែល", description: "Workspace files, sessions, memory, checkpoints និង run reports ស្ថិតនៅលើម៉ាស៊ីនរបស់អ្នក។" },
+        { title: "Key របស់អ្នកជារបស់អ្នក", description: "Provider credentials រក្សាទុកក្នុងម៉ាស៊ីន ហើយផ្ញើតែទៅ provider របស់ model ដែលអ្នកជ្រើស។" },
+        { title: "អ្នកអនុម័តការកែប្រែ", description: "ការសរសេរ files និង command execution ស្ថិតក្រោម local permissions និង review gates។" },
+      ],
+      githubLabel: "មើល source នៅ GitHub",
+      releasesLabel: "មើល releases",
+    },
+    cta: {
+      eyebrow: "ចាប់ផ្ដើមក្នុងម៉ាស៊ីន",
+      titleLead: "CLI មួយ។",
+      titleHighlight: "Provider របស់អ្នក។",
+      titleTail: "Code របស់អ្នកនៅតែជារបស់អ្នក។",
+      description:
+        "ដំឡើង Apsara ដោយមិនបង្កើត account, ភ្ជាប់ model ដែលអ្នកប្រើស្រាប់ ហើយរក្សា coding workflow ទាំងមូលនៅលើម៉ាស៊ីន។",
+      primaryCta: "ដំឡើង CLI",
+      secondaryCta: "មើលសមត្ថភាព",
     },
     footer: {
       description:
-        "ការសរសេរកូដបែប project-first ដែលស្ថិតលើ tools ព្រំដែន, ការកែប្រែដែលអាចពិនិត្យបាន និង context បន្ត សម្រាប់ repositories ពិតៗ។",
+        "Coding agent ដែលដំណើរការក្នុងម៉ាស៊ីន។ ប្រើ API key របស់អ្នក និងរក្សា code, session និង project context នៅលើម៉ាស៊ីន។",
       sections: [
         {
           title: "ផ្នែក",
           links: [
+            { href: siteRoutes.install, label: "ដំឡើង CLI" },
             { href: siteRoutes.product, label: "ទិដ្ឋភាពផលិតផល" },
             { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
             { href: siteRoutes.workflow, label: "ដំណើរការ" },
@@ -541,7 +673,7 @@ export const landingCopy = {
               label: "ចាប់ផ្ដើមក្នុង Project",
             },
             { href: siteRoutes.product, label: "ពិនិត្យ Diff មុន" },
-            { href: siteRoutes.privateAlpha, label: "Private Alpha" },
+            { href: siteRoutes.install, label: "មិនត្រូវការ account" },
           ],
         },
       ],

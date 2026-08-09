@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 
 type ThemeToggleProps = {
@@ -11,10 +11,11 @@ type ThemeToggleProps = {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Avoid hydration mismatch — render nothing until client mounts
-  useEffect(() => setMounted(true), []);
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  );
 
   if (!mounted) {
     return (

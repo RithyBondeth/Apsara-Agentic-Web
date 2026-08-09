@@ -158,7 +158,7 @@ export default function LandingHero({ copy }: LandingHeroProps) {
                 size="lg"
                 className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-7 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--l-btn-fg)] shadow-[0_18px_42px_var(--l-btn-shadow)] transition-[translate] duration-200 hover:-translate-y-0.5 sm:w-auto"
               >
-                <Link href={siteRoutes.product} data-magnetic>
+                <Link href={siteRoutes.install} data-magnetic>
                   {copy.primaryCta}
                   <ArrowRight className="size-4" />
                 </Link>
@@ -182,7 +182,7 @@ export default function LandingHero({ copy }: LandingHeroProps) {
             >
               <span className="text-[var(--l-spectrum-1)]">$</span>
               <code className="truncate text-foreground/80">
-                npm i -g @apsara/cli
+                pipx install apsara-agentic
               </code>
               <Copy aria-hidden className="size-3.5 shrink-0 opacity-50" />
             </div>

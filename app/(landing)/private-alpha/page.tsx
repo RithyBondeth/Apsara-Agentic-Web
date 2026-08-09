@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PrivateAlphaContent } from "./_content";
 
 export const metadata: Metadata = {
-  title: "Private Alpha | Apsara",
+  title: "Install the Local CLI | Apsara",
   description:
-    "Apsara private alpha positioning for repo-first agentic coding with reviewable edits and durable context.",
+    "Install Apsara locally, bring your own model API key, and start coding without creating an account.",
 };
 
 export default function PrivateAlphaPage() {

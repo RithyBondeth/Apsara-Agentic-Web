@@ -15,8 +15,8 @@ type LandingCtaProps = {
 export default function LandingCta({
   copy,
   locale,
-  primaryHref = siteRoutes.product,
-  secondaryHref = "/#top",
+  primaryHref = siteRoutes.install,
+  secondaryHref = siteRoutes.capabilities,
 }: LandingCtaProps) {
   const eyebrowClassName = cn(
     locale === "km"

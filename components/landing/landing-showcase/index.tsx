@@ -345,7 +345,7 @@ export default function LandingShowcase({
               data-gsap="showcase-tail"
               className="mt-5 max-w-2xl font-mono text-xs leading-6 text-[var(--l-accent)]"
             >
-              // {copy.humanLoopText}
+              {`// ${copy.humanLoopText}`}
             </p>
           </div>
         </div>
