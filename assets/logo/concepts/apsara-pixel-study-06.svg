@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="470" viewBox="0 0 1500 470" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara pixel logo study, second round</title>
+  <desc id="desc">Five original pixel marks combining Apsara forms with developer and autonomous-agent symbols.</desc>
+  <rect width="1500" height="470" rx="28" fill="#0C0C10"/>
+  <text x="40" y="50" fill="#F5F4FF" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700" letter-spacing="2">PIXEL APSARA · ROUND 02</text>
+  <text x="40" y="76" fill="#878594" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13">Gesture × terminal × autonomous agents</text>
+  <g fill="#13131A" stroke="#292735">
+    <rect x="40" y="105" width="268" height="310" rx="18"/>
+    <rect x="328" y="105" width="268" height="310" rx="18"/>
+    <rect x="616" y="105" width="268" height="310" rx="18"/>
+    <rect x="904" y="105" width="268" height="310" rx="18"/>
+    <rect x="1192" y="105" width="268" height="310" rx="18"/>
+  </g>
+  <g shape-rendering="crispEdges">
+    <g transform="translate(102 132) scale(6)" fill="#756BFF">
+      <path d="M11 0h2v1h-2zM10 1h4v1h-4zM9 2h2v1H9zM12 2h3v1h-3zM8 3h8v1H8zM9 4h6v1H9zM9 5h2v3H9zM13 5h2v3h-2zM11 7h2v1h-2zM9 8h6v2H9zM7 9h3v2H7zM14 9h3v2h-3zM8 11h8v2H8zM9 13h6v4H9zM7 17h10v2H7zM6 19h3v3H6zM10 19h4v4h-4zM15 19h3v3h-3zM5 22h4v1H5zM15 22h4v1h-4zM2 4h3v2H2zM1 6h3v5H1zM2 11h3v4H2zM4 14h4v2H4zM19 4h3v2h-3zM20 6h3v5h-3zM19 11h3v4h-3zM16 14h4v2h-4z"/>
+    </g>
+    <g transform="translate(385 134) scale(7)">
+      <path fill="#756BFF" fill-rule="evenodd" d="M1 8h9v9H1zM4 11h2v2H4zM1 6h2v5H1zM3 4h2v6H3zM5 2h2v7H5zM7 0h2v8H7zM9 6h2v3H9zM10 7h3v2h-3zM9 9h2v5H9zM1 17h8v2H1z"/>
+      <path fill="#C8FF3D" d="M14 10h2v1h-2zM15 11h2v1h-2zM16 12h2v1h-2zM15 13h2v1h-2zM14 14h2v1h-2zM18 15h4v1h-4z"/>
+    </g>
+    <g transform="translate(678 132) scale(6)">
+      <path fill="#756BFF" d="M11 0h2v1h-2zM10 1h4v1h-4zM9 2h2v1H9zM12 2h3v1h-3zM8 3h8v1H8zM9 4h6v1H9zM9 5h2v3H9zM13 5h2v3h-2zM11 7h2v1h-2zM9 8h6v2H9zM7 9h3v2H7zM14 9h3v2h-3zM5 8h3v2H5zM3 7h3v2H3zM2 5h2v3H2zM1 4h2v2H1zM16 10h3v2h-3zM18 11h3v2h-3zM20 10h3v2h-3zM10 10h4v5h-4zM9 14h3v3H9zM12 14h3v3h-3zM8 16h8v2H8zM7 17h3v3H7zM14 17h3v3h-3zM5 19h4v2H5zM15 19h4v2h-4zM4 21h4v2H4zM16 21h4v2h-4z"/>
+      <path fill="#C8FF3D" d="M22 8h1v3h-1zM21 9h3v1h-3z"/>
+    </g>
+    <g transform="translate(968 126) scale(7)">
+      <path fill="#756BFF" d="M9 0h2v2H9zM8 2h4v2H8zM6 4h3v2H6zM11 4h3v2h-3zM4 6h3v2H4zM13 6h3v2h-3zM3 8h3v3H3zM14 8h3v3h-3zM2 10h3v10H2zM15 10h3v10h-3zM1 19h5v2H1zM14 19h5v2h-5zM5 7h2v2H5zM13 7h2v2h-2z"/>
+      <path fill="#C8FF3D" d="M8 12h5v5H8zM12 16h2v2h-2z"/>
+    </g>
+    <g transform="translate(1254 132) scale(6)">
+      <path fill="#756BFF" d="M11 3h2v2h-2zM10 5h4v1h-4zM9 6h2v1H9zM12 6h3v1h-3zM8 7h8v2H8zM7 9h2v7H7zM15 9h2v7h-2zM9 9h6v2H9zM9 11h2v1H9zM13 11h2v1h-2zM9 12h6v4H9zM10 16h4v2h-4zM8 16h2v3H8zM14 16h2v3h-2zM7 18h3v3H7zM14 18h3v3h-3zM4 5h3v1H4zM2 6h3v1H2zM1 7h2v3H1zM17 5h3v1h-3zM19 6h3v1h-3zM21 7h2v3h-2zM3 16h2v2H3zM5 18h2v2H5zM19 16h2v2h-2zM17 18h2v2h-2z"/>
+      <path fill="#C8FF3D" d="M10 0h4v3h-4zM0 11h4v4H0zM20 11h4v4h-4z"/>
+    </g>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="64" y="352" fill="#F5F4FF" font-size="14" font-weight="700">X · BRACE DANCER</text>
+    <text x="352" y="352" fill="#F5F4FF" font-size="14" font-weight="700">Y · MUDRA PROMPT</text>
+    <text x="640" y="352" fill="#F5F4FF" font-size="14" font-weight="700">Z · LIVING A</text>
+    <text x="928" y="352" fill="#F5F4FF" font-size="14" font-weight="700">AA · CROWN CURSOR</text>
+    <text x="1216" y="352" fill="#F5F4FF" font-size="14" font-weight="700">AB · AGENT ORBIT</text>
+    <text x="64" y="376" fill="#878594" font-size="12">Code + movement</text>
+    <text x="352" y="376" fill="#878594" font-size="12">Best CLI signature</text>
+    <text x="640" y="376" fill="#878594" font-size="12">Dancer hidden in A</text>
+    <text x="928" y="376" fill="#878594" font-size="12">Smallest clear mark</text>
+    <text x="1216" y="376" fill="#878594" font-size="12">Strong agent story</text>
+  </g>
+</svg>

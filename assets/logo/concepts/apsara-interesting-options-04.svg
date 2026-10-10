@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara interesting logo options sixteen through twenty</title>
+  <desc id="desc">Five optical logo concepts labeled Brace, Pixel, Knot, Portal, and Mudra.</desc>
+  <rect width="1200" height="420" rx="30" fill="#11131b"/>
+  <text x="40" y="55" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="700" letter-spacing="2">APSARA / OPTICAL STUDY 04</text>
+  <text x="40" y="84" fill="#9b9caf" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1">CULTURE × CODE · ONE LIME CHECKPOINT</text>
+
+  <g transform="translate(32 115)">
+    <rect width="208" height="270" rx="22" fill="#191c27" stroke="#2c3040"/>
+    <g transform="translate(48 28) scale(1.75)"><path fill="#7168ef" d="M27 5h-9C11 5 8 10 8 17v8c0 4-3 7-7 7 4 0 7 3 7 7v8c0 7 3 12 10 12h9l-4-9h-3c-2 0-3-2-3-4v-7c0-5-2-7-5-7 3 0 5-2 5-7v-7c0-2 1-4 3-4h3l4-11Z"/><path fill="#7168ef" d="M37 5h9c7 0 10 5 10 12v8c0 4 3 7 7 7-4 0-7 3-7 7v8c0 7-3 12-10 12h-9l4-9h3c2 0 3-2 3-4v-7c0-5 2-7 5-7-3 0-5-2-5-7v-7c0-2-1-4-3-4h-3L37 5Z"/><rect width="6" height="6" x="29" y="49" rx="1" fill="#c8ff3d"/></g>
+    <text x="20" y="226" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">P · BRACE</text>
+    <text x="20" y="250" fill="#9b9caf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Code + dance / hidden A</text>
+  </g>
+
+  <g transform="translate(264 115)">
+    <rect width="208" height="270" rx="22" fill="#191c27" stroke="#2c3040"/>
+    <g transform="translate(44 28) scale(1.75)"><path fill="#7168ef" fill-rule="evenodd" d="M28 4h8v8h4v8h4v8h4v8h4v8h4v8h4v8H44v-8h-4v-8H24v8h-4v8H4v-8h4v-8h4v-8h4v-8h4v-8h4v-8h4V4Zm0 24h8v8h4v4H24v-4h4v-8Z"/><rect width="6" height="6" x="62" y="54" rx="1" fill="#c8ff3d"/></g>
+    <text x="20" y="226" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">Q · PIXEL</text>
+    <text x="20" y="250" fill="#9b9caf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">CLI + spire / energetic</text>
+  </g>
+
+  <g transform="translate(496 115)">
+    <rect width="208" height="270" rx="22" fill="#191c27" stroke="#2c3040"/>
+    <g transform="translate(48 28) scale(1.75)"><path d="M47 12C41 4 29 4 23 10c-8 8-3 17 6 25l14 13c5 5 12 4 16-1M17 53C7 48 5 36 13 28c7-7 18-6 26 0 9 7 13 16 11 28" fill="none" stroke="#7168ef" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><rect width="6" height="6" x="29" y="29" rx="1" fill="#c8ff3d"/></g>
+    <text x="20" y="226" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">R · KNOT</text>
+    <text x="20" y="250" fill="#9b9caf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Human + agent / crossing</text>
+  </g>
+
+  <g transform="translate(728 115)">
+    <rect width="208" height="270" rx="22" fill="#191c27" stroke="#2c3040"/>
+    <g transform="translate(48 28) scale(1.75)"><path d="m49 14-17-9L5 32l27 27 15-15" fill="none" stroke="#7168ef" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/><path d="m24 43 8-18 8 18" fill="none" stroke="#7168ef" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"/><path d="m48 23 11 9-11 9" fill="none" stroke="#c8ff3d" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/></g>
+    <text x="20" y="226" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">S · PORTAL</text>
+    <text x="20" y="250" fill="#9b9caf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Workspace / forward path</text>
+  </g>
+
+  <g transform="translate(960 115)">
+    <rect width="208" height="270" rx="22" fill="#191c27" stroke="#2c3040"/>
+    <g transform="translate(48 28) scale(1.75)"><path fill="#7168ef" d="M25 4c1 10-3 16-10 22-6 5-7 10-1 16 7 6 11 11 11 18-5-7-12-10-17-15-9-8-8-18 1-26C18 12 22 8 25 4Z"/><path fill="#7168ef" d="M39 4c-1 10 3 16 10 22 6 5 7 10 1 16-7 6-11 11-11 18 5-7 12-10 17-15 9-8 8-18-1-26C46 12 42 8 39 4Z"/><path fill="#c8ff3d" d="m32 27 6 6-6 6-6-6 6-6Z"/></g>
+    <text x="20" y="226" fill="#f5f5fa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">T · MUDRA</text>
+    <text x="20" y="250" fill="#9b9caf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Gesture + brackets / iconic</text>
+  </g>
+</svg>

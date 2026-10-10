@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option H — Loop</title>
+  <desc id="desc">An open agent loop pauses at a square human-review cursor.</desc>
+  <path d="M53 46A24 24 0 1 1 53 18" fill="none" stroke="#7168ef" stroke-width="10"/>
+  <rect width="10" height="10" x="49" y="27" rx="1.5" fill="#7168ef"/>
+</svg>

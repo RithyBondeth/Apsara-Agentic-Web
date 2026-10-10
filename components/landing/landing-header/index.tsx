@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { IconToggleButton } from "@/components/ui/icon-toggle-button";
+import LandingLanguageToggle from "@/components/landing/landing-language-toggle";
 import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
 
-const logoSrc = "/assets/logo/logo-without-title.svg";
+const logoSrc = "/assets/makor/head.png";
 
 type LandingHeaderProps = {
   brand: LandingCopy["brand"];
@@ -19,8 +21,6 @@ type LandingHeaderProps = {
   activePath: string;
   onLocaleChange: (locale: LandingLocale) => void;
 };
-
-const localeOptions: LandingLocale[] = ["en", "km"];
 
 export default function LandingHeader({
   brand,
@@ -31,57 +31,61 @@ export default function LandingHeader({
 }: LandingHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isKhmer = locale === "km";
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className="fixed inset-x-0 top-0 z-50"
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && mobileOpen) {
+          setMobileOpen(false);
+          menuButton.current?.focus();
+        }
+      }}
+    >
       <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-6 sm:pt-4 lg:px-8">
-
         {/* Main navbar */}
         <div
           data-gsap="header"
           className="landing-nav-bar relative flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 sm:px-4"
         >
-          <span aria-hidden data-gsap-progress className="landing-nav-progress" />
           {/* Logo */}
           <Link
             href={siteRoutes.home}
-            className="flex shrink-0 items-center gap-2.5 font-mono"
+            lang="en"
+            className="landing-brand flex shrink-0 items-center gap-2.5"
             onClick={() => setMobileOpen(false)}
           >
-            <span className="flex rounded-md border border-[var(--l-line)]/60 bg-[var(--l-surface-high)]/80 px-2 py-1 shadow-sm">
+            <span className="flex shrink-0">
               <Image
                 src={logoSrc}
                 alt={brand.logoAlt}
-                width={30}
-                height={46}
-                priority
-                className="h-8 w-auto sm:h-10"
+                width={44}
+                height={44}
+                sizes="44px"
+                preload
+                className="landing-makor-pixel size-9 object-contain sm:size-11"
               />
             </span>
-            <div className="leading-none">
-              <p className="text-sm font-bold tracking-tight text-foreground sm:text-base">
-                <span className="text-[var(--l-accent)]">~/</span>
-                {brand.title.toLowerCase()}
+            <div className="landing-brand-wordmark">
+              <p className="landing-brand-name">
+                {brand.title}
               </p>
-              <p
-                className={cn(
-                  "mt-0.5 hidden font-semibold text-muted-foreground sm:block",
-                  isKhmer
-                    ? "text-[11px] tracking-normal"
-                        : "text-[9px] uppercase tracking-[0.2em]",
-                )}
-              >
-                {brand.subtitle}
-              </p>
+              <p className="landing-brand-label">Agentic CLI</p>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav
+            aria-label={isKhmer ? "ម៉ឺនុយចម្បង" : "Main navigation"}
+            className="hidden items-center gap-1 lg:flex"
+          >
             {copy.navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                lang={item.href === siteRoutes.product ? "en" : undefined}
+                aria-current={activePath === item.href ? "page" : undefined}
                 className={cn(
                   "rounded-md px-4 py-2 font-mono text-xs font-medium uppercase tracking-[0.08em] transition-colors",
                   activePath === item.href
@@ -96,31 +100,10 @@ export default function LandingHeader({
 
           {/* Desktop right side */}
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
-            {/* Language switcher */}
-            <div
-              role="group"
-              aria-label={copy.languageSwitcherLabel}
-              className="inline-flex rounded-md border border-[var(--l-line)] bg-[var(--l-surface-high)]/70 p-1 shadow-[0_10px_24px_oklch(from_var(--l-shadow)_l_c_h/0.1)] dark:shadow-none"
-            >
-              {localeOptions.map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  aria-pressed={locale === option}
-                  onClick={() => onLocaleChange(option)}
-                  className={cn(
-                    "rounded px-3 py-1.5 font-mono text-[10px] font-semibold transition-colors",
-                    locale === option
-                      ? "bg-[var(--l-accent)] text-[var(--l-btn-fg)] shadow-sm"
-                      : "text-foreground/70 hover:bg-[var(--l-surface-high)] hover:text-foreground",
-                  )}
-                >
-                  {copy.localeLabels[option]}
-                </button>
-              ))}
-            </div>
-
-            {/* Theme toggle */}
+            <LandingLanguageToggle
+              locale={locale}
+              onLocaleChange={onLocaleChange}
+            />
             <ThemeToggle />
 
             {/* Install CTA */}
@@ -137,43 +120,39 @@ export default function LandingHeader({
 
           {/* Mobile right: locale + theme toggle + hamburger */}
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <div
-              role="group"
-              aria-label={copy.languageSwitcherLabel}
-              className="inline-flex rounded-md border border-[var(--l-line)] bg-[var(--l-surface-high)]/70 p-0.5"
-            >
-              {localeOptions.map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  aria-pressed={locale === option}
-                  onClick={() => onLocaleChange(option)}
-                  className={cn(
-                    "rounded px-2.5 py-1 font-mono text-[10px] font-semibold transition-colors",
-                    locale === option
-                      ? "bg-[var(--l-accent)] text-[var(--l-btn-fg)] shadow-sm"
-                      : "text-foreground/70 hover:bg-[var(--l-surface-high)] hover:text-foreground",
-                  )}
-                >
-                  {copy.localeLabels[option]}
-                </button>
-              ))}
-            </div>
+            <LandingLanguageToggle
+              locale={locale}
+              onLocaleChange={onLocaleChange}
+            />
             <ThemeToggle />
-            <button
-              type="button"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            <IconToggleButton
+              ref={menuButton}
+              aria-controls="landing-mobile-menu"
+              aria-label={
+                mobileOpen
+                  ? isKhmer
+                    ? "បិទម៉ឺនុយ"
+                    : "Close menu"
+                  : isKhmer
+                    ? "បើកម៉ឺនុយ"
+                    : "Open menu"
+              }
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              className="flex size-9 items-center justify-center rounded-md border border-[var(--l-line)]/70 bg-[var(--l-surface-high)]/70 text-foreground/80 transition-colors hover:bg-[var(--l-surface-high)]"
             >
-              {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-            </button>
+              {mobileOpen ? (
+                <X className="size-4" />
+              ) : (
+                <Menu className="size-4" />
+              )}
+            </IconToggleButton>
           </div>
         </div>
 
         {/* Mobile dropdown menu */}
         <div
+          id="landing-mobile-menu"
+          inert={!mobileOpen}
           aria-hidden={!mobileOpen}
           className={cn(
             "mt-2 overflow-hidden rounded-xl transition-all duration-300 ease-in-out lg:hidden",
@@ -185,11 +164,15 @@ export default function LandingHeader({
         >
           <div className="px-4 py-5">
             {/* Nav links */}
-            <nav className="flex flex-col gap-1">
+            <nav
+              aria-label={isKhmer ? "ម៉ឺនុយទូរស័ព្ទ" : "Mobile navigation"}
+              className="flex flex-col gap-1"
+            >
               {copy.navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
+                  lang={item.href === siteRoutes.product ? "en" : undefined}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
                     "rounded-md px-4 py-3 font-mono text-xs font-medium uppercase tracking-[0.08em] transition-colors",

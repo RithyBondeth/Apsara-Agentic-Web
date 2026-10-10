@@ -47,62 +47,52 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ── Landing theme tokens ──────────────────────────────────────────────
-   Every landing color resolves from this block. A complete retheme is an
-   edit to these two blocks (:root and .dark) — components and utilities
-   reference the tokens and never hardcode a color.
-
-   Current direction — "CLI-native". The palette is taken from the actual
-   Apsara CLI rather than invented alongside it: the warm near-black of
-   the terminal, its cream type, and the iridescent spectrum of its pixel
-   wordmark. The spectrum is the signature and appears exactly once per
-   view (headline highlight, hero swash, workflow thread); the solid
-   periwinkle pulled from its end handles every interactive element.
-   ─────────────────────────────────────────────────────────────────── */
+/* Makor brand palette. Light mode uses deeper gold and blue for readable text;
+   buttons and pixel artwork retain the approved mascot colors. */
 :root {
+  --makor-gold: #FAD88F;
+  --makor-blue: #6096FA;
+  --makor-charcoal: #181C25;
+  --makor-ivory: #F5F1E9;
   color-scheme: light;
 
-  /* Surfaces — cool editor paper with crisp technical contrast. */
-  --l-ground: oklch(0.968 0.007 275);
-  --l-surface: oklch(1 0 0);
-  --l-surface-high: oklch(0.985 0.006 275);
-  --l-ink: oklch(0.195 0.018 276);
-  --l-ink-muted: oklch(0.515 0.018 276);
-  --l-line: oklch(0.89 0.016 276);
+  --l-ground: #F5F1E9;
+  --l-surface: #FFFDFA;
+  --l-surface-high: #ECE8DF;
+  --l-ink: #181C25;
+  --l-ink-muted: #64666D;
+  --l-line: #DDD8CE;
 
-  /* Interactive */
-  --l-accent: oklch(0.511 0.23 277);
-  --l-accent-strong: oklch(0.457 0.215 277);
-  --l-accent-soft: oklch(0.68 0.158 277);
-  --l-on-accent: oklch(1 0 0);
+  --l-accent: #825B28;
+  --l-accent-strong: #68471E;
+  --l-accent-soft: #A77635;
+  --l-on-accent: #FFFFFF;
 
-  /* Signature spectrum — terminal green through cyan, violet, and pink. */
-  --l-spectrum-1: oklch(0.56 0.17 135);
-  --l-spectrum-2: oklch(0.58 0.14 215);
-  --l-spectrum-3: oklch(0.54 0.23 292);
-  --l-spectrum-4: oklch(0.58 0.22 338);
+  --l-spectrum-1: #825B28;
+  --l-spectrum-2: #295CA3;
+  --l-spectrum-3: #825B28;
+  --l-spectrum-4: #295CA3;
 
-  /* Derived effects */
-  --l-btn-from: var(--l-accent-strong);
-  --l-btn-to: var(--l-accent);
-  --l-btn-fg: var(--l-on-accent);
-  --l-btn-shadow: oklch(0.511 0.23 277 / 0.3);
-  --l-glow-a: oklch(0.58 0.14 215 / 0.12);
-  --l-glow-b: oklch(0.56 0.17 135 / 0.1);
-  --l-glow-center: oklch(0.511 0.23 277 / 0.07);
-  --l-tile-from: oklch(0.958 0.019 280);
-  --l-tile-to: oklch(0.927 0.031 280);
-  --l-tile-fg: var(--l-accent);
-  --l-term-top: oklch(0.214 0.002 68);
-  --l-term-bottom: oklch(0.155 0.002 90);
-  --l-term-glow-a: oklch(0.74 0.162 309 / 0.14);
-  --l-term-glow-b: oklch(0.891 0.147 91 / 0.1);
-  --l-term-line: oklch(0.319 0.008 75);
-  --l-dot: oklch(0.203 0.008 297 / 0.14);
-  --l-shadow: oklch(0.203 0.008 297);
-  --l-glass-from: oklch(1 0 0 / 0.9);
-  --l-glass-to: oklch(1 0 0 / 0.96);
-  --l-inset: oklch(1 0 0 / 0.75);
+  --l-btn-from: var(--makor-gold);
+  --l-btn-to: var(--makor-gold);
+  --l-btn-fg: var(--makor-charcoal);
+  --l-btn-shadow: #181C2514;
+  --l-glow-a: #6096FA0A;
+  --l-glow-b: #FAD88F0A;
+  --l-glow-center: #FAD88F0A;
+  --l-tile-from: #F5E9D1;
+  --l-tile-to: #F5E9D1;
+  --l-tile-fg: #825B28;
+  --l-term-top: #181C25;
+  --l-term-bottom: #12151D;
+  --l-term-glow-a: #6096FA00;
+  --l-term-glow-b: #FAD88F00;
+  --l-term-line: #303743;
+  --l-dot: #181C2514;
+  --l-shadow: #181C25;
+  --l-glass-from: #FFFDFAF2;
+  --l-glass-to: #FFFDFAF2;
+  --l-inset: #FFFFFF80;
 
   --background: var(--l-ground);
   --foreground: var(--l-ink);
@@ -110,17 +100,17 @@
   --card-foreground: var(--l-ink);
   --popover: var(--l-surface);
   --popover-foreground: var(--l-ink);
-  --primary: var(--l-accent);
-  --primary-foreground: var(--l-on-accent);
-  --secondary: oklch(0.962 0.006 82);
+  --primary: var(--l-btn-from);
+  --primary-foreground: var(--l-btn-fg);
+  --secondary: var(--l-surface-high);
   --secondary-foreground: var(--l-ink);
-  --muted: oklch(0.962 0.006 82);
+  --muted: var(--l-surface-high);
   --muted-foreground: var(--l-ink-muted);
-  --accent: oklch(0.958 0.019 280);
+  --accent: var(--l-tile-from);
   --accent-foreground: var(--l-ink);
   --destructive: oklch(0.55 0.2 27);
-  --border: oklch(0.902 0.013 82 / 0.9);
-  --input: oklch(0.95 0.008 82);
+  --border: var(--l-line);
+  --input: var(--l-surface-high);
   --ring: var(--l-accent);
   --chart-1: var(--l-spectrum-4);
   --chart-2: var(--l-spectrum-3);
@@ -133,56 +123,54 @@
   --font-heading: var(--font-ubuntu);
   --sidebar: var(--l-surface);
   --sidebar-foreground: var(--l-ink);
-  --sidebar-primary: var(--l-accent);
-  --sidebar-primary-foreground: var(--l-on-accent);
-  --sidebar-accent: oklch(0.958 0.019 280);
+  --sidebar-primary: var(--l-btn-from);
+  --sidebar-primary-foreground: var(--l-btn-fg);
+  --sidebar-accent: var(--l-surface-high);
   --sidebar-accent-foreground: var(--l-ink);
-  --sidebar-border: oklch(0.902 0.013 82 / 0.9);
+  --sidebar-border: var(--l-line);
   --sidebar-ring: var(--l-accent);
 }
 
 .dark {
   color-scheme: dark;
 
-  /* A true editor canvas: blue-black with cool, high-clarity type. */
-  --l-ground: oklch(0.14 0.012 270);
-  --l-surface: oklch(0.178 0.014 270);
-  --l-surface-high: oklch(0.215 0.016 270);
-  --l-ink: oklch(0.955 0.012 275);
-  --l-ink-muted: oklch(0.69 0.022 275);
-  --l-line: oklch(0.29 0.022 270);
+  --l-ground: #12151D;
+  --l-surface: #181C25;
+  --l-surface-high: #202632;
+  --l-ink: var(--makor-ivory);
+  --l-ink-muted: #A9ADB7;
+  --l-line: #303743;
 
-  --l-accent: oklch(0.739 0.135 276);
-  --l-accent-strong: oklch(0.628 0.172 275);
-  --l-accent-soft: oklch(0.822 0.089 277);
-  --l-on-accent: oklch(0.177 0.002 107);
+  --l-accent: var(--makor-gold);
+  --l-accent-strong: #E7BF72;
+  --l-accent-soft: #FCE5B5;
+  --l-on-accent: var(--makor-charcoal);
 
-  /* Full-brightness terminal spectrum. */
-  --l-spectrum-1: oklch(0.84 0.2 132);
-  --l-spectrum-2: oklch(0.81 0.14 211);
-  --l-spectrum-3: oklch(0.75 0.18 292);
-  --l-spectrum-4: oklch(0.76 0.18 338);
+  --l-spectrum-1: var(--makor-gold);
+  --l-spectrum-2: var(--makor-blue);
+  --l-spectrum-3: var(--makor-gold);
+  --l-spectrum-4: var(--makor-blue);
 
-  --l-btn-from: var(--l-accent-strong);
-  --l-btn-to: var(--l-accent);
-  --l-btn-fg: var(--l-on-accent);
-  --l-btn-shadow: oklch(0.628 0.172 275 / 0.45);
-  --l-glow-a: oklch(0.81 0.14 211 / 0.18);
-  --l-glow-b: oklch(0.84 0.2 132 / 0.12);
-  --l-glow-center: oklch(0.739 0.135 276 / 0.14);
-  --l-tile-from: oklch(0.269 0.028 291);
-  --l-tile-to: oklch(0.246 0.023 288);
-  --l-tile-fg: var(--l-accent-soft);
-  --l-term-top: oklch(0.214 0.002 68);
-  --l-term-bottom: oklch(0.155 0.002 90);
-  --l-term-glow-a: oklch(0.74 0.162 309 / 0.16);
-  --l-term-glow-b: oklch(0.891 0.147 91 / 0.1);
-  --l-term-line: oklch(0.319 0.008 75);
-  --l-dot: oklch(0.9 0.01 85 / 0.09);
-  --l-shadow: oklch(0.05 0.002 90);
-  --l-glass-from: oklch(0.252 0.004 85 / 0.85);
-  --l-glass-to: oklch(0.214 0.002 68 / 0.95);
-  --l-inset: oklch(1 0 0 / 0.06);
+  --l-btn-from: var(--makor-gold);
+  --l-btn-to: var(--makor-gold);
+  --l-btn-fg: var(--makor-charcoal);
+  --l-btn-shadow: #00000026;
+  --l-glow-a: #6096FA0A;
+  --l-glow-b: #FAD88F0A;
+  --l-glow-center: #FAD88F0A;
+  --l-tile-from: #FAD88F0F;
+  --l-tile-to: #FAD88F0F;
+  --l-tile-fg: var(--makor-gold);
+  --l-term-top: #181C25;
+  --l-term-bottom: #12151D;
+  --l-term-glow-a: #6096FA00;
+  --l-term-glow-b: #FAD88F00;
+  --l-term-line: #303743;
+  --l-dot: #F5F1E914;
+  --l-shadow: #000000;
+  --l-glass-from: #181C25F2;
+  --l-glass-to: #181C25F2;
+  --l-inset: #FFFFFF06;
 
   --background: var(--l-ground);
   --foreground: var(--l-ink);
@@ -190,17 +178,17 @@
   --card-foreground: var(--l-ink);
   --popover: var(--l-surface);
   --popover-foreground: var(--l-ink);
-  --primary: var(--l-accent);
-  --primary-foreground: var(--l-on-accent);
+  --primary: var(--l-btn-from);
+  --primary-foreground: var(--l-btn-fg);
   --secondary: var(--l-surface-high);
   --secondary-foreground: var(--l-ink);
   --muted: var(--l-surface-high);
   --muted-foreground: var(--l-ink-muted);
-  --accent: oklch(0.269 0.028 291);
+  --accent: var(--l-tile-from);
   --accent-foreground: var(--l-ink);
   --destructive: oklch(0.65 0.22 25);
-  --border: oklch(0.319 0.008 75 / 0.8);
-  --input: oklch(0.28 0.006 80);
+  --border: var(--l-line);
+  --input: var(--l-surface-high);
   --ring: var(--l-accent);
   --chart-1: var(--l-spectrum-4);
   --chart-2: var(--l-spectrum-3);
@@ -209,11 +197,11 @@
   --chart-5: var(--l-ink-muted);
   --sidebar: var(--l-surface);
   --sidebar-foreground: var(--l-ink);
-  --sidebar-primary: var(--l-accent);
-  --sidebar-primary-foreground: var(--l-on-accent);
+  --sidebar-primary: var(--l-btn-from);
+  --sidebar-primary-foreground: var(--l-btn-fg);
   --sidebar-accent: var(--l-surface-high);
   --sidebar-accent-foreground: var(--l-ink);
-  --sidebar-border: oklch(0.319 0.008 75 / 0.8);
+  --sidebar-border: var(--l-line);
   --sidebar-ring: var(--l-accent);
 }
 
@@ -223,10 +211,25 @@ html[lang="km"] {
 }
 
 .landing-locale-km {
+  --khmer-tracking: -0.02em;
+  --khmer-word-spacing: -0.08em;
   font-family: var(--font-khmer), "Noto Sans Khmer", sans-serif;
   font-optical-sizing: auto;
-  font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+  font-feature-settings: normal;
+  font-kerning: normal;
+  font-stretch: 95%;
+  font-synthesis: none;
+  letter-spacing: var(--khmer-tracking);
+  word-spacing: var(--khmer-word-spacing);
   text-rendering: optimizeLegibility;
+}
+
+/* Khmer UI labels must not fall back to the Latin-only terminal font.
+   Code samples declare lang="en" to retain their monospace typography. */
+.landing-locale-km .font-mono:not(:lang(en)),
+.landing-preserved [lang="km"] {
+  font-family: var(--font-khmer), "Noto Sans Khmer", sans-serif;
+  letter-spacing: var(--khmer-tracking, -0.02em);
 }
 
 .landing-locale-km .font-heading,
@@ -234,16 +237,30 @@ html[lang="km"] {
 .landing-locale-km h2,
 .landing-locale-km h3,
 .landing-locale-km h4 {
+  --khmer-tracking: -0.04em;
   font-family: var(--font-khmer), "Noto Sans Khmer", sans-serif;
-  letter-spacing: -0.01em;
+  font-stretch: 90%;
+  letter-spacing: var(--khmer-tracking);
 }
 
-.landing-locale-km .tracking-tight {
-  letter-spacing: -0.01em;
+/* Keep the same optical spacing on nested spans and whole Khmer text runs.
+   Do not split syllables into separate elements for styling or animation. */
+.landing-locale-km :where(*):not(:lang(en)) {
+  letter-spacing: var(--khmer-tracking);
+  word-spacing: var(--khmer-word-spacing);
 }
 
-.landing-locale-km :where(p, a, button, li, dt, dd, label, input, textarea) {
-  letter-spacing: 0;
+.landing-locale-km h1 {
+  font-weight: 700;
+}
+
+.landing-locale-km :lang(en) {
+  font-stretch: normal;
+}
+
+.landing-locale-km [lang="en"] {
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 .landing-locale-km :where(h1, h2, h3, h4) {
@@ -268,11 +285,6 @@ html[lang="km"] {
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-@utility landing-dot-pattern {
-  background-image: radial-gradient(circle, var(--l-dot) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
 
 @utility landing-nav-bar {
@@ -376,67 +388,6 @@ html[lang="km"] {
    content-visibility skipping here.
    ─────────────────────────────────────────────────────────────────────── */
 
-/* Golden aurora — slow-turning silk sheen behind the hero */
-.landing-aurora {
-  pointer-events: none;
-  position: absolute;
-  inset: -35%;
-  background: conic-gradient(
-    from 0deg at 50% 42%,
-    var(--l-glow-a),
-    transparent 80deg,
-    var(--l-glow-b) 150deg,
-    var(--l-glow-center) 230deg,
-    var(--l-glow-a) 300deg,
-    var(--l-glow-a)
-  );
-  filter: blur(80px);
-  opacity: 0.45;
-  will-change: transform;
-  animation: landing-aurora-turn 48s linear infinite;
-}
-
-@keyframes landing-aurora-turn {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.dark .landing-aurora {
-  opacity: 0.5;
-}
-
-/* Film grain over the whole page — adds material texture to the cream */
-.landing-grain {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  opacity: 0.045;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-}
-
-.dark .landing-grain {
-  opacity: 0.06;
-}
-
-/* SplitText fragments must carry the gradient themselves — background-clip
-   does not survive being split into child spans. */
-.landing-gradient-text :is(.landing-split-char, .landing-split-word) {
-  background-image: linear-gradient(
-    125deg,
-    var(--l-spectrum-1),
-    var(--l-spectrum-2) 38%,
-    var(--l-spectrum-3) 70%,
-    var(--l-spectrum-4)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 /* 3D tilt cards — GSAP owns `transform`; the CSS hover lift uses the
    separate `translate` property so the two never fight. */
 [data-tilt] {
@@ -468,26 +419,6 @@ html[lang="km"] {
     480px circle at var(--glare-x, 50%) var(--glare-y, 40%),
     oklch(1 0 0 / 0.22),
     transparent 55%
-  );
-}
-
-/* Scroll progress hairline inside the nav pill */
-.landing-nav-progress {
-  pointer-events: none;
-  position: absolute;
-  bottom: 4px;
-  left: 26px;
-  right: 26px;
-  height: 2px;
-  border-radius: 999px;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  opacity: 0.9;
-  background: linear-gradient(
-    90deg,
-    var(--l-spectrum-4),
-    var(--l-spectrum-3) 55%,
-    var(--l-spectrum-1)
   );
 }
 
@@ -650,23 +581,6 @@ html[lang="km"] {
 
 /* ── Developer interface direction ───────────────────────────────────── */
 
-.landing-code-grid {
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--l-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--l-line) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 12%,
-    black 82%,
-    transparent
-  );
-  opacity: 0.42;
-  will-change: transform;
-}
-
 .landing-editor-stage {
   perspective: 1500px;
   transform-style: preserve-3d;
@@ -778,56 +692,8 @@ html[lang="km"] {
   color: #f78cdb;
 }
 
-.landing-code-marquee {
-  overflow: hidden;
-  border-block: 1px solid var(--l-line);
-  background: var(--l-surface);
-  transform: rotate(-1.2deg) scale(1.02);
-}
-
-.landing-code-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: landing-marquee 26s linear infinite;
-}
-
-.landing-code-marquee-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.9rem 2rem;
-  color: var(--l-ink-muted);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  white-space: nowrap;
-}
-
-.landing-code-marquee-track span:nth-child(3n + 1) svg {
-  color: var(--l-spectrum-1);
-}
-
-.landing-code-marquee-track span:nth-child(3n + 2) svg {
-  color: var(--l-spectrum-2);
-}
-
-.landing-code-marquee-track span:nth-child(3n + 3) svg {
-  color: var(--l-spectrum-4);
-}
-
-@keyframes landing-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .landing-story-card {
   transition: opacity 0.25s ease;
-}
-
-.landing-session-telemetry {
-  display: none;
 }
 
 .landing-cli-pixel-logo {
@@ -894,12 +760,6 @@ html[lang="km"] {
   border: 1px solid var(--l-line);
   background: var(--l-ground);
   transform: rotate(45deg);
-}
-
-@media (min-width: 1280px) and (min-height: 860px) {
-  .landing-session-telemetry {
-    display: block;
-  }
 }
 
 .landing-story-node {
@@ -1045,8 +905,4 @@ html[lang="km"] {
     scroll-behavior: auto !important;
   }
 
-  .landing-code-marquee-track {
-    animation: none;
-    transform: translateX(-18%);
-  }
 }

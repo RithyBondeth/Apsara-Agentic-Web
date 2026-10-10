@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   Check,
@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   TerminalSquare,
 } from "lucide-react";
+import KhmerOrnament from "@/components/landing/khmer-ornament";
 import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
@@ -25,31 +26,40 @@ type LandingInstallProps = {
 export default function LandingInstall({ copy, locale }: LandingInstallProps) {
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
   const isKhmer = locale === "km";
+  const [copyFeedback, setCopyFeedback] = useState("");
+  const copyTimeout = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (copyTimeout.current) window.clearTimeout(copyTimeout.current);
+    },
+    [],
+  );
 
   const copyCommand = async (command: string) => {
     try {
       await navigator.clipboard.writeText(command);
       setCopiedCommand(command);
-      window.setTimeout(() => setCopiedCommand(null), 1800);
+      setCopyFeedback(copy.copiedLabel);
+      if (copyTimeout.current) window.clearTimeout(copyTimeout.current);
+      copyTimeout.current = window.setTimeout(() => {
+        setCopiedCommand(null);
+        setCopyFeedback("");
+      }, 1800);
     } catch {
       setCopiedCommand(null);
+      setCopyFeedback(
+        isKhmer
+          ? "មិនអាចចម្លងបាន។ សូមជ្រើសរើសពាក្យបញ្ជា ហើយចម្លងដោយខ្លួនឯង។"
+          : "Copy failed. Select the command and copy it manually.",
+      );
     }
   };
 
   return (
     <section className="relative overflow-hidden border-b border-[var(--l-line)] py-20 sm:py-28 lg:py-36">
-      <div aria-hidden className="landing-code-grid absolute inset-0 opacity-45" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-48 top-12 size-[36rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-a),transparent_70%)] blur-[160px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-48 top-72 size-[38rem] rounded-full bg-[radial-gradient(circle,var(--l-glow-b),transparent_70%)] blur-[180px]"
-      />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
+          <KhmerOrnament variant="lotus" className="heritage-install-lotus" />
           <p
             className={cn(
               isKhmer
@@ -72,12 +82,18 @@ export default function LandingInstall({ copy, locale }: LandingInstallProps) {
           </div>
         </div>
 
-        <div className="mx-auto mt-16 max-w-5xl space-y-4 sm:mt-20">
+        <p className="mx-auto mt-10 max-w-5xl rounded-lg border border-[var(--l-line)] bg-[var(--l-surface)] px-5 py-4 text-sm leading-7 text-muted-foreground">
+          {isKhmer
+            ? "កំណែ 0.1.0a2 មិនទាន់បានចេញផ្សាយទេ ហើយត្រូវដំឡើងពីកូដប្រភព។ កំណែចាស់ 0.1.0a1 មិនមានផ្ទាំងប្រើប្រាស់ និងការកែលម្អការដំណើរការបច្ចុប្បន្នទេ។"
+            : "Version 0.1.0a2 is not published yet and must be built from source. The older 0.1.0a1 release does not include the current interface and runtime improvements."}
+        </p>
+        <div className="mx-auto mt-8 max-w-5xl space-y-4 sm:mt-10">
           {copy.steps.map((step, index) => {
             const copied = copiedCommand === step.command;
             return (
               <article
                 key={step.number}
+                data-gsap="install-step"
                 className="landing-workflow-card grid gap-6 rounded-xl p-5 sm:grid-cols-[4.5rem_1fr] sm:p-7 lg:grid-cols-[5rem_0.8fr_1.2fr] lg:items-center lg:gap-8"
               >
                 <div className="flex size-14 items-center justify-center rounded-lg border border-[var(--l-line)] bg-[var(--l-ground)]/75 font-mono text-sm font-semibold text-[var(--l-accent)] shadow-[inset_0_1px_0_var(--l-inset)]">
@@ -101,16 +117,23 @@ export default function LandingInstall({ copy, locale }: LandingInstallProps) {
 
                 <div className="flex min-w-0 items-center gap-3 rounded-lg border border-white/9 bg-[#0a0d11] px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                   <span className="font-mono text-xs text-[#74d99f]">$</span>
-                  <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-xs text-white/80 sm:text-sm">
+                  <pre
+                    lang="en"
+                    className="min-w-0 flex-1 whitespace-pre-wrap [overflow-wrap:anywhere] font-mono text-xs text-white/80 sm:text-sm"
+                  >
                     {step.command}
-                  </code>
+                  </pre>
                   <button
                     type="button"
                     onClick={() => copyCommand(step.command)}
                     aria-label={`${copy.copyLabel}: ${step.command}`}
                     className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--l-accent)]"
                   >
-                    {copied ? <Check className="size-3.5 text-[#74d99f]" /> : <Copy className="size-3.5" />}
+                    {copied ? (
+                      <Check className="size-3.5 text-[#74d99f]" />
+                    ) : (
+                      <Copy className="size-3.5" />
+                    )}
                     <span className="hidden sm:inline">
                       {copied ? copy.copiedLabel : copy.copyLabel}
                     </span>
@@ -121,6 +144,12 @@ export default function LandingInstall({ copy, locale }: LandingInstallProps) {
           })}
         </div>
 
+        <p
+          role="status"
+          className="landing-install-copy-feedback mx-auto mt-3 max-w-5xl text-sm text-[var(--l-accent)]"
+        >
+          {copyFeedback}
+        </p>
         <div className="mx-auto mt-8 grid max-w-5xl gap-5 lg:grid-cols-[0.78fr_1.22fr]">
           <aside className="landing-glass-card rounded-xl p-6 sm:p-8">
             <h2 className="font-heading text-xl font-semibold text-foreground">
@@ -128,7 +157,10 @@ export default function LandingInstall({ copy, locale }: LandingInstallProps) {
             </h2>
             <ul className="mt-5 space-y-4">
               {copy.requirements.map((requirement) => (
-                <li key={requirement} className="flex gap-3 text-sm leading-6 text-muted-foreground">
+                <li
+                  key={requirement}
+                  className="flex gap-3 text-sm leading-6 text-muted-foreground"
+                >
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[var(--l-spectrum-1)]" />
                   {requirement}
                 </li>
@@ -152,9 +184,16 @@ export default function LandingInstall({ copy, locale }: LandingInstallProps) {
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {copy.privacyPoints.map((point) => (
-                <div key={point.title} className="border-t border-[var(--l-line)] pt-4">
-                  <h3 className="text-sm font-semibold text-foreground">{point.title}</h3>
-                  <p className="mt-2 text-xs leading-6 text-muted-foreground">{point.description}</p>
+                <div
+                  key={point.title}
+                  className="border-t border-[var(--l-line)] pt-4"
+                >
+                  <h3 className="text-sm font-semibold text-foreground">
+                    {point.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-6 text-muted-foreground">
+                    {point.description}
+                  </p>
                 </div>
               ))}
             </div>

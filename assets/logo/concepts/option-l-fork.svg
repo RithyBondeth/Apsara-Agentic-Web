@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option L — Fork</title>
+  <desc id="desc">A balanced repository fork converges into one local path.</desc>
+  <path d="m9 9 23 23L55 9M32 32v23" fill="none" stroke="#7168ef" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/>
+  <rect width="9" height="9" x="27.5" y="27.5" rx="1" fill="#7168ef"/>
+</svg>

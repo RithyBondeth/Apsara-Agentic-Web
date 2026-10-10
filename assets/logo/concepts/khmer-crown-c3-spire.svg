@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">Compact Khmer Apsara crown pixel logo</title>
+  <desc id="desc">A compact stepped Khmer crown with a central floral rosette and paired leaf spires.</desc>
+  <g fill="#756BFF">
+    <path d="M11 0h2v2h-2zM10 2h4v2h-4zM9 4h6v2H9zM8 6h3v3H8zM13 6h3v3h-3zM7 8h3v6H7zM14 8h3v6h-3zM6 12h3v5H6zM15 12h3v5h-3z"/>
+    <path fill-rule="evenodd" d="M9 8h6v7H9zM11 10h2v3h-2zM10 6h4v2h-4zM10 15h4v2h-4zM7 10h2v3H7zM15 10h2v3h-2z"/>
+    <path d="M2 6h2v2H2zM1 8h4v2H1zM2 10h2v1H2zM1 11h4v2H1zM2 13h2v4H2zM20 6h2v2h-2zM19 8h4v2h-4zM20 10h2v1h-2zM19 11h4v2h-4zM20 13h2v4h-2zM1 17h2v2H1zM4 18h2v2H4zM7 17h2v2H7zM10 18h2v2h-2zM13 17h2v2h-2zM16 18h2v2h-2zM19 17h2v2h-2zM22 18h2v2h-2zM1 20h22v3H1zM3 23h18v1H3z"/>
+  </g>
+</svg>

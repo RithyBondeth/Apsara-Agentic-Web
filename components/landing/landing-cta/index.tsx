@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import KhmerOrnament from "@/components/landing/khmer-ornament";
 import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { Button } from "@/components/ui/button";
 import { siteRoutes } from "@/utils/constants/site-routes";
@@ -27,21 +29,29 @@ export default function LandingCta({
   return (
     <section
       id="cta"
-      className="relative scroll-mt-24 overflow-hidden py-24 sm:scroll-mt-28 sm:py-32 lg:py-40"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-16 lg:py-28"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-25"
-      />
-
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="landing-cta-surface relative overflow-hidden rounded-xl px-7 py-16 text-center sm:px-14 sm:py-24">
-          <span aria-hidden className="landing-cta-ring" />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,var(--l-glow-a),transparent_70%)] blur-[60px]"
+        <div className="landing-cta-surface relative overflow-hidden rounded-xl px-7 py-16 text-center sm:px-14 sm:py-16">
+          <div className="heritage-cta-halo" aria-hidden="true" />
+          <KhmerOrnament
+            variant="corner"
+            className="heritage-cta-corner heritage-cta-corner-left"
+          />
+          <KhmerOrnament
+            variant="corner"
+            className="heritage-cta-corner heritage-cta-corner-right"
           />
           <div className="relative">
+            <KhmerOrnament variant="lotus" className="heritage-cta-lotus" />
+            <Image
+              src="/assets/makor/terminal-sprite.svg"
+              alt="Makor pixel mascot"
+              width={144}
+              height={96}
+              unoptimized
+              className="landing-cta-makor landing-makor-float mx-auto mb-8"
+            />
             <p data-gsap="cta-head" className={eyebrowClassName}>
               {copy.eyebrow}
             </p>
@@ -71,7 +81,7 @@ export default function LandingCta({
                 size="lg"
                 className="landing-btn-shimmer h-12 w-full rounded-lg border-0 bg-[linear-gradient(135deg,var(--l-btn-from),var(--l-btn-to))] px-10 font-mono text-xs font-semibold uppercase tracking-widest text-(--l-btn-fg) shadow-[0_20px_48px_var(--l-btn-shadow)] transition-all hover:-translate-y-0.5 sm:w-auto"
               >
-                <Link href={primaryHref}>
+                <Link href={primaryHref} data-magnetic>
                   {copy.primaryCta}
                   <ArrowRight className="size-4" />
                 </Link>
@@ -82,7 +92,9 @@ export default function LandingCta({
                 variant="outline"
                 className="h-12 w-full rounded-lg border-(--l-line) bg-(--l-surface) px-10 font-mono text-xs font-semibold uppercase tracking-widest text-foreground transition-all hover:border-(--l-accent) sm:w-auto"
               >
-                <Link href={secondaryHref}>{copy.secondaryCta}</Link>
+                <Link href={secondaryHref} data-magnetic>
+                  {copy.secondaryCta}
+                </Link>
               </Button>
             </div>
           </div>

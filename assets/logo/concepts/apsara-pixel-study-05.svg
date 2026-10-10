@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara pixel logo study</title>
+  <desc id="desc">Three original pixel logo directions: a crowned bust, a dancing mascot, and a crowned letter A.</desc>
+  <defs>
+    <symbol id="pixel-bust" viewBox="0 0 17 17">
+      <path d="M8 0h1v1H8zM7 1h3v1H7zM6 2h1v1H6zM8 2h1v1H8zM10 2h1v1h-1zM5 3h7v1H5zM4 4h2v1H4zM7 4h3v1H7zM11 4h2v1h-2zM4 5h9v1H4zM3 6h1v1H3zM5 6h2v1H5zM10 6h2v1h-2zM13 6h1v1h-1zM4 7h3v1H4zM10 7h3v1h-3zM4 8h2v1H4zM7 8h1v1H7zM9 8h1v1H9zM11 8h2v1h-2zM4 9h2v1H4zM11 9h2v1h-2zM4 10h3v1H4zM10 10h3v1h-3zM5 11h7v1H5zM4 12h2v1H4zM7 12h3v1H7zM11 12h2v1h-2zM3 13h3v1H3zM8 13h1v1H8zM11 13h3v1h-3zM2 14h2v1H2zM6 14h5v1H6zM13 14h2v1h-2zM1 15h2v1H1zM4 15h2v1H4zM7 15h1v1H7zM9 15h1v1H9zM11 15h2v1h-2zM14 15h2v1h-2zM4 16h2v1H4zM11 16h2v1h-2z"/>
+    </symbol>
+    <symbol id="pixel-dancer" viewBox="0 0 24 24">
+      <path d="M11 0h2v1h-2zM10 1h4v1h-4zM4 2h1v1H4zM9 2h2v1H9zM12 2h3v1h-3zM1 3h4v1H1zM8 3h7v1H8zM2 4h3v1H2zM8 4h8v1H8zM3 5h3v1H3zM8 5h8v1H8zM4 6h2v1H4zM9 6h7v1H9zM4 7h3v1H4zM9 7h6v1H9zM5 8h3v1H5zM10 8h4v1h-4zM20 8h3v1h-3zM6 9h11v1H6zM18 9h4v1h-4zM7 10h15v1H7zM10 11h4v1h-4zM16 11h3v1h-3zM10 12h4v1h-4zM9 13h6v1H9zM19 13h2v1h-2zM10 14h5v1h-5zM18 14h3v1h-3zM9 15h7v1H9zM17 15h3v1h-3zM9 16h10v1H9zM9 17h3v1H9zM14 17h4v1h-4zM8 18h4v1H8zM8 19h3v1H8zM8 20h3v1H8zM7 21h4v1H7zM6 22h5v1H6z"/>
+      <path fill="#C8FF3D" d="M22 11h1v1h-1zM21 12h3v1h-3zM22 13h1v1h-1z"/>
+    </symbol>
+    <symbol id="pixel-a" viewBox="0 0 16 16">
+      <path d="M7 0h2v1H7zM7 1h2v1H7zM6 2h4v1H6zM5 3h6v1H5zM4 4h3v1H4zM9 4h3v1H9zM3 5h3v1H3zM10 5h3v1h-3zM2 6h3v1H2zM11 6h3v1h-3zM1 7h3v1H1zM12 7h3v1h-3zM0 8h3v1H0zM13 8h3v1h-3zM0 9h3v1H0zM13 9h3v1h-3zM0 10h16v1H0zM0 11h3v1H0zM13 11h3v1h-3zM0 12h3v1H0zM13 12h3v1h-3zM0 13h3v1H0zM13 13h3v1h-3zM0 14h3v1H0zM13 14h3v1h-3zM0 15h3v1H0zM13 15h3v1h-3z"/>
+    </symbol>
+  </defs>
+  <rect width="1200" height="470" rx="28" fill="#0C0C10"/>
+  <text x="52" y="52" fill="#F5F4FF" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700" letter-spacing="2">PIXEL APSARA</text>
+  <text x="52" y="78" fill="#878594" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13">Original terminal mascot study · exact integer grids</text>
+  <g shape-rendering="crispEdges" fill="#756BFF">
+    <rect x="50" y="105" width="340" height="310" rx="18" fill="#13131A" stroke="#292735"/>
+    <use href="#pixel-bust" x="118" y="130" width="204" height="204"/>
+    <rect x="430" y="105" width="340" height="310" rx="18" fill="#13131A" stroke="#292735"/>
+    <use href="#pixel-dancer" x="480" y="120" width="240" height="240"/>
+    <rect x="810" y="105" width="340" height="310" rx="18" fill="#13131A" stroke="#292735"/>
+    <use href="#pixel-a" x="876" y="128" width="208" height="208"/>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="76" y="383" fill="#F5F4FF" font-size="14" font-weight="700">U · CROWNED BUST</text>
+    <text x="456" y="383" fill="#F5F4FF" font-size="14" font-weight="700">V · DANCER + CURSOR</text>
+    <text x="836" y="383" fill="#F5F4FF" font-size="14" font-weight="700">W · CROWNED A</text>
+    <text x="76" y="404" fill="#878594" font-size="12">Strong app icon</text>
+    <text x="456" y="404" fill="#878594" font-size="12">Most ownable mascot</text>
+    <text x="836" y="404" fill="#878594" font-size="12">Cleanest favicon</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">Khmer Apsara rosette crown pixel logo</title>
+  <desc id="desc">A pixel crown based on Angkor Apsara floral rosettes, leaf spires, and a layered crown band.</desc>
+  <g fill="#756BFF">
+    <path d="M5 0h2v2H5zM4 2h4v2H4zM5 4h2v1H5zM3 5h4v2H3zM5 7h2v1H5zM4 8h4v2H4zM5 10h2v2H5zM25 0h2v2h-2zM24 2h4v2h-4zM25 4h2v1h-2zM25 5h4v2h-4zM25 7h2v1h-2zM24 8h4v2h-4zM25 10h2v2h-2z"/>
+    <path fill-rule="evenodd" d="M13 5h7v7h-7zM15 7h3v3h-3zM15 2h3v3h-3zM15 12h3v3h-3zM10 7h3v3h-3zM20 7h3v3h-3zM11 3h3v3h-3zM19 3h3v3h-3zM11 11h3v3h-3zM19 11h3v3h-3z"/>
+    <path fill-rule="evenodd" d="M4 13h5v5H4zM6 15h1v1H6zM5 11h3v2H5zM5 18h3v2H5zM2 14h2v3H2zM9 14h2v3H9zM23 13h5v5h-5zM25 15h1v1h-1zM24 11h3v2h-3zM24 18h3v2h-3zM21 14h2v3h-2zM28 14h2v3h-2z"/>
+    <path d="M1 18h2v2H1zM4 19h2v2H4zM7 18h2v2H7zM10 19h2v2h-2zM13 18h2v2h-2zM17 18h2v2h-2zM20 19h2v2h-2zM23 18h2v2h-2zM26 19h2v2h-2zM29 18h2v2h-2zM2 21h28v2H2zM4 23h24v1H4z"/>
+  </g>
+</svg>

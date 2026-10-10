@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { LandingCopy } from "@/language/landing-copy";
 
@@ -16,8 +17,8 @@ const pixelGlyphs: Record<string, readonly string[]> = {
   S: [".XXX", "X...", ".XX.", "...X", "XXX."],
 };
 
-const logoLeftColors = ["#78afff", "#6ec6fc", "#78d6e6", "#8adcc3", "#a2dca0"];
-const logoRightColors = ["#ffd75a", "#fcb078", "#f596aa", "#dc91eb", "#a0a0ff"];
+const logoLeftColors = ["#6096fa", "#75a4fb", "#8bb3fb", "#75a4fb", "#6096fa"];
+const logoRightColors = ["#fad88f", "#fbe0a5", "#fce5b5", "#fbe0a5", "#fad88f"];
 
 const pixelLogoCells = Array.from({ length: 5 }, (_, row) =>
   "APSARA".split("").flatMap((letter, letterIndex) => {
@@ -45,7 +46,6 @@ function PixelLogo() {
   return (
     <div
       data-cli-block
-      data-pause="0"
       aria-label="APSARA"
       className="landing-cli-pixel-logo select-none"
       role="img"
@@ -94,86 +94,58 @@ export default function LandingShowcaseTerminal({
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const root = rootRef.current;
+    if (!root) return;
 
-    if (!root) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
+    const media = gsap.matchMedia();
     const context = gsap.context(() => {
-      const blocks = root.querySelectorAll<HTMLElement>("[data-cli-block]");
-
-      if (prefersReducedMotion) {
-        gsap.set(blocks, { autoAlpha: 1, clearProps: "all", y: 0 });
-        return;
-      }
-
-      gsap.set(blocks, { autoAlpha: 0, y: 5 });
-
-      const timeline = gsap.timeline({ delay: 0.15, paused: true });
-
-      blocks.forEach((block) => {
-        timeline.to(
-          block,
-          {
-            autoAlpha: 1,
-            duration: 0.16,
-            ease: "power2.out",
-            y: 0,
-          },
-          `+=${Number(block.dataset.pause ?? "0.08")}`,
-        );
-      });
-
-      if (root.getBoundingClientRect().top <= window.innerHeight * 0.76) {
-        timeline.play(0);
-        return;
-      }
-
-      ScrollTrigger.create({
-        trigger: root,
-        once: true,
-        onEnter: () => timeline.play(0),
-        start: "top 76%",
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const blocks = root.querySelectorAll<HTMLElement>("[data-cli-block]");
+        gsap.from(blocks, {
+          autoAlpha: 0,
+          y: 4,
+          duration: 0.4,
+          stagger: 0.07,
+          ease: "power2.out",
+          clearProps: "opacity,visibility,transform",
+          scrollTrigger: { trigger: root, start: "top 90%", once: true },
+        });
       });
     }, root);
 
-    return () => context.revert();
+    return () => {
+      media.revert();
+      context.revert();
+    };
   }, [copy]);
 
   return (
     <div
       ref={rootRef}
-      className="flex h-[520px] overflow-hidden rounded-lg border border-[#242938] bg-[#090b0f] font-mono text-[#f0ece7]"
+      className="flex h-[520px] overflow-hidden rounded-lg border border-[#303743] bg-[#12151d] font-mono text-[#f5f1e9]"
     >
       <p className="sr-only">{copy.screenReaderLabel}</p>
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div lang="en" className="flex min-w-0 flex-1 flex-col font-mono">
         <div className="flex min-h-0 flex-1">
           <section className="min-w-0 flex-1 overflow-hidden px-3 py-4 sm:px-4">
             <PixelLogo />
 
             <div
               data-cli-block
-              data-pause="0.12"
               className="mt-3 text-center text-[8px] leading-4 sm:text-[9px]"
             >
-              <p className="text-[#a8accd]">
-                Elegant local coding assistance for your workspace
+              <p className="text-[#a9adb7]">
+                AI coding assistance in your terminal
               </p>
-              <p className="text-[#c8a66e]">Powered by Bondeth · v0.1.0</p>
+              <p className="text-[#fad88f]">Makor · Apsara’s pixel mascot</p>
             </div>
 
-            <div className="mt-5 space-y-3 text-[9px] leading-[1.45] sm:text-[10px]">
+            <div className="mt-5 space-y-3 text-[10px] leading-[1.55] sm:text-[11px]">
               <div
                 data-cli-block
-                data-pause="0.2"
-                className="border-l-2 border-[#6096fa] pl-2 font-bold text-[#e1e6f2]"
+                className="border-l-2 border-[#6096fa] pl-2 font-bold text-[#f5f1e9]"
               >
-                tighten the approval copy and keep the review gate intact
+                Add a /health endpoint that returns a status of ok
               </div>
 
               <div data-cli-block data-pause="0.18" className="space-y-1 pl-2">
@@ -184,28 +156,36 @@ export default function LandingShowcaseTerminal({
                 </p>
                 <p>
                   <span className="text-[#78c896]">✓</span>{" "}
-                  <span className="text-[#b4d2ff]">search_codebase</span>{" "}
+                  <span className="text-[#b4d2ff]">search_files</span>{" "}
                   <span className="text-[#8c8276]">6 results</span>
                 </p>
               </div>
 
               <div data-cli-block data-pause="0.18">
-                <p className="text-[#f0aa5a]">+ Thought: 3.2s</p>
-                <p className="mt-2 max-w-2xl text-[#f0ece7]">
-                  I found the duplicated approval copy and prepared a smaller,
-                  review-safe change.
+                <p className="flex items-center gap-2 text-[#fad88f]">
+                  <Image
+                    src="/assets/makor/head.png"
+                    alt="Makor"
+                    width={24}
+                    height={24}
+                    className="landing-makor-pixel"
+                  />
+                  Makor · thinking
+                </p>
+                <p className="mt-2 max-w-2xl text-[#f5f1e9]">
+                  I found the API routes and prepared a health endpoint.
+                  Review the proposed change below.
                 </p>
               </div>
 
               <div
                 data-cli-block
-                data-pause="0.18"
-                className="border-l-2 border-[#f0aa5a] pl-2"
+                className="border-l-2 border-[#fad88f] pl-2"
               >
                 <p>
-                  <span className="font-bold text-[#f7c864]">Approve?</span>{" "}
+                  <span className="font-bold text-[#fad88f]">Approve?</span>{" "}
                   <span className="font-bold text-[#f7e6be]">
-                    Update file src/approval.py
+                    Update file src/routes.py
                   </span>
                 </p>
                 <div className="mt-2 flex flex-wrap gap-1.5">
@@ -216,7 +196,7 @@ export default function LandingShowcaseTerminal({
                     n reject
                   </span>
                   <span className="bg-[#5078c8] px-1.5 py-0.5 font-bold text-white">
-                    a always
+                    a approve rest
                   </span>
                   <span className="bg-[#505f7d] px-1.5 py-0.5 font-bold text-white">
                     v full diff
@@ -226,59 +206,58 @@ export default function LandingShowcaseTerminal({
 
               <div
                 data-cli-block
-                data-pause="0.2"
-                className="flex items-center gap-2 text-[#7f9eff]"
+                className="flex items-center gap-2 text-[#6096fa]"
               >
                 <span className="landing-terminal-caret">⠸</span>
-                <span>Apsara is working</span>
+                <span>Makor is checking the work</span>
                 <span className="text-[#8c8276]">3s</span>
               </div>
             </div>
           </section>
 
-          <aside className="hidden w-54 shrink-0 overflow-hidden border-l border-[#3d4668] bg-[#0e1015] px-3 py-3 text-[8px] leading-[1.45] text-[#8c93a6] md:block lg:w-56">
+          <aside className="hidden w-54 shrink-0 overflow-hidden border-l border-[#303743] bg-[#181c25] px-3 py-3 text-[8px] leading-[1.45] text-[#8c93a6] md:block lg:w-56">
             <div data-cli-block data-pause="0.04">
-              <p className="font-bold text-[#e1e6f2]">
+              <p className="font-bold text-[#f5f1e9]">
                 <span className="text-[#6096fa]">◆</span> default
               </p>
               <p className="mt-0.5 pl-3 text-[#747b8c]">
-                resumed · 2026-07-18 22:54
+                resumed · example session
               </p>
             </div>
 
             <div data-cli-block data-pause="0.08" className="mt-3">
-              <SidebarHeading color="#6ec8eb" icon="◍" title="Context" />
+              <SidebarHeading color="#6096fa" icon="◍" title="Context" />
               <p className="mt-1.5 pl-3">
                 <span className="text-[#78c896]">▰▰</span>
                 <span className="text-[#3e4456]">▱▱▱▱▱▱▱▱</span>{" "}
                 <span className="text-[#78c896]">18%</span>
               </p>
               <p className="mt-1 pl-3">
-                <span className="text-[#e1e6f2]">23,040</span> tokens
+                <span className="text-[#f5f1e9]">23,040</span> tokens
               </p>
               <p className="pl-3">
-                <span className="text-[#82d2a0]">$0.23</span> spent
+                <span className="text-[#82d2a0]">$0.00</span> spent
               </p>
             </div>
 
             <div data-cli-block data-pause="0.08" className="mt-3">
-              <SidebarHeading color="#be96fa" icon="✦" title="Model" />
-              <p className="mt-1.5 pl-3 font-bold text-[#e1e6f2]">
-                Llama 3.2 (local)
+              <SidebarHeading color="#fad88f" icon="✦" title="Model" />
+              <p className="mt-1.5 pl-3 font-bold text-[#f5f1e9]">
+                Space Bunny Free
               </p>
               <p className="pl-3">
-                <span className="text-[#bec8dc]">Ollama</span> ·{" "}
-                <span className="text-[#8fd2aa]">local</span>
+                <span className="text-[#bec8dc]">OpenCode Zen</span> ·{" "}
+                <span className="text-[#8fd2aa]">provider</span>
               </p>
-              <p className="pl-3">128k ctx</p>
+              <p className="pl-3">selected model</p>
               <p className="pl-3 text-[#78c896]">✓ key set</p>
             </div>
 
             <div data-cli-block data-pause="0.08" className="mt-3">
               <SidebarHeading color="#82d2a0" icon="❯" title="Session" />
               <p className="mt-1.5 pl-3">
-                <span className="text-[#e1e6f2]">3</span> turns ·{" "}
-                <span className="text-[#e1e6f2]">6</span> messages
+                <span className="text-[#f5f1e9]">3</span> turns ·{" "}
+                <span className="text-[#f5f1e9]">6</span> messages
               </p>
               <p className="pl-3">
                 mode <span className="font-bold text-[#6096fa]">Build</span>
@@ -288,7 +267,7 @@ export default function LandingShowcaseTerminal({
             </div>
 
             <div data-cli-block data-pause="0.08" className="mt-3">
-              <SidebarHeading color="#f0be6e" icon="⌂" title="Workspace" />
+              <SidebarHeading color="#fad88f" icon="⌂" title="Workspace" />
               <p className="mt-1.5 pl-3">
                 …/Apsara Agentic/
                 <br />
@@ -298,19 +277,18 @@ export default function LandingShowcaseTerminal({
 
             <div
               data-cli-block
-              data-pause="0.08"
               className="mt-3 space-y-0.5 pl-3"
             >
               <p>
-                <span className="font-bold text-[#8cb4ff]">/models</span> switch
+                <span className="font-bold text-[#6096fa]">/model</span> switch
                 models
               </p>
               <p>
-                <span className="font-bold text-[#8cb4ff]">/status</span>{" "}
+                <span className="font-bold text-[#6096fa]">/status</span>{" "}
                 session status
               </p>
               <p>
-                <span className="font-bold text-[#8cb4ff]">/help</span> all
+                <span className="font-bold text-[#6096fa]">/help</span> all
                 commands
               </p>
             </div>
@@ -318,24 +296,22 @@ export default function LandingShowcaseTerminal({
             <div data-cli-block data-pause="0.08" className="mt-3">
               <p>
                 <span className="text-[#78c896]">●</span>{" "}
-                <span className="font-bold text-[#e1e6f2]">Apsara</span>{" "}
-                <span className="text-[#be96fa]">v0.1.0</span>
+                <span className="font-bold text-[#f5f1e9]">Apsara</span>{" "}
+                <span className="text-[#fad88f]">0.1.0a2</span>
               </p>
-              <p className="pl-3 text-[#f0be6e]">by Bondeth</p>
+              <p className="pl-3 text-[#fad88f]">by Bondeth</p>
             </div>
           </aside>
         </div>
 
         <div
           data-cli-block
-          data-pause="0.12"
-          className="mx-2 mb-1 shrink-0 overflow-hidden rounded-lg border border-[#5a6cb4] text-[8px] sm:text-[9px]"
+          className="mx-2 mb-1 shrink-0 overflow-hidden rounded-lg border border-[#6096fa] text-[8px] sm:text-[9px]"
         >
           <div className="flex min-h-9">
             <span className="w-1 shrink-0 bg-[#6096fa]" />
             <span className="px-2 py-2 text-[#5a616e]">
-              Ask anything... &quot;What is the tech stack of this
-              project?&quot;
+              Ask about your code, describe a bug, or request a feature...
             </span>
           </div>
           <div className="flex border-t border-[#202638]">
@@ -343,17 +319,15 @@ export default function LandingShowcaseTerminal({
             <p className="px-2 py-1.5">
               <span className="font-bold text-[#6096fa]">Build</span>{" "}
               <span className="text-[#747b8c]">·</span>{" "}
-              <span className="font-bold text-[#e1e6f2]">
-                Llama 3.2 (local)
-              </span>{" "}
-              <span className="text-[#747b8c]">Ollama</span>
+              <span className="font-bold text-[#f5f1e9]">Space Bunny Free</span>{" "}
+              <span className="text-[#747b8c]">OpenCode Zen</span>
             </p>
           </div>
         </div>
 
-        <div className="flex h-6 shrink-0 items-center justify-between gap-3 bg-[#12141a] px-2 text-[7px] text-[#747b8c] sm:text-[8px]">
+        <div className="flex h-6 shrink-0 items-center justify-between gap-3 bg-[#181c25] px-2 text-[7px] text-[#747b8c] sm:text-[8px]">
           <span className="min-w-0 truncate">
-            <span className="text-[#f0be6e]">⌂</span> ~/Projects/Apsara
+            <span className="text-[#fad88f]">⌂</span> ~/Projects/Apsara
             Agentic/apsara-agentic-cli
           </span>
           <span className="shrink-0">

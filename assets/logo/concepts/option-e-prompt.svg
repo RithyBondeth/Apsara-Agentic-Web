@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option E — Prompt</title>
+  <desc id="desc">A friendly lowercase a paired with a compact terminal prompt.</desc>
+  <path fill="#7168ef" fill-rule="evenodd" d="M32 8c14 0 24 9.9 24 23v25H45v-6.1C41.2 54.4 35.7 57 29.2 57 16.5 57 7 46.4 7 33S16.5 9 29.2 9c1 0 1.9 0 2.8.1V8Zm-1.2 12C23.5 20 18 25.4 18 33s5.5 13 12.8 13C38.4 46 44 40.6 44 33s-5.6-13-13.2-13Z"/>
+  <path fill="#7168ef" d="m3 25 9 8-9 8V25Z"/>
+</svg>
