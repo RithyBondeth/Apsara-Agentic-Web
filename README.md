@@ -91,6 +91,11 @@ Khmer shaping. Hero line height is 1.25. Hero weight uses a real 700 face rather
 extra bold. English code samples keep IBM Plex Mono. The navbar pairs Makor's
 head with the Apsara wordmark and a compact Agentic CLI label.
 
+The home page introduces Makor and developer Bondeth in a bilingual “Behind
+Apsara” section between the workflow and install invitation. It uses the shared
+Makor artwork, links to the developer’s GitHub profile and CLI source, and
+explains the mascot’s activity states and `/mascot still` control.
+
 The CLI session is illustrative and never executes commands or edits files.
 Makor artwork in `public/assets/makor/` comes from the approved brand assets in
 `../design/brand/makara-pixel-v1/`. `terminal-sprite.svg` renders the exact palette

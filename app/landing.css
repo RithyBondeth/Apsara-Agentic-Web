@@ -674,3 +674,20 @@
     rotate: none;
   }
 }
+
+/* The mascot and developer share the site's existing Khmer-inspired frame. */
+.landing-behind-card {
+  border: 1px solid var(--heritage-line);
+  border-radius: 4px 20px 4px 20px;
+  background: var(--l-surface);
+}
+.landing-behind-mascot figure {
+  border-block: 1px solid var(--l-line);
+  padding-block: 1.5rem;
+}
+.landing-developer-monogram {
+  border: 1px solid var(--heritage-line);
+  border-radius: 4px 16px 4px 16px;
+  background: var(--heritage-soft);
+  color: var(--l-accent);
+}

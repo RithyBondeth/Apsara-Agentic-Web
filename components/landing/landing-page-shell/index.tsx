@@ -4,6 +4,7 @@ import { startTransition, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LandingBehind from "@/components/landing/landing-behind";
 import LandingCta from "@/components/landing/landing-cta";
 import { landingCopy, type LandingLocale } from "@/language/landing-copy";
 import LandingFeatures from "@/components/landing/landing-features";
@@ -64,6 +65,7 @@ export default function LandingPageShell({
         <LandingShowcase copy={copy.showcase} locale={locale} />
         <LandingFeatures copy={copy.features} locale={locale} />
         <LandingHowItWorks copy={copy.workflow} locale={locale} />
+        <LandingBehind copy={copy.behind} locale={locale} />
         <LandingCta copy={copy.cta} locale={locale} />
       </>
     ) : (
