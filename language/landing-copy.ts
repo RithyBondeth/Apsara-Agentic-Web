@@ -137,18 +137,30 @@ export const landingCopy = {
   en: {
     brand: {
       title: "Apsara",
-      subtitle: "Agentic Coding",
-      logoAlt: "Apsara logo",
+      subtitle: "AI Coding Assistant",
+      logoAlt: "Makor, the Apsara Agentic logo",
     },
     header: {
       navItems: [
-        { href: siteRoutes.install, label: "Install" },
-        { href: siteRoutes.product, label: "Product" },
-        { href: siteRoutes.capabilities, label: "Capabilities" },
-        { href: siteRoutes.workflow, label: "Workflow" },
+        {
+          href: "/install",
+          label: "Install",
+        },
+        {
+          href: "/product",
+          label: "Overview",
+        },
+        {
+          href: "/capabilities",
+          label: "Capabilities",
+        },
+        {
+          href: "/workflow",
+          label: "How it works",
+        },
       ],
       exploreLabel: "Explore",
-      installLabel: "Install CLI",
+      installLabel: "Install Apsara",
       languageSwitcherLabel: "Language",
       localeLabels: {
         en: "EN",
@@ -156,272 +168,275 @@ export const landingCopy = {
       },
     },
     hero: {
-      badge: "Local-first CLI · no Apsara account required",
-      titleLead: "Your coding agent.",
-      titleHighlight: "Inside your repo.",
-      titleTail: "On your machine.",
+      badge: "AI coding assistant for your terminal",
+      titleLead: "Understand code.",
+      titleHighlight: "Build features.",
+      titleTail: "Fix bugs.",
       description:
-        "Install the CLI, bring a model API key, and start coding. Apsara keeps your repositories, sessions, checkpoints, and project memory local while you stay in control of every meaningful change.",
+        "Apsara helps you read, edit, and test code from your terminal. Work in your own project, choose your model, and review changes before they’re applied.",
       primaryCta: "Install Apsara",
-      secondaryCta: "Explore capabilities",
-      scrollAriaLabel: "Open the product page",
+      secondaryCta: "See what Apsara can do",
+      scrollAriaLabel: "See how Apsara works",
       signals: [
         {
-          value: "Repo-bound",
-          label: "Project-local init and config stay with the codebase.",
+          value: "Work locally",
+          label: "Your project files and session history are stored on your machine.",
         },
         {
-          value: "Diff-first",
-          label: "Meaningful edits pause for human review before they land.",
+          value: "Choose your model",
+          label: "Use your own API key or run a local model with Ollama.",
         },
         {
-          value: "Session-aware",
-          label:
-            "The workflow keeps durable context instead of resetting every time.",
+          value: "Review changes",
+          label: "See proposed edits before applying them. Undo when you need to.",
         },
       ],
     },
     showcase: {
-      eyebrow: "Product View",
-      title: "See the agent loop as a product, not just a prompt box.",
+      eyebrow: "Apsara in action",
+      title: "From a coding task to changes you can review.",
       description:
-        "This is the part worth showing. Project-local startup, bounded tools, hidden internals on demand, and a review step before edits land all turn the agent loop into something developers can actually trust.",
-      sessionLabel: "apsara session",
+        "Describe what you want to change. Apsara explores your project, proposes edits, and runs checks, all in your terminal.",
+      sessionLabel: "apsara",
       terminal: {
-        screenReaderLabel: "Agentic coding example",
-        lines: [
-          {
-            kind: "command",
-            prompt: "$",
-            value:
-              'apsara run "tighten the approval copy and keep the review gate intact"',
-          },
-          {
-            kind: "field",
-            label: "workspace",
-            value: "./apsara-agentic-api",
-          },
-          {
-            kind: "field",
-            label: "trace",
-            value: "reading app/api/approval.py and app/ui/review-panel.tsx",
-          },
-          {
-            kind: "field",
-            label: "draft",
-            value:
-              "preparing smaller copy edits without bypassing human review",
-          },
-          {
-            kind: "field",
-            label: "diff",
-            value: "2 files changed, preview generated before any write lands",
-          },
-          {
-            kind: "field",
-            label: "status",
-            value: "Awaiting approval to apply the patch.",
-          },
-        ],
+        screenReaderLabel: "Illustrative Apsara CLI session",
+        lines: [],
       },
-      whyEyebrow: "Why it feels better",
-      whyTitle: "More bounded than chat. More legible than autopilot.",
-      whyDescription:
-        "The system does real work, but it never asks the developer to stop caring about scope, review, or authorship.",
+      whyEyebrow: "Stay in control",
+      whyTitle: "See what changes and why.",
+      whyDescription: "Follow the work from the first file read to the final check. Review proposed edits and inspect the results.",
       notes: [
         {
-          title: "Approval gate",
+          title: "Work in your existing project",
           description:
-            "The developer reviews the diff before meaningful writes touch the repo.",
+            "Run apsara from your project folder. It works with the files there, so you can start without setting up a separate workspace.",
         },
         {
-          title: "Quiet internals",
+          title: "Review before applying",
           description:
-            "Tool chatter stays hidden until /details is explicitly opened.",
+            "By default, Apsara shows proposed file changes and asks for approval. Saved checkpoints let you restore earlier versions.",
         },
         {
-          title: "Legible progress",
+          title: "See the check results",
           description:
-            "The workflow surfaces what changed, why it changed, and what still needs a decision.",
+            "Apsara runs your project’s checks and reviews the changes. The report shows what passed, what failed, and what still needs attention.",
         },
       ],
-      humanLoopEyebrow: "Human loop",
-      humanLoopText:
-        "Review stays in the critical path instead of getting bolted on after the fact.",
-      toneEyebrow: "Product tone",
+      humanLoopEyebrow: "You decide",
+      humanLoopText: "Review the changes, approve the edits, and check the results.",
+      toneEyebrow: "Meet Makor",
       toneText:
-        "Calm enough to trust. Clear enough to inspect. Useful enough to keep using.",
-      tailTitle: "Trust grows when every step has a boundary.",
+        "Makor is Apsara’s pixel mascot, keeping you company while the coding assistant works.",
+      tailTitle: "Your project. Your model. Your decisions.",
       tailDescription:
-        "That means workspace scoping, review gates before writes, and internal activity that stays available without taking over the entire interface.",
+        "Choose a model provider or use Ollama locally. Review edits, approve commands, and keep a record of the work on your machine.",
     },
     features: {
-      eyebrow: "Capabilities",
-      titleLead: "What already makes Apsara",
-      titleHighlight: "useful today",
+      eyebrow: "What Apsara can do",
+      titleLead: "Help with the code.",
+      titleHighlight: "From start to finish.",
       titleTail: "",
       description:
-        "The value is not speculative. These are the real local behaviors that make the CLI more trustworthy than a generic AI tab.",
+        "Explore an unfamiliar project, make a change, and check that it works with tools built into the CLI.",
       cards: [
         {
-          title: "Project-local init",
+          title: "Explore your codebase",
           description:
-            "Apsara starts inside the repo, keeps config where the work lives, and avoids the disconnected AI chat problem.",
+            "Find files, follow function references, and read Git history to understand how your project fits together.",
         },
         {
-          title: "Workspace-scoped tools",
+          title: "Make changes you can review",
           description:
-            "Search, reads, writes, and line replacement stay bounded to the allowed root instead of wandering across the machine.",
+            "Review proposed edits before they’re applied. Restore a previous version from a checkpoint if you need to.",
         },
         {
-          title: "Diff-first approvals",
+          title: "Run tests and checks",
           description:
-            "Meaningful changes stop at a review gate so the developer keeps the final say before edits apply.",
+            "Run the checks your project defines and inspect the results. Apsara reports when verification is missing or fails.",
         },
         {
-          title: "Hidden internals on demand",
+          title: "Approve terminal commands",
           description:
-            "Tool activity stays quiet by default, while /details gives power users the exact work trail when they want it.",
+            "Enable the commands your task needs. Apsara asks for your approval before running them.",
         },
         {
-          title: "Durable local runtime",
+          title: "Connect external tools",
           description:
-            "Typed run state, local journals, checkpoints, and verification keep the agent loop inspectable without a hosted Apsara backend.",
+            "Connect tools and services through MCP. Actions that change external data require your approval.",
         },
         {
-          title: "Persistent sessions",
+          title: "Continue previous work",
           description:
-            "Conversation history and usage events stay on your machine so work remains durable without cloud synchronization.",
+            "Resume saved conversations and keep project notes on your machine. Review or undo changes from an earlier turn.",
         },
       ],
     },
     workflow: {
-      eyebrow: "How It Works",
-      title: "A workflow that mirrors how developers already work.",
+      eyebrow: "How it works",
+      title: "Open your project. Describe the task. Review the result.",
       description:
-        "Bring your provider, initialize the repo, and start coding. No Apsara account or cloud workspace sits between you and your tools.",
+        "Start in the terminal you already use. No Apsara account required.",
       steps: [
         {
-          title: "Connect your model provider",
+          title: "Open Apsara in your project",
           description:
-            "Run apsara login and save your OpenCode, OpenAI, Anthropic, Google, Groq, or other provider key locally.",
+            "After installing the CLI, open your project folder and run apsara to start a conversation.",
         },
         {
-          title: "Initialize your repository",
+          title: "Connect your model",
           description:
-            "Run apsara init inside the project so workspace boundaries, instructions, and local configuration live with the codebase.",
+            "Add your model provider’s API key when prompted, or choose a local Ollama model. Keep the key for this session or save it on your machine.",
         },
         {
-          title: "Start the local agent",
+          title: "Describe a task and review the changes",
           description:
-            "Run apsara chat, ask for meaningful work, and review or reject changes before they land.",
+            "Ask Apsara to explain code, fix a bug, or build a feature. Review proposed edits, approve them, and inspect the check results.",
         },
       ],
     },
     install: {
-      eyebrow: "Local installation",
-      titleLead: "Install once.",
-      titleHighlight: "Code locally.",
+      eyebrow: "Install the alpha",
+      titleLead: "Set up Apsara.",
+      titleHighlight: "Start in your terminal.",
       description:
-        "Apsara is a local CLI, not a hosted coding service. You do not create an Apsara account, and your project does not need a cloud workspace.",
-      promise: "No account · No source upload · Bring your own API key",
+        "Build the current alpha from source, install it with pipx, and run Apsara in your project folder.",
+      promise: "Runs locally · Your choice of model · No Apsara account",
       steps: [
         {
           number: "01",
-          title: "Install the CLI",
-          description: "pipx keeps Apsara isolated from your project dependencies and exposes the apsara command globally.",
-          command: "pipx install apsara-agentic",
+          title: "Open the source folder",
+          description:
+            "Get the CLI source from GitHub and open its folder. These steps use version 0.1.0a2, listed in pyproject.toml.",
+          command: "cd /path/to/Apsara-Agentic-Cli",
         },
         {
           number: "02",
-          title: "Add your provider key",
-          description: "Choose a model provider and save its key on your machine. Apsara never receives it.",
-          command: "apsara login",
+          title: "Build the package",
+          description:
+            "From the CLI source folder, install the Python build tool and create the installable package.",
+          command: "python3 -m pip install build\npython3 -m build",
         },
         {
           number: "03",
-          title: "Initialize a project",
-          description: "Run this from the repository you want Apsara to work inside.",
-          command: "cd your-project && apsara init",
+          title: "Install with pipx",
+          description:
+            "Run this command from the same source folder. pipx installs Apsara separately from your project’s dependencies.",
+          command:
+            "pipx install ./dist/apsara_agentic-0.1.0a2-py3-none-any.whl",
         },
         {
           number: "04",
-          title: "Start coding",
-          description: "Open the local terminal experience and give the agent its first task.",
-          command: "apsara chat",
+          title: "Start Apsara",
+          description:
+            "Open your project folder and run apsara. Add your model provider’s API key when prompted.",
+          command: "cd /path/to/your/project\napsara",
         },
       ],
       copyLabel: "Copy",
       copiedLabel: "Copied",
-      requirementsTitle: "Before you install",
+      requirementsTitle: "Before you start",
       requirements: [
-        "Python 3.10 or newer",
-        "pipx installed for an isolated global CLI",
+        "Python 3.10 through 3.14",
+        "pipx installed and available on your PATH",
         "Git available in your terminal",
-        "An API key from a supported provider, or local Ollama",
+        "An API key from a model provider, or Ollama installed locally",
       ],
-      privacyTitle: "Local means local",
+      privacyTitle: "Know where your code goes.",
       privacyDescription:
-        "Apsara calls the model provider you choose. The Apsara website is not in that request path.",
+        "Apsara runs on your machine and connects directly to the model provider you choose. Requests do not pass through an Apsara server.",
       privacyPoints: [
-        { title: "Your code stays put", description: "Workspace files, sessions, memory, checkpoints, and run reports remain on your machine." },
-        { title: "Your key stays yours", description: "Provider credentials are stored locally and sent only to the provider required for your selected model." },
-        { title: "You approve changes", description: "Workspace writes and command execution remain bounded by local permissions and review gates." },
+        {
+          title: "Local storage, direct model requests",
+          description:
+            "Project files, conversations, notes, and checkpoints are stored on your machine. Relevant code is sent to your chosen model provider when you use a hosted model.",
+        },
+        {
+          title: "Choose how to store your key",
+          description:
+            "Use an API key for the current session or save it locally with access restricted to your user account. Ollama lets you use a model on your own machine.",
+        },
+        {
+          title: "Approve commands before they run",
+          description:
+            "Built-in file tools work within your selected project folder. Approved terminal commands run with your user account’s permissions.",
+        },
       ],
-      githubLabel: "View source on GitHub",
-      releasesLabel: "Browse releases",
+      githubLabel: "View source",
+      releasesLabel: "View releases",
     },
     cta: {
-      eyebrow: "Start locally",
-      titleLead: "One CLI.",
-      titleHighlight: "Your provider.",
-      titleTail: "Your code stays yours.",
+      eyebrow: "Get started",
+      titleLead: "Bring your next task",
+      titleHighlight: "to Apsara.",
+      titleTail: "",
       description:
-        "Install Apsara without creating an account, connect the model you already use, and keep the complete coding workflow on your machine.",
-      primaryCta: "Install the CLI",
-      secondaryCta: "View capabilities",
+        "Install the CLI, connect a model, and start with a bug, a feature, or a question about your code.",
+      primaryCta: "Install Apsara",
+      secondaryCta: "See what Apsara can do",
     },
     footer: {
       description:
-        "A local-first coding agent. Bring your own model API key and keep your code, sessions, and project context on your machine.",
+        "An AI coding assistant for your terminal. Work in your project, choose your model, and stay in control of changes.",
       sections: [
         {
-          title: "Sections",
+          title: "Explore",
           links: [
-            { href: siteRoutes.install, label: "Install CLI" },
-            { href: siteRoutes.product, label: "Product View" },
-            { href: siteRoutes.capabilities, label: "Capabilities" },
-            { href: siteRoutes.workflow, label: "Workflow" },
+            {
+              href: "/install",
+              label: "Install",
+            },
+            {
+              href: "/product",
+              label: "Overview",
+            },
+            {
+              href: "/capabilities",
+              label: "Capabilities",
+            },
+            {
+              href: "/workflow",
+              label: "How it works",
+            },
           ],
         },
         {
-          title: "What Matters",
+          title: "Source",
           links: [
-            { href: siteRoutes.capabilities, label: "Project-local init" },
-            { href: siteRoutes.product, label: "Diff-first review" },
-            { href: siteRoutes.install, label: "No account required" },
+            { label: "GitHub", href: siteRoutes.github },
+            { label: "Releases", href: siteRoutes.releases },
           ],
         },
       ],
-      copyright:
-        "Agentic coding with boundaries, legibility, and human review.",
+      copyright: "Built for your terminal.",
     },
   },
   km: {
     brand: {
       title: "Apsara",
-      subtitle: "ការសរសេរកូដជាមួយ Agent",
-      logoAlt: "និមិត្តសញ្ញា Apsara",
+      subtitle: "ជំនួយការ AI សម្រាប់សរសេរកូដ",
+      logoAlt: "Makor ជានិមិត្តសញ្ញារបស់ Apsara Agentic",
     },
     header: {
       navItems: [
-        { href: siteRoutes.install, label: "ដំឡើង" },
-        { href: siteRoutes.product, label: "ផលិតផល" },
-        { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
-        { href: siteRoutes.workflow, label: "ដំណើរការ" },
+        {
+          href: "/install",
+          label: "ដំឡើង",
+        },
+        {
+          href: "/product",
+          label: "អំពី Apsara",
+        },
+        {
+          href: "/capabilities",
+          label: "សមត្ថភាព",
+        },
+        {
+          href: "/workflow",
+          label: "របៀបប្រើ",
+        },
       ],
-      exploreLabel: "ស្វែងយល់",
-      installLabel: "ដំឡើង CLI",
+      exploreLabel: "មើលបន្ថែម",
+      installLabel: "ដំឡើង Apsara",
       languageSwitcherLabel: "ភាសា",
       localeLabels: {
         en: "EN",
@@ -429,256 +444,246 @@ export const landingCopy = {
       },
     },
     hero: {
-      badge: "CLI ដំណើរការក្នុងម៉ាស៊ីន · មិនត្រូវការ account Apsara",
-      titleLead: "Coding agent របស់អ្នក។",
-      titleHighlight: "នៅក្នុង repo។",
-      titleTail: "នៅលើម៉ាស៊ីនរបស់អ្នក។",
+      badge: "ជំនួយការ AI សម្រាប់សរសេរកូដក្នុង Terminal",
+      titleLead: "យល់ពីកូដ។",
+      titleHighlight: "បង្កើតមុខងារថ្មី។",
+      titleTail: "កែកំហុស។",
       description:
-        "ដំឡើង CLI, ប្រើ API key របស់ model provider ផ្ទាល់ខ្លួន ហើយចាប់ផ្ដើមសរសេរកូដ។ Apsara រក្សា repo, session, checkpoint និង project memory នៅលើម៉ាស៊ីនរបស់អ្នក។",
+        "Apsara ជួយអ្នកអាន កែសម្រួល និងសាកល្បងកូដក្នុង Terminal។ ធ្វើការលើគម្រោងរបស់អ្នក ជ្រើសរើសម៉ូដែលដែលចង់ប្រើ ហើយពិនិត្យការកែប្រែមុនពេលអនុវត្ត។",
       primaryCta: "ដំឡើង Apsara",
-      secondaryCta: "ស្វែងយល់សមត្ថភាព",
-      scrollAriaLabel: "បើកទំព័រផលិតផល",
+      secondaryCta: "មើលសមត្ថភាព",
+      scrollAriaLabel: "មើលរបៀបដែល Apsara ដំណើរការ",
       signals: [
         {
-          value: "ចងជាមួយ Repo",
-          label: "ការចាប់ផ្ដើម និង config ស្ថិតក្នុង codebase ។",
+          value: "ធ្វើការក្នុងម៉ាស៊ីនរបស់អ្នក",
+          label: "ឯកសារគម្រោង និងប្រវត្តិសន្ទនា ត្រូវបានរក្សាទុកក្នុងម៉ាស៊ីនរបស់អ្នក។",
         },
         {
-          value: "Diff ជាចំបង",
-          label: "ការកែប្រែសំខាន់ៗ ឈប់រង់ចាំការពិនិត្យពីមនុស្សសិន។",
+          value: "ជ្រើសរើសម៉ូដែល",
+          label: "ប្រើ API key របស់អ្នក ឬដំណើរការម៉ូដែលក្នុងម៉ាស៊ីនជាមួយ Ollama។",
         },
         {
-          value: "ចងចាំ Session",
-          label: "workflow រក្សា context ជាប់ជានិច្ច មិនចាប់ផ្ដើមថ្មីរាល់ពេលទេ។",
+          value: "ពិនិត្យការកែប្រែ",
+          label: "មើលការកែប្រែដែលបានស្នើមុនពេលអនុវត្ត។ អ្នកអាចស្ដារកំណែមុនវិញបាន។",
         },
       ],
     },
     showcase: {
-      eyebrow: "ទិដ្ឋភាពផលិតផល",
-      title: "មើល agent loop ជាផលិតផល មិនមែនត្រឹមប្រអប់ prompt ទេ។",
+      eyebrow: "ស្វែងយល់ពី Apsara",
+      title: "ពីសំណើរបស់អ្នក ទៅការកែប្រែដែលអាចពិនិត្យបាន។",
       description:
-        "នេះជាអ្វីដែលគួរតែបង្ហាញ។ ការចាប់ផ្ដើមក្នុង project, tools ដែលមានព្រំដែន, internals ដែលបង្ហាញតាមតម្រូវការ និងជំហានពិនិត្យ diff មុនពេល edit ចូល repo — ទាំងអស់នេះធ្វើអោយ agent loop ក្លាយជាអ្វីដែលអ្នកអភិវឌ្ឍអាចទុកចិត្តបាន។",
-      sessionLabel: "វគ្គ Apsara",
+        "ប្រាប់ Apsara ពីអ្វីដែលអ្នកចង់កែប្រែ។ Apsara នឹងស្វែងយល់ពីគម្រោង ស្នើការកែប្រែ និងដំណើរការការត្រួតពិនិត្យក្នុង Terminal។",
+      sessionLabel: "apsara",
       terminal: {
-        screenReaderLabel: "ឧទាហរណ៍ agentic coding",
-        lines: [
-          {
-            kind: "command",
-            prompt: "$",
-            value:
-              'apsara run "កែ copy សម្រាប់ approval ហើយរក្សា review gate ដដែល"',
-          },
-          {
-            kind: "field",
-            label: "workspace",
-            value: "./apsara-agentic-api",
-          },
-          {
-            kind: "field",
-            label: "trace",
-            value: "កំពុងអាន app/api/approval.py និង app/ui/review-panel.tsx",
-          },
-          {
-            kind: "field",
-            label: "draft",
-            value: "រៀបចំការកែ copy តូចៗ ដោយមិនរំលង human review",
-          },
-          {
-            kind: "field",
-            label: "diff",
-            value: "2 files ផ្លាស់ប្ដូរ, preview បង្កើតហើយ មុនពេលសរសេរ",
-          },
-          {
-            kind: "field",
-            label: "status",
-            value: "រង់ចាំការអនុម័តដើម្បីអនុវត្ត patch។",
-          },
-        ],
+        screenReaderLabel: "ឧទាហរណ៍នៃការប្រើ Apsara ក្នុង Terminal",
+        lines: [],
       },
-      whyEyebrow: "ហេតុអ្វីវាល្អជាង",
-      whyTitle: "មានព្រំដែនជាង chat។ ងាយយល់ជាង autopilot។",
-      whyDescription:
-        "ប្រព័ន្ធធ្វើការពិតៗ ប៉ុន្តែមិនដែលបង្ខំអ្នកអភិវឌ្ឍ អោយបោះបង់ scope, review ឬ authorship ឡើយ។",
+      whyEyebrow: "អ្នកជាអ្នកសម្រេច",
+      whyTitle: "ដឹងថាកែអ្វី និងហេតុអ្វី។",
+      whyDescription: "តាមដានការងារចាប់ពីការអានឯកសារដំបូង រហូតដល់ការត្រួតពិនិត្យចុងក្រោយ។ ពិនិត្យការកែប្រែដែលបានស្នើ និងលទ្ធផលដែលទទួលបាន។",
       notes: [
         {
-          title: "ច្រកអនុម័ត",
+          title: "ធ្វើការលើគម្រោងដែលមានស្រាប់",
           description:
-            "អ្នកអភិវឌ្ឍពិនិត្យ diff មុនពេលការកែប្រែសំខាន់ប៉ះ repo។",
+            "ដំណើរការ apsara ពីថតគម្រោងរបស់អ្នក។ Apsara ប្រើឯកសារនៅទីនោះ ដូច្នេះអ្នកមិនចាំបាច់រៀបចំកន្លែងធ្វើការថ្មីទេ។",
         },
         {
-          title: "Internals ស្ងប់ស្ងាត់",
+          title: "ពិនិត្យមុនពេលអនុវត្ត",
           description:
-            "សកម្មភាព tools លាក់ជាលំនាំដើម រហូតដល់ /details ត្រូវបានបើកដោយចេតនា។",
+            "តាមលំនាំដើម Apsara បង្ហាញការកែប្រែឯកសារ និងស្នើការអនុម័តពីអ្នក។ ចំណុចស្ដារដែលបានរក្សាទុក អនុញ្ញាតឱ្យអ្នកត្រឡប់ទៅកំណែមុនវិញ។",
         },
         {
-          title: "វឌ្ឍនភាពងាយតាមដាន",
+          title: "មើលលទ្ធផលត្រួតពិនិត្យ",
           description:
-            "workflow បង្ហាញអ្វីដែលផ្លាស់ប្ដូរ មូលហេតុ និងអ្វីដែលនៅត្រូវការការសម្រេចចិត្ត។",
+            "Apsara ដំណើរការការត្រួតពិនិត្យរបស់គម្រោង និងពិនិត្យការកែប្រែ។ របាយការណ៍បង្ហាញអ្វីដែលបានជោគជ័យ បរាជ័យ និងអ្វីដែលត្រូវពិនិត្យបន្ថែម។",
         },
       ],
-      humanLoopEyebrow: "មនុស្សនៅក្នុង Loop",
-      humanLoopText:
-        "ការពិនិត្យស្ថិតនៅក្នុងផ្លូវសំខាន់ មិនមែនបន្ថែមក្រោយមកទេ។",
-      toneEyebrow: "សំឡេងផលិតផល",
+      humanLoopEyebrow: "ការសម្រេចចិត្តនៅលើអ្នក",
+      humanLoopText: "ពិនិត្យការកែប្រែ អនុម័តការអនុវត្ត និងមើលលទ្ធផលត្រួតពិនិត្យ។",
+      toneEyebrow: "ស្គាល់ Makor",
       toneText:
-        "ស្ងប់គ្រប់គ្រាន់ដើម្បីទុកចិត្ត។ ច្បាស់គ្រប់គ្រាន់ដើម្បីពិនិត្យ។ មានប្រយោជន៍គ្រប់គ្រាន់ដើម្បីប្រើបន្ត។",
-      tailTitle: "ទំនុកចិត្តកើនឡើង នៅពេលគ្រប់ជំហានមានព្រំដែន។",
+        "Makor ជាតួអង្គ pixel តំណាងឱ្យ Apsara ដែលនៅក្បែរអ្នកពេលជំនួយការសរសេរកូដកំពុងធ្វើការ។",
+      tailTitle: "គម្រោងរបស់អ្នក។ ម៉ូដែលរបស់អ្នក។ ការសម្រេចចិត្តរបស់អ្នក។",
       tailDescription:
-        "មានន័យថា workspace scoping, ច្រកពិនិត្យមុនសរសេរ និងសកម្មភាព internal ដែលអាចចូលមើលបាន ដោយមិនគ្របដណ្ដប់ interface ទាំងមូល។",
+        "ជ្រើសរើសអ្នកផ្ដល់សេវាម៉ូដែល ឬប្រើ Ollama ក្នុងម៉ាស៊ីន។ ពិនិត្យការកែប្រែ អនុម័តពាក្យបញ្ជា និងរក្សាទុកកំណត់ត្រាការងារក្នុងម៉ាស៊ីនរបស់អ្នក។",
     },
     features: {
-      eyebrow: "សមត្ថភាព",
-      titleLead: "អ្វីដែលធ្វើអោយ Apsara",
-      titleHighlight: "មានប្រយោជន៍ថ្ងៃនេះ",
+      eyebrow: "អ្វីដែល Apsara អាចជួយបាន",
+      titleLead: "ជួយការងារកូដ",
+      titleHighlight: "ពីដើមដល់ចប់។",
       titleTail: "",
       description:
-        "តម្លៃនេះមិនមែនជាការស្មានទេ។ ទាំងនេះជាអាកប្បកិរិយាក្នុងម៉ាស៊ីនពិតៗ ដែលធ្វើអោយ CLI គួរទុកចិត្តជាងផ្ទាំង AI ធម្មតា។",
+        "ស្វែងយល់ពីគម្រោងដែលអ្នកមិនទាន់ស្គាល់ កែសម្រួលកូដ និងពិនិត្យថាវាដំណើរការបាន ដោយប្រើឧបករណ៍ដែលមានក្នុង CLI។",
       cards: [
         {
-          title: "ចាប់ផ្ដើមក្នុង Project",
+          title: "ស្វែងយល់ពីកូដក្នុងគម្រោង",
           description:
-            "Apsara ចាប់ផ្ដើមក្នុង repo, រក្សា config នៅកន្លែងដែលការងារស្ថិតនៅ និងជៀសវាងបញ្ហា AI chat ដែលផ្ដាច់ចេញពី project។",
+            "ស្វែងរកឯកសារ តាមដានកន្លែងប្រើមុខងារ និងអានប្រវត្តិ Git ដើម្បីយល់ពីរបៀបដែលផ្នែកនានានៃគម្រោងដំណើរការជាមួយគ្នា។",
         },
         {
-          title: "Tools ព្រំដែនតាម Workspace",
+          title: "កែប្រែដោយអាចពិនិត្យបាន",
           description:
-            "ការស្វែងរក, អាន, សរសេរ និងជំនួសបន្ទាត់ ត្រូវបានកំណត់ព្រំដែននៅ root ដែលអនុញ្ញាត មិនដើរលើម៉ាស៊ីនសេរីទេ។",
+            "ពិនិត្យការកែប្រែដែលបានស្នើមុនពេលអនុវត្ត។ ប្រើចំណុចស្ដារដើម្បីត្រឡប់ទៅកំណែមុនវិញនៅពេលចាំបាច់។",
         },
         {
-          title: "អនុម័តដោយពិនិត្យ Diff មុន",
+          title: "សាកល្បង និងត្រួតពិនិត្យកូដ",
           description:
-            "ការផ្លាស់ប្ដូរសំខាន់ៗ ឈប់នៅច្រកពិនិត្យ ដូច្នេះអ្នកអភិវឌ្ឍនៅតែជាអ្នកសម្រេចចុងក្រោយ។",
+            "ដំណើរការការត្រួតពិនិត្យដែលគម្រោងបានកំណត់ ហើយមើលលទ្ធផល។ Apsara ប្រាប់អ្នកនៅពេលមិនអាចផ្ទៀងផ្ទាត់បាន ឬការត្រួតពិនិត្យបរាជ័យ។",
         },
         {
-          title: "Internals បង្ហាញតាមតម្រូវការ",
+          title: "អនុម័តពាក្យបញ្ជាក្នុង Terminal",
           description:
-            "សកម្មភាព tools ស្ងប់ជាលំនាំដើម ខណៈ /details ផ្ដល់ work trail ពិតៗ ដល់អ្នកប្រើជំនាញ នៅពេលពួកគេចង់ដឹង។",
+            "បើកឱ្យប្រើពាក្យបញ្ជាដែលការងារត្រូវការ។ Apsara ស្នើការអនុម័តពីអ្នកមុនពេលដំណើរការពាក្យបញ្ជាទាំងនោះ។",
         },
         {
-          title: "Runtime ក្នុងម៉ាស៊ីនដែលរឹងមាំ",
+          title: "ភ្ជាប់ឧបករណ៍ខាងក្រៅ",
           description:
-            "Typed run state, local journal, checkpoint និង verification ធ្វើអោយ agent loop អាចពិនិត្យបាន ដោយមិនត្រូវការ Apsara cloud។",
+            "ភ្ជាប់ឧបករណ៍ និងសេវាផ្សេងៗតាម MCP។ សកម្មភាពដែលកែប្រែទិន្នន័យខាងក្រៅ ត្រូវការការអនុម័តពីអ្នក។",
         },
         {
-          title: "Sessions បន្ត",
+          title: "បន្តការងារពីមុន",
           description:
-            "ប្រវត្តិសន្ទនា និង usage events ស្ថិតនៅលើម៉ាស៊ីន ដោយមិនមាន cloud synchronization។",
+            "បន្តការសន្ទនាដែលបានរក្សាទុក និងរក្សាកំណត់ត្រាគម្រោងក្នុងម៉ាស៊ីន។ ពិនិត្យ ឬស្ដារការកែប្រែពីវគ្គការងារមុនវិញបាន។",
         },
       ],
     },
     workflow: {
-      eyebrow: "របៀបដំណើរការ",
-      title: "Workflow ដែលស្របតាមរបៀបធ្វើការរបស់អ្នកអភិវឌ្ឍ។",
+      eyebrow: "របៀបប្រើ",
+      title: "បើកគម្រោង។ ប្រាប់ពីការងារ។ ពិនិត្យលទ្ធផល។",
       description:
-        "ភ្ជាប់ model provider, initialize repo ហើយចាប់ផ្ដើមសរសេរកូដ។ មិនមាន Apsara account ឬ cloud workspace នៅកណ្ដាលទេ។",
+        "ចាប់ផ្ដើមក្នុង Terminal ដែលអ្នកប្រើស្រាប់។ មិនចាំបាច់បង្កើតគណនី Apsara ទេ។",
       steps: [
         {
-          title: "ភ្ជាប់ Model Provider",
+          title: "បើក Apsara ក្នុងគម្រោង",
           description:
-            "ដំណើរការ apsara login ដើម្បីរក្សាទុក API key របស់ OpenCode, OpenAI, Anthropic, Google, Groq ឬ provider ផ្សេងនៅលើម៉ាស៊ីន។",
+            "ក្រោយពេលដំឡើង CLI បើកថតគម្រោងរបស់អ្នក ហើយដំណើរការ apsara ដើម្បីចាប់ផ្ដើមការសន្ទនា។",
         },
         {
-          title: "Initialize Repository",
+          title: "ភ្ជាប់ម៉ូដែលរបស់អ្នក",
           description:
-            "ដំណើរការ apsara init ក្នុង project ដើម្បីកំណត់ workspace boundary, instructions និង local config។",
+            "បញ្ចូល API key របស់អ្នកផ្ដល់សេវាម៉ូដែលនៅពេលមានសំណើ ឬជ្រើសរើសម៉ូដែល Ollama ក្នុងម៉ាស៊ីន។ អ្នកអាចប្រើ key សម្រាប់តែការសន្ទនានេះ ឬរក្សាទុកក្នុងម៉ាស៊ីន។",
         },
         {
-          title: "ចាប់ផ្ដើម Local Agent",
+          title: "ប្រាប់ពីការងារ និងពិនិត្យការកែប្រែ",
           description:
-            "ដំណើរការ apsara chat, ស្នើការងារ ហើយពិនិត្យ ឬបដិសេធការកែប្រែមុនពេលវាចូល repo។",
+            "ស្នើឱ្យ Apsara ពន្យល់កូដ កែកំហុស ឬបង្កើតមុខងារថ្មី។ ពិនិត្យការកែប្រែ អនុម័តការអនុវត្ត ហើយមើលលទ្ធផលត្រួតពិនិត្យ។",
         },
       ],
     },
     install: {
-      eyebrow: "ការដំឡើងក្នុងម៉ាស៊ីន",
-      titleLead: "ដំឡើងម្ដង។",
-      titleHighlight: "សរសេរកូដក្នុងម៉ាស៊ីន។",
+      eyebrow: "ដំឡើងកំណែសាកល្បង",
+      titleLead: "ដំឡើង Apsara។",
+      titleHighlight: "ចាប់ផ្ដើមក្នុង Terminal។",
       description:
-        "Apsara គឺជា local CLI មិនមែន hosted coding service ទេ។ អ្នកមិនចាំបាច់បង្កើត Apsara account ឬ cloud workspace ឡើយ។",
-      promise: "គ្មាន account · មិន upload source code · ប្រើ API key ផ្ទាល់ខ្លួន",
+        "បង្កើតកញ្ចប់ដំឡើងពីកូដប្រភពនៃកំណែសាកល្បងបច្ចុប្បន្ន ដំឡើងជាមួយ pipx ហើយដំណើរការ Apsara ក្នុងថតគម្រោងរបស់អ្នក។",
+      promise: "ដំណើរការក្នុងម៉ាស៊ីន · ជ្រើសរើសម៉ូដែលបាន · មិនត្រូវការគណនី Apsara",
       steps: [
         {
           number: "01",
-          title: "ដំឡើង CLI",
-          description: "pipx ញែក Apsara ចេញពី dependencies របស់ project ហើយធ្វើអោយ command apsara ប្រើបានគ្រប់ទីកន្លែង។",
-          command: "pipx install apsara-agentic",
+          title: "បើកថតកូដប្រភព",
+          description:
+            "ទាញយកកូដប្រភព CLI ពី GitHub ហើយបើកថតនោះ។ ជំហានទាំងនេះប្រើកំណែ 0.1.0a2 ដែលបានកំណត់ក្នុង pyproject.toml។",
+          command: "cd /path/to/Apsara-Agentic-Cli",
         },
         {
           number: "02",
-          title: "បន្ថែម Provider Key",
-          description: "ជ្រើស model provider ហើយរក្សាទុក key នៅលើម៉ាស៊ីន។ Apsara មិនទទួល key នេះទេ។",
-          command: "apsara login",
+          title: "បង្កើតកញ្ចប់ដំឡើង",
+          description:
+            "ក្នុងថតកូដប្រភព CLI ដំឡើងឧបករណ៍ build របស់ Python ហើយបង្កើតកញ្ចប់សម្រាប់ដំឡើង។",
+          command: "python3 -m pip install build\npython3 -m build",
         },
         {
           number: "03",
-          title: "Initialize Project",
-          description: "ដំណើរការ command នេះពី repository ដែលអ្នកចង់អោយ Apsara ធ្វើការ។",
-          command: "cd your-project && apsara init",
+          title: "ដំឡើងជាមួយ pipx",
+          description:
+            "ដំណើរការពាក្យបញ្ជានេះក្នុងថតកូដប្រភពដដែល។ pipx ដំឡើង Apsara ដាច់ដោយឡែកពីកញ្ចប់ដែលគម្រោងរបស់អ្នកប្រើ។",
+          command:
+            "pipx install ./dist/apsara_agentic-0.1.0a2-py3-none-any.whl",
         },
         {
           number: "04",
-          title: "ចាប់ផ្ដើមសរសេរកូដ",
-          description: "បើក terminal experience ក្នុងម៉ាស៊ីន ហើយផ្ដល់ task ដំបូងទៅ agent។",
-          command: "apsara chat",
+          title: "ចាប់ផ្ដើម Apsara",
+          description:
+            "បើកថតគម្រោង ហើយដំណើរការ apsara។ បញ្ចូល API key របស់អ្នកផ្ដល់សេវាម៉ូដែលនៅពេលមានសំណើ។",
+          command: "cd /path/to/your/project\napsara",
         },
       ],
       copyLabel: "ចម្លង",
       copiedLabel: "បានចម្លង",
-      requirementsTitle: "មុនពេលដំឡើង",
+      requirementsTitle: "មុនពេលចាប់ផ្ដើម",
       requirements: [
-        "Python 3.10 ឬថ្មីជាងនេះ",
-        "pipx សម្រាប់ដំឡើង CLI ដោយឡែកពី project",
-        "Git អាចប្រើបានក្នុង terminal",
-        "API key ពី provider ដែលគាំទ្រ ឬ local Ollama",
+        "Python 3.10 ដល់ 3.14",
+        "បានដំឡើង pipx និងអាចហៅប្រើតាម PATH",
+        "អាចប្រើ Git ក្នុង Terminal",
+        "API key ពីអ្នកផ្ដល់សេវាម៉ូដែល ឬបានដំឡើង Ollama ក្នុងម៉ាស៊ីន",
       ],
-      privacyTitle: "Local មានន័យថាស្ថិតក្នុងម៉ាស៊ីន",
+      privacyTitle: "ដឹងថាកូដរបស់អ្នកត្រូវបានផ្ញើទៅណា។",
       privacyDescription:
-        "Apsara ហៅ model provider ដែលអ្នកជ្រើសដោយផ្ទាល់។ Website របស់ Apsara មិនស្ថិតក្នុងផ្លូវ request នោះទេ។",
+        "Apsara ដំណើរការក្នុងម៉ាស៊ីនរបស់អ្នក និងភ្ជាប់ផ្ទាល់ទៅអ្នកផ្ដល់សេវាម៉ូដែលដែលអ្នកជ្រើសរើស។ សំណើមិនឆ្លងកាត់ម៉ាស៊ីនមេរបស់ Apsara ទេ។",
       privacyPoints: [
-        { title: "Code របស់អ្នកនៅដដែល", description: "Workspace files, sessions, memory, checkpoints និង run reports ស្ថិតនៅលើម៉ាស៊ីនរបស់អ្នក។" },
-        { title: "Key របស់អ្នកជារបស់អ្នក", description: "Provider credentials រក្សាទុកក្នុងម៉ាស៊ីន ហើយផ្ញើតែទៅ provider របស់ model ដែលអ្នកជ្រើស។" },
-        { title: "អ្នកអនុម័តការកែប្រែ", description: "ការសរសេរ files និង command execution ស្ថិតក្រោម local permissions និង review gates។" },
+        {
+          title: "រក្សាទុកក្នុងម៉ាស៊ីន ភ្ជាប់ផ្ទាល់ទៅម៉ូដែល",
+          description:
+            "ឯកសារគម្រោង ការសន្ទនា កំណត់ត្រា និងចំណុចស្ដារ ត្រូវបានរក្សាទុកក្នុងម៉ាស៊ីន។ នៅពេលប្រើម៉ូដែលតាមអ៊ីនធឺណិត កូដដែលពាក់ព័ន្ធត្រូវបានផ្ញើទៅអ្នកផ្ដល់សេវាដែលអ្នកជ្រើសរើស។",
+        },
+        {
+          title: "ជ្រើសរើសរបៀបរក្សាទុក key",
+          description:
+            "ប្រើ API key សម្រាប់ការសន្ទនាបច្ចុប្បន្ន ឬរក្សាទុកក្នុងម៉ាស៊ីនដោយកំណត់សិទ្ធិចូលប្រើសម្រាប់តែគណនីអ្នក។ Ollama អនុញ្ញាតឱ្យអ្នកប្រើម៉ូដែលក្នុងម៉ាស៊ីនផ្ទាល់។",
+        },
+        {
+          title: "អនុម័តមុនដំណើរការពាក្យបញ្ជា",
+          description:
+            "ឧបករណ៍ឯកសាររបស់ Apsara ធ្វើការតែក្នុងថតគម្រោងដែលអ្នកជ្រើសរើស។ ពាក្យបញ្ជា Terminal ដែលបានអនុម័ត ដំណើរការដោយប្រើសិទ្ធិគណនីរបស់អ្នក។",
+        },
       ],
-      githubLabel: "មើល source នៅ GitHub",
-      releasesLabel: "មើល releases",
+      githubLabel: "មើលកូដប្រភព",
+      releasesLabel: "មើលកំណែចេញផ្សាយ",
     },
     cta: {
-      eyebrow: "ចាប់ផ្ដើមក្នុងម៉ាស៊ីន",
-      titleLead: "CLI មួយ។",
-      titleHighlight: "Provider របស់អ្នក។",
-      titleTail: "Code របស់អ្នកនៅតែជារបស់អ្នក។",
+      eyebrow: "ចាប់ផ្ដើមប្រើ",
+      titleLead: "ចាប់ផ្ដើមការងារបន្ទាប់",
+      titleHighlight: "ជាមួយ Apsara។",
+      titleTail: "",
       description:
-        "ដំឡើង Apsara ដោយមិនបង្កើត account, ភ្ជាប់ model ដែលអ្នកប្រើស្រាប់ ហើយរក្សា coding workflow ទាំងមូលនៅលើម៉ាស៊ីន។",
-      primaryCta: "ដំឡើង CLI",
+        "ដំឡើង CLI ភ្ជាប់ម៉ូដែល ហើយចាប់ផ្ដើមដោយកែកំហុស បង្កើតមុខងារថ្មី ឬសួរសំណួរអំពីកូដរបស់អ្នក។",
+      primaryCta: "ដំឡើង Apsara",
       secondaryCta: "មើលសមត្ថភាព",
     },
     footer: {
       description:
-        "Coding agent ដែលដំណើរការក្នុងម៉ាស៊ីន។ ប្រើ API key របស់អ្នក និងរក្សា code, session និង project context នៅលើម៉ាស៊ីន។",
+        "ជំនួយការ AI សម្រាប់សរសេរកូដក្នុង Terminal។ ធ្វើការលើគម្រោងរបស់អ្នក ជ្រើសរើសម៉ូដែល និងសម្រេចលើការកែប្រែដោយខ្លួនឯង។",
       sections: [
         {
-          title: "ផ្នែក",
+          title: "មើលបន្ថែម",
           links: [
-            { href: siteRoutes.install, label: "ដំឡើង CLI" },
-            { href: siteRoutes.product, label: "ទិដ្ឋភាពផលិតផល" },
-            { href: siteRoutes.capabilities, label: "សមត្ថភាព" },
-            { href: siteRoutes.workflow, label: "ដំណើរការ" },
+            {
+              href: "/install",
+              label: "ដំឡើង",
+            },
+            {
+              href: "/product",
+              label: "អំពី Apsara",
+            },
+            {
+              href: "/capabilities",
+              label: "សមត្ថភាព",
+            },
+            {
+              href: "/workflow",
+              label: "របៀបប្រើ",
+            },
           ],
         },
         {
-          title: "អ្វីដែលសំខាន់",
+          title: "កូដប្រភព",
           links: [
-            {
-              href: siteRoutes.capabilities,
-              label: "ចាប់ផ្ដើមក្នុង Project",
-            },
-            { href: siteRoutes.product, label: "ពិនិត្យ Diff មុន" },
-            { href: siteRoutes.install, label: "មិនត្រូវការ account" },
+            { label: "GitHub", href: siteRoutes.github },
+            { label: "កំណែចេញផ្សាយ", href: siteRoutes.releases },
           ],
         },
       ],
-      copyright:
-        "Agentic coding ដែលមានព្រំដែន, ច្បាស់លាស់ និងពិនិត្យដោយមនុស្ស។",
+      copyright: "បង្កើតសម្រាប់ Terminal របស់អ្នក។",
     },
   },
 } satisfies Record<LandingLocale, LandingCopy>;

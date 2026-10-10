@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import localFont from "next/font/local";
-import { IBM_Plex_Mono, Press_Start_2P, Ubuntu } from "next/font/google";
+import { IBM_Plex_Mono, Ubuntu } from "next/font/google";
 import { getInitialLandingLocale } from "@/utils/functions/get-initial-landing-locale";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import "./landing.css";
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -20,41 +21,21 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-// Decorative pixel font — only used for the APSARA/AGENTIC banner in the
-// showcase terminal. "optional" means the browser never blocks rendering
-// waiting for it; on repeat visits it will be in cache anyway.
-const pressStart2P = Press_Start_2P({
+// Serve the signature pixel font locally for predictable first-visit branding.
+const pressStart2P = localFont({
+  src: "./fonts/PressStart2P-Regular.ttf",
   variable: "--font-pixel",
-  subsets: ["latin"],
   weight: "400",
-  display: "optional",
+  display: "swap",
 });
 
 const notoSansKhmer = localFont({
+  src: "./fonts/NotoSansKhmer-Variable.ttf",
   variable: "--font-khmer",
+  weight: "100 900",
+  style: "normal",
   display: "swap",
-  src: [
-    {
-      path: "./fonts/NotoSansKhmer-400.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/NotoSansKhmer-500.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/NotoSansKhmer-600.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "./fonts/NotoSansKhmer-700.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
+  declarations: [{ prop: "font-stretch", value: "62.5% 100%" }],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -69,7 +50,12 @@ export async function generateMetadata(): Promise<Metadata> {
     ?.split(",")[0]
     ?.trim();
   const protocol =
-    forwardedProtocol ?? (host.startsWith("localhost") ? "http" : "https");
+    forwardedProtocol ??
+    (host.startsWith("localhost") ||
+    host.startsWith("127.0.0.1") ||
+    host.startsWith("[::1]")
+      ? "http"
+      : "https");
 
   let origin = "http://localhost:3000";
 
@@ -79,16 +65,17 @@ export async function generateMetadata(): Promise<Metadata> {
     // Keep a valid local fallback when a development proxy sends a bad host.
   }
 
-  const socialImage = new URL("/og.png", origin).toString();
+  const socialImage = new URL("/opengraph-image", origin).toString();
 
   return {
-    title: "Apsara | Local-First Coding Agent",
+    metadataBase: new URL(origin),
+    title: "Apsara Agentic | Meet Makor",
     description:
-      "Install Apsara locally, bring your own model API key, and code with workspace-scoped tools without creating an account or uploading your repository.",
-    applicationName: "Apsara",
+      "Meet Makor, your pixel coding companion. Read, edit, and verify code in your local workspace with your own model provider and reviewable changes.",
+    applicationName: "Apsara Agentic",
     icons: {
-      icon: "/assets/logo/logo-without-title.svg",
-      shortcut: "/assets/logo/logo-without-title.svg",
+      icon: "/assets/makor/head.png",
+      shortcut: "/assets/makor/head.png",
     },
     keywords: [
       "Apsara",
@@ -98,7 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "CLI assistant",
     ],
     openGraph: {
-      title: "Apsara | Local-First Coding Agent",
+      title: "Apsara Agentic | Meet Makor",
       description:
         "A local coding agent with your model provider, reviewable edits, and no Apsara account required.",
       images: [
@@ -106,15 +93,15 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Apsara — local-first agentic coding",
+          alt: "Apsara Agentic and Makor, your pixel coding companion",
         },
       ],
-      siteName: "Apsara",
+      siteName: "Apsara Agentic",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Apsara | Local-First Coding Agent",
+      title: "Apsara Agentic | Meet Makor",
       description:
         "Install locally, bring your own model API key, and keep your coding workflow on your machine.",
       images: [socialImage],
@@ -123,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#090b0f",
+  themeColor: "#181c25",
 };
 
 export default async function RootLayout({
@@ -136,6 +123,7 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLocale}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${ubuntu.variable} ${ibmPlexMono.variable} ${notoSansKhmer.variable} ${pressStart2P.variable} h-full antialiased`}
     >

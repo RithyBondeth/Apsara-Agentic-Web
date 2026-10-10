@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option P — Brace</title>
+  <desc id="desc">Mirrored code braces suggest an Apsara pose and reveal an A in negative space.</desc>
+  <path fill="#7168ef" d="M27 5h-9C11 5 8 10 8 17v8c0 4-3 7-7 7 4 0 7 3 7 7v8c0 7 3 12 10 12h9l-4-9h-3c-2 0-3-2-3-4v-7c0-5-2-7-5-7 3 0 5-2 5-7v-7c0-2 1-4 3-4h3l4-11Z"/>
+  <path fill="#7168ef" d="M37 5h9c7 0 10 5 10 12v8c0 4 3 7 7 7-4 0-7 3-7 7v8c0 7-3 12-10 12h-9l4-9h3c2 0 3-2 3-4v-7c0-5 2-7 5-7-3 0-5-2-5-7v-7c0-2-1-4-3-4h-3L37 5Z"/>
+  <rect width="6" height="6" x="29" y="49" rx="1" fill="#c8ff3d"/>
+</svg>

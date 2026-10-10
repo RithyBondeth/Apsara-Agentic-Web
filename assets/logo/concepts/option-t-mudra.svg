@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option T — Mudra</title>
+  <desc id="desc">Mirrored curves evoke Apsara gesture and code brackets around a checkpoint.</desc>
+  <path fill="#7168ef" d="M25 4c1 10-3 16-10 22-6 5-7 10-1 16 7 6 11 11 11 18-5-7-12-10-17-15-9-8-8-18 1-26C18 12 22 8 25 4Z"/>
+  <path fill="#7168ef" d="M39 4c-1 10 3 16 10 22 6 5 7 10 1 16-7 6-11 11-11 18 5-7 12-10 17-15 9-8 8-18-1-26C46 12 42 8 39 4Z"/>
+  <path fill="#c8ff3d" d="m32 27 6 6-6 6-6-6 6-6Z"/>
+</svg>

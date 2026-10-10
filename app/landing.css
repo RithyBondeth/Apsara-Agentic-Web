@@ -1,0 +1,676 @@
+/* Refinements to the existing landing layout. Shared Makor tokens live in globals.css. */
+.landing-preserved :where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--l-accent);
+  outline-offset: 4px;
+}
+.landing-skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 8px;
+  background: var(--l-accent);
+  color: var(--l-on-accent);
+  padding: 0.75rem 1rem;
+}
+.landing-skip-link:focus {
+  transform: translateY(0);
+}
+.landing-preserved-hero [data-hero="title"] {
+  max-width: 100%;
+  font-size: clamp(2rem, 4.35vw, 4.65rem);
+  line-height: 1.08;
+}
+.landing-preserved-hero [data-hero="title"] > [data-hero-seg],
+.landing-preserved-hero [data-hero="title"] > .landing-gradient-text {
+  display: block;
+}
+.landing-makor-companion {
+  position: absolute;
+  top: -88px;
+  right: 12px;
+  z-index: 25;
+  width: 150px;
+  pointer-events: none;
+}
+.landing-preserved-hero .landing-editor-stage {
+  margin-top: 3rem;
+}
+.landing-makor-float {
+  animation: landing-makor-float 6s ease-in-out infinite;
+  image-rendering: pixelated;
+}
+.landing-makor-pixel {
+  image-rendering: pixelated;
+}
+.landing-makor-caption {
+  display: none;
+  margin-top: -12px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 10px;
+  color: var(--l-accent);
+  text-align: center;
+}
+.landing-cta-makor {
+  filter: drop-shadow(0 14px 24px var(--l-btn-shadow));
+}
+.landing-preserved .landing-bento-card {
+  transition:
+    border-color 300ms,
+    box-shadow 400ms,
+    background 300ms;
+}
+.landing-preserved .landing-bento-card:hover {
+  border-color: var(--l-accent);
+}
+.landing-preserved .landing-editor-shell {
+  transition: box-shadow 400ms;
+}
+.landing-install-copy-feedback {
+  min-height: 1.5rem;
+}
+@keyframes landing-makor-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@media (max-width: 1023px) {
+  .landing-preserved-hero [data-hero="title"] {
+    font-size: clamp(2.5rem, 6.5vw, 4.65rem);
+  }
+  .landing-preserved-hero .landing-editor-stage {
+    margin-top: 4rem;
+  }
+  .landing-makor-companion {
+    right: 4px;
+  }
+}
+@media (max-width: 639px) {
+  .landing-preserved-hero [data-hero="title"] {
+    font-size: clamp(1.9rem, 7.7vw, 3rem);
+  }
+  .landing-preserved-hero [data-hero="copy"] {
+    line-height: 1.8;
+  }
+  .landing-makor-companion {
+    width: 140px;
+    top: -84px;
+  }
+  .landing-makor-caption {
+    font-size: 9px;
+    margin-top: -8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-makor-float {
+    animation: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .landing-preserved .landing-nav-bar {
+    gap: 8px;
+    padding-inline: 8px;
+  }
+  .landing-preserved .landing-nav-bar > a {
+    gap: 6px;
+  }
+  .landing-preserved .landing-nav-bar > a > span {
+    padding: 4px;
+  }
+  .landing-preserved .landing-nav-bar > a img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+  }
+  .landing-preserved .landing-nav-bar > a p:first-child {
+    font-size: 12px;
+  }
+  .landing-preserved .landing-nav-bar > div:last-child {
+    gap: 4px;
+  }
+  .landing-preserved .landing-nav-bar > div:last-child > .landing-icon-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* A quieter version of the existing layout, using Makor's brand colors. */
+.landing-preserved .landing-gradient-text {
+  background: none;
+  color: var(--l-spectrum-2);
+}
+.landing-preserved .landing-nav-bar {
+  background: var(--l-glass-from);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 8%);
+}
+.landing-preserved
+  :is(.landing-bento-card, .landing-workflow-card, .landing-cta-surface) {
+  background: var(--l-surface);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.landing-preserved .landing-bento-card::before,
+.landing-preserved .landing-btn-shimmer::after {
+  display: none;
+}
+.landing-preserved .landing-bento-card:hover {
+  translate: 0 -3px;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 8%);
+}
+.landing-preserved .landing-btn-shimmer {
+  background: var(--l-btn-from);
+  box-shadow: 0 4px 12px var(--l-btn-shadow);
+}
+.landing-preserved .landing-feature-icon {
+  background: var(--l-tile-from);
+  box-shadow: none;
+}
+.landing-preserved :is(.landing-editor-shell, .landing-terminal-shell) {
+  background: var(--makor-charcoal);
+  border: 1px solid var(--l-term-line);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 16%);
+}
+.landing-preserved .landing-editor-shell:hover {
+  box-shadow: 0 22px 56px rgb(0 0 0 / 20%);
+}
+.landing-preserved .landing-syntax-violet,
+.landing-preserved .landing-syntax-pink,
+.landing-preserved .landing-syntax-green {
+  color: var(--makor-gold);
+}
+.landing-preserved .landing-syntax-blue,
+.landing-preserved .landing-syntax-cyan {
+  color: var(--makor-blue);
+}
+
+/* Khmer craft: original floral linework, layered frames, and gold detailing. */
+.landing-preserved {
+  --heritage-line: color-mix(in srgb, var(--l-accent) 26%, transparent);
+  --heritage-soft: color-mix(in srgb, var(--l-accent) 10%, transparent);
+}
+.heritage-ornament,
+.heritage-divider {
+  color: var(--l-accent);
+  pointer-events: none;
+}
+.heritage-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.heritage-divider-flower {
+  width: 90px;
+  height: 45px;
+  flex: 0 0 auto;
+}
+.heritage-divider-line {
+  height: 1px;
+  flex: 1;
+  background: currentColor;
+  opacity: 0.26;
+  transform-origin: center;
+}
+.heritage-section-divider {
+  position: absolute;
+  inset-inline: max(1rem, calc((100% - 1216px) / 2));
+  bottom: -1px;
+  z-index: 2;
+}
+.landing-preserved main > section {
+  border-bottom-color: transparent;
+}
+.landing-preserved .landing-nav-bar {
+  border-color: var(--heritage-line);
+  border-radius: 6px 20px 6px 20px;
+  box-shadow:
+    inset 0 2px 0 var(--heritage-soft),
+    0 8px 30px rgb(0 0 0 / 8%);
+}
+.landing-preserved .landing-nav-bar a {
+  transition:
+    color 220ms,
+    background 220ms,
+    box-shadow 220ms;
+}
+.landing-preserved .landing-nav-bar nav a:hover {
+  color: var(--l-accent);
+  background: var(--heritage-soft);
+}
+.landing-preserved
+  :is(.landing-btn-shimmer, header a[class*="bg-[linear-gradient"]) {
+  border-radius: 4px 12px 4px 12px;
+}
+.landing-preserved .landing-btn-shimmer::after {
+  display: block;
+  animation: none;
+  opacity: 0;
+  transform: translateX(-160%);
+  transition:
+    transform 850ms ease,
+    opacity 200ms;
+}
+.landing-preserved .landing-btn-shimmer:hover::after {
+  transform: translateX(160%);
+  opacity: 0.5;
+}
+.landing-preserved .landing-btn-shimmer:active {
+  scale: 0.98;
+}
+.landing-preserved-hero [data-hero="title"] .landing-gradient-text {
+  color: var(--l-accent);
+}
+.landing-preserved-hero [data-hero-seg] {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.landing-preserved-hero [data-hero-line] {
+  display: block;
+}
+.heritage-hero-frame {
+  position: absolute;
+  inset-inline: -36px;
+  top: -126px;
+  z-index: -1;
+  opacity: 0.34;
+  pointer-events: none;
+}
+.heritage-arch {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.landing-preserved .landing-editor-shell {
+  border-color: color-mix(in srgb, var(--makor-gold) 28%, var(--l-term-line));
+  border-radius: 4px 20px 4px 20px;
+}
+.landing-preserved .landing-editor-stage {
+  isolation: isolate;
+}
+.landing-preserved .landing-bento-card,
+.landing-preserved .landing-workflow-card,
+.landing-preserved .landing-glass-card {
+  border-radius: 4px 20px 4px 20px;
+  border-top-color: var(--heritage-line);
+}
+.heritage-card-corner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 76px;
+  height: 76px;
+  opacity: 0.3;
+  transition:
+    opacity 450ms,
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.landing-bento-card:hover .heritage-card-corner {
+  opacity: 0.65;
+  transform: translate(-2px, 2px) scale(1.04);
+}
+.landing-preserved .landing-feature-icon {
+  border: 1px solid var(--heritage-line);
+  border-radius: 4px 12px 4px 12px;
+  transition:
+    transform 450ms,
+    background 450ms;
+}
+.landing-bento-card:hover .landing-feature-icon {
+  transform: translateY(-2px);
+  background: var(--heritage-soft);
+}
+.landing-preserved [data-workflow-badge] {
+  border-radius: 2px;
+  rotate: 45deg;
+  box-shadow:
+    0 0 0 4px var(--l-ground),
+    0 0 0 5px var(--heritage-line);
+}
+.landing-preserved .landing-cta-surface {
+  border-color: var(--heritage-line);
+  border-radius: 4px 32px 4px 32px;
+  box-shadow:
+    inset 0 0 0 7px var(--l-ground),
+    inset 0 0 0 8px var(--heritage-soft);
+}
+.heritage-cta-corner {
+  position: absolute;
+  top: 16px;
+  width: 116px;
+  opacity: 0.45;
+}
+.heritage-cta-corner-left {
+  left: 16px;
+  transform: scaleX(-1);
+}
+.heritage-cta-corner-right {
+  right: 16px;
+}
+.heritage-cta-lotus {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 130px;
+  height: 136px;
+  transform: translateX(-50%);
+  opacity: 0.22;
+}
+.landing-preserved .landing-cta-makor {
+  position: relative;
+}
+.heritage-footer-divider {
+  position: absolute;
+  top: -24px;
+  inset-inline: max(1rem, calc((100% - 1152px) / 2));
+}
+.landing-preserved footer {
+  border-top-color: transparent;
+}
+.heritage-signature {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  letter-spacing: 0.06em;
+}
+.landing-locale-km .heritage-signature {
+  font-family: var(--font-khmer), sans-serif;
+  letter-spacing: var(--khmer-tracking);
+}
+@media (max-width: 1023px) {
+  .heritage-hero-frame {
+    inset-inline: -20px;
+    top: -118px;
+    height: 180px;
+    overflow: hidden;
+  }
+}
+@media (max-width: 639px) {
+  .heritage-hero-frame {
+    inset-inline: -12px;
+    top: -68px;
+    height: 120px;
+    opacity: 0.34;
+  }
+  .heritage-card-corner {
+    width: 60px;
+    height: 60px;
+  }
+  .heritage-cta-corner {
+    width: 68px;
+  }
+  .landing-locale-km.landing-preserved
+    .landing-preserved-hero
+    [data-hero="title"] {
+    font-size: clamp(1.4rem, 5.8vw, 2.1rem);
+    line-height: 1.25;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-preserved
+    :is(.landing-bento-card, .landing-feature-icon, .landing-btn-shimmer),
+  .heritage-card-corner {
+    translate: none !important;
+    transform: none !important;
+    scale: none !important;
+  }
+  .landing-preserved .landing-btn-shimmer::after {
+    display: none;
+  }
+}
+
+.heritage-install-lotus {
+  width: 38px;
+  height: 40px;
+  margin: 0 auto 20px;
+  opacity: 0.75;
+}
+.landing-nav-bar > a .landing-makor-pixel {
+  transition: rotate 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.landing-brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.landing-brand-name {
+  font-family: var(--font-ubuntu), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--l-ink);
+}
+.landing-brand-label {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--l-accent);
+}
+@media (max-width: 380px) {
+  .landing-preserved .landing-brand .landing-brand-name {
+    font-size: 16px;
+  }
+  .landing-preserved .landing-brand .landing-brand-label {
+    font-size: 7px;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .landing-nav-bar > a:hover .landing-makor-pixel {
+    rotate: -6deg;
+  }
+}
+
+/* Match Khmer display type to its actual column, including split layouts. */
+.landing-preserved-hero [data-hero-copy] {
+  container-type: inline-size;
+}
+.landing-locale-km.landing-preserved
+  .landing-preserved-hero
+  [data-hero="title"] {
+  font-size: clamp(1.4rem, 7.3cqw, 4rem);
+  line-height: 1.25;
+}
+
+/* Shared controls make language, appearance, and the mobile menu one family. */
+.landing-icon-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--l-line);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--l-surface-high) 65%, transparent);
+  color: var(--l-ink);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 var(--l-inset);
+  transition:
+    background-color 220ms,
+    border-color 220ms,
+    color 220ms,
+    scale 220ms;
+}
+.landing-icon-toggle:hover {
+  color: var(--l-accent);
+  border-color: var(--heritage-line, var(--l-accent));
+  background: var(--l-surface-high);
+}
+.landing-icon-toggle:active {
+  scale: 0.94;
+}
+.landing-icon-toggle:focus-visible {
+  outline: 2px solid var(--l-accent);
+  outline-offset: 4px;
+}
+.landing-control-icon {
+  animation: landing-control-enter 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes landing-control-enter {
+  from {
+    opacity: 0.4;
+    transform: rotate(-18deg) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* A small pool of reflected color gives the carved frame physical depth. */
+.heritage-hero-aura {
+  position: absolute;
+  z-index: -2;
+  inset: -26% -20% -12%;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 52% 36%,
+      color-mix(in srgb, var(--l-accent) 10%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse at 72% 72%,
+      color-mix(in srgb, var(--l-spectrum-2) 6%, transparent),
+      transparent 50%
+    );
+}
+.heritage-hero-frame {
+  opacity: 0.52;
+}
+.heritage-arch-trace {
+  opacity: 0;
+  stroke-dasharray: 0.09 0.91;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+.landing-preserved .landing-editor-shell {
+  box-shadow:
+    inset 0 1px 0 rgb(250 216 143 / 10%),
+    0 24px 60px rgb(0 0 0 / 22%);
+}
+.landing-preserved [data-editor-tab] {
+  position: relative;
+  color: var(--makor-gold);
+}
+.landing-preserved [data-editor-tab]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 12px;
+  bottom: -1px;
+  height: 1px;
+  background: var(--makor-gold);
+}
+.landing-editor-progress {
+  position: absolute;
+  inset-inline: 0;
+  top: -1px;
+  height: 1px;
+  transform-origin: left;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--makor-gold) 65%,
+    var(--makor-blue)
+  );
+}
+
+/* Carved surfaces catch the same warm light as the hero. */
+.landing-preserved .landing-bento-card {
+  background:
+    linear-gradient(135deg, var(--heritage-soft), transparent 45%),
+    var(--l-surface);
+  box-shadow: inset 0 1px 0 var(--l-inset);
+}
+.landing-preserved .landing-bento-card::before {
+  display: block;
+  background: radial-gradient(
+    360px circle at var(--card-x, 50%) var(--card-y, 25%),
+    var(--heritage-soft),
+    transparent 75%
+  );
+}
+.landing-preserved .landing-workflow-card {
+  transition:
+    border-color 450ms,
+    background-color 450ms,
+    box-shadow 450ms;
+}
+.landing-preserved .landing-workflow-card.is-workflow-active {
+  border-color: color-mix(in srgb, var(--l-accent) 48%, var(--l-line));
+  background: color-mix(in srgb, var(--l-accent) 4%, var(--l-surface));
+  box-shadow:
+    inset 0 1px 0 var(--heritage-soft),
+    0 12px 32px rgb(0 0 0 / 8%);
+}
+.landing-workflow-card.is-workflow-active .heritage-card-corner {
+  opacity: 0.7;
+}
+.landing-workflow-card.is-workflow-active [data-workflow-badge] {
+  background: var(--l-accent);
+  scale: 1.12;
+}
+.landing-preserved [data-workflow-badge] {
+  transition: scale 450ms;
+}
+.heritage-cta-halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    var(--heritage-soft),
+    transparent 58%
+  );
+}
+.landing-preserved .landing-cta-surface {
+  box-shadow:
+    inset 0 0 0 7px var(--l-ground),
+    inset 0 0 0 8px var(--heritage-line),
+    0 24px 60px rgb(0 0 0 / 10%);
+}
+.landing-preserved .landing-btn-shimmer {
+  transition:
+    translate 250ms,
+    box-shadow 350ms,
+    scale 250ms;
+}
+.landing-preserved .landing-btn-shimmer:hover {
+  box-shadow: 0 8px 24px var(--l-btn-shadow);
+}
+@media (hover: hover) and (pointer: fine) {
+  .landing-bento-card:hover .landing-feature-icon svg {
+    rotate: -8deg;
+    scale: 1.08;
+  }
+  .landing-feature-icon svg {
+    transition:
+      rotate 500ms,
+      scale 500ms;
+  }
+}
+@media (max-width: 639px) {
+  .heritage-hero-frame {
+    opacity: 0.38;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-control-icon {
+    animation: none;
+  }
+  .landing-icon-toggle:active,
+  .landing-bento-card:hover .landing-feature-icon svg,
+  .landing-workflow-card.is-workflow-active [data-workflow-badge] {
+    scale: none;
+    rotate: none;
+  }
+}

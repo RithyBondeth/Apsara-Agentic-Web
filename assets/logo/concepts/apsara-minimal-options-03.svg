@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara minimalist logo options eleven through fifteen</title>
+  <desc id="desc">Five periwinkle logo candidates labeled Caret, Fork, Scope, Fold, and Glyph.</desc>
+  <rect width="1200" height="420" rx="30" fill="#f5f5fa"/>
+  <text x="40" y="55" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="700" letter-spacing="2">APSARA / SYMBOL STUDY 03</text>
+  <text x="40" y="84" fill="#717286" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1">PRIMITIVE GESTURES · MAXIMUM REDUCTION</text>
+
+  <g transform="translate(32 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)"><path fill="#7168ef" d="M5 48 26 8h10l21 40H45L31 21 17 48H5Z"/><rect width="18" height="6" x="39" y="52" rx="1" fill="#7168ef"/></g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">K · CARET</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Pure CLI / ultra-minimal</text>
+  </g>
+
+  <g transform="translate(264 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)"><path d="m9 9 23 23L55 9M32 32v23" fill="none" stroke="#7168ef" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/><rect width="9" height="9" x="27.5" y="27.5" rx="1" fill="#7168ef"/></g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">L · FORK</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Repo / choices / converge</text>
+  </g>
+
+  <g transform="translate(496 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)"><path d="M22 8H8v14M42 8h14v14M22 56H8V42M42 56h14V42" fill="none" stroke="#7168ef" stroke-width="6" stroke-linecap="square"/><path fill="#7168ef" d="M32 17 46 43H36l-4-8-4 8H18l14-26Z"/><rect width="6" height="6" x="29" y="47" rx="1" fill="#7168ef"/></g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">M · SCOPE</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Workspace / bounded / local</text>
+  </g>
+
+  <g transform="translate(728 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)"><path fill="#7168ef" d="M3 58 25 7h14l17 26v12c0 4-1 7-4 10l-6 6H29l14-15 5-5v-6L32 17 17 58H3Zm30-25h12l8 8-8 8H33l8-8-8-8Z"/></g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">N · FOLD</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Plan / change / direction</text>
+  </g>
+
+  <g transform="translate(960 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)"><path d="M44 8c-9 0-12 7-7 15 8 12 11 23 3 31-9 9-27 5-27-8 0-9 8-14 16-11 8 3 8 12 2 16-4 2-8 1-10-2" fill="none" stroke="#7168ef" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect width="8" height="8" x="44" y="4" rx="1" fill="#7168ef"/></g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">O · GLYPH</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Cultural / fluid / unique</text>
+  </g>
+</svg>

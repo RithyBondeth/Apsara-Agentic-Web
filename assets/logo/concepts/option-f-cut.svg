@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara logo option F — Cut</title>
+  <desc id="desc">A bold A monogram interrupted by a transparent diff slash.</desc>
+  <defs>
+    <mask id="cut-mask">
+      <path fill="#fff" d="M32 4 61 58H48L32 27 16 58H3L32 4Z"/>
+      <path d="m8 59 45-39" fill="none" stroke="#000" stroke-width="5"/>
+    </mask>
+  </defs>
+  <rect width="64" height="64" fill="#7168ef" mask="url(#cut-mask)"/>
+</svg>

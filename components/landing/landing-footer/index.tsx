@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import KhmerOrnament from "@/components/landing/khmer-ornament";
 import type { LandingCopy, LandingLocale } from "@/language/landing-copy";
 import { siteRoutes } from "@/utils/constants/site-routes";
 import { cn } from "@/lib/utils";
 
-const logoSrc = "/assets/logo/logo-without-title.svg";
+const logoSrc = "/assets/makor/head.png";
 
 type LandingFooterProps = {
   brand: LandingCopy["brand"];
@@ -21,10 +22,7 @@ export default function LandingFooter({
 
   return (
     <footer className="relative border-t border-border/70 bg-background/80">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 landing-dot-pattern opacity-20"
-      />
+      <KhmerOrnament variant="divider" className="heritage-footer-divider" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div
           data-gsap="footer"
@@ -36,9 +34,10 @@ export default function LandingFooter({
                 <Image
                   src={logoSrc}
                   alt={brand.logoAlt}
-                  width={28}
-                  height={42}
-                  className="h-10 w-auto"
+                  width={44}
+                  height={44}
+                  sizes="44px"
+                  className="landing-makor-pixel size-11 object-contain"
                 />
                 <div>
                   <p className="font-heading text-lg font-bold tracking-tight text-foreground">
@@ -49,7 +48,7 @@ export default function LandingFooter({
                       "font-semibold text-muted-foreground",
                       isKhmer
                         ? "text-[11px] tracking-normal"
-                        : "text-[11px] uppercase tracking-[0.28em]"
+                        : "text-[11px] uppercase tracking-[0.28em]",
                     )}
                   >
                     {brand.subtitle}
@@ -59,6 +58,11 @@ export default function LandingFooter({
             </div>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               {copy.description}
+            </p>
+            <p className="heritage-signature mt-4 text-xs text-[var(--l-accent)]">
+              {isKhmer
+                ? "បំផុសគំនិតពីសិល្បៈខ្មែរ។ បង្កើតសម្រាប់ Terminal របស់អ្នក។"
+                : "Inspired by Khmer art. Built for your terminal."}
             </p>
           </div>
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara</title>
+  <desc id="desc">A compact A monogram shaped like a terminal chevron.</desc>
+  <path fill="#7168ef" d="M32 5 60 58H47.2L32 29.4 16.8 58H4L32 5Z"/>
+  <rect width="14" height="4" x="25" y="44" rx="2" fill="#7168ef"/>
+</svg>

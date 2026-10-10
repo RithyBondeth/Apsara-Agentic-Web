@@ -1,6 +1,8 @@
 "use client";
 
 import { startTransition, useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LandingCta from "@/components/landing/landing-cta";
 import { landingCopy, type LandingLocale } from "@/language/landing-copy";
@@ -20,7 +22,14 @@ import { LANDING_LOCALE_COOKIE } from "@/utils/functions/landing-locale";
 
 type LandingPageShellProps = {
   initialLocale: LandingLocale;
-  page?: "home" | "install" | "product" | "capabilities" | "workflow" | "private-alpha";
+  page?:
+    | "home"
+    | "install"
+    | "product"
+    | "capabilities"
+    | "workflow"
+    | "private-alpha"
+    | "not-found";
 };
 
 export default function LandingPageShell({
@@ -51,7 +60,6 @@ export default function LandingPageShell({
   const pageContent =
     page === "home" ? (
       <>
-        <LandingPageAnimations locale={locale} />
         <LandingHero copy={copy.hero} />
         <LandingShowcase copy={copy.showcase} locale={locale} />
         <LandingFeatures copy={copy.features} locale={locale} />
@@ -61,14 +69,41 @@ export default function LandingPageShell({
     ) : (
       <>
         <div className="pt-20 sm:pt-24" />
+        {page === "not-found" && (
+          <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+            <Image
+              src="/assets/makor/terminal-sprite.svg"
+              alt="Makor pixel mascot"
+              width={180}
+              height={120}
+              unoptimized
+              className="landing-makor-pixel mb-8"
+            />
+            <p className="landing-eyebrow">404</p>
+            <h1 className="font-heading mt-5 text-4xl font-bold text-foreground">
+              {isKhmer ? "រកមិនឃើញទំព័រ។" : "This path leads nowhere."}
+            </h1>
+            <p className="mt-5 text-muted-foreground">
+              {isKhmer
+                ? "ត្រឡប់ទៅទំព័រដើម ដើម្បីបន្ត។"
+                : "Makor couldn’t find this page. Head back home and try another path."}
+            </p>
+            <Link
+              href="/"
+              className="mt-8 inline-flex rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground"
+            >
+              {isKhmer ? "ទៅទំព័រដើម" : "Back to home"}
+            </Link>
+          </section>
+        )}
         {page === "product" ? (
-          <LandingShowcase copy={copy.showcase} locale={locale} />
+          <LandingShowcase copy={copy.showcase} locale={locale} standalone />
         ) : null}
         {page === "capabilities" ? (
-          <LandingFeatures copy={copy.features} locale={locale} />
+          <LandingFeatures copy={copy.features} locale={locale} standalone />
         ) : null}
         {page === "workflow" ? (
-          <LandingHowItWorks copy={copy.workflow} locale={locale} />
+          <LandingHowItWorks copy={copy.workflow} locale={locale} standalone />
         ) : null}
         {page === "install" || page === "private-alpha" ? (
           <LandingInstall copy={copy.install} locale={locale} />
@@ -77,17 +112,21 @@ export default function LandingPageShell({
     );
 
   return (
-    <main
+    <div
       id="top"
       lang={locale}
       data-locale={locale}
       className={[
-        "relative min-h-screen overflow-hidden bg-background",
+        "landing-preserved relative min-h-screen overflow-hidden bg-background",
         isKhmer ? "landing-locale-km" : "",
       ]
         .filter(Boolean)
         .join(" ")}
     >
+      <a href="#main-content" className="landing-skip-link">
+        {isKhmer ? "ទៅមាតិកាចម្បង" : "Skip to content"}
+      </a>
+      <LandingPageAnimations key={page} locale={locale} />
       <LandingHeader
         brand={copy.brand}
         copy={copy.header}
@@ -95,9 +134,10 @@ export default function LandingPageShell({
         activePath={pathname}
         onLocaleChange={handleLocaleChange}
       />
-      {pageContent}
-      <div aria-hidden className="landing-grain" />
+      <main id="main-content" tabIndex={-1}>
+        {pageContent}
+      </main>
       <LandingFooter brand={copy.brand} copy={copy.footer} locale={locale} />
-    </main>
+    </div>
   );
 }

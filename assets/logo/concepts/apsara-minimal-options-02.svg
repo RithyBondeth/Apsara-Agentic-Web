@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Apsara minimalist logo options six through ten</title>
+  <desc id="desc">Five periwinkle logo candidates labeled Cut, Gate, Loop, Twin, and Kbach.</desc>
+  <rect width="1200" height="420" rx="30" fill="#f5f5fa"/>
+  <text x="40" y="55" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="700" letter-spacing="2">APSARA / SYMBOL STUDY 02</text>
+  <text x="40" y="84" fill="#717286" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1">BEYOND THE LETTER A · FIVE NEW TERRITORIES</text>
+
+  <g transform="translate(32 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)">
+      <defs><mask id="board-cut-mask"><path fill="#fff" d="M32 4 61 58H48L32 27 16 58H3L32 4Z"/><path d="m8 59 45-39" fill="none" stroke="#000" stroke-width="5"/></mask></defs>
+      <rect width="64" height="64" fill="#7168ef" mask="url(#board-cut-mask)"/>
+    </g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">F · CUT</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Diff / decisive / bold</text>
+  </g>
+
+  <g transform="translate(264 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)">
+      <path d="M24 9 7 32l17 23M40 9l17 23-17 23" fill="none" stroke="#7168ef" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect width="8" height="8" x="28" y="48" rx="1" fill="#7168ef"/>
+    </g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">G · GATE</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Bounded / CLI-native</text>
+  </g>
+
+  <g transform="translate(496 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)">
+      <path d="M53 46A24 24 0 1 1 53 18" fill="none" stroke="#7168ef" stroke-width="10"/>
+      <rect width="10" height="10" x="49" y="27" rx="1.5" fill="#7168ef"/>
+    </g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">H · LOOP</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Session / review / calm</text>
+  </g>
+
+  <g transform="translate(728 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)">
+      <path fill="#7168ef" d="M28 5 6 27v29h13l13-13-8-8-10 10V30l14-14V5Z"/>
+      <path fill="#7168ef" d="m36 5 22 22v29H45L32 43l8-8 10 10V30L36 16V5Z"/>
+    </g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">I · TWIN</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Human + agent / equal</text>
+  </g>
+
+  <g transform="translate(960 115)">
+    <rect width="208" height="270" rx="22" fill="#fff" stroke="#e3e3ed"/>
+    <g transform="translate(48 28) scale(1.75)">
+      <path fill="#7168ef" d="M32 4c-1 9-6 15-14 24C10 37 8 46 8 58h12c0-11 1-18 7-25 3-4 4-7 5-11 1 4 2 7 5 11 6 7 7 14 7 25h12c0-12-2-21-10-30C38 19 33 13 32 4Z"/>
+    </g>
+    <text x="20" y="226" fill="#1f2030" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">J · KBACH</text>
+    <text x="20" y="250" fill="#717286" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Khmer-rooted / refined</text>
+  </g>
+</svg>
