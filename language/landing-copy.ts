@@ -114,6 +114,29 @@ export type LandingCopy = {
     githubLabel: string;
     releasesLabel: string;
   };
+  behind: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    mascot: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      activityDescription: string;
+      imageAlt: string;
+      caption: string;
+      motionLabel: string;
+    };
+    developer: {
+      eyebrow: string;
+      name: string;
+      role: string;
+      description: string;
+      invitation: string;
+      profileLabel: string;
+      sourceLabel: string;
+    };
+  };
   cta: {
     eyebrow: string;
     titleLead: string;
@@ -363,6 +386,34 @@ export const landingCopy = {
       ],
       githubLabel: "View source",
       releasesLabel: "View releases",
+    },
+    behind: {
+      eyebrow: "Behind Apsara",
+      title: "Meet the character and the creator.",
+      description:
+        "Khmer-inspired artwork and a hands-on developer give Apsara its identity.",
+      mascot: {
+        eyebrow: "The mascot",
+        title: "Meet Makor",
+        description:
+          "Makor is the face of Apsara’s coding assistant. This pixel Makara takes inspiration from Khmer art, with a gold crest, a curled trunk, and a blue eye.",
+        activityDescription:
+          "During a coding task, Makor appears beside the current activity as Apsara thinks, uses tools, or waits for your approval.",
+        imageAlt: "Makor, a gold pixel Makara with a curled trunk and blue eye",
+        caption: "Khmer-inspired, pixel by pixel.",
+        motionLabel: "Prefer a still mascot?",
+      },
+      developer: {
+        eyebrow: "The developer",
+        name: "Bondeth",
+        role: "Developer of Apsara Agentic",
+        description:
+          "Bondeth builds Apsara Agentic, bringing local coding tools and a Khmer-inspired identity into the terminal.",
+        invitation:
+          "Explore the source, follow development, or share an idea on GitHub.",
+        profileLabel: "View GitHub profile",
+        sourceLabel: "Explore the source",
+      },
     },
     cta: {
       eyebrow: "Get started",
@@ -639,6 +690,34 @@ export const landingCopy = {
       ],
       githubLabel: "មើលកូដប្រភព",
       releasesLabel: "មើលកំណែចេញផ្សាយ",
+    },
+    behind: {
+      eyebrow: "រឿងរ៉ាវរបស់ Apsara",
+      title: "ស្គាល់តួអង្គ និងអ្នកបង្កើត Apsara។",
+      description:
+        "សិល្បៈដែលបំផុសគំនិតពីខ្មែរ និងការងាររបស់អ្នកអភិវឌ្ឍន៍ ជាផ្នែកនៃអត្តសញ្ញាណរបស់ Apsara។",
+      mascot: {
+        eyebrow: "តួអង្គតំណាង",
+        title: "ស្គាល់ Makor",
+        description:
+          "Makor ជាតួអង្គតំណាងឱ្យជំនួយការសរសេរកូដរបស់ Apsara។ តួអង្គមករបែប pixel នេះបំផុសគំនិតពីសិល្បៈខ្មែរ ដោយមានក្បាលលម្អពណ៌មាស ប្រមោយកោង និងភ្នែកពណ៌ខៀវ។",
+        activityDescription:
+          "ពេលអ្នកធ្វើការលើកូដ Makor បង្ហាញនៅក្បែរសកម្មភាពបច្ចុប្បន្ន ខណៈ Apsara កំពុងគិត ប្រើឧបករណ៍ ឬរង់ចាំការអនុម័តពីអ្នក។",
+        imageAlt: "Makor ជាតួអង្គមករបែប pixel ពណ៌មាស មានប្រមោយកោង និងភ្នែកពណ៌ខៀវ",
+        caption: "បំផុសគំនិតពីសិល្បៈខ្មែរ បង្កើតជារូបរាង pixel។",
+        motionLabel: "ចង់ឱ្យ Makor នៅស្ងៀម?",
+      },
+      developer: {
+        eyebrow: "អ្នកអភិវឌ្ឍន៍",
+        name: "Bondeth",
+        role: "អ្នកអភិវឌ្ឍន៍ Apsara Agentic",
+        description:
+          "Bondeth បង្កើត Apsara Agentic ដោយរួមបញ្ចូលឧបករណ៍សរសេរកូដក្នុងម៉ាស៊ីន និងអត្តសញ្ញាណដែលបំផុសគំនិតពីសិល្បៈខ្មែរ ទៅក្នុង Terminal។",
+        invitation:
+          "ស្វែងយល់ពីកូដប្រភព តាមដានការអភិវឌ្ឍ ឬចែករំលែកគំនិតរបស់អ្នកនៅលើ GitHub។",
+        profileLabel: "មើលប្រវត្តិរូប GitHub",
+        sourceLabel: "ស្វែងយល់ពីកូដប្រភព",
+      },
     },
     cta: {
       eyebrow: "ចាប់ផ្ដើមប្រើ",
