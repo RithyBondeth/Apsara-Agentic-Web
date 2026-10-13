@@ -1,106 +1,102 @@
+<div align="center">
+
 # Apsara Agentic Web
 
-The public website for Apsara, a local-first coding-agent CLI. The site has one
-primary job: help developers understand the product, install the CLI, connect
-their own model provider, and start working inside a local repository.
+**The public website and install guide for Apsara Agentic, a local-first coding-agent CLI.**
 
-Apsara does not require a platform account and this website is not in the path
-between the CLI and the user's model provider.
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white)
 
-## Product flow
+</div>
 
-```text
-Visit website
-  → get the current CLI source checkout
-  → python3 -m pip install build && python3 -m build
-  → pipx install ./dist/apsara_agentic-0.1.0a2-py3-none-any.whl
-  → cd /path/to/your/project && apsara
-  → add your provider key when prompted
-```
+---
 
-The localized `/install` route documents this flow in English and Khmer. It
-also links to the source repository and published releases.
+## Overview
 
-## Development
+Apsara Agentic Web is the bilingual (English and Khmer) marketing and documentation site for [Apsara Agentic](https://github.com/RithyBondeth/Apsara-Agentic-Cli). It helps developers understand the product, install the CLI, connect their own model provider, and start working in a local repository.
 
-Requirements:
+The site is documentation and distribution only. There is no Apsara sign-up, no user database, and no cloud sync, and the website never sits between the CLI and the user's model provider.
+
+## Features
+
+- **Landing pages:** product, capabilities, workflow, install, and private-alpha routes.
+- **English and Khmer localization**, with the language preference kept in a cookie and Khmer typography tuned for Noto Sans Khmer.
+- **Light and dark themes** through `next-themes`, controlled by a shared circular icon toggle.
+- **Makor brand identity:** the pixel Makara mascot, a gold, blue, charcoal and ivory palette, and Khmer-inspired lotus and carved-frame ornaments.
+- **GSAP choreography:** ornament line drawing, staggered reveals, a pinned workflow section, and pointer-reactive lighting. Animations respect `prefers-reduced-motion`.
+- **Illustrative terminal showcase** that previews a CLI session without running any commands.
+- **Generated Open Graph image** and a custom 404 page.
+
+## Tech Stack
+
+| Area | Technology |
+| --- | --- |
+| Framework | Next.js 16 (App Router), React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4, tw-animate-css, class-variance-authority |
+| UI primitives | Radix UI, Lucide icons |
+| Animation | GSAP |
+| Theming | next-themes |
+| Tooling | ESLint, GitHub Actions CI |
+
+## Getting Started
+
+### Prerequisites
 
 - Node.js 22.13 or newer
 - npm
 
-Run the local site:
+### Installation
 
 ```bash
+git clone https://github.com/RithyBondeth/Apsara-Agentic-Web.git
+cd Apsara-Agentic-Web
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Validate changes with:
+Open [http://localhost:3000](http://localhost:3000).
 
-```bash
-npm run lint
-npm run build
+### Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+
+Run `npm run lint` and `npm run build` before shipping changes.
+
+## Project Structure
+
+```text
+Apsara-Agentic-Web/
+├── app/
+│   ├── (landing)/        # capabilities, install, private-alpha, product, workflow
+│   ├── (product)/chat/   # Chat route
+│   ├── fonts/            # Self-hosted Noto Sans Khmer and Press Start 2P
+│   ├── globals.css       # Shared Makor brand tokens
+│   └── landing.css       # Landing-page refinements
+├── components/
+│   ├── landing/          # Hero, features, showcase, install, footer, ornaments
+│   └── ui/               # Shared UI primitives
+├── language/             # English and Khmer landing copy
+├── public/assets/makor/  # Makor mascot sprite data
+└── utils/                # Routes and locale helpers
 ```
 
-Run both checks before shipping changes. Shared Makor brand tokens live in
-`app/globals.css`; public landing refinements live in `app/landing.css`.
+## Related Repositories
 
-## Product boundaries
+- [Apsara-Agentic-Cli](https://github.com/RithyBondeth/Apsara-Agentic-Cli): the Apsara Agentic coding-agent CLI
 
-- No Apsara sign-up or user database
-- No cloud workspace or session synchronization
-- Workspace files and project memory are stored locally; relevant code context
-  is sent directly to the selected model provider
-- Provider credentials are configured by the local CLI
-- The website remains public documentation and distribution infrastructure
+## Author
 
-## Makor landing design
+**Rithy Bondeth** — Full Stack Developer & AI Engineer
 
-The public routes retain the floating navigation, editor-style hero, bento cards,
-and terminal preview. Makor's head is the platform logo. The shared color system
-uses the approved gold (#FAD88F), blue (#6096FA), charcoal (#181C25), and ivory
-(#F5F1E9), with deeper text accents for light mode. Backgrounds are plain;
-decorative grids, telemetry panels, floating labels, and marquees are removed.
-
-The Khmer-inspired layer uses original lotus linework, floral dividers,
-carved corner details, and a temple-inspired frame around the editor. These are
-contemporary interpretations, not reproductions of historical carvings. The
-references include [Banteay Srei's refined sculpture](https://apsaraauthority.gov.kh/temples-new/)
-and [lotus imagery at Kbal Spean](https://apsaraauthority.gov.kh/2021/08/05/kbal-spean/),
-alongside the approved Khmer Makara identity. Decorative SVGs are hidden from
-assistive technology and do not introduce a patterned background.
-
-GSAP draws the ornament outlines, reveals whole text elements, and animates
-small depth changes around the editor. A gold highlight traces the hero frame;
-the illustrative editor reveals code before its review result. Cards reveal
-with a small stagger and catch pointer-positioned warm light. On desktop, the
-workflow introduction stays in view while the steps scroll, and the current
-step receives a gold accent. Pointer effects run only on devices with
-a fine pointer. Reduced motion disables the choreography and keeps all content
-visible. Animation contexts and event listeners are cleaned up on navigation,
-locale changes, and motion-preference changes. English and Khmer preferences
-persist in a cookie; light and dark themes use the existing theme provider.
-Language and theme use the same circular icon control. The language icon
-switches directly between English and Khmer, with a localized action label.
-Changing language preserves the hero's settled appearance rather than replaying
-the page entrance. Khmer UI uses the locally hosted Noto Sans Khmer variable
-font, with its designed width axis set to 95% for body text and 90% for headings.
-Khmer body tracking is -0.02em, heading tracking is -0.04em, and word spacing is
--0.08em, including nested text spans. Text remains in whole runs to preserve
-Khmer shaping. Hero line height is 1.25. Hero weight uses a real 700 face rather than synthetic
-extra bold. English code samples keep IBM Plex Mono. The navbar pairs Makor's
-head with the Apsara wordmark and a compact Agentic CLI label.
-
-The home page introduces Makor and developer Bondeth in a bilingual “Behind
-Apsara” section between the workflow and install invitation. It uses the shared
-Makor artwork, links to the developer’s GitHub profile and CLI source, and
-explains the mascot’s activity states and `/mascot still` control.
-
-The CLI session is illustrative and never executes commands or edits files.
-Makor artwork in `public/assets/makor/` comes from the approved brand assets in
-`../design/brand/makara-pixel-v1/`. `terminal-sprite.svg` renders the exact palette
-and pixel data from the CLI's `src/apsara_cli/shared/assets/makor.json`.
-
-Installation copy follows the current local CLI README: `0.1.0a2` is a source
-candidate, not a published package. Review the CLI's release status before
-changing this page to a registry installation command.
+[![Portfolio](https://img.shields.io/badge/Portfolio-0A0A0A?style=for-the-badge&logo=vercel&logoColor=white)](https://bondeth.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RithyBondeth)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rithy-bondeth-484073282/)
